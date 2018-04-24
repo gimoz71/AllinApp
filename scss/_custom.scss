@@ -1,0 +1,196 @@
+$color-comm: #E7967B;
+$color-chat: #3FA397;
+$color-priority: #FAB900;
+
+
+a {
+  color: $gray-600;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+  color: $gray-900;
+  text-decoration: underline;
+}
+
+.no-border {
+    border: none;
+}
+.btn-transparent {
+    background-color: rgba(255,255,255,.2);
+    border-color: rgba(255,255,255,1);
+    color: #fff;
+    &:hover {
+        background-color: rgba(255,255,255,1);
+        color: #000;
+
+    }
+}
+
+body, .content-wrapper {
+    background-color: darken($gray-100, 1);
+}
+
+.login {
+    background-image: url(/images/home.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-transform: uppercase ;
+}
+.login .logo {
+    @include text-hide;
+    background: url(/images/logo.svg) no-repeat center center;
+    width: 100%;
+    height: 75px;
+}
+
+
+.bg-comm {
+    
+    background-color: $color-comm;
+}
+
+.bg-chat {
+    background-color: $color-chat;
+}
+
+.bg-priority {
+    background-color: $color-priority;
+
+}
+
+.comm {
+    .list-group-item { 
+        display: flex;
+    }
+    .item {
+        display: inline-block;
+        width: 60px;
+        padding-right: 10px;
+        margin-right: 10px;
+        line-height: 2rem;
+        border-right: solid 5px $color-comm;
+        
+        .day {
+            font-size: 2rem;
+            color: $gray-500;
+            display: block;
+            text-align: center;
+            line-height: 2rem;
+        }
+        .mounth {
+            font-size: .5rem;
+            text-transform: uppercase;
+            color: $color-comm;
+            display: block;
+            text-align: center;
+            line-height: 1rem;
+        }
+    }
+
+    .brief {
+        min-width: 0;
+        flex: 1;
+        h5 {
+            font-size: 1.3rem;
+            line-height: 1.3rem;
+            margin: 0;
+            font-weight: normal;
+            color: $gray-600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        p {
+            color: $color-comm;
+            font-size: .75rem;
+            line-height: 1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+.chat {
+    .list-group-item { 
+        display: flex;
+    }
+    .item {
+        margin-right: 15px;
+        img {
+            width: 30px;
+        }
+    }
+
+    .brief {
+        min-width: 0;
+        flex: 1;
+        h5 {
+            font-size: 1rem;
+            line-height: 1rem;
+            margin: 0;
+            font-weight: normal;
+            color: $gray-600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        p {
+            color: $gray-500;
+            margin: 0;
+            font-size: .75rem;
+            line-height: .75rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+.priority {
+    .list-group-item { 
+        display: flex;
+    }
+    .item {
+        margin-right: 15px;
+        font-size: 1.2rem;
+        color: $color-priority;
+    }
+
+    .brief {
+        min-width: 0;
+        flex: 1;
+        h5 {
+            font-size: 1rem;
+            line-height: 1rem;
+            margin-top: .35rem;
+            font-weight: normal;
+            color: $gray-600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+
+.card-transp {
+    background-color: rgba(255,255,255,0);
+    border-color: rgba(255,255,255,0);
+    color: #fff;
+    .card-header {
+        background-color: rgba(255,255,255,0);
+        border-color: rgba(255,255,255,0)
+    }
+    input {
+        color: #fff;
+        background-color: rgba(255,255,255,.2);
+        border-color: rgba(255,255,255,1);
+        @include placeholder {
+            color: #fff;
+        }
+    }
+}
