@@ -174,49 +174,202 @@
 	</nav>
 	<div class="content-wrapper">
 		<div class="container-fluid">
-			
-			<div class="row">
-				
-				<!-- CARDS PRIORITA'-->
-				<div class="col mb-4">
-					<div class="card no-border mb-3">
-						<div class="card-header bg-priority text-white">Priorità
-							<a href="javascript: history.back()" class="float-right">
-								<i class="fa fa-fw fa-chevron-left"></i>
-							</a>
 
-						</div>
-						<ul class="list-group list-group-flush priority">
-							<li class="list-group-item"  onclick="location.href = 'chat2.html'">
-								<div class="item">
-									<i class="fa fa-bell"></i>
-								</div>
-								<div class="brief">
-									<h5>Lettura news</h5>
-									<p>Acquisizione nuovo cliente</p>
-								</div>
+			<div class="row">
+
+				<!-- CARDS COMUNICAZIONE-->
+				<div class="col mb-4">
+					<div class="card-header bg-default  text-white">
+						<ul class="nav nav-pills">
+							<li class="nav-item">
+								<a class="nav-link disabled" href="#cellulari">Rubrica</a>
 							</li>
-							<li class="list-group-item readed">
-								<div class="item">
-									<i class="fa fa-bell"></i>
-								</div>
-								<div class="brief">
-									<h5>Conferma di lettura email</h5>
-									<p>Acquisizione nuovo cliente</p>
-								</div>
+							<li class="nav-item">
+								<a class="nav-link active" id="cellulari-tab" data-toggle="tab" href="#cellulari">Cellulari</a>
 							</li>
-							<li class="list-group-item">
-								<div class="item">
-									<i class="fa fa-bell"></i>
-								</div>
-								<div class="brief">
-									<h5>Accettazione incarico presso la ditta ACME di Linate</h5>
-									<p>Acquisizione nuovo cliente</p>
-								</div>
+							<li class="nav-item">
+								<a class="nav-link" id="desk-tab" data-toggle="tab" href="#desk">Desk</a>
+							</li>
+							
 							</li>
 						</ul>
+
+					</div>
+					<div class="tab-content mt-3">
+						<div class="tab-pane fade show active" id="cellulari">
+							<div class="card no-border mb-3 ">
+								<div class="card-header bg-default small text-white">R</div>
+								<ul class="list-group list-group-flush addressBook addBook">
+									<li class="list-group-item" onclick="location.href = 'chat.html'">
+										<div class="item">
+											<div class="user-small">
+												<img src="/images/user-thumb.jpg">
+											</div>
+										</div>
+										<div class="brief">
+											<h5 class="name">Paolo Rossi</h5>
+											<p class="text">Addetto vendite</p>
+											<i class="fa fa-mobile device"></i>
+										</div>
+									</li>
+									<li class="list-group-item" onclick="location.href = 'chat.html'">
+										<div class="item">
+											<div class="user-small">
+												<img src="/images/user-thumb.jpg">
+											</div>
+										</div>
+										<div class="brief">
+											<h5 class="name">Paolo Rossi</h5>
+											<p class="text">Addetto vendite</p>
+											<i class="fa fa-mobile device"></i>
+										</div>
+									</li>
+									<li class="list-group-item" onclick="location.href = 'chat.html'">
+										<div class="item">
+											<div class="user-small">
+												<img src="/images/user-thumb.jpg">
+											</div>
+										</div>
+										<div class="brief">
+											<h5 class="name">Paolo Rossi</h5>
+											<p class="text">Addetto vendite</p>
+											<i class="fa fa-mobile device"></i>
+										</div>
+									</li>
+								</ul>
+								
+								<div class="card-header bg-default small text-white">S</div>
+								
+								<ul class="list-group list-group-flush addressBook addBook">
+									<li class="list-group-item" onclick="location.href = 'chat.html'">
+										<div class="item">
+											<div class="user-small">
+												<img src="/images/user-thumb.jpg">
+											</div>
+										</div>
+										<div class="brief">
+											<h5 class="name">Paolo Rossi</h5>
+											<p class="text">Addetto vendite</p>
+											<i class="fa fa-mobile device"></i>
+										</div>
+									</li>
+									<li class="list-group-item" onclick="location.href = 'chat.html'">
+										<div class="item">
+											<div class="user-small">
+												<img src="/images/user-thumb.jpg">
+											</div>
+										</div>
+										<div class="brief">
+											<h5 class="name">Paolo Rossi</h5>
+											<p class="text">Addetto vendite</p>
+											<i class="fa fa-mobile device"></i>
+										</div>
+									</li>
+									<li class="list-group-item" onclick="location.href = 'chat.html'">
+										<div class="item">
+											<div class="user-small">
+												<img src="/images/user-thumb.jpg">
+											</div>
+										</div>
+										<div class="brief">
+											<h5 class="name">Paolo Rossi</h5>
+											<p class="text">Addetto vendite</p>
+											<i class="fa fa-mobile device"></i>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="tab-pane fade" id="desk">
+							<div class="card no-border mb-3 ">
+								<div class="card-header bg-default small text-white">R</div>
+								<ul class="list-group list-group-flush addressBook addBook">
+									<li class="list-group-item" onclick="location.href = 'chat.html'">
+										<div class="item">
+											<div class="user-small">
+												<img src="/images/user-thumb.jpg">
+											</div>
+										</div>
+										<div class="brief">
+											<h5 class="name">Paolo Rossi</h5>
+											<p class="text">Addetto vendite</p>
+											<i class="fa fa-phone device"></i>
+										</div>
+									</li>
+									<li class="list-group-item" onclick="location.href = 'chat.html'">
+										<div class="item">
+											<div class="user-small">
+												<img src="/images/user-thumb.jpg">
+											</div>
+										</div>
+										<div class="brief">
+											<h5 class="name">Paolo Rossi</h5>
+											<p class="text">Addetto vendite</p>
+											<i class="fa fa-phone device"></i>
+										</div>
+									</li>
+									<li class="list-group-item" onclick="location.href = 'chat.html'">
+										<div class="item">
+											<div class="user-small">
+												<img src="/images/user-thumb.jpg">
+											</div>
+										</div>
+										<div class="brief">
+											<h5 class="name">Paolo Rossi</h5>
+											<p class="text">Addetto vendite</p>
+											<i class="fa fa-phone device"></i>
+										</div>
+									</li>
+								</ul>
+						
+								<div class="card-header bg-default small text-white">S</div>
+						
+								<ul class="list-group list-group-flush addressBook addBook">
+									<li class="list-group-item" onclick="location.href = 'chat.html'">
+										<div class="item">
+											<div class="user-small">
+												<img src="/images/user-thumb.jpg">
+											</div>
+										</div>
+										<div class="brief">
+											<h5 class="name">Paolo Rossi</h5>
+											<p class="text">Addetto vendite</p>
+											<i class="fa fa-phone device"></i>
+										</div>
+									</li>
+									<li class="list-group-item" onclick="location.href = 'chat.html'">
+										<div class="item">
+											<div class="user-small">
+												<img src="/images/user-thumb.jpg">
+											</div>
+										</div>
+										<div class="brief">
+											<h5 class="name">Paolo Rossi</h5>
+											<p class="text">Addetto vendite</p>
+											<i class="fa fa-phone device"></i>
+										</div>
+									</li>
+									<li class="list-group-item" onclick="location.href = 'chat.html'">
+										<div class="item">
+											<div class="user-small">
+												<img src="/images/user-thumb.jpg">
+											</div>
+										</div>
+										<div class="brief">
+											<h5 class="name">Paolo Rossi</h5>
+											<p class="text">Addetto vendite</p>
+											<i class="fa fa-phone device"></i>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+
 					</div>
 				</div>
+
 			</div>
 
 		</div>
