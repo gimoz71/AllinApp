@@ -611,7 +611,7 @@ body, .content-wrapper {
 }
 
 .login {
-  background-image: url(/images/home.jpg);
+  background-image: url(/Assets/images/home.jpg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -624,7 +624,7 @@ body, .content-wrapper {
   text-shadow: none;
   background-color: transparent;
   border: 0;
-  background: url(/images/logotipo.svg) no-repeat center center;
+  background: url(/Assets/images/logotipo.svg) no-repeat center center;
   height: 30px;
   width: 30px;
   float: left;
@@ -637,7 +637,7 @@ body, .content-wrapper {
   text-shadow: none;
   background-color: transparent;
   border: 0;
-  background: url(/images/logo.svg) no-repeat center center;
+  background: url(/Assets/images/logo.svg) no-repeat center center;
   width: 100%;
   height: 75px;
 }
