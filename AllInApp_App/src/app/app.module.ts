@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 
 import {ComponentsModule} from '../components/components.module';
@@ -20,7 +21,7 @@ import { HttpService } from '../services/http.service';
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
+    ContactPage, 
     HomePage,
     TabsPage,
     ComunicazioniPage
@@ -28,6 +29,7 @@ import { HttpService } from '../services/http.service';
   imports: [
     BrowserModule,
     ComponentsModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
