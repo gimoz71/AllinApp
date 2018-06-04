@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { LoginService } from '../../services/login/login.service';
 import { Login } from '../../models/login/login.namespace';
 
@@ -23,7 +23,8 @@ export class LoginPage {
   private password: string = ""; 
   
   constructor(private loginService: LoginService,
-    public navCtrl: NavController){
+    public navCtrl: NavController,
+    private alertCtrl: AlertController){
     this.token = new Login.ws_Token();
   }
 
@@ -33,12 +34,20 @@ export class LoginPage {
         this.token = r.Data;
         this.navCtrl.push(HomePage, {val: 'pippo'});
       } else {
-        
+        //throw new Error("test Error");
+        this.presentAlert();
       }
     });
   }
 
-  public createAccount(): void {
+  presentAlert() {
+    // se serve, qui si puo' mettere una chiamata per tenere traccia di chi ha tentato e fallito il login
 
+    let alert = this.alertCtrl.create({
+      title: 'Login Failed',
+      subTitle: 'Retry',
+      buttons: ['Again']
+    });
+    alert.present();
   }
 }
