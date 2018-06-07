@@ -30,8 +30,8 @@ export class LoginPage {
 
   public login(): void {
     this.loginService.login(this.username, this.password).subscribe(r => {
-      if(r.Success){
-        this.token = r.Data;
+      if(r.ws_result != "E"){
+        this.token = r;
         this.navCtrl.push(HomePage, {val: 'pippo'});
       } else {
         //throw new Error("test Error");

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Http } from "../../models/shared/http.namespace";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/observable/of';
+import { Login } from "../../models/login/login.namespace";
 
 @Injectable()
 export class HttpService{
@@ -11,17 +12,8 @@ export class HttpService{
 
     constructor(private http: HttpClient){}
 
-    public get(url: string) : Observable<Http.HttpResponse>{
+    public get(url: string) : Observable<Login.ws_Token>{
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-        let httpResponse: Http.HttpResponse = new Http.HttpResponse();
-        httpResponse.Success = false;
-        httpResponse.Message = "ok";
-        httpResponse.Data = "";
-
-
-        return Observable.of(httpResponse);
-
-        //return this.http.get<Http.HttpResponse>(url, { headers: headers });
+        return this.http.get<Login.ws_Token>(url, { headers: headers });
     }
 }
