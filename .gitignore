@@ -5,3 +5,6 @@
 /AllInApp_App/node_modules/
 /AllInApp_App/www/
 /AllInApp_App/.sourcemaps/
+\AllInApp_App\www\
+AllInApp_App/www/assets/fonts/ionicons.scss
+AllInApp_App/www/assets/fonts/ionicons.svg
