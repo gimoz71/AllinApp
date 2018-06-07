@@ -1,10 +1,4 @@
-.DS_Store
-/.sass-cache/
-/UNADUNA_SITO_12042018_1932.zip
-/UNADUNA_SITO_13042018_0933.zip
 /AllInApp_App/node_modules/
-/AllInApp_App/www/
 /AllInApp_App/.sourcemaps/
-\AllInApp_App\www\
-AllInApp_App/www/assets/fonts/ionicons.scss
-AllInApp_App/www/assets/fonts/ionicons.svg
+/AllInApp_App/plugins/
+/AllInApp_App/www/
