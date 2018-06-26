@@ -17,10 +17,16 @@ export class MyChatPage {
   password : string = "1234";
   host : string = "http://testchat.mesys.it";
   localhost : string = "http://localhost:8100";
+  iflocal = true;
+  userId = -1;
 
   constructor(private ref: ChangeDetectorRef, private http : HttpClient,
     private navCtrl: NavController) {
-    this.login(this.name, this.password);
+      if (this.iflocal){
+        this.host = this.localhost;
+      }
+      this.login(this.name, this.password);
+      this.getFriendList();
   }
 
   back(){
@@ -32,19 +38,28 @@ export class MyChatPage {
   }
 
   login(name, password) {
-    let ind = "http://localhost:8100/cometchat/api/index.php?action=authenticateUser&api-key="+this.apiKey+
+    let ind = this.host + "/cometchat/api/index.php?action=authenticateUser&api-key="+this.apiKey+
               "&username="+name+"&password="+password;
-    alert(ind);
-    console.log(ind);
+    this.http.get(ind).subscribe(
+      res => {
+        console.log(res);
+        alert("success"+ JSON.stringify(res));
+        this.userId = res["success"]["userid"];
+      }
+    );
+    
+  };
+   
+  getFriendList (){
+    let ind = this.host + "/cometchat/api/index.php?action=getfriend&api-key="+this.apiKey+"";
     this.http.get(ind).subscribe(
       res => {
         console.log(res);
         alert("success"+ JSON.stringify(res));
       }
     );
-    
-  };
-   
+  }
+
   launchChat() {
    
   }
