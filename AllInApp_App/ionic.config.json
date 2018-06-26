@@ -2,6 +2,12 @@
   "name": "allinapp",
   "app_id": "",
   "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/cometchat/api/",
+      "proxyUrl": "http://testchat.mesys.it/cometchat/api/"
+    }
+  ],
   "integrations": {
     "cordova": {}
   }

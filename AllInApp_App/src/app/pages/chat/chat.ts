@@ -13,7 +13,7 @@ declare var CCCometChat : any;
 export class ChatPage {
 
   licenseKey: string = "Z8AZN-TX6NP-3KETR-LDF4L-SF1LP"; // Replace the value with your CometChat License Key;
-  apiKey: string = "e0a230ebaa4aa467c05136afa8843f28"; // Replace the value with your CometChat Api Key;
+  apiKey: string = "16d09e11cf125fa84d7450ed3e114642"; // Replace the value with your CometChat Api Key;
   UID1: string = "cometchat";
   UID2: string = "SUPERHERO2";
 
@@ -52,7 +52,7 @@ export class ChatPage {
     var __this = this;
     this.showLoader(false);
     this.disableLogins();
-  CCCometChat.login("benefind","benefind2018", function success(response) {
+  CCCometChat.login("ugo","1234", function success(response) {
       alert("Logged in as : " + UID + " Response : " + response);
       __this.disableLaunch = false;
       __this.showLoader(false);
@@ -113,12 +113,12 @@ export class ChatPage {
 }
   createUser(){
     this.http.post("http://testchat.mesys.it/cometchat/api/createuser", {
-      "api-key": "e0a230ebaa4aa467c05136afa8843f28",
-      "username" : "benefind",
-      "password" : "banefind2018",
-      "displayname" : "benefind"
+      "api-key": "16d09e11cf125fa84d7450ed3e114642",
+      "username" : "ugo",
+      "password" : "1234",
+      "displayname" : "ugo"
     }).subscribe(
-      res => alert(res)
+      res => alert("success" + res)
     );
   }
 

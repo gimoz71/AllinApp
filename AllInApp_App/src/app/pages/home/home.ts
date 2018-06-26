@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { ChatPage } from './../chat/chat';
+import { MyChatPage } from './../mychat/mychat';
 import { LoginPage } from '../../pages/login/login';
 import { Storage } from '@ionic/storage';
 import { Component, OnInit } from '@angular/core';
@@ -23,9 +25,11 @@ export class HomePage implements OnInit{
 
   public logoImg : string;
 
+  public name : string;
+  public message : string;
 
   constructor(public navCtrl: NavController,
-    private storage :Storage) {
+    private storage :Storage, private http : HttpClient) {
 
   }
 
@@ -48,8 +52,23 @@ export class HomePage implements OnInit{
     this.navCtrl.push(ChatPage);
   }
 
+  goToMyChat(){
+    this.navCtrl.push(MyChatPage);
+  }
+
   public logOut(): void{
     this.storage.clear();
     this.navCtrl.setRoot(LoginPage);
   }
+
+  public send(): void {
+    alert(this.message);
+    this.http.get("http://testchat.mesys.it/cometchat/api/index.php?action=sendmessage&api-key=16d09e11cf125fa84d7450ed3e114642" + 
+      "&senderID=benefind&receiverID=benefind&isGroup=0&message="+this.message+"&visibility=0"
+    ).subscribe(
+      res => alert("success"+ JSON.stringify(res))
+    );
+  }
+
+  
 }
