@@ -27,6 +27,24 @@
     },
     "cordova-plugin-cccometchat": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "mx.ferreyra.callnumber": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-email-composer": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "com-badrit-base64": {
+      "PACKAGE_NAME": "io.ionic.starter"
     }
   },
   "dependent_plugins": {}
