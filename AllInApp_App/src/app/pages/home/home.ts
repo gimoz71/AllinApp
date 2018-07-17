@@ -37,8 +37,8 @@ export class HomePage implements OnInit{
 
   public ngOnInit() : void {
     this.header1 = "header1_prova";
-    this.header2 = "header2_prova";
-    this.header3 = "header3_prova";
+    this.header2 = "Priorità";
+    this.header3 = "Comunicazioni";
     this.headerChat = "Chat";
     this.content1 = "content1_prova";
     this.content2 = "content2_prova";

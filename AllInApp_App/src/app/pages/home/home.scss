@@ -120,7 +120,6 @@ body, .content-wrapper {
 
 .bg-priority {
     background-color: $color-priority;
-
 }
 
 .comm {
@@ -352,4 +351,19 @@ ion-title {
     border-color: blue;
   }
 
+.comm .list-group-item { display: flex; }
+.comm .item { display: inline-block; width: 60px; padding-right: 10px; margin-right: 10px; line-height: 2rem; position: relative; }
+.comm .item::after { content: ""; position: absolute; border-right: solid 4px #E7967B; top: 0; right: -2px; height: 100%; }
+.comm .item.readed:after { border-right: solid 1px #adb5bd; right: 0; }
+.comm .item .day { font-size: 2rem; color: #adb5bd; display: block; text-align: center; line-height: 2rem; }
+.comm .item .mounth { font-size: .5rem; text-transform: uppercase; color: #E7967B; display: block; text-align: center; line-height: 1rem; }
+.comm .brief { min-width: 0; flex: 1; }
+.comm .brief .title { font-size: 1.3rem; line-height: 1.3rem; margin: 0; font-weight: normal; color: #868e96; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.comm .brief .text { color: #E7967B; font-size: .75rem; line-height: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.comm .brief .read { position: absolute; right: 1rem; top: 1.5rem; font-size: 1.5rem; color: #E7967B; }
+
+.card-body > ul {
+    margin: 0em;
+    padding: 0em;
+}
 

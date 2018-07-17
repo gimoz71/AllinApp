@@ -76,58 +76,58 @@ $switch-transition: .2s all !default;
     height: 75px; 
 }
 
-.card-header {
+.card-header-login {
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
     background-color: rgba(0, 0, 0, 0.03);
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   }
   
-.card-header:first-child {
+.card-header-login:first-child {
 border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
 }
 
-.card-header + .list-group .list-group-item:first-child {
+.card-header-login + .list-group .list-group-item:first-child {
 border-top: 0;
 }
 
-.card-header.small { 
+.card-header-login.small { 
     padding: .3rem 1.25rem; }
-.card-header a { 
+.card-header-login a { 
     color: rgba(255, 255, 255, 0.75) !important; }
-.card-header a.disabled { 
+.card-header-login a.disabled { 
     color: #fff !important; cursor: default; }
-.card-header a.disabled:first-child { 
+.card-header-login a.disabled:first-child { 
     padding-left: 0; }
-.card-header a:hover { 
+.card-header-login a:hover { 
     color: white !important; }
-.card-header .nav-link { 
+.card-header-login .nav-link { 
     padding: 0rem .7rem; }
-.card-header .nav-link.active { 
+.card-header-login .nav-link.active { 
     background-color: #fff; 
     color: #666 !important; }
 
-.card-transp { 
+.card-transp-login { 
     background-color: rgba(255, 255, 255, 0); 
     border-color: rgba(255, 255, 255, 0); 
     color: #fff; }
-.card-transp .card-header { 
+.card-transp-login .card-header { 
     background-color: rgba(255, 255, 255, 0); 
     border-color: rgba(255, 255, 255, 0) a;}
-.card-transp input { 
+.card-transp-login input { 
     color: #fff; 
     background-color: rgba(255, 255, 255, 0.2); 
     border-color: white; }
-.card-transp input::-webkit-input-placeholder { 
+.card-transp-login input::-webkit-input-placeholder { 
     color: #fff; }
-.card-transp input:-moz-placeholder { 
+.card-transp-login input:-moz-placeholder { 
     color: #fff; }
-.card-transp input::-moz-placeholder { 
+.card-transp-login input::-moz-placeholder { 
     color: #fff; }
-.card-transp input:-ms-input-placeholder { 
+.card-transp-login input:-ms-input-placeholder { 
     color: #fff; }
 
-.card-body {
+.card-body-login {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
