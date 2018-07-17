@@ -1,0 +1,35 @@
+<ion-header>
+<ion-navbar hideBackButton>
+  <ion-buttons left>
+    <button (click)="back()" ion-button icon-left clear small>
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+    </ion-buttons>
+    <ion-title>
+      Rubrica
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+        <img src={{contact.dipendente.url_avatar}} class="avatar-img">
+        <h1>{{contact.dipendente.nome}} {{contact.dipendente.cognome}}</h1>
+        <ion-grid>
+          <ion-row>
+          <ion-col class="propretyName">N° INTERNO </ion-col>
+          <ion-col class="proprety">{{contact.dipendente.matricola}}</ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col class="propretyName">RUOLO AZIENDALE  </ion-col>
+              <ion-col class="proprety">{{contact.dipendente.ruolo_aziendale}}</ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col class="propretyName">DIVISIONE </ion-col>
+              <ion-col class="proprety">{{contact.dipendente.divisione}}</ion-col>
+            </ion-row>
+        </ion-grid>
+        <div (click)="presentConfirmCall()" class="mailtel"><ion-icon name="call"></ion-icon>{{contact.dipendente.telefono}}</div>
+        <div (click)="presentConfirmEmail()" class="mailtel"><ion-icon name="mail"></ion-icon>{{contact.dipendente.email}}</div>
+  </ion-item>
+</ion-content>
+

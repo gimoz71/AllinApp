@@ -1,3 +1,5 @@
+import { ProfiloPage } from './../profilo/profilo';
+import { ContactsPage } from './../contacts/contacts';
 import { HttpClient } from '@angular/common/http';
 import { ChatPage } from './../chat/chat';
 import { MyChatPage } from './../mychat/mychat';
@@ -52,13 +54,20 @@ export class HomePage implements OnInit{
     this.navCtrl.push(ChatPage);
   }
 
-  goToMyChat(){
+  public goToMyChat(){
     this.navCtrl.push(MyChatPage);
   }
 
+  public goToContact(){
+    this.navCtrl.push(ContactsPage);
+  }
   public logOut(): void{
     this.storage.clear();
     this.navCtrl.setRoot(LoginPage);
+  }
+
+  public GoProfile(){
+    this.navCtrl.push(ProfiloPage);
   }
 
   public send(): void {

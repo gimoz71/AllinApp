@@ -52,7 +52,7 @@ export class ChatPage {
     var __this = this;
     this.showLoader(false);
     this.disableLogins();
-  CCCometChat.login("ugo","1234", function success(response) {
+  CCCometChat.login("ugoj","1234", function success(response) {
       alert("Logged in as : " + UID + " Response : " + response);
       __this.disableLaunch = false;
       __this.showLoader(false);

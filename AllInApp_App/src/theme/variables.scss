@@ -38,10 +38,11 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  darklight:  #e6e6e6
 );
 
-
+$background-color: color($colors, darklight);
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here

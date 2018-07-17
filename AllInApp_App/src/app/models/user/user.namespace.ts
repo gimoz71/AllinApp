@@ -1,3 +1,4 @@
+//non utilizzato
 export namespace User {
     export class UserData {
         public token: string;        

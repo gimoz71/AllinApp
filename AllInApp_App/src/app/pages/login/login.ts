@@ -24,7 +24,7 @@ import { User } from '../../models/user/user.namespace';
 })
 export class LoginPage {
 
-  private userData: User.UserData;
+  private userData: Login.Token;
 
   private username: string = "";
   private password: string = ""; 
@@ -34,24 +34,22 @@ export class LoginPage {
     private alertCtrl: AlertController,
     private store: StoreService,
     private error: ErrorService){
-    this.userData = new User.UserData();
+    this.userData = new Login.Token;
   }
 
   public login(): void {
     this.loginService.login(this.username, this.password).subscribe(r => {
-      if(r.ws_result != "E"){
-        this.userData.username = this.username;
-        this.userData.password = this.password;
-        this.userData.token = r.m_token_value;
+      if(r.result != "E"){
+        this.userData = r;
         this.store.setUserData(this.userData);
-        
+      
         this.navCtrl.setRoot(HomePage, {val: 'pippo'});
       } else {
         //throw new Error("test Error");
-        let ed = new Error.ErrorData();
-        ed.message = "errore nel login" ; 
-        this.error.sendError(ed);
-        //this.presentAlert();
+        //let ed = new Error.ErrorData();
+        //ed.message = "errore nel login" ; 
+        //this.error.sendError(ed);
+        this.presentAlert();
       }
     });
   }

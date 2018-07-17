@@ -14,7 +14,7 @@ export class ErrorService{
     /**public sendError(url: string) : Observable<Error.ErrorResponse>{
         return this.http.get<Error.ErrorResponse>(url);
     }*/
-    public sendError (data : Error.ErrorData){
-        alert(data.message);
+    public sendError (data : Error.ErrorMessage){
+       
     }
 }

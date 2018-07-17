@@ -1,9 +1,10 @@
+import { OnInit, OnDestroy } from '@angular/core';
+import { Login } from './../../models/login/login.namespace';
 import { StoreService } from './../../services/store/store.service';
 import { Component } from '@angular/core';
 import { LoadingController, NavController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { LoginPage } from "../login/login";
-import { User } from '../../models/user/user.namespace';
 
 /**
  * Generated class for the LoadingPage page.
@@ -16,21 +17,30 @@ import { User } from '../../models/user/user.namespace';
   selector: 'page-loading',
   templateUrl: 'loading.html',
 })
-export class LoadingPage {
+export class LoadingPage implements OnInit, OnDestroy {
+
+  private subscrition ;
 
   constructor(public loadingCtrl: LoadingController,
     public navCtrl: NavController,
     private store: StoreService) {
+    
+  }
+
+  ngOnInit(){
     this.presentLoadingDefault();
-    this.store.userData$.subscribe((val: User.UserData) =>{
-      console.log(val);
+    this.subscrition = this.store.userData$.subscribe((val: Login.Token) =>{
       if (val != null){
-        this.navCtrl.setRoot(HomePage, {val: 'pippo'});
+        this.navCtrl.setRoot(HomePage);
       }else{
-        this.navCtrl.setRoot(LoginPage, {val: 'pippo'});
+        this.navCtrl.setRoot(LoginPage);
       }
     })
     this.store.getUserData();
+  }
+
+  ngOnDestroy(){
+    this.subscrition.unsubscribe();
   }
 
   presentLoadingDefault() {

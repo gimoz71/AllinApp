@@ -51,7 +51,9 @@ export class MyChatPage {
   };
    
   getFriendList (){
-    let ind = this.host + "/cometchat/api/index.php?action=getfriend&api-key="+this.apiKey+"";
+    let ind = this.host + "/cometchat/api/index.php?action=getfriend&api-key="+this.apiKey+
+      "&userid=" + this.userId;
+      console.log(ind);
     this.http.get(ind).subscribe(
       res => {
         console.log(res);

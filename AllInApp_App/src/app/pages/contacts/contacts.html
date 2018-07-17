@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button (click)="back()" ion-button icon-left clear small>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Rubrica
+    </ion-title>
+    
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-list >
+        <ion-item-group *ngFor="let group of groupedContacts">
+          <ion-item-divider light>{{group.letter}}</ion-item-divider>
+          <ion-item *ngFor="let contact of group.contacts" (click)="goToDetails(contact)" >
+              <ion-avatar item-start>
+                <img  src={{contact.url_avatar}} >
+              </ion-avatar>
+              <h2>{{contact.nome}} {{contact.cognome}}</h2>
+              <p>{{contact.ruolo_aziendale}}</p>
+            </ion-item>
+        </ion-item-group>
+    </ion-list>
+</ion-content>

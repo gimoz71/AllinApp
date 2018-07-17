@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+      <ion-buttons left>
+        <button (click)="back()" ion-button icon-left clear small>
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+        </ion-buttons>
+        <ion-title>
+          PROFILO
+        </ion-title>
+      </ion-navbar>
+    </ion-header>
+    <ion-content>
+      <ion-item>
+            <img src={{user.dipendente.url_avatar}} class="avatar-img"  (click)="presentActionSheet()">
+            <ion-icon class="change-img-ico" name="camera" (click)="presentActionSheet()" ></ion-icon>
+            <h1>{{user.dipendente.nome}} {{user.dipendente.cognome}}</h1>
+            <ion-grid>
+              <ion-row>
+              <ion-col class="propretyName">RUOLO </ion-col>
+              <ion-col class="proprety">{{user.dipendente.ruolo_aziendale}}</ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col class="propretyName">UFFICIO </ion-col>
+                  <ion-col class="proprety">{{user.dipendente.ufficio}}</ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col class="propretyName">RESPONSABILE </ion-col>
+                  <ion-col class="proprety">{{user.dipendente.nome_resp_divisione}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="propretyName">SEDE ASSUNZIONE </ion-col>
+                <ion-col class="proprety"></ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col class="propretyName">SEDE OPERATIVA </ion-col>
+                  <ion-col class="proprety"></ion-col>
+              </ion-row>
+            </ion-grid>
+      </ion-item>
+      <button ion-button (click)="changePassword()">cambia password</button>
+    </ion-content>
+
