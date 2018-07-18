@@ -220,6 +220,7 @@ body, .content-wrapper { background-color: #f5f6f8; }
 .userData .role { color: #8EA7BD; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .roleInfo { width: auto; }
+.roleInfo tr { border-bottom: solid 1px rgba(0, 0, 0, 0.05); }
 .roleInfo td { font-size: 1rem; padding: 5px 0; }
 .roleInfo td:first-child { color: #adb5bd; }
 .roleInfo td:last-child { color: #868e96; font-weight: 600; }
