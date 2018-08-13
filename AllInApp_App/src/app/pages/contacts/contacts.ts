@@ -76,15 +76,15 @@ export class ContactsPage implements OnInit, OnDestroy{
 
   groupContacts(contacts){
     let sortedContacts = contacts.sort((n1,n2) =>{
-      if (n1.nome > n2.nome) return 1;
-      if (n1.nome < n2.nome) return -1;
+      if (n1.cognome > n2.cognome) return 1;
+      if (n1.cognome < n2.cognome) return -1;
       return 0;
     });
     let currentLetter = false;
     let currentContacts = [];
 
     sortedContacts.forEach((val, index) => {
-        let value = val.nome;
+        let value = val.cognome;
         if(value.charAt(0) != currentLetter){
 
             currentLetter = value.charAt(0);

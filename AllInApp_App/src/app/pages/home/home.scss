@@ -2,6 +2,7 @@ page-home {
 
 }
 
+
 .home-username {
 	font-size:10px
 }
@@ -64,6 +65,8 @@ $gray-100: #f8f9fa;
 $gray-500: #adb5bd;
 $gray-600: #868e96;
 $gray-900: #212529;
+
+
 
 a {
   color: $gray-600;
@@ -330,6 +333,8 @@ ion-title {
       text-align: center;
       font-size: 10px;
       position: relative;
+      height: 13em;
+      width: 14.5em;
       div {
           position: absolute;
           bottom: 10px;
@@ -337,18 +342,18 @@ ion-title {
       .icon-button{
         position: absolute;
         top: 10px;
-        font-size: 60px;
+        font-size: 70px;
     }
   }
 
   .button-large-green {
-    color: green;
-    border-color: green;
+    color: #84B783;
+    border-color: #84B783;
   }
 
   .button-large-blue {
-    color: blue;
-    border-color: blue;
+    color: #8EA7BD;
+    border-color:#8EA7BD;
   }
 
 .comm .list-group-item { display: flex; }
@@ -361,6 +366,15 @@ ion-title {
 .comm .brief .title { font-size: 1.3rem; line-height: 1.3rem; margin: 0; font-weight: normal; color: #868e96; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .comm .brief .text { color: #E7967B; font-size: .75rem; line-height: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .comm .brief .read { position: absolute; right: 1rem; top: 1.5rem; font-size: 1.5rem; color: #E7967B; }
+
+.priority .list-group-item { display: flex; }
+.priority .list-group-item.readed { opacity: .5; }
+.priority .item { margin-right: 15px; font-size: 1.2rem; color: #FAB900; }
+.priority .brief { min-width: 0; flex: 1; }
+.priority .brief h5 { font-size: 1rem; line-height: 1.5rem; margin-top: .35rem; font-weight: normal; color: #868e96; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.priority .brief h5 { font-size: 1rem; line-height: 1.5rem; margin: 0; font-weight: normal; color: #868e96; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.priority .brief p { color: #adb5bd; margin: 0; font-size: .75rem; line-height: .75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
 
 .card-body > ul {
     margin: 0em;

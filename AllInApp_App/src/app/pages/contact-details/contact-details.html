@@ -1,4 +1,4 @@
-<ion-header>
+<!--<ion-header>
 <ion-navbar hideBackButton>
   <ion-buttons left>
     <button (click)="back()" ion-button icon-left clear small>
@@ -31,5 +31,81 @@
         <div (click)="presentConfirmCall()" class="mailtel"><ion-icon name="call"></ion-icon>{{contact.dipendente.telefono}}</div>
         <div (click)="presentConfirmEmail()" class="mailtel"><ion-icon name="mail"></ion-icon>{{contact.dipendente.email}}</div>
   </ion-item>
-</ion-content>
+</ion-content>-->
+
+<ion-header>
+    <ion-navbar hideBackButton>
+      <ion-buttons left>
+        <button (click)="back()" ion-button icon-left clear small>
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+        </ion-buttons>
+        <ion-title>
+          <div class="text-default" >RUBRICA</div>
+        </ion-title>
+        <ion-buttons end>
+            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>
+          </ion-buttons>
+      </ion-navbar>
+    </ion-header>
+    <ion-content>
+
+      <div class="userData text-center">
+        <div class="user-bigger  mt-5 mb-3 addBook marginleftimm">
+          <img  src={{contact.dipendente.url_avatar}}>
+        </div>
+        <h5 class="name">{{contact.dipendente.nome}} {{contact.dipendente.cognome}}</h5>
+        <p class="role">{{contact.dipendente.ruolo_aziendale}}</p>
+      
+        <table class="roleInfo marginleftinfo">
+          <tr>
+            <td class="text-left">
+              N° interno
+            </td>
+            <td class="text-right">
+                {{contact.dipendente.matricola}}
+            </td>
+          </tr>
+          <tr>
+            <td class="text-left">
+              Ruolo aziendale
+            </td>
+            <td class="text-right">
+                {{contact.dipendente.ruolo_aziendale}}
+            </td>
+          </tr>
+          <tr>
+            <td class="text-left">
+              Mansione
+            </td>
+            <td class="text-right">
+                {{contact.dipendente.ruolo_aziendale}}
+            </td>
+          </tr>
+        </table>
+        <table class="contacts mt-5 mb-5 align-middle marginleftcom">
+          <tr (click)="presentConfirmEmail()">
+            <td class="text-left">
+                <ion-icon name="call"></ion-icon>
+            </td>
+            <td class="text-right">
+              <span>{{contact.dipendente.telefono}}</span>
+            </td>
+          </tr>
+          <tr (click)="presentConfirmCall()">
+            <td class="text-left">
+                <ion-icon name="mail"></ion-icon>
+      
+            </td>
+            <td class="text-right" >
+                {{contact.dipendente.email}}
+            </td>
+          </tr>
+        </table>
+        <a href="#" class="btn btn-custom btn-sm">DIPENDENZA GERARCHICA</a>
+  </div>
+  
+
+
+    </ion-content>
 

@@ -7,3 +7,40 @@ page-contact {
     font-color : color($colors, dark, base);
     height: 20px;
 }
+
+.addressBook .list-group-item { display: flex; }
+.addressBook .list-group-item .item { margin-right: 15px; }
+.addressBook .list-group-item .brief { min-width: 0; flex: 1; }
+.addressBook .list-group-item .brief .name { font-size: 1rem; line-height: 1rem; margin: 0; font-weight: normal; color: #868e96; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.addressBook .list-group-item .brief .text { color: #adb5bd; margin: 0; font-size: .75rem; line-height: .75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.addressBook .list-group-item .brief .device { position: absolute; right: 1rem; top: 1rem; font-size: 1.5rem; color: #8EA7BD; }
+.addressBook .list-group-item.other .item { margin-left: 15px; margin-right: auto; }
+
+.user-small { width: 30px; }
+.user-small img { border-radius: 50%; border: solid 2px #3FA397; width: 100%; }
+.user-small.dashed img { border-style: dashed; }
+
+.addBook img { border-color: #8EA7BD; }
+
+ion-searchbar{       
+        
+    .searchbar-input-container{     
+        .searchbar-input{
+            border-radius: 20px;
+            height: 2em;
+        }
+    }
+ }
+ 
+ .contact-small{
+    float:left;
+
+ }
+
+ .group-header {
+
+    padding: 0.20rem 0.30rem;
+    margin-bottom: 1;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    height: 23px;
+  }

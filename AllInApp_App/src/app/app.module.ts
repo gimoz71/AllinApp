@@ -1,3 +1,31 @@
+import { MessaggiUscitaPage } from './pages/messaggi-uscita/messaggi-uscita';
+import { MessaggiCestinoPage } from './pages/messaggi-cestino/messaggi-cestino';
+import { MessaggiImportantiPage } from './pages/messaggi-importanti/messaggi-importanti';
+import { MessaggiUscitaModule } from './modules/messaggi-uscita/messaggi-uscita.module';
+import { MessaggiCestinoModule } from './modules/messaggi-cestino/messaggi-cestino.module';
+import { MessaggiImportantiModule } from './modules/messaggi-importanti/messaggi-importanti.module';
+import { MessaggiNuovoPage } from './pages/messaggi-nuovo/messaggi-nuovo';
+import { MessaggiNuovoModule } from './modules/messaggi-nuovo/messaggi-nuovo.module';
+import { HomeMessPage } from './pages/home-mess/home-mess';
+
+import { MessaggiCardPage } from './pages/messaggi-card/messaggi-card';
+import { MessaggiDetailsPage } from './pages/messaggi-details/messaggi-details';
+import { MessaggiPage } from './pages/messaggi/messaggi';
+import { HomeMessModule } from './modules/home-mess/home-mess.module';
+import { MessaggiCardModule } from './modules/messaggi-card/messaggi-card.module';
+
+import { ComunicazioniCardPage } from './pages/comunicazioni-card/comunicazioni-card';
+import { NewsDetailsPage } from './pages/news-details/news-details';
+import { NewsDetailsModule } from './modules/news-details/news-details.module';
+import { NewsCardPage } from './pages/news-card/news-card';
+import { NewsModule } from './modules/news/news.module';
+import { NewsCardModule } from './modules/news-card/news-card.module';
+import { ContactCardModule } from './modules/contact-card/contact-card.module';
+import { ContactCardPage } from './pages/contact-card/contact-card';
+import { HomePrioPage } from './pages/home-prio/home-prio';
+import { HomePrioModule } from './modules/home-prio/home-prio.module';
+import { HomeComPage } from './pages/home-com/home-com';
+import { HomeComModule } from './modules/home-com/home-com.module';
 import { Base64 } from '@ionic-native/base64';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
@@ -42,6 +70,10 @@ import { ContactService } from './services/contact/contact.service';
 import { ContactsModule } from './modules/contacts/contacts.module';
 import { ContactDetailsModule } from './modules/contact-details/contact-details.module';
 import { CheckService } from './services/shared/check.service';
+import { NewsPage } from './pages/news/news';
+import { ComunicazioniCardModule } from './modules/comunicazioni-card/comunicazioni-card.module';
+import { MessaggiModule } from './modules/messaggi/messaggi.module';
+import { MessaggiDetailsModule } from './modules/messaggi-details/messaggi-details.module';
 
 @NgModule({
   declarations: [
@@ -57,12 +89,27 @@ import { CheckService } from './services/shared/check.service';
     LoginModule,
     HttpClientModule,
     HomeModule,
+    ComunicazioniCardModule,
+    HomeComModule,
+    HomePrioModule,
     LoadingModule,
     ChatModule,
     MyChatModule,
     ContactsModule,
     ContactDetailsModule,
     ProfiloModule,
+    ContactCardModule,
+    NewsCardModule,
+    NewsModule,
+    NewsDetailsModule,
+    MessaggiModule,
+    MessaggiDetailsModule,
+    MessaggiCardModule,
+    HomeMessModule,
+    MessaggiNuovoModule,
+    MessaggiImportantiModule,
+    MessaggiUscitaModule,
+    MessaggiCestinoModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -70,6 +117,9 @@ import { CheckService } from './services/shared/check.service';
   entryComponents: [
     MyApp,
     HomePage,
+    ComunicazioniCardPage,
+    HomeComPage,
+    HomePrioPage,
     ContactsPage,
     // TabsPage,
     // ComunicazioniPage,
@@ -78,7 +128,20 @@ import { CheckService } from './services/shared/check.service';
     ChatPage,
     MyChatPage,
     ProfiloPage,
-    ContactDetailsPage
+    ContactDetailsPage,
+    ContactCardPage,
+    NewsCardPage,
+    NewsPage,
+    NewsDetailsPage,
+    MessaggiPage,
+    MessaggiDetailsPage,
+    MessaggiCardPage,
+    HomeMessPage,
+    MessaggiNuovoPage,
+    MessaggiImportantiPage,
+    MessaggiUscitaPage,
+    MessaggiCestinoPage
+    
   ],
   providers: [
     StatusBar,

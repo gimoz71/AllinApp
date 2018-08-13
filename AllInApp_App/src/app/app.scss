@@ -15,6 +15,25 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.bg-default { background-color: #8EA7BD; }
+
+.bg-doc { background-color: #84B783; }
+
+.bg-comm { background-color: #E7967B; }
+
+.bg-chat { background-color: #3FA397; }
+
+.bg-priority { background-color: #FAB900; }
+
+
+.text-doc { color: #84B783; }
+
+.text-comm { color: #E7967B; }
+
+.text-chat { color: #3FA397; }
+
+.text-priority { color: #FAB900; }
+
 .text-white {
   color: #fff;
 }
@@ -49,6 +68,10 @@
   -moz-border-radius: 10px; /* firefox */
   -webkit-border-radius: 10px; /* safari, chrome */
   height: 10em;
+}
+/**classe icon sulla destra nella nav-bar**/
+.nav-icon{
+  font-size: 2.5em;
 }
 
 .card-large {
@@ -226,3 +249,6 @@
 .card-group > .card {
   margin-bottom: 15px;
 }
+
+
+

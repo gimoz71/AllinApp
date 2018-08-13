@@ -5,24 +5,59 @@
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>
-      Rubrica
+    <ion-buttons end>
+      <button><ion-icon class="icon-button" name="contacts" class="nav-icon text-default"></ion-icon></button>
+    </ion-buttons>
+    <ion-title >
+      <div class="text-default">Rubrica</div>
     </ion-title>
     
   </ion-navbar>
 </ion-header>
 <ion-content>
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  
+    <ion-searchbar  (ionInput)="getItems($event)"></ion-searchbar>
     <ion-list >
-        <ion-item-group *ngFor="let group of groupedContacts">
-          <ion-item-divider light>{{group.letter}}</ion-item-divider>
-          <ion-item *ngFor="let contact of group.contacts" (click)="goToDetails(contact)" >
-              <ion-avatar item-start>
-                <img  src={{contact.url_avatar}} >
-              </ion-avatar>
-              <h2>{{contact.nome}} {{contact.cognome}}</h2>
-              <p>{{contact.ruolo_aziendale}}</p>
+        <ion-item-group class="list-group list-group-flush addressBook addBook" *ngFor="let group of groupedContacts">
+          <ion-item-divider class="group-header bg-default small text-white" >{{group.letter}}</ion-item-divider>
+          <ion-item class="list-group-item" *ngFor="let contact of group.contacts" (click)="goToDetails(contact)" >
+              <div class="item" >
+                  <div  class="user-small contact-small">
+                    <img  src="{{contact.url_avatar}}">
+                  </div>
+                </div>
+                <div class="brief contact-small ">
+                  <h5 class="name ">{{contact.nome}} {{contact.cognome}}</h5>
+                  <p class="text ">{{contact.ruolo_aziendale}}</p>
+                  <i class="fa fa-mobile device"></i>
+                </div>
             </ion-item>
         </ion-item-group>
     </ion-list>
+    
+
+
+
+    <!--<div class="tab-content mt-3">
+        <div class="card no-border mb-3 ">
+          <div class="card-header bg-default small text-white">R</div>
+          <ul class="list-group list-group-flush addressBook addBook">
+            <li class="list-group-item" onclick="location.href = 'chat.html'">
+              <div class="item" start>
+                <div class="user-small">
+                  <img src="/Assets/images/user-thumb.jpg">
+                </div>
+              </div>
+              <div class="brief">
+                <h5 class="name">Paolo Rossi</h5>
+                <p class="text">Addetto vendite</p>
+                <i class="fa fa-mobile device"></i>
+              </div>
+            </li>
+            
+          </ul>
+          </div></div>-->
+      
+
+
 </ion-content>

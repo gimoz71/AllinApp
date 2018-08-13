@@ -1,0 +1,9 @@
+<div class="card" >
+    <div class="card-header bg-comm text-header text-white" (click)="goToMessaggi()">Messaggi</div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush priority" >
+            <home-mess *ngFor="let data of messMin" [data] = "data" (click)="goToDetails(data)" >
+            </home-mess>
+        </ul>
+    </div>
+</div>

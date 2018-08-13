@@ -1,3 +1,9 @@
+import { NewsPage } from './../news/news';
+import { LoginService } from './../../services/login/login.service';
+import { StoreService } from './../../services/store/store.service';
+
+
+import { HomeElement } from './../../models/home-element/home-element.namespace';
 import { ProfiloPage } from './../profilo/profilo';
 import { ContactsPage } from './../contacts/contacts';
 import { HttpClient } from '@angular/common/http';
@@ -6,7 +12,7 @@ import { MyChatPage } from './../mychat/mychat';
 import { LoginPage } from '../../pages/login/login';
 import { Storage } from '@ionic/storage';
 import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { ComunicazioniPage } from '../comunicazioni/comunicazioni';
 
 @Component({
@@ -24,6 +30,9 @@ export class HomePage implements OnInit{
   public content2: string;
   public content3: string;
   public contentChat: string;
+  public contentCom : string;
+
+  public presenze : string[] = [];
 
   public logoImg : string;
 
@@ -31,7 +40,9 @@ export class HomePage implements OnInit{
   public message : string;
 
   constructor(public navCtrl: NavController,
-    private storage :Storage, private http : HttpClient) {
+    private storage :Storage, private http : HttpClient, private alertCtrl: AlertController,
+    private store : StoreService, private login : LoginService
+  ) {
 
   }
 
@@ -44,6 +55,17 @@ export class HomePage implements OnInit{
     this.content2 = "content2_prova";
     this.content3 = "content3_prova";
     this.contentChat = "vai alla chat";
+    this.contentCom = '';
+
+    //richiedo quali servizi devono essere visualizzati 
+    this.presenze["comunicazioni"]= "true"; 
+    this.presenze["chat"]= "true"; 
+    this.presenze["priorita"]= "true"; 
+    this.presenze["documentale"]= "true";
+    this.presenze["contatti"] = "true"; 
+    this.presenze["messaggi"] = "true"; 
+    //ricevo tutti i dati 
+    //le prossime verranno eseguite solo se sono presenti nei dati
   }
 
   public load() : void {
@@ -54,13 +76,10 @@ export class HomePage implements OnInit{
     this.navCtrl.push(ChatPage);
   }
 
-  public goToMyChat(){
-    this.navCtrl.push(MyChatPage);
-  }
-
   public goToContact(){
     this.navCtrl.push(ContactsPage);
   }
+
   public logOut(): void{
     this.storage.clear();
     this.navCtrl.setRoot(LoginPage);
@@ -70,14 +89,68 @@ export class HomePage implements OnInit{
     this.navCtrl.push(ProfiloPage);
   }
 
-  public send(): void {
-    alert(this.message);
-    this.http.get("http://testchat.mesys.it/cometchat/api/index.php?action=sendmessage&api-key=16d09e11cf125fa84d7450ed3e114642" + 
-      "&senderID=benefind&receiverID=benefind&isGroup=0&message="+this.message+"&visibility=0"
-    ).subscribe(
-      res => alert("success"+ JSON.stringify(res))
-    );
+  changePassword() {
+    const prompt = this.alertCtrl.create({
+      title: 'Cambio Password',
+      message: "inserisci i dati",
+      inputs: [
+        {
+          name: 'old',
+          placeholder: 'password corrente'
+        },
+        {
+          name: 'new',
+          placeholder: 'Nuova password'
+        },
+        {
+          name: 'repeat',
+          placeholder: 'reinserisci nuova passoword'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+
+          }
+        },
+        {
+          text: 'Send',
+          handler: data => {
+            if (this.checkPassword(data.old) == true){
+              if (data.new.length > 5){
+                if (data.new == data.repeat ){
+                  let s = this.store.userData$.subscribe((val)=>{
+                    s.unsubscribe();
+                    let s1 =this.login.changePassword(val, data.old, data.new , data.repeat).subscribe((r)=>{
+                      s1.unsubscribe();
+                      if (r.ErrorMessage.msg_code == 0){
+                        alert("password cambiata correttamente");
+                      }else{
+                        alert("errore modifica password");
+                      }
+                    });
+                  })
+                  this.store.getUserData();
+                }else{
+                  alert("le password non corrispondono");
+                }
+              }else{
+                alert("la password deve essere più lunga di 5 caratteri");
+              }
+            }else{
+              alert("password corrente non corretta");
+            }
+          }
+        }
+      ],
+      enableBackdropDismiss: false
+    });
+    prompt.present();
   }
 
+  checkPassword(old): boolean{
+    return true;
+  }
   
 }
