@@ -1,3 +1,4 @@
+
 import { News } from './../../models/news/news.namespace';
 import { Http } from './../../models/shared/http.namespace';
 
@@ -8,6 +9,7 @@ import 'rxjs/add/observable/of';
 import { Login } from "../../models/login/login.namespace";
 import { Contact } from "../../models/contact/contact.namespace";
 import { Messaggi } from '../../models/messaggi/messaggi.namespace';
+import { Comunicazione } from '../../models/comunicazione/comunicazione.namespace';
 //SERVICE NON UTILIZZATO
 @Injectable()
 export class HttpService{
@@ -46,6 +48,12 @@ export class HttpService{
         return this.http.get<Messaggi.MessaggiList>(url);
     }
 
+    public getMessagge(token : string, key : number):Observable<Messaggi.BustaMessaggio>{
+        let url = "http://allinappws.mesys.it/services/get_messaggio/"+ token +"/"+key;
+        console.log(url);
+        return this.http.get<Messaggi.BustaMessaggio>(url);
+    }
+
     public setStarMessage (token : string , key: number, stato: string): Observable<Messaggi.MessaggioResult>{
         let url = "http://allinappws.mesys.it/services/set_star_message/"+ token +"/"+key +"/"+stato;
         console.log(url);
@@ -53,7 +61,7 @@ export class HttpService{
     }
 
     public setDeleteMessage (token : string , key: number): Observable<Messaggi.MessaggioResult>{
-        let url = "http://allinappws.mesys.it/services/set_delete_message/"+ token +"/"+key;
+        let url = "http://allinappws.mesys.it/services/set_deleted_message/"+ token +"/"+key;
         console.log(url);
         return this.http.get<Messaggi.MessaggioResult>(url);
     }
@@ -64,10 +72,39 @@ export class HttpService{
         return this.http.post<Messaggi.MessaggioResult>(url, mess);
     }
 
+
     public sendMessage(token : string, mess: Messaggi.BustaMessaggio){
         let url = "http://allinappws.mesys.it/services/put_message";
         console.log(url);
         console.log (mess);
         return this.http.post<Messaggi.MessaggioResult>(url, mess);
     }
+
+    public getComunicazioniElenco (token : string , from : number, to: number, lette : string, tipo : string){
+        let url = "http://allinappws.mesys.it/services/get_elenco_comunicazioni/"+ token +"/" + from +
+            "/" + to +"/" + lette + "/"+ tipo + "/";
+        console.log(url);
+        return this.http.get<Comunicazione.ComunicazioniElenco>(url);
+    }
+
+    public getComunicazione (token : string , key: number ){
+        let url = "http://allinappws.mesys.it/services/get_public_comunicazione/"
+        + token + "/" + key + "/";
+        console.log(url);
+        return this.http.get<Comunicazione.ComunicazioneResult>(url);
+    }
+
+    public setReadComunicazione (token : string , key : number){
+        let url = "http://allinappws.mesys.it/services/set_read_comunicazione/"
+            + token + "/" +  key + "/";
+        console.log(url);
+        return this.http.get<Comunicazione.Result>(url);
+    }
+
+    public setDeletedComunicazione (token: string , key: number){
+        let url = "http://allinappws.mesys.it/services/set_deleted_comunicazione/" + token + "/" + key +"/";
+        console.log(url);
+        return this.http.get<Comunicazione.Result>(url);
+    }
+
 }

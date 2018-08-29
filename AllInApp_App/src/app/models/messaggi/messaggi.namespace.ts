@@ -10,6 +10,7 @@ export namespace Messaggi {
         public msg_techdata: string;
     }
 
+    //elemento lista messaggi
     export class MessaggiElem {
         messaggi_key : number;
         mittente_key : number;

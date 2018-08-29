@@ -74,6 +74,7 @@ export class MessaggiCardPage implements OnInit {
 
     public goToMessaggi(){
       this.navCtrl.push(MessaggiPage, {messFull : this.messFull});
+      //this.navCtrl.setRoot(MessaggiPage);
     }
 
     public goToDetails(mess){

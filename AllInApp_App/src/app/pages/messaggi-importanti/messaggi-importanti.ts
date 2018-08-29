@@ -1,6 +1,7 @@
+import { MessaggiDetailsPage } from './../messaggi-details/messaggi-details';
 import { HttpService } from './../../services/shared/http.service';
 import { StoreService } from './../../services/store/store.service';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
 
 import { OnInit, Component } from '@angular/core';
@@ -19,17 +20,23 @@ export class MessaggiImportantiPage implements OnInit {
 
   public messFull : Messaggi.MessaggiElem[];
 
-  constructor(public navCtrl: NavController, private store : StoreService, private http : HttpService) {
+  constructor(public navCtrl: NavController, private store : StoreService, private http : HttpService,
+    private alertCtrl: AlertController) {
           
   }
 
   ngOnInit(){
-    /**let s= this.store.userData$.subscribe(
+    let s= this.store.userData$.subscribe(
       (val)=>{
-        this.http.getMessaggeList(val.token_value,'0','0','I');
+        let s1 =this.http.getMessaggeList(val.token_value,'0','0','P').subscribe(
+          (val1)=>{
+            this.messFull = val1.l_lista_messaggi;
+          }
+        );
         s.unsubscribe();
       }
-    )**/
+    )
+    this.store.getUserData();
   }
 
   back(){
@@ -52,6 +59,47 @@ export class MessaggiImportantiPage implements OnInit {
     );
     this.store.getUserData();
 }
+
+setDelete(mess : Messaggi.MessaggiElem){
+  let s = this.store.userData$.subscribe(
+    (val: Login.Token)=>{
+      let s1 = this.http.setDeleteMessage(val.token_value, mess.messaggi_key).subscribe(
+        (r)=>{
+          console.log(r);
+          s1.unsubscribe();
+        }
+      );
+      s.unsubscribe();
+    }
+  );
+  this.store.getUserData();
+}
+
+  deleteConfirm(mess : Messaggi.MessaggiElem) {
+    let alert = this.alertCtrl.create({
+      title: 'Conferma',
+      message: 'spostare questo messaggio nel cestino?',
+      buttons: [
+        {
+          text: 'indietro',
+          role: 'cancel',
+          handler: () => {
+            
+          }
+        },
+        {
+          text: 'ok',
+          handler: () => {
+            this.setDelete(mess);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }  
+  public goToDetails(mess){
+    this.navCtrl.push(MessaggiDetailsPage, {mess : mess});
+  }
 
 }
   

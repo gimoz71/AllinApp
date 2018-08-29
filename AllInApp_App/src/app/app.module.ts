@@ -1,3 +1,12 @@
+import { ComunicazioniDetailsPage } from './pages/comunicazioni-details/comunicazioni-details';
+import { CircolariDetailsModule } from './modules/circolari-details/circolari-details.module';
+import { CircolariDetailsPage } from './pages/circolari-details/circolari-details';
+import { CircolariCardPage } from './pages/circolari-card/circolari-card';
+import { CircolariPage } from './pages/circolari/circolari';
+import { CircolariCardModule } from './modules/circolari-card/circolari-card.module';
+import { CircolariPageModule } from './modules/circolari/circolari.module';
+import { ComunicazioniDetailsModule } from './modules/comunicazioni-details/comunicazioni-details.module';
+import { ComunicazioniPageModule } from './modules/comunicazioni/comunicazioni.module';
 import { MessaggiUscitaPage } from './pages/messaggi-uscita/messaggi-uscita';
 import { MessaggiCestinoPage } from './pages/messaggi-cestino/messaggi-cestino';
 import { MessaggiImportantiPage } from './pages/messaggi-importanti/messaggi-importanti';
@@ -74,6 +83,8 @@ import { NewsPage } from './pages/news/news';
 import { ComunicazioniCardModule } from './modules/comunicazioni-card/comunicazioni-card.module';
 import { MessaggiModule } from './modules/messaggi/messaggi.module';
 import { MessaggiDetailsModule } from './modules/messaggi-details/messaggi-details.module';
+import { ComunicazioniPage } from './pages/comunicazioni/comunicazioni';
+
 
 @NgModule({
   declarations: [
@@ -90,6 +101,8 @@ import { MessaggiDetailsModule } from './modules/messaggi-details/messaggi-detai
     HttpClientModule,
     HomeModule,
     ComunicazioniCardModule,
+    ComunicazioniPageModule,
+    ComunicazioniDetailsModule,
     HomeComModule,
     HomePrioModule,
     LoadingModule,
@@ -110,6 +123,9 @@ import { MessaggiDetailsModule } from './modules/messaggi-details/messaggi-detai
     MessaggiImportantiModule,
     MessaggiUscitaModule,
     MessaggiCestinoModule,
+    CircolariPageModule,
+    CircolariCardModule,
+    CircolariDetailsModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -122,7 +138,8 @@ import { MessaggiDetailsModule } from './modules/messaggi-details/messaggi-detai
     HomePrioPage,
     ContactsPage,
     // TabsPage,
-    // ComunicazioniPage,
+    ComunicazioniPage,
+    ComunicazioniDetailsPage,
     LoginPage,
     LoadingPage,
     ChatPage,
@@ -140,8 +157,10 @@ import { MessaggiDetailsModule } from './modules/messaggi-details/messaggi-detai
     MessaggiNuovoPage,
     MessaggiImportantiPage,
     MessaggiUscitaPage,
-    MessaggiCestinoPage
-    
+    MessaggiCestinoPage,
+    CircolariPage,
+    CircolariCardPage,
+    CircolariDetailsPage
   ],
   providers: [
     StatusBar,

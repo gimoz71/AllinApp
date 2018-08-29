@@ -5,7 +5,7 @@ import { ContactService } from './../../services/contact/contact.service';
 
 import { StoreService } from './../../services/store/store.service';
 import { MessaggiDetailsPage } from './../messaggi-details/messaggi-details';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 
 import { OnInit, Component } from '@angular/core';
@@ -31,12 +31,28 @@ export class MessaggiNuovoPage implements OnInit {
   nomeConoscenza : string;
   private mess : Messaggi.MessaggiElem;
   constructor(public navCtrl: NavController, private store : StoreService, 
-    private conService : ContactService, private http: HttpService) {
+    private conService : ContactService, private http: HttpService,  private navParams: NavParams) {
           
   }
 
   ngOnInit(){
-    this.mess = new Messaggi.MessaggiElem();
+    let mess1 = this.navParams.get('reply');
+    let mess2 = this.navParams.get('inoltro');
+
+    if (mess1 != null){
+      this.mess = mess1;
+      this.oggetto = "risposta : " + this.mess.soggetto ;
+      this.messaggio = "-----------------\n" + this.mess.messaggio + "\n-------------------\n";
+      this.nomeDestinatario = this.mess.nome_des + " " + this.mess.cognome_des;
+      
+    } 
+    else if (mess2 != null){
+      this.mess = mess2;
+      this.oggetto = this.mess.soggetto;
+      this.messaggio = this.mess.messaggio;
+    } 
+    else this.mess = new Messaggi.MessaggiElem();
+    console.log (this.mess);
     let s  = this.conService.contactsList$.subscribe((val)=>{
       if (val != null){
         if (val.ErrorMessage.msg_code == 0){
@@ -114,6 +130,7 @@ export class MessaggiNuovoPage implements OnInit {
         let s1 = this.http.sendMessage(val.token_value, busta).subscribe((r)=>{
           console.log (r);
           if (r.ErrorMessage.msg_code == 0){
+            console.log(busta);
             alert ("messaggio inviato correttamente");
           }else{
             alert("errore nell'invio del messaggio");

@@ -30,8 +30,8 @@ export class StoreService{
                         (r)=>{
                             //token corretto lo invio
                             if (r.ErrorMessage.msg_code == 0){
-                                this.ud = val;
-                                this.userData.next(val);
+                                this.ud = r;
+                                this.userData.next(r);
                             }else{
                                 //token non corretto faccio il login
                                 this.login.login(val.token_user, val.token_password).subscribe(
@@ -40,7 +40,7 @@ export class StoreService{
                                             this.setUserData(rl);
                                         if (rl.ErrorMessage.msg_code == 0){
                                                 this.ud = val;
-                                                this.userData.next(val);
+                                                this.userData.next(rl);
                                         }
                                     }
                                 );
@@ -59,7 +59,7 @@ export class StoreService{
                 (r: Login.Token)=>{
                     //token valido lo invio
                     if (r.ErrorMessage.msg_code == 0){
-                        this.userData.next(this.ud);
+                        this.userData.next(r);
                     }else{
                         this.login.login(r.token_user, r.token_password).subscribe(
                             //token non valido faccio il login

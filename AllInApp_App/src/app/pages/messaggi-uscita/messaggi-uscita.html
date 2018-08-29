@@ -27,8 +27,10 @@
                   <div class=" box item" >
                       <ion-icon name="eye" (click)="goToDetails(mess)"></ion-icon>
                       <ion-icon name="checkbox"></ion-icon>
-                      <ion-icon name="star-outline" *ngIf="mess.stato_messaggio=='N'"(click)="setStar(mess,'S')"></ion-icon>
-                      <ion-icon name="star" *ngIf="mess.stato_messaggio=='S'" (click)="setStar(mess,'N')"></ion-icon>
+                      <ion-icon name="star-outline" *ngIf="mess.preferito==''" (click)="setStar(mess,'S')"></ion-icon>
+                      <ion-icon name="star-outline" *ngIf="mess.preferito=='N'" (click)="setStar(mess,'S')"></ion-icon>
+                      <ion-icon name="star" *ngIf="mess.preferito=='S'" (click)="setStar(mess,'N')"></ion-icon>
+                      <ion-icon name="trash" (click)="deleteConfirm(mess)"></ion-icon>
                     </div>
                     <div class=" box brief contact-small ">
                       <h5 class="name ">{{mess.cognome_mit}} {{mess.nome_mit}}</h5>

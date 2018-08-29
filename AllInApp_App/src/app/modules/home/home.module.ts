@@ -1,3 +1,4 @@
+import { CircolariCardModule } from './../circolari-card/circolari-card.module';
 import { MessaggiCardModule } from './../messaggi-card/messaggi-card.module';
 import { NewsCardModule } from './../news-card/news-card.module';
 import { PrioritaCardModule } from './../priorita-card/priorita.module';
@@ -15,7 +16,7 @@ import { ComunicazioniCardModule } from '../comunicazioni-card/comunicazioni-car
 	declarations: [HomePage],
 	imports: [IonicModule, HomeComModule, HomePrioModule, ContactCardModule, 
 		DocumentaleCardModule, ChatCardModule, PrioritaCardModule, MessaggiCardModule,
-		NewsCardModule, ComunicazioniCardModule],
+		NewsCardModule, ComunicazioniCardModule, CircolariCardModule],
 	exports: [HomePage]
 })
 export class HomeModule {}

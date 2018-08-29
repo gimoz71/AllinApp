@@ -17,18 +17,18 @@
 
   </ion-header>
   
-  <!--<ion-menu id="messaggi" [content]="mycontent">
+  <!--<ion-menu type="overlay" id="messaggi" [content]="mycontent1">
       <ion-content>
         <ion-list>
-        <ion-item (click)="GoProfile()"> Ingresso </ion-item>
-        <ion-item (click)="logOut()"> Uscita </ion-item>
-        <ion-item (click)="changePassword()">Importanti</ion-item>
-        <ion-item >Cestino</ion-item>
+        <ion-item (click)="goTonuovoMessaggio()"> Nuovo </ion-item>
+        <ion-item (click)="goToUscitaMessaggi()"> Uscita </ion-item>
+        <ion-item (click)="goToImportantiMessaggi()">Importanti</ion-item>
+        <ion-item (click)="goToCestinoMessaggio()" >Cestino</ion-item>
         <ion-item menuClose detail-none>Nuovo messaggio</ion-item>
         </ion-list>
       </ion-content>
       </ion-menu>
-      <ion-nav #mycontent [root]="rootPage" ></ion-nav>-->
+    <ion-nav #mycontent1 [root]="rootPage" ></ion-nav>-->
 
   <ion-content>
       <button ion-button menuToggle>Toggle Menu</button>
@@ -58,6 +58,7 @@
                       <ion-icon name="star-outline" *ngIf="mess.preferito==''" (click)="setStar(mess,'S')"></ion-icon>
                       <ion-icon name="star-outline" *ngIf="mess.preferito=='N'" (click)="setStar(mess,'S')"></ion-icon>
                       <ion-icon name="star" *ngIf="mess.preferito=='S'" (click)="setStar(mess,'N')"></ion-icon>
+                      <ion-icon name="trash" (click)="deleteConfirm(mess)"></ion-icon>
                       <!--<div  class="user-small contact-small">
                         <img  src="{{mess.url_avatar}}">
                       </div>-->

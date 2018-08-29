@@ -1,3 +1,4 @@
+import { CircolariPage } from './../circolari/circolari';
 import { NewsPage } from './../news/news';
 import { LoginService } from './../../services/login/login.service';
 import { StoreService } from './../../services/store/store.service';
@@ -66,6 +67,16 @@ export class HomePage implements OnInit{
     this.presenze["messaggi"] = "true"; 
     //ricevo tutti i dati 
     //le prossime verranno eseguite solo se sono presenti nei dati
+
+    let s1 = this.store.userData$.subscribe(
+      (val)=>{
+        console.log(val);
+        if (val.flag_richiesta_lettura == true){
+          this.navCtrl.push(CircolariPage);
+        }
+      }
+    )
+    this.store.getUserData();
   }
 
   public load() : void {

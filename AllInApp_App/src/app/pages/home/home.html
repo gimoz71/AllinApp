@@ -8,7 +8,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-menu id="home" [content]="mycontent" persistent="true">
+<ion-menu id="home" type="overlay" persistent="true" [content]="mycontent">
 	<ion-content>
 	  <ion-list>
 		<ion-item (click)="GoProfile()"> Profilo </ion-item>
@@ -66,7 +66,9 @@
 				</div>-->
 				<comunicazioni-card></comunicazioni-card>
 			</ion-col>
-		
+			<ion-col  col-sm col-12>
+				<circolari-card></circolari-card>
+			</ion-col>
 			<ion-col  col-sm col-6>
 				<!--<div class="card" (click)="goToChat()">
 					<div class="card-header bg-chat text-header text-white">{{headerChat}}</div>

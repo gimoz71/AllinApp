@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { ComunicazioniDetailsPage } from './../comunicazioni-details/comunicazioni-details';
+import { HttpService } from './../../services/shared/http.service';
+import { StoreService } from './../../services/store/store.service';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Comunicazione } from '../../models/comunicazione/comunicazione.namespace';
 
 /**
  * Generated class for the ComunicazioniPage page.
@@ -8,18 +12,40 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-comunicazioni',
   templateUrl: 'comunicazioni.html',
 })
-export class ComunicazioniPage {
+export class ComunicazioniPage implements OnInit{
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public comFull : Comunicazione.ComunicazioneElencoElem[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private store: StoreService, 
+    private http : HttpService) {
+      
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ComunicazioniPage');
+  ngOnInit(){
+    let s = this.store.userData$.subscribe(
+      (val)=>{
+        let s1 = this.http.getComunicazioniElenco(val.token_value,0,0,'X','C').subscribe(
+          (val1)=>{
+            this.comFull = val1.l_lista_comunicazione;
+            s1.unsubscribe();
+          }
+        )
+        s.unsubscribe();
+      }
+    )
+    this.store.getUserData();
+  }
+
+  goToDetails(com){
+    this.navCtrl.push(ComunicazioniDetailsPage, {com : com})
+  }
+
+  back(){
+    this.navCtrl.pop();
   }
 
 }

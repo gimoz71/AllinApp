@@ -1,3 +1,6 @@
+import { ComunicazioniDetailsPage } from './../comunicazioni-details/comunicazioni-details';
+import { ComunicazioniPage } from './../comunicazioni/comunicazioni';
+import { Comunicazione } from './../../models/comunicazione/comunicazione.namespace';
 
 import { HttpService } from './../../services/shared/http.service';
 import { NavController } from 'ionic-angular';
@@ -15,28 +18,41 @@ import { HomeComPage } from './../home-com/home-com';
 
 export class ComunicazioniCardPage implements OnInit {
 
-  public comunicazioniFull : HomeElement.ComunicazioniElement[] = [];
-  public comunicazioniMin : HomeElement.ComunicazioniElement[] = [];
+  public comunicazioniFull : Comunicazione.ComunicazioneElencoElem[] = [];
+  public comunicazioniMin : Comunicazione.ComunicazioneElencoElem[] = [];
 
   constructor(private navCtrl : NavController, private http : HttpService, private store : StoreService) {
           
   }
 
   ngOnInit(){
-    for (let i =0 ; i<10; i++){
-      this.comunicazioniFull[i] = new HomeElement.ComunicazioniElement();
-      this.comunicazioniFull[i].anno = "2018";
-      this.comunicazioniFull[i].mese = "Dicembre";
-      this.comunicazioniFull[i].giorno = "21";
-      this.comunicazioniFull[i].titolo = "AVVISO SCADENZA";
-      this.comunicazioniFull[i].testo = "Amministratote";
-
-    }
+    let s = this.store.userData$.subscribe(
+      (val)=>{
+        let s1 = this.http.getComunicazioniElenco(val.token_value,0,0,'X','C').subscribe(
+          (val1)=>{
+            this.comunicazioniFull = val1.l_lista_comunicazione;
+            s1.unsubscribe();
+            for (let i = 0; i < 3 ; i++){
+              this.comunicazioniMin[i]= new Comunicazione.ComunicazioneElencoElem();
+              if (this.comunicazioniFull[i] != null)this.comunicazioniMin[i] = this.comunicazioniFull[i];
+            }
+          }
+        )
+        s.unsubscribe();
+      }
+    )
+    this.store.getUserData();
     //questo sarà in una subscribe
-    for (let i = 0; i < 3 ; i++){
-      this.comunicazioniMin[i] = this.comunicazioniFull[i];
-    }
 
   }
+
+  goToComunicazioni(){
+    this.navCtrl.push(ComunicazioniPage);
+  }
+
+  goToDetails(com){
+    this.navCtrl.push(ComunicazioniDetailsPage, {com: com});
+  }
+  
 }
   
