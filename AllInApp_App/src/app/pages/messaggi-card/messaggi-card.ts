@@ -5,7 +5,7 @@ import { NewsDetailsPage } from './../news-details/news-details';
 import { NewsPage } from './../news/news';
 import { HomeNewsPage } from './../home-news/home-news';
 import { HttpService } from './../../services/shared/http.service';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 
 import { OnInit, Component, Input } from '@angular/core';
 import { HomeElement } from '../../models/home-element/home-element.namespace';
@@ -25,7 +25,8 @@ export class MessaggiCardPage implements OnInit {
 
   public messMin : Messaggi.MessaggiElem[] = [];
   
-  constructor(private navCtrl : NavController, private http : HttpService, private store : StoreService) {
+  constructor(private navCtrl : NavController, private http : HttpService, private store : StoreService,
+    public menuCtrl: MenuController) {
           
   }
 
@@ -75,6 +76,7 @@ export class MessaggiCardPage implements OnInit {
     public goToMessaggi(){
       this.navCtrl.push(MessaggiPage, {messFull : this.messFull});
       //this.navCtrl.setRoot(MessaggiPage);
+      this.menuCtrl.enable(false, 'home');
     }
 
     public goToDetails(mess){

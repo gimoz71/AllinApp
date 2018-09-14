@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button (click)="back()" ion-button icon-left clear small>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      </ion-buttons>
+      <ion-title>
+        <div class="text-default" >Circolari</div>
+      </ion-title>
+      <ion-buttons end>
+          <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>
+        </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  <ion-content>
+    <div style="float:right;font-size: 2em;">
+      <ion-icon (click)="delete()"  name="trash"></ion-icon>
+    </div>
+  <img src={{com.cm_immagine}}>
+   <h1>{{com.cm_titolo}}</h1>
+    <p>{{com.cm_descrizione}}</p>
+    <p>{{com.cm_allegato}}</p>
+    <p>{{com.cm_data}}</p>
+
+
+  <ion-item>
+    <ion-label>Conferma lettura</ion-label>
+    <ion-checkbox [(ngModel)]="conferma"></ion-checkbox>
+  </ion-item>
+  <button *ngIf="conferma==true" ion-button (click)="read()">OK</button>
+  </ion-content>

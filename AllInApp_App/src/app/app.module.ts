@@ -1,3 +1,10 @@
+import { DocumentaleListaPage } from './pages/documentale-lista/documentale-lista';
+import { DocumentaleListaModule } from './modules/documentale-lista/documentale-lista.module';
+import { DocumentaleDetailsPage } from './pages/documentale-details/documentale-details';
+import { DocumentaleDetailsModule } from './modules/documentale-details/documentale-details.module';
+import { DocumentaleCategoriePage } from './pages/documentale-categorie/documentale-categorie';
+import { DocumentalePage } from './pages/documentale/documentale';
+import { DocumentaleModule } from './modules/documentale/documentale.module';
 import { ComunicazioniDetailsPage } from './pages/comunicazioni-details/comunicazioni-details';
 import { CircolariDetailsModule } from './modules/circolari-details/circolari-details.module';
 import { CircolariDetailsPage } from './pages/circolari-details/circolari-details';
@@ -84,6 +91,7 @@ import { ComunicazioniCardModule } from './modules/comunicazioni-card/comunicazi
 import { MessaggiModule } from './modules/messaggi/messaggi.module';
 import { MessaggiDetailsModule } from './modules/messaggi-details/messaggi-details.module';
 import { ComunicazioniPage } from './pages/comunicazioni/comunicazioni';
+import { DocumentaleCategorieModule } from './modules/documentale-categorie/documentale-categorie.module';
 
 
 @NgModule({
@@ -126,6 +134,10 @@ import { ComunicazioniPage } from './pages/comunicazioni/comunicazioni';
     CircolariPageModule,
     CircolariCardModule,
     CircolariDetailsModule,
+    DocumentaleModule,
+    DocumentaleCategorieModule,
+    DocumentaleDetailsModule,
+    DocumentaleListaModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -160,7 +172,11 @@ import { ComunicazioniPage } from './pages/comunicazioni/comunicazioni';
     MessaggiCestinoPage,
     CircolariPage,
     CircolariCardPage,
-    CircolariDetailsPage
+    CircolariDetailsPage,
+    DocumentalePage,
+    DocumentaleCategoriePage,
+    DocumentaleDetailsPage,
+    DocumentaleListaPage
   ],
   providers: [
     StatusBar,

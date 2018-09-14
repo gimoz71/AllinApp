@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar hideBackButton>
         <ion-buttons left>
-            <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+            <button ion-button menuToggle><ion-icon ></ion-icon></button>
           </ion-buttons>
       <ion-buttons right>
         <button (click)="back()" ion-button icon-left clear small>
@@ -17,25 +17,25 @@
 
   </ion-header>
   
-  <!--<ion-menu type="overlay" id="messaggi" [content]="mycontent1">
+  <ion-menu type="overlay" id="messaggi" [content]="mycontent1">
       <ion-content>
         <ion-list>
         <ion-item (click)="goTonuovoMessaggio()"> Nuovo </ion-item>
         <ion-item (click)="goToUscitaMessaggi()"> Uscita </ion-item>
         <ion-item (click)="goToImportantiMessaggi()">Importanti</ion-item>
         <ion-item (click)="goToCestinoMessaggio()" >Cestino</ion-item>
-        <ion-item menuClose detail-none>Nuovo messaggio</ion-item>
+        <ion-item menuClose detail-none>Chiudi menu</ion-item>
         </ion-list>
       </ion-content>
       </ion-menu>
-    <ion-nav #mycontent1 [root]="rootPage" ></ion-nav>-->
+    <ion-nav #mycontent1 [root]="rootPage" ></ion-nav>
 
   <ion-content>
       <button ion-button menuToggle>Toggle Menu</button>
-      <button ion-button (click)="goTonuovoMessaggio()">Nuovo</button>
+      <!--<button ion-button (click)="goTonuovoMessaggio()">Nuovo</button>
       <button ion-button (click)="goToUscitaMessaggi()">Uscita</button>
       <button ion-button (click)="goToImportantiMessaggi()">Importanti</button>
-      <button ion-button (click)="goToCestinoMessaggio()">Cestino</button>
+      <button ion-button (click)="goToCestinoMessaggio()">Cestino</button>-->
        <!--<div *ngFor="let mess of messFull">
          <ion-card   (click)="goToDetails(mess)">
             <ion-card-content >

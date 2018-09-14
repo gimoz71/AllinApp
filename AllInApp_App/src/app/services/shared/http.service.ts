@@ -1,4 +1,3 @@
-
 import { News } from './../../models/news/news.namespace';
 import { Http } from './../../models/shared/http.namespace';
 
@@ -10,6 +9,7 @@ import { Login } from "../../models/login/login.namespace";
 import { Contact } from "../../models/contact/contact.namespace";
 import { Messaggi } from '../../models/messaggi/messaggi.namespace';
 import { Comunicazione } from '../../models/comunicazione/comunicazione.namespace';
+import { Documentale } from '../../models/documentale/documentale.namespace';
 //SERVICE NON UTILIZZATO
 @Injectable()
 export class HttpService{
@@ -105,6 +105,31 @@ export class HttpService{
         let url = "http://allinappws.mesys.it/services/set_deleted_comunicazione/" + token + "/" + key +"/";
         console.log(url);
         return this.http.get<Comunicazione.Result>(url);
+    }
+
+    public getElencoTipoDocumenti(token : string){
+        let url = "http://allinappws.mesys.it/services/get_elenco_tipo_documenti/" + token;
+        console.log(url);
+        return this.http.get<Documentale.tipiElenco>(url);
+    }
+
+    public getCategorieDocumenti(token: string, categoria : number){
+        let url = "http://allinappws.mesys.it/services/get_elenco_categoria_documenti/"+ token+"/"+categoria;
+        console.log(url);
+        return this.http.get<Documentale.ListaCategorie>(url);
+    }
+
+    public getElencoDocumenti (token : string, from : number, to : number, tipo : number, categoria : number){
+        let url = "http://allinappws.mesys.it/services/get_elenco_documenti/"+token+"/"+from +"/"+ to+"/"+
+         tipo+ "/"+ categoria;
+         console.log(url);
+         return this.http.get<Documentale.ListaDocumenti>(url);
+    }
+
+    public getDocumento (token : string , key : number){
+        let url = "http://allinappws.mesys.it/services/get_public_documento/" + token + "/"+ key + "/";
+        console.log (url);
+        return this.http.get<Documentale.DocumentoResult>(url);
     }
 
 }

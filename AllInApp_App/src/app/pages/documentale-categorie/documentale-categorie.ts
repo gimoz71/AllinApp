@@ -1,0 +1,52 @@
+import { DocumentaleListaPage } from './../documentale-lista/documentale-lista';
+
+import { HttpService } from './../../services/shared/http.service';
+import { ContactService } from './../../services/contact/contact.service';
+import { Contact } from './../../models/contact/contact.namespace';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NavController, Platform, NavParams } from 'ionic-angular';
+import { ContactDetailsPage } from '../contact-details/contact-details';
+import { ErrorService } from '../../services/shared/error.service';
+import { Documentale } from '../../models/documentale/documentale.namespace';
+import { StoreService } from '../../services/store/store.service';
+
+@Component({
+  selector: 'documentale-categorie',
+  templateUrl: 'documentale-categorie.html'
+})
+export class DocumentaleCategoriePage implements OnInit{
+
+  categorie : Documentale.Categoria[];
+  categoria : number;
+
+  constructor(public navCtrl: NavController, public http : HttpService, public store : StoreService,
+    private err : ErrorService, private para : NavParams) {
+    
+  }
+
+  ngOnInit(){
+  this.categoria = this.para.get("categoria");
+   let s = this.store.userData$.subscribe(
+     (val)=>{
+       let s1 = this.http.getCategorieDocumenti(val.token_value, this.categoria).subscribe(
+         (val1)=>{
+            this.categorie = val1.l_lista_categoria_documenti;
+            s1.unsubscribe();
+         }
+       )
+       s.unsubscribe();
+     }
+   )
+   this.store.getUserData();
+  }
+
+  goToLista(cat){
+    this.navCtrl.push(DocumentaleListaPage, {cat : cat});
+  }
+
+  back(){
+    this.navCtrl.pop();
+  }
+
+  
+}

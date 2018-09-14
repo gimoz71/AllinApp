@@ -8,7 +8,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-menu id="home" type="overlay" persistent="true" [content]="mycontent">
+<ion-menu id="home"[content]="mycontent">
 	<ion-content>
 	  <ion-list>
 		<ion-item (click)="GoProfile()"> Profilo </ion-item>
@@ -20,8 +20,6 @@
   </ion-menu>
   
   <ion-nav #mycontent [root]="rootPage"  ></ion-nav>
-
-  
 
 <ion-content >
 	<ion-grid >

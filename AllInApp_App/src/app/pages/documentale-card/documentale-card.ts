@@ -1,3 +1,4 @@
+import { DocumentalePage } from './../documentale/documentale';
 import { NavController } from 'ionic-angular';
 
 import { OnInit, Component } from '@angular/core';
@@ -20,6 +21,9 @@ export class DocumentaleCardPage implements OnInit {
 
   }
 
+  goToDocumentale(){
+   this.navCtrl.push(DocumentalePage);
+  }
 
 }
   

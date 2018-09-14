@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button (click)="back()" ion-button icon-left clear small>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button><ion-icon class="icon-button" name="contacts" class="nav-icon text-default"></ion-icon></button>
+    </ion-buttons>
+    <ion-title >
+      <div class="text-default">Documentale</div>
+    </ion-title>
+    
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <h1>{{doc.doc_titolo}}</h1>
+  <p>{{doc.doc_url}}</p>
+</ion-content>

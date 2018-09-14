@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button (click)="back()" ion-button icon-left clear small>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button><ion-icon class="icon-button" name="contacts" class="nav-icon text-default"></ion-icon></button>
+    </ion-buttons>
+    <ion-title >
+      <div class="text-default">Documentale</div>
+    </ion-title>
+    
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div *ngFor="let cate of categorie">
+    <ion-card   (click)="goToLista(cate)">
+      <ion-card-content >
+        <h1 >
+          {{cate.tab_categoria_documento_desc}}
+        </h1>
+        <p>
+        {{cate.num_documenti}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+</div>
+</ion-content>

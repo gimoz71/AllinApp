@@ -31,6 +31,7 @@ export class MessaggiPage implements OnInit{
   public ngOnInit() : void {
     this.messFull =this.navParams.get('messFull');
     console.log(this.messFull);
+    this.menuCtrl.enable(true, 'messaggi');
     let s = this.store.userData$.subscribe((val)=>{
       let s1 = this.http.getMessaggeList(val.token_value,"0","0","I").subscribe(
           (res)=>{
@@ -50,6 +51,8 @@ export class MessaggiPage implements OnInit{
   }
 
   back(){
+    this.menuCtrl.enable(false, 'messaggi');
+    this.menuCtrl.enable(true, 'home');
     this.navCtrl.pop();
   }
   
