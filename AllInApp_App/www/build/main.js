@@ -11,10 +11,10 @@ webpackJsonp([0],[
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StoreService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__login_login_service__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_check_service__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__login_login_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_check_service__ = __webpack_require__(229);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -115,27 +115,23 @@ var StoreService = /** @class */ (function () {
     };
     StoreService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__shared_check_service__["a" /* CheckService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_check_service__["a" /* CheckService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__login_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__login_login_service__["a" /* LoginService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1__shared_check_service__["a" /* CheckService */], __WEBPACK_IMPORTED_MODULE_0__login_login_service__["a" /* LoginService */]])
     ], StoreService);
     return StoreService;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=store.service.js.map
 
 /***/ }),
 /* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__ = __webpack_require__(148);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -229,17 +225,40 @@ var HttpService = /** @class */ (function () {
         console.log(url);
         return this.http.get(url);
     };
+    HttpService.prototype.getElencoTipoDocumenti = function (token) {
+        var url = "http://allinappws.mesys.it/services/get_elenco_tipo_documenti/" + token;
+        console.log(url);
+        return this.http.get(url);
+    };
+    HttpService.prototype.getCategorieDocumenti = function (token, categoria) {
+        var url = "http://allinappws.mesys.it/services/get_elenco_categoria_documenti/" + token + "/" + categoria;
+        console.log(url);
+        return this.http.get(url);
+    };
+    HttpService.prototype.getElencoDocumenti = function (token, from, to, tipo, categoria) {
+        var url = "http://allinappws.mesys.it/services/get_elenco_documenti/" + token + "/" + from + "/" + to + "/" +
+            tipo + "/" + categoria;
+        console.log(url);
+        return this.http.get(url);
+    };
+    HttpService.prototype.getDocumento = function (token, key) {
+        var url = "http://allinappws.mesys.it/services/get_public_documento/" + token + "/" + key + "/";
+        console.log(url);
+        return this.http.get(url);
+    };
     HttpService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
     ], HttpService);
     return HttpService;
-    var _a;
 }());
 
 //# sourceMappingURL=http.service.js.map
 
 /***/ }),
+/* 10 */,
+/* 11 */,
+/* 12 */,
 /* 13 */,
 /* 14 */,
 /* 15 */,
@@ -261,10 +280,10 @@ var HttpService = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessaggiDetailsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__messaggi_nuovo_messaggi_nuovo__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__messaggi_nuovo_messaggi_nuovo__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_shared_http_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -359,7 +378,7 @@ var MessaggiDetailsPage = /** @class */ (function () {
     };
     MessaggiDetailsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["m" /* Component */])({
-            selector: 'messaggi-details',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\messaggi-details\messaggi-details.html"*/'<ion-header>\n\n    <ion-navbar hideBackButton>\n\n      <ion-buttons left>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n        </ion-buttons>\n\n        <ion-title>\n\n          <div class="text-default" >MESSAGGIO</div>\n\n        </ion-title>\n\n        <ion-buttons end>\n\n            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>\n\n          </ion-buttons>\n\n      </ion-navbar>\n\n    </ion-header>\n\n    <ion-content>\n\n      <div style="float:right;font-size:2em">\n\n          <ion-icon name="undo" (click)="reply(mess)"></ion-icon>\n\n          <ion-icon name="redo" (click)="inoltro(mess)"></ion-icon>\n\n        <ion-icon name="trash" (click)="deleteConfirm(mess)"></ion-icon>\n\n        <ion-icon name="star-outline" *ngIf="mess.preferito==\'\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n        <ion-icon name="star-outline" *ngIf="mess.preferito==\'N\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n        <ion-icon name="star" *ngIf="mess.preferito==\'S\'" (click)="setStar(mess,\'N\')"></ion-icon>\n\n      </div>\n\n    <img src={{mess.nw_immagine}}>\n\n     <h1>{{mess.soggetto}}</h1>\n\n      <p>{{mess.descrizione}}</p>\n\n      <p>{{mess.messaggio}}</p>\n\n      <p>{{mess.cognome_mit}}</p>\n\n    </ion-content>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\messaggi-details\messaggi-details.html"*/
+            selector: 'messaggi-details',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\messaggi-details\messaggi-details.html"*/'<ion-header>\n\n    <ion-navbar hideBackButton>\n\n      <ion-buttons left>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n        </ion-buttons>\n\n        <ion-title>\n\n          <div class="text-default" >MESSAGGIO</div>\n\n        </ion-title>\n\n        <ion-buttons end>\n\n            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>\n\n          </ion-buttons>\n\n      </ion-navbar>\n\n    </ion-header>\n\n    <ion-content>\n\n      <div style="float:right;font-size:2em">\n\n          <ion-icon name="undo" (click)="reply(mess)"></ion-icon>\n\n          <ion-icon name="redo" (click)="inoltro(mess)"></ion-icon>\n\n        <ion-icon name="trash" (click)="deleteConfirm(mess)"></ion-icon>\n\n        <ion-icon name="star-outline" *ngIf="mess.preferito==\'\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n        <ion-icon name="star-outline" *ngIf="mess.preferito==\'N\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n        <ion-icon name="star" *ngIf="mess.preferito==\'S\'" (click)="setStar(mess,\'N\')"></ion-icon>\n\n      </div>\n\n    <img src={{mess.nw_immagine}}>\n\n     <h1>{{mess.soggetto}}</h1>\n\n      <p>{{mess.descrizione}}</p>\n\n      <p>{{mess.messaggio}}</p>\n\n      <p>{{mess.cognome_mit}}</p>\n\n    </ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\messaggi-details\messaggi-details.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__["a" /* StoreService */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]])
@@ -376,10 +395,51 @@ var MessaggiDetailsPage = /** @class */ (function () {
 /* 33 */,
 /* 34 */,
 /* 35 */,
-/* 36 */,
+/* 36 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ErrorService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ErrorService = /** @class */ (function () {
+    function ErrorService(http) {
+        this.http = http;
+    }
+    /**public sendError(url: string) : Observable<Error.ErrorResponse>{
+        return this.http.get<Error.ErrorResponse>(url);
+    }*/
+    ErrorService.prototype.sendError = function (data) {
+    };
+    ErrorService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+    ], ErrorService);
+    return ErrorService;
+}());
+
+//# sourceMappingURL=error.service.js.map
+
+/***/ }),
 /* 37 */,
 /* 38 */,
-/* 39 */
+/* 39 */,
+/* 40 */,
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -437,14 +497,13 @@ var LoginService = /** @class */ (function () {
 //# sourceMappingURL=login.service.js.map
 
 /***/ }),
-/* 40 */,
-/* 41 */,
 /* 42 */,
 /* 43 */,
 /* 44 */,
 /* 45 */,
 /* 46 */,
-/* 47 */
+/* 47 */,
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -485,7 +544,7 @@ var Comunicazione;
 //# sourceMappingURL=comunicazione.namespace.js.map
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -599,7 +658,6 @@ var ContactService = /** @class */ (function () {
 //# sourceMappingURL=contact.service.js.map
 
 /***/ }),
-/* 49 */,
 /* 50 */,
 /* 51 */,
 /* 52 */,
@@ -608,16 +666,114 @@ var ContactService = /** @class */ (function () {
 /* 55 */,
 /* 56 */,
 /* 57 */,
-/* 58 */
+/* 58 */,
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComunicazioniDetailsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_comunicazione_comunicazione_namespace__ = __webpack_require__(48);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the ComunicazioniPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ComunicazioniDetailsPage = /** @class */ (function () {
+    function ComunicazioniDetailsPage(navCtrl, navParams, store, http, alertCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.store = store;
+        this.http = http;
+        this.alertCtrl = alertCtrl;
+    }
+    ComunicazioniDetailsPage.prototype.ngOnInit = function () {
+        var _this = this;
+        var c = this.navParams.get('com');
+        this.com = new __WEBPACK_IMPORTED_MODULE_4__models_comunicazione_comunicazione_namespace__["a" /* Comunicazione */].Comunicazione;
+        var s = this.store.userData$.subscribe(function (val) {
+            var s1 = _this.http.getComunicazione(val.token_value, c.comunicazione_key).subscribe(function (val1) {
+                _this.com = val1.comunicazione;
+                s1.unsubscribe();
+            });
+            var s2 = _this.http.setReadComunicazione(val.token_value, c.comunicazione_key).subscribe(function (val2) {
+                s2.unsubscribe();
+            });
+            s.unsubscribe();
+        });
+        this.store.getUserData();
+    };
+    ComunicazioniDetailsPage.prototype.back = function () {
+        this.navCtrl.pop();
+    };
+    ComunicazioniDetailsPage.prototype.delete = function () {
+        var _this = this;
+        var s = this.store.userData$.subscribe(function (val) {
+            var s1 = _this.http.setDeletedComunicazione(val.token_value, _this.com.comunicazione_key).subscribe(function (val1) {
+                if (val1.ErrorMessage.msg_code == 0) {
+                    var alert_1 = _this.alertCtrl.create({
+                        title: 'Cancellazione',
+                        subTitle: 'Cancellazzione andata a buon fine',
+                        buttons: ['Dismiss']
+                    });
+                    alert_1.present();
+                    _this.navCtrl.pop();
+                }
+                else {
+                    var alert_2 = _this.alertCtrl.create({
+                        title: 'Cancellazione',
+                        subTitle: 'Cancellazzione fallita',
+                        buttons: ['Dismiss']
+                    });
+                    alert_2.present();
+                }
+                s1.unsubscribe();
+            });
+            s.unsubscribe();
+        });
+        this.store.getUserData();
+    };
+    ComunicazioniDetailsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
+            selector: 'comunicazioni-details',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\comunicazioni-details\comunicazioni-details.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n    <ion-buttons left>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n      </ion-buttons>\n\n      <ion-title>\n\n        <div class="text-default" >Comunicazioni</div>\n\n      </ion-title>\n\n      <ion-buttons end>\n\n          <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n  </ion-header>\n\n  <ion-content>\n\n    <div style="float:right;font-size: 2em;">\n\n      <ion-icon (click)="delete()"  name="trash"></ion-icon>\n\n    </div>\n\n  <img src={{com.cm_immagine}}>\n\n   <h1>{{com.cm_titolo}}</h1>\n\n    <p>{{com.cm_descrizione}}</p>\n\n    <p>{{com.cm_allegato}}</p>\n\n    <p>{{com.cm_data}}</p>\n\n  </ion-content>'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\comunicazioni-details\comunicazioni-details.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__["a" /* StoreService */],
+            __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]])
+    ], ComunicazioniDetailsPage);
+    return ComunicazioniDetailsPage;
+}());
+
+//# sourceMappingURL=comunicazioni-details.js.map
+
+/***/ }),
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CircolariDetailsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_comunicazione_comunicazione_namespace__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_comunicazione_comunicazione_namespace__ = __webpack_require__(48);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -679,12 +835,12 @@ var CircolariDetailsPage = /** @class */ (function () {
             var s2 = _this.http.setReadComunicazione(val.token_value, _this.com.comunicazione_key).subscribe(function (val2) {
                 console.log(val2);
                 if (val2.ErrorMessage.msg_code == 0) {
-                    var alert = _this.alertCtrl.create({
+                    var alert_1 = _this.alertCtrl.create({
                         title: 'Lettura confermata',
                         subTitle: '',
                         buttons: ['Ok']
                     });
-                    alert.present();
+                    alert_1.present();
                 }
                 s2.unsubscribe();
             });
@@ -694,25 +850,116 @@ var CircolariDetailsPage = /** @class */ (function () {
     };
     CircolariDetailsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
-            selector: 'circolari-details',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\circolari-details\circolari-details.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n    <ion-buttons left>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n      </ion-buttons>\n\n      <ion-title>\n\n        <div class="text-default" >Circolari</div>\n\n      </ion-title>\n\n      <ion-buttons end>\n\n          <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n  </ion-header>\n\n  <ion-content>\n\n    <div style="float:right;font-size: 2em;">\n\n      <ion-icon (click)="delete()"  name="trash"></ion-icon>\n\n    </div>\n\n  <img src={{com.cm_immagine}}>\n\n   <h1>{{com.cm_titolo}}</h1>\n\n    <p>{{com.cm_descrizione}}</p>\n\n    <p>{{com.cm_allegato}}</p>\n\n    <p>{{com.cm_data}}</p>\n\n\n\n\n\n  <ion-item>\n\n    <ion-label>Conferma lettura</ion-label>\n\n    <ion-checkbox [(ngModel)]="conferma"></ion-checkbox>\n\n  </ion-item>\n\n  <button *ngIf="conferma==true" ion-button (click)="read()">OK</button>\n\n  </ion-content>'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\circolari-details\circolari-details.html"*/,
+            selector: 'circolari-details',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\circolari-details\circolari-details.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n    <ion-buttons left>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n      </ion-buttons>\n\n      <ion-title>\n\n        <div class="text-default" >Circolari</div>\n\n      </ion-title>\n\n      <ion-buttons end>\n\n          <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n  </ion-header>\n\n  <ion-content>\n\n    <div style="float:right;font-size: 2em;">\n\n      <ion-icon (click)="delete()"  name="trash"></ion-icon>\n\n    </div>\n\n  <img src={{com.cm_immagine}}>\n\n   <h1>{{com.cm_titolo}}</h1>\n\n    <p>{{com.cm_descrizione}}</p>\n\n    <p>{{com.cm_allegato}}</p>\n\n    <p>{{com.cm_data}}</p>\n\n\n\n\n\n  <ion-item>\n\n    <ion-label>Conferma lettura</ion-label>\n\n    <ion-checkbox [(ngModel)]="conferma"></ion-checkbox>\n\n  </ion-item>\n\n  <button *ngIf="conferma==true" ion-button (click)="read()">OK</button>\n\n  </ion-content>'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\circolari-details\circolari-details.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__["a" /* StoreService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__["a" /* StoreService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__["a" /* HttpService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__["a" /* StoreService */],
+            __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]])
     ], CircolariDetailsPage);
     return CircolariDetailsPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=circolari-details.js.map
 
 /***/ }),
-/* 59 */
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CircolariPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__circolari_details_circolari_details__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the ComunicazioniPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var CircolariPage = /** @class */ (function () {
+    function CircolariPage(navCtrl, navParams, store, http, alertCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.store = store;
+        this.http = http;
+        this.alertCtrl = alertCtrl;
+    }
+    CircolariPage.prototype.ngOnInit = function () {
+        var _this = this;
+        var s = this.store.userData$.subscribe(function (val) {
+            var s1 = _this.http.getComunicazioniElenco(val.token_value, 0, 0, 'X', 'R').subscribe(function (val1) {
+                _this.comFull = val1.l_lista_comunicazione;
+                s1.unsubscribe();
+            });
+            s.unsubscribe();
+        });
+        this.store.getUserData();
+    };
+    CircolariPage.prototype.goToDetails = function (com) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_0__circolari_details_circolari_details__["a" /* CircolariDetailsPage */], { com: com });
+    };
+    CircolariPage.prototype.back = function () {
+        var _this = this;
+        var s = this.store.userData$.subscribe(function (val) {
+            var s1 = _this.http.getComunicazioniElenco(val.token_value, 0, 0, 'X', 'R').subscribe(function (val1) {
+                _this.comFull = val1.l_lista_comunicazione;
+                var lette = true;
+                for (var i = 1; i < _this.comFull.length; i++) {
+                    if (_this.comFull[i].dc_letta == "N")
+                        lette = false;
+                }
+                if (lette == true)
+                    _this.navCtrl.pop();
+                else {
+                    var alert_1 = _this.alertCtrl.create({
+                        title: 'Aspetta!!',
+                        subTitle: 'prima leggi tutte le circolari',
+                        buttons: ['Ok']
+                    });
+                    alert_1.present();
+                }
+                s1.unsubscribe();
+            });
+            s.unsubscribe();
+        });
+        this.store.getUserData();
+    };
+    CircolariPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
+            selector: 'page-circolari',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\circolari\circolari.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n    <ion-buttons left>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button><ion-icon class="icon-button" name="news" class="nav-icon text-default"></ion-icon></button>\n\n    </ion-buttons>\n\n    <ion-title >\n\n      <div class="text-default">Circolari</div>\n\n    </ion-title>\n\n    \n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <div *ngFor="let com of comFull">\n\n    <ion-card class="border-blue" *ngIf="com.dc_letta==\'N\'" (click)="goToDetails(com)"  >\n\n      <ion-card-content >\n\n        <h1 >\n\n          {{com.cm_titolo}}\n\n        </h1>\n\n        <p>\n\n        {{com.cm_descrizione}}\n\n        </p>\n\n      </ion-card-content>\n\n    </ion-card>\n\n    <ion-card class="border-green" *ngIf="com.dc_letta==\'S\'" (click)="goToDetails(com)"  >\n\n      <ion-card-content >\n\n        <h1 >\n\n          {{com.cm_titolo}}\n\n        </h1>\n\n        <p>\n\n        {{com.cm_descrizione}}\n\n        </p>\n\n      </ion-card-content>\n\n    </ion-card>\n\n</div>\n\n</ion-content>'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\circolari\circolari.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__["a" /* StoreService */],
+            __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* AlertController */]])
+    ], CircolariPage);
+    return CircolariPage;
+}());
+
+//# sourceMappingURL=circolari.js.map
+
+/***/ }),
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_com_home_com__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_com_home_com__ = __webpack_require__(232);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -738,16 +985,16 @@ var HomeComModule = /** @class */ (function () {
 //# sourceMappingURL=home-com.module.js.map
 
 /***/ }),
-/* 60 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComunicazioniPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__comunicazioni_details_comunicazioni_details__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__comunicazioni_details_comunicazioni_details__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -794,7 +1041,7 @@ var ComunicazioniPage = /** @class */ (function () {
     };
     ComunicazioniPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
-            selector: 'page-comunicazioni',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\comunicazioni\comunicazioni.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n    <ion-buttons left>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button><ion-icon class="icon-button" name="news" class="nav-icon text-default"></ion-icon></button>\n\n    </ion-buttons>\n\n    <ion-title >\n\n      <div class="text-default">Comunicazioni</div>\n\n    </ion-title>\n\n    \n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <div *ngFor="let com of comFull">\n\n    <ion-card class="border-blue" *ngIf="com.dc_letta==\'N\'" (click)="goToDetails(com)"  >\n\n      <ion-card-content >\n\n        <h1 >\n\n          {{com.cm_titolo}}\n\n        </h1>\n\n        <p>\n\n        {{com.cm_descrizione}}\n\n        </p>\n\n      </ion-card-content>\n\n    </ion-card>\n\n    <ion-card class="border-green" *ngIf="com.dc_letta==\'S\'" (click)="goToDetails(com)"  >\n\n      <ion-card-content >\n\n        <h1 >\n\n          {{com.cm_titolo}}\n\n        </h1>\n\n        <p>\n\n        {{com.cm_descrizione}}\n\n        </p>\n\n      </ion-card-content>\n\n    </ion-card>\n\n</div>\n\n</ion-content>'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\comunicazioni\comunicazioni.html"*/,
+            selector: 'page-comunicazioni',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\comunicazioni\comunicazioni.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n    <ion-buttons left>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button><ion-icon class="icon-button" name="news" class="nav-icon text-default"></ion-icon></button>\n\n    </ion-buttons>\n\n    <ion-title >\n\n      <div class="text-default">Comunicazioni</div>\n\n    </ion-title>\n\n    \n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <div *ngFor="let com of comFull">\n\n    <ion-card class="border-blue" *ngIf="com.dc_letta==\'N\'" (click)="goToDetails(com)"  >\n\n      <ion-card-content >\n\n        <h1 >\n\n          {{com.cm_titolo}}\n\n        </h1>\n\n        <p>\n\n        {{com.cm_descrizione}}\n\n        </p>\n\n      </ion-card-content>\n\n    </ion-card>\n\n    <ion-card class="border-green" *ngIf="com.dc_letta==\'S\'" (click)="goToDetails(com)"  >\n\n      <ion-card-content >\n\n        <h1 >\n\n          {{com.cm_titolo}}\n\n        </h1>\n\n        <p>\n\n        {{com.cm_descrizione}}\n\n        </p>\n\n      </ion-card-content>\n\n    </ion-card>\n\n</div>\n\n</ion-content>'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\comunicazioni\comunicazioni.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__["a" /* StoreService */],
             __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__["a" /* HttpService */]])
@@ -805,18 +1052,18 @@ var ComunicazioniPage = /** @class */ (function () {
 //# sourceMappingURL=comunicazioni.js.map
 
 /***/ }),
-/* 61 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessaggiNuovoPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_contact_contact_service__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_contact_contact_service__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__messaggi_details_messaggi_details__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_messaggi_messaggi_namespace__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_messaggi_messaggi_namespace__ = __webpack_require__(125);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -957,7 +1204,7 @@ var MessaggiNuovoPage = /** @class */ (function () {
     };
     MessaggiNuovoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["m" /* Component */])({
-            selector: 'messaggi-nuovo',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\messaggi-nuovo\messaggi-nuovo.html"*/'<ion-header>\n\n<ion-navbar hideBackButton>\n\n  <ion-buttons left>\n\n    <button (click)="back()" ion-button icon-left clear small>\n\n      <ion-icon name="arrow-back"></ion-icon>\n\n    </button>\n\n    </ion-buttons>\n\n    <ion-title>\n\n      <div class="text-default" >NUOVO</div>\n\n    </ion-title>\n\n    <ion-buttons end>\n\n        <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-item>\n\n    <ion-label>Destinatario</ion-label>\n\n    <ion-select [(ngModel)]="nomeDestinatario">\n\n      <ion-option *ngFor="let con of contacts">{{con.nome}} {{con.cognome}}</ion-option>\n\n    </ion-select>\n\n  </ion-item>\n\n  <ion-item>\n\n  <ion-label>Per conoscenza</ion-label>\n\n    <ion-select [(ngModel)]="nomeConoscenza">\n\n      <ion-option *ngFor="let con of contacts">{{con.nome}} {{con.cognome}}</ion-option>\n\n    </ion-select>\n\n  </ion-item>\n\n  <div>Oggetto</div>\n\n  <ion-input style="background-color: white"[(ngModel)]="oggetto"></ion-input>\n\n  <div>Messaggio</div>\n\n  <ion-textarea style="background-color: white" [(ngModel)]="messaggio"></ion-textarea>\n\n  <button ion-button (click)="inviaMessaggio()">INVIA</button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\messaggi-nuovo\messaggi-nuovo.html"*/
+            selector: 'messaggi-nuovo',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\messaggi-nuovo\messaggi-nuovo.html"*/'<ion-header>\n\n<ion-navbar hideBackButton>\n\n  <ion-buttons left>\n\n    <button (click)="back()" ion-button icon-left clear small>\n\n      <ion-icon name="arrow-back"></ion-icon>\n\n    </button>\n\n    </ion-buttons>\n\n    <ion-title>\n\n      <div class="text-default" >NUOVO</div>\n\n    </ion-title>\n\n    <ion-buttons end>\n\n        <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-item>\n\n    <ion-label>Destinatario</ion-label>\n\n    <ion-select [(ngModel)]="nomeDestinatario">\n\n      <ion-option *ngFor="let con of contacts">{{con.nome}} {{con.cognome}}</ion-option>\n\n    </ion-select>\n\n  </ion-item>\n\n  <ion-item>\n\n  <ion-label>Per conoscenza</ion-label>\n\n    <ion-select [(ngModel)]="nomeConoscenza">\n\n      <ion-option *ngFor="let con of contacts">{{con.nome}} {{con.cognome}}</ion-option>\n\n    </ion-select>\n\n  </ion-item>\n\n  <div>Oggetto</div>\n\n  <ion-input style="background-color: white"[(ngModel)]="oggetto"></ion-input>\n\n  <div>Messaggio</div>\n\n  <ion-textarea style="background-color: white" [(ngModel)]="messaggio"></ion-textarea>\n\n  <button ion-button (click)="inviaMessaggio()">INVIA</button>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\messaggi-nuovo\messaggi-nuovo.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__["a" /* StoreService */],
             __WEBPACK_IMPORTED_MODULE_1__services_contact_contact_service__["a" /* ContactService */], __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* NavParams */]])
@@ -968,14 +1215,14 @@ var MessaggiNuovoPage = /** @class */ (function () {
 //# sourceMappingURL=messaggi-nuovo.js.map
 
 /***/ }),
-/* 62 */
+/* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewsDetailsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_store_store_service__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1013,7 +1260,7 @@ var NewsDetailsPage = /** @class */ (function () {
     };
     NewsDetailsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
-            selector: 'news-details',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\news-details\news-details.html"*/'<ion-header>\n\n    <ion-navbar hideBackButton>\n\n      <ion-buttons left>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n        </ion-buttons>\n\n        <ion-title>\n\n          <div class="text-default" >NEWS</div>\n\n        </ion-title>\n\n        <ion-buttons end>\n\n            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>\n\n          </ion-buttons>\n\n      </ion-navbar>\n\n    </ion-header>\n\n    <ion-content>\n\n    <img src={{news.nw_immagine}}>\n\n     <h1>{{news.nw_titolo}}</h1>\n\n      <p>{{news.nw_descrizione}}</p>\n\n      <p>{{news.nw_link}}</p>\n\n      <p>{{news.nw_data}}</p>\n\n    </ion-content>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\news-details\news-details.html"*/
+            selector: 'news-details',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\news-details\news-details.html"*/'<ion-header>\n\n    <ion-navbar hideBackButton>\n\n      <ion-buttons left>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n        </ion-buttons>\n\n        <ion-title>\n\n          <div class="text-default" >NEWS</div>\n\n        </ion-title>\n\n        <ion-buttons end>\n\n            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>\n\n          </ion-buttons>\n\n      </ion-navbar>\n\n    </ion-header>\n\n    <ion-content>\n\n    <img src={{news.nw_immagine}}>\n\n     <h1>{{news.nw_titolo}}</h1>\n\n      <p>{{news.nw_descrizione}}</p>\n\n      <p>{{news.nw_link}}</p>\n\n      <p>{{news.nw_data}}</p>\n\n    </ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\news-details\news-details.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_0__services_store_store_service__["a" /* StoreService */]])
     ], NewsDetailsPage);
@@ -1023,16 +1270,16 @@ var NewsDetailsPage = /** @class */ (function () {
 //# sourceMappingURL=news-details.js.map
 
 /***/ }),
-/* 63 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_contact_contact_service__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_contact_contact_service__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__contact_details_contact_details__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_shared_error_service__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__contact_details_contact_details__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_shared_error_service__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1133,7 +1380,7 @@ var ContactsPage = /** @class */ (function () {
     };
     ContactsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-contacts',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\contacts\contacts.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n    <ion-buttons left>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button><ion-icon class="icon-button" name="contacts" class="nav-icon text-default"></ion-icon></button>\n\n    </ion-buttons>\n\n    <ion-title >\n\n      <div class="text-default">Rubrica</div>\n\n    </ion-title>\n\n    \n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  \n\n    <ion-searchbar  (ionInput)="getItems($event)"></ion-searchbar>\n\n    <ion-list >\n\n        <ion-item-group class="list-group list-group-flush addressBook addBook" *ngFor="let group of groupedContacts">\n\n          <ion-item-divider class="group-header bg-default small text-white" >{{group.letter}}</ion-item-divider>\n\n          <ion-item class="list-group-item" *ngFor="let contact of group.contacts" (click)="goToDetails(contact)" >\n\n              <div class="item" >\n\n                  <div  class="user-small contact-small">\n\n                    <img  src="{{contact.url_avatar}}">\n\n                  </div>\n\n                </div>\n\n                <div class="brief contact-small ">\n\n                  <h5 class="name ">{{contact.nome}} {{contact.cognome}}</h5>\n\n                  <p class="text ">{{contact.ruolo_aziendale}}</p>\n\n                  <i class="fa fa-mobile device"></i>\n\n                </div>\n\n            </ion-item>\n\n        </ion-item-group>\n\n    </ion-list>\n\n    \n\n\n\n\n\n\n\n    <!--<div class="tab-content mt-3">\n\n        <div class="card no-border mb-3 ">\n\n          <div class="card-header bg-default small text-white">R</div>\n\n          <ul class="list-group list-group-flush addressBook addBook">\n\n            <li class="list-group-item" onclick="location.href = \'chat.html\'">\n\n              <div class="item" start>\n\n                <div class="user-small">\n\n                  <img src="/Assets/images/user-thumb.jpg">\n\n                </div>\n\n              </div>\n\n              <div class="brief">\n\n                <h5 class="name">Paolo Rossi</h5>\n\n                <p class="text">Addetto vendite</p>\n\n                <i class="fa fa-mobile device"></i>\n\n              </div>\n\n            </li>\n\n            \n\n          </ul>\n\n          </div></div>-->\n\n      \n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\contacts\contacts.html"*/
+            selector: 'page-contacts',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\contacts\contacts.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n    <ion-buttons left>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button><ion-icon class="icon-button" name="contacts" class="nav-icon text-default"></ion-icon></button>\n\n    </ion-buttons>\n\n    <ion-title >\n\n      <div class="text-default">Rubrica</div>\n\n    </ion-title>\n\n    \n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  \n\n    <ion-searchbar  (ionInput)="getItems($event)"></ion-searchbar>\n\n    <ion-list >\n\n        <ion-item-group class="list-group list-group-flush addressBook addBook" *ngFor="let group of groupedContacts">\n\n          <ion-item-divider class="group-header bg-default small text-white" >{{group.letter}}</ion-item-divider>\n\n          <ion-item class="list-group-item" *ngFor="let contact of group.contacts" (click)="goToDetails(contact)" >\n\n              <div class="item" >\n\n                  <div  class="user-small contact-small">\n\n                    <img  src="{{contact.url_avatar}}">\n\n                  </div>\n\n                </div>\n\n                <div class="brief contact-small ">\n\n                  <h5 class="name ">{{contact.nome}} {{contact.cognome}}</h5>\n\n                  <p class="text ">{{contact.ruolo_aziendale}}</p>\n\n                  <i class="fa fa-mobile device"></i>\n\n                </div>\n\n            </ion-item>\n\n        </ion-item-group>\n\n    </ion-list>\n\n    \n\n\n\n\n\n\n\n    <!--<div class="tab-content mt-3">\n\n        <div class="card no-border mb-3 ">\n\n          <div class="card-header bg-default small text-white">R</div>\n\n          <ul class="list-group list-group-flush addressBook addBook">\n\n            <li class="list-group-item" onclick="location.href = \'chat.html\'">\n\n              <div class="item" start>\n\n                <div class="user-small">\n\n                  <img src="/Assets/images/user-thumb.jpg">\n\n                </div>\n\n              </div>\n\n              <div class="brief">\n\n                <h5 class="name">Paolo Rossi</h5>\n\n                <p class="text">Addetto vendite</p>\n\n                <i class="fa fa-mobile device"></i>\n\n              </div>\n\n            </li>\n\n            \n\n          </ul>\n\n          </div></div>-->\n\n      \n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\contacts\contacts.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_0__services_contact_contact_service__["a" /* ContactService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_4__services_shared_error_service__["a" /* ErrorService */]])
@@ -1144,23 +1391,23 @@ var ContactsPage = /** @class */ (function () {
 //# sourceMappingURL=contacts.js.map
 
 /***/ }),
-/* 64 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__circolari_circolari__ = __webpack_require__(118);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_login_login_service__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__circolari_circolari__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_login_login_service__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profilo_profilo__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__contacts_contacts__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profilo_profilo__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__contacts_contacts__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__chat_chat__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_login_login__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__chat_chat__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_login_login__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__comunicazioni_comunicazioni__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__comunicazioni_comunicazioni__ = __webpack_require__(63);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1304,25 +1551,26 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_9__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar >\n\n	<button ion-button menuToggle ><ion-icon name="menu"></ion-icon></button>\n\n	<ion-title >ALL IN APP</ion-title>\n\n	\n\n    <ion-buttons end><img width="30em" src="assets/imgs/logo.png"></ion-buttons>\n\n	\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-menu id="home" type="overlay" persistent="true" [content]="mycontent">\n\n	<ion-content>\n\n	  <ion-list>\n\n		<ion-item (click)="GoProfile()"> Profilo </ion-item>\n\n		<ion-item (click)="logOut()"> LogOut </ion-item>\n\n		<ion-item (click)="changePassword()">Cambia password</ion-item>\n\n		<ion-item menuClose detail-none>Close Menu</ion-item>\n\n	  </ion-list>\n\n	</ion-content>\n\n  </ion-menu>\n\n  \n\n  <ion-nav #mycontent [root]="rootPage"  ></ion-nav>\n\n\n\n  \n\n\n\n<ion-content >\n\n	<ion-grid >\n\n		<ion-row class="cards-container">\n\n			<!--<ion-col>\n\n				<ion-card class="no-border" (click)="load()">\n\n					<ion-card-header class="bg-comm text-white">{{header1}}</ion-card-header>\n\n					<ion-card-content class="list-group list-group-flush comm">{{content1}}</ion-card-content>\n\n						<ion-list>\n\n							<ion-item>\n\n								<comunicazione></comunicazione>\n\n							</ion-item>\n\n							<ion-item>\n\n								<comunicazione></comunicazione>\n\n							</ion-item>\n\n							<ion-item>\n\n								<comunicazione></comunicazione>\n\n							</ion-item>\n\n							<ion-item>\n\n								<comunicazione></comunicazione>\n\n							</ion-item>\n\n						</ion-list>\n\n				</ion-card> \n\n			</ion-col>-->\n\n			<!-- <ion-col  >\n\n					<ion-card color="primary" class="rounded-generic-card generic-card-blue">\n\n						<ion-card-header class="generic-card-header blue-header">{{header3}}</ion-card-header>\n\n						<ion-card-content class="yellow-header">{{content3}}</ion-card-content>\n\n					</ion-card>\n\n			</ion-col> -->\n\n			<ion-col  col-sm col-12>\n\n				<!--<div class="card card-large">\n\n					<div class="card-header bg-comm text-header text-white">{{header3}}</div>\n\n					<div class="card-body">\n\n						\n\n						<ul class="list-group list-group-flush comm" >\n\n							<home-com *ngFor="let data of comunicazioniMin" [data] = "data">\n\n							</home-com>\n\n						</ul>\n\n\n\n					</div>\n\n				</div>-->\n\n				<comunicazioni-card></comunicazioni-card>\n\n			</ion-col>\n\n			<ion-col  col-sm col-12>\n\n				<circolari-card></circolari-card>\n\n			</ion-col>\n\n			<ion-col  col-sm col-6>\n\n				<!--<div class="card" (click)="goToChat()">\n\n					<div class="card-header bg-chat text-header text-white">{{headerChat}}</div>\n\n					<div class="card-body">{{contentChat}}</div>\n\n				</div>-->\n\n				<chat-card *ngIf="this.presenze[\'chat\']=\'true\'"></chat-card>\n\n			</ion-col>\n\n			<ion-col  col-sm col-6>\n\n				<!--<div class="card">\n\n					<div class="card-header bg-priority text-header text-white">{{header2}}</div>\n\n					<div class="card-body">\n\n						<ul class="list-group list-group-flush priority" >\n\n							<home-prio *ngFor="let data of prioritaMin" [data] = "data">\n\n							</home-prio>\n\n						</ul>\n\n					</div>\n\n				</div>-->\n\n				<priorita-card *ngIf="this.presenze[\'priorita\']=\'true\'"  ></priorita-card>\n\n			</ion-col>\n\n		\n\n			<!--<ion-col col-6>\n\n					<button  block outline class="rounded-generic-card button-large button-large-green" ion-button>\n\n						<div>Documentale</div>\n\n						<ion-icon class="icon-button" name="paper">\n\n						</ion-icon>\n\n						\n\n					</button>\n\n			</ion-col>-->\n\n			<ion-col col-6>\n\n				<news-card *ngIf="this.presenze[\'news\']=\'true\'" ></news-card>\n\n			</ion-col>\n\n			<ion-col col-6>\n\n				<messaggi-card *ngIf="this.presenze[\'messaggi\']=\'true\'" ></messaggi-card>\n\n			</ion-col>\n\n			<ion-col col-6>\n\n				<documentale-card *ngIf="this.presenze[\'documentale\']=\'true\'" ></documentale-card>\n\n			</ion-col>\n\n			<!--<ion-col col-6>\n\n				<button (click)="goToContact()"  block outline class="text-default rounded-generic-card button-large button-large-blue" ion-button>\n\n					<div>Rubrica</div>\n\n					<ion-icon class="icon-button" name="contacts">\n\n					</ion-icon>				\n\n				</button>\n\n			</ion-col>-->\n\n			<ion-col col-6>\n\n				<contact-card *ngIf="this.presenze[\'contatti\']=\'true\'" ></contact-card>\n\n			</ion-col>\n\n			\n\n		</ion-row>\n\n		\n\n	</ion-grid>\n\n	\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar >\n\n	<button ion-button menuToggle ><ion-icon name="menu"></ion-icon></button>\n\n	<ion-title >ALL IN APP</ion-title>\n\n	\n\n    <ion-buttons end><img width="30em" src="assets/imgs/logo.png"></ion-buttons>\n\n	\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-menu id="home"[content]="mycontent">\n\n	<ion-content>\n\n	  <ion-list>\n\n		<ion-item (click)="GoProfile()"> Profilo </ion-item>\n\n		<ion-item (click)="logOut()"> LogOut </ion-item>\n\n		<ion-item (click)="changePassword()">Cambia password</ion-item>\n\n		<ion-item menuClose detail-none>Close Menu</ion-item>\n\n	  </ion-list>\n\n	</ion-content>\n\n  </ion-menu>\n\n  \n\n  <ion-nav #mycontent [root]="rootPage"  ></ion-nav>\n\n\n\n<ion-content >\n\n	<ion-grid >\n\n		<ion-row class="cards-container">\n\n			<!--<ion-col>\n\n				<ion-card class="no-border" (click)="load()">\n\n					<ion-card-header class="bg-comm text-white">{{header1}}</ion-card-header>\n\n					<ion-card-content class="list-group list-group-flush comm">{{content1}}</ion-card-content>\n\n						<ion-list>\n\n							<ion-item>\n\n								<comunicazione></comunicazione>\n\n							</ion-item>\n\n							<ion-item>\n\n								<comunicazione></comunicazione>\n\n							</ion-item>\n\n							<ion-item>\n\n								<comunicazione></comunicazione>\n\n							</ion-item>\n\n							<ion-item>\n\n								<comunicazione></comunicazione>\n\n							</ion-item>\n\n						</ion-list>\n\n				</ion-card> \n\n			</ion-col>-->\n\n			<!-- <ion-col  >\n\n					<ion-card color="primary" class="rounded-generic-card generic-card-blue">\n\n						<ion-card-header class="generic-card-header blue-header">{{header3}}</ion-card-header>\n\n						<ion-card-content class="yellow-header">{{content3}}</ion-card-content>\n\n					</ion-card>\n\n			</ion-col> -->\n\n			<ion-col  col-sm col-12>\n\n				<!--<div class="card card-large">\n\n					<div class="card-header bg-comm text-header text-white">{{header3}}</div>\n\n					<div class="card-body">\n\n						\n\n						<ul class="list-group list-group-flush comm" >\n\n							<home-com *ngFor="let data of comunicazioniMin" [data] = "data">\n\n							</home-com>\n\n						</ul>\n\n\n\n					</div>\n\n				</div>-->\n\n				<comunicazioni-card></comunicazioni-card>\n\n			</ion-col>\n\n			<ion-col  col-sm col-12>\n\n				<circolari-card></circolari-card>\n\n			</ion-col>\n\n			<ion-col  col-sm col-6>\n\n				<!--<div class="card" (click)="goToChat()">\n\n					<div class="card-header bg-chat text-header text-white">{{headerChat}}</div>\n\n					<div class="card-body">{{contentChat}}</div>\n\n				</div>-->\n\n				<chat-card *ngIf="this.presenze[\'chat\']=\'true\'"></chat-card>\n\n			</ion-col>\n\n			<ion-col  col-sm col-6>\n\n				<!--<div class="card">\n\n					<div class="card-header bg-priority text-header text-white">{{header2}}</div>\n\n					<div class="card-body">\n\n						<ul class="list-group list-group-flush priority" >\n\n							<home-prio *ngFor="let data of prioritaMin" [data] = "data">\n\n							</home-prio>\n\n						</ul>\n\n					</div>\n\n				</div>-->\n\n				<priorita-card *ngIf="this.presenze[\'priorita\']=\'true\'"  ></priorita-card>\n\n			</ion-col>\n\n		\n\n			<!--<ion-col col-6>\n\n					<button  block outline class="rounded-generic-card button-large button-large-green" ion-button>\n\n						<div>Documentale</div>\n\n						<ion-icon class="icon-button" name="paper">\n\n						</ion-icon>\n\n						\n\n					</button>\n\n			</ion-col>-->\n\n			<ion-col col-6>\n\n				<news-card *ngIf="this.presenze[\'news\']=\'true\'" ></news-card>\n\n			</ion-col>\n\n			<ion-col col-6>\n\n				<messaggi-card *ngIf="this.presenze[\'messaggi\']=\'true\'" ></messaggi-card>\n\n			</ion-col>\n\n			<ion-col col-6>\n\n				<documentale-card *ngIf="this.presenze[\'documentale\']=\'true\'" ></documentale-card>\n\n			</ion-col>\n\n			<!--<ion-col col-6>\n\n				<button (click)="goToContact()"  block outline class="text-default rounded-generic-card button-large button-large-blue" ion-button>\n\n					<div>Rubrica</div>\n\n					<ion-icon class="icon-button" name="contacts">\n\n					</ion-icon>				\n\n				</button>\n\n			</ion-col>-->\n\n			<ion-col col-6>\n\n				<contact-card *ngIf="this.presenze[\'contatti\']=\'true\'" ></contact-card>\n\n			</ion-col>\n\n			\n\n		</ion-row>\n\n		\n\n	</ion-grid>\n\n	\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_10_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_10_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["b" /* Storage */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_10_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_10_ionic_angular__["b" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__["a" /* StoreService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__["a" /* StoreService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__services_login_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_login_login_service__["a" /* LoginService */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_10_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_10_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__["a" /* StoreService */], __WEBPACK_IMPORTED_MODULE_1__services_login_login_service__["a" /* LoginService */]])
     ], HomePage);
     return HomePage;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=home.js.map
 
 /***/ }),
-/* 65 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1441,7 +1689,7 @@ var ChatPage = /** @class */ (function () {
     };
     ChatPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-chat',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\chat\chat.html"*/'<ion-header>\n\n  <ion-navbar  hideBackButton>\n\n      <ion-buttons left>\n\n          <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n        </ion-buttons>\n\n    <ion-title>\n\n      CometChat Ionic Sample App\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <div class="cometchat_logodiv">\n\n    <ion-avatar class="cometchat_logo" width="150" height="150">\n\n      <ion-img width="150" height="150" src="assets/imgs/logo.png"></ion-img>\n\n    </ion-avatar>\n\n    <div class="loader" *ngIf="isLoading">\n\n    </div>\n\n  </div>\n\n  <ion-list>\n\n    <ion-row>\n\n      <button ion-button color="primary" block [disabled]="disableInitialize" (click)="initializeChat()">Initialize CometChat</button>\n\n    </ion-row>\n\n\n\n    <ion-row>\n\n      <ion-col>\n\n        <button ion-button color="primary" block [disabled]="disableSuperHero1" (click)="login(UID1)">Login As\n\n          <br/> SuperHero1</button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button ion-button color="primary" block [disabled]="disableSuperHero2" (click)="login(UID2)">Login As\n\n          <br/>SuperHero2</button>\n\n      </ion-col>\n\n    </ion-row>\n\n\n\n    <ion-row>\n\n      <button ion-button color="primary" block  (click)="launchChat()">Launch CometChat</button>\n\n    </ion-row>\n\n    <ion-row>\n\n      <button ion-button color="primary" block  (click)="createUser()">create user</button>\n\n    </ion-row>\n\n\n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\chat\chat.html"*/
+            selector: 'page-chat',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\chat\chat.html"*/'<ion-header>\n\n  <ion-navbar  hideBackButton>\n\n      <ion-buttons left>\n\n          <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n        </ion-buttons>\n\n    <ion-title>\n\n      CometChat Ionic Sample App\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <div class="cometchat_logodiv">\n\n    <ion-avatar class="cometchat_logo" width="150" height="150">\n\n      <ion-img width="150" height="150" src="assets/imgs/logo.png"></ion-img>\n\n    </ion-avatar>\n\n    <div class="loader" *ngIf="isLoading">\n\n    </div>\n\n  </div>\n\n  <ion-list>\n\n    <ion-row>\n\n      <button ion-button color="primary" block [disabled]="disableInitialize" (click)="initializeChat()">Initialize CometChat</button>\n\n    </ion-row>\n\n\n\n    <ion-row>\n\n      <ion-col>\n\n        <button ion-button color="primary" block [disabled]="disableSuperHero1" (click)="login(UID1)">Login As\n\n          <br/> SuperHero1</button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button ion-button color="primary" block [disabled]="disableSuperHero2" (click)="login(UID2)">Login As\n\n          <br/>SuperHero2</button>\n\n      </ion-col>\n\n    </ion-row>\n\n\n\n    <ion-row>\n\n      <button ion-button color="primary" block  (click)="launchChat()">Launch CometChat</button>\n\n    </ion-row>\n\n    <ion-row>\n\n      <button ion-button color="primary" block  (click)="createUser()">create user</button>\n\n    </ion-row>\n\n\n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\chat\chat.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_core__["j" /* ChangeDetectorRef */], __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */]])
@@ -1452,18 +1700,18 @@ var ChatPage = /** @class */ (function () {
 //# sourceMappingURL=chat.js.map
 
 /***/ }),
-/* 66 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_store_store_service__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_login_login_service__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_shared_error_service__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_login_login_namespace__ = __webpack_require__(343);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_login_login_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_shared_error_service__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_login_login_namespace__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(67);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1526,7 +1774,7 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'login',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\login\login.html"*/'<ion-content class="bg-dark login" padding>\n\n  <form (ngSubmit)="login()" #registerForm="ngForm" class="container">\n\n    <div class="card card-transp card-login mx-auto mt-5">\n\n        <ion-row class="card-header-login">\n\n            <ion-col>\n\n              <div class="logo">AllInApp</div>\n\n            </ion-col>\n\n          </ion-row>\n\n          <ion-row class="card-body">\n\n            <ion-col>\n\n              <ion-list inset>\n\n                <div class="form-group">\n\n                  <input class="form-control" type="text" placeholder="Email" name="email" [(ngModel)]="username" required/>\n\n                </div>\n\n                <div class="form-group">\n\n                  <input class="form-control" type="password" placeholder="Password" name="password" [(ngModel)]="password" required/>  \n\n                </div>\n\n              </ion-list>\n\n            </ion-col>\n\n          </ion-row>\n\n        <ion-row>\n\n          <ion-col>\n\n            <span class="switch switch-sm">\n\n              <input type="checkbox" class="switch" id="switch-id">\n\n              <label for="switch-id">Salva</label>\n\n            </span>\n\n          </ion-col>\n\n          <ion-col>\n\n            <button ion-button class="btn btn-transparent btn-block" full type="submit" [disabled]="!registerForm.form.valid">Entra</button>\n\n          </ion-col>\n\n        </ion-row>\n\n    </div>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\login\login.html"*/
+            selector: 'login',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\login\login.html"*/'<ion-content class="bg-dark login" padding>\n\n  <form (ngSubmit)="login()" #registerForm="ngForm" class="container">\n\n    <div class="card-transp card-login mx-auto mt-5">\n\n        <ion-row class="card-header-login">\n\n            <ion-col>\n\n              <div class="logo">AllInApp</div>\n\n            </ion-col>\n\n          </ion-row>\n\n          <ion-row >\n\n            <ion-col>\n\n              <ion-list >\n\n                <div class="form-group">\n\n                  <input class="form-control" type="text" placeholder="Email" name="email" [(ngModel)]="username" required/>\n\n                </div>\n\n                <div class="form-group">\n\n                  <input class="form-control" type="password" placeholder="Password" name="password" [(ngModel)]="password" required/>  \n\n                </div>\n\n              </ion-list>\n\n            </ion-col>\n\n          </ion-row>\n\n        <ion-row>\n\n          <ion-col>\n\n            <span class="switch switch-lg">\n\n              <input type="checkbox" class="switch" id="switch-id">\n\n              <label for="switch-id">Salva</label>\n\n            </span>\n\n          </ion-col>\n\n          <ion-col>\n\n            <button ion-button class="btn btn-transparent btn-block" full type="submit" [disabled]="!registerForm.form.valid">Entra</button>\n\n          </ion-col>\n\n        </ion-row>\n\n    </div>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\login\login.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_login_login_service__["a" /* LoginService */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */],
@@ -1540,22 +1788,23 @@ var LoginPage = /** @class */ (function () {
 //# sourceMappingURL=login.js.map
 
 /***/ }),
-/* 67 */,
-/* 68 */,
-/* 69 */,
 /* 70 */,
 /* 71 */,
 /* 72 */,
-/* 73 */
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComunicazioniDetailsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__ = __webpack_require__(7);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DocumentaleListaPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__documentale_details_documentale_details__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_comunicazione_comunicazione_namespace__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_shared_error_service__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_store_store_service__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1570,59 +1819,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the ComunicazioniPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ComunicazioniDetailsPage = /** @class */ (function () {
-    function ComunicazioniDetailsPage(navCtrl, navParams, store, http, alertCtrl) {
+
+var DocumentaleListaPage = /** @class */ (function () {
+    function DocumentaleListaPage(navCtrl, http, store, err, para) {
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.store = store;
         this.http = http;
-        this.alertCtrl = alertCtrl;
+        this.store = store;
+        this.err = err;
+        this.para = para;
     }
-    ComunicazioniDetailsPage.prototype.ngOnInit = function () {
+    DocumentaleListaPage.prototype.ngOnInit = function () {
         var _this = this;
-        var c = this.navParams.get('com');
-        this.com = new __WEBPACK_IMPORTED_MODULE_4__models_comunicazione_comunicazione_namespace__["a" /* Comunicazione */].Comunicazione;
+        var cat = this.para.get("cat");
         var s = this.store.userData$.subscribe(function (val) {
-            var s1 = _this.http.getComunicazione(val.token_value, c.comunicazione_key).subscribe(function (val1) {
-                _this.com = val1.comunicazione;
-                s1.unsubscribe();
-            });
-            var s2 = _this.http.setReadComunicazione(val.token_value, c.comunicazione_key).subscribe(function (val2) {
-                s2.unsubscribe();
-            });
-            s.unsubscribe();
-        });
-        this.store.getUserData();
-    };
-    ComunicazioniDetailsPage.prototype.back = function () {
-        this.navCtrl.pop();
-    };
-    ComunicazioniDetailsPage.prototype.delete = function () {
-        var _this = this;
-        var s = this.store.userData$.subscribe(function (val) {
-            var s1 = _this.http.setDeletedComunicazione(val.token_value, _this.com.comunicazione_key).subscribe(function (val1) {
+            /**this.http.getElencoDocumenti(val.token_value, 0,0,cat.tab_tipo_documento_cod,cat.tab_categoria_documento_cod).subscribe(
+              (val1)=>{
+                if (val1.ErrorMessage.msg_code == 0){
+                  this.lista = val1.l_lista_documenti;
+                }else{
+                  alert("errore ricezione lista");
+                }
+                  
+              }
+            )**/
+            var s1 = _this.http.getElencoDocumenti(val.token_value, 0, 0, 0, 0).subscribe(function (val1) {
                 if (val1.ErrorMessage.msg_code == 0) {
-                    var alert = _this.alertCtrl.create({
-                        title: 'Cancellazione',
-                        subTitle: 'Cancellazzione andata a buon fine',
-                        buttons: ['Dismiss']
-                    });
-                    alert.present();
-                    _this.navCtrl.pop();
+                    _this.lista = val1.l_lista_documenti;
                 }
                 else {
-                    var alert = _this.alertCtrl.create({
-                        title: 'Cancellazione',
-                        subTitle: 'Cancellazzione fallita',
-                        buttons: ['Dismiss']
-                    });
-                    alert.present();
+                    alert("errore ricezione lista");
                 }
                 s1.unsubscribe();
             });
@@ -1630,23 +1855,85 @@ var ComunicazioniDetailsPage = /** @class */ (function () {
         });
         this.store.getUserData();
     };
-    ComunicazioniDetailsPage = __decorate([
+    DocumentaleListaPage.prototype.back = function () {
+        this.navCtrl.pop();
+    };
+    DocumentaleListaPage.prototype.goToDetails = function (doc) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_0__documentale_details_documentale_details__["a" /* DocumentaleDetailsPage */], { doc: doc });
+    };
+    DocumentaleListaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
-            selector: 'comunicazioni-details',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\comunicazioni-details\comunicazioni-details.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n    <ion-buttons left>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n      </ion-buttons>\n\n      <ion-title>\n\n        <div class="text-default" >Comunicazioni</div>\n\n      </ion-title>\n\n      <ion-buttons end>\n\n          <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n  </ion-header>\n\n  <ion-content>\n\n    <div style="float:right;font-size: 2em;">\n\n      <ion-icon (click)="delete()"  name="trash"></ion-icon>\n\n    </div>\n\n  <img src={{com.cm_immagine}}>\n\n   <h1>{{com.cm_titolo}}</h1>\n\n    <p>{{com.cm_descrizione}}</p>\n\n    <p>{{com.cm_allegato}}</p>\n\n    <p>{{com.cm_data}}</p>\n\n  </ion-content>'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\comunicazioni-details\comunicazioni-details.html"*/,
+            selector: 'documentale-lista',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\documentale-lista\documentale-lista.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n    <ion-buttons left>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button><ion-icon class="icon-button" name="contacts" class="nav-icon text-default"></ion-icon></button>\n\n    </ion-buttons>\n\n    <ion-title >\n\n      <div class="text-default">Documentale</div>\n\n    </ion-title>\n\n    \n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <div *ngFor="let doc of lista">\n\n    <ion-card   (click)="goToDetails(doc)">\n\n      <ion-card-content >\n\n        <h1 >\n\n          {{doc.tab_tipo_documento_desc}}\n\n        </h1>\n\n        <p>\n\n        {{doc.doc_titolo}}\n\n        </p>\n\n      </ion-card-content>\n\n    </ion-card>\n\n</div>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\documentale-lista\documentale-lista.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__["a" /* StoreService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__["a" /* StoreService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__["a" /* HttpService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]) === "function" && _e || Object])
-    ], ComunicazioniDetailsPage);
-    return ComunicazioniDetailsPage;
-    var _a, _b, _c, _d, _e;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_5__services_store_store_service__["a" /* StoreService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_shared_error_service__["a" /* ErrorService */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavParams */]])
+    ], DocumentaleListaPage);
+    return DocumentaleListaPage;
 }());
 
-//# sourceMappingURL=comunicazioni-details.js.map
+//# sourceMappingURL=documentale-lista.js.map
 
 /***/ }),
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
+/* 77 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DocumentaleDetailsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_shared_error_service__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_store_store_service__ = __webpack_require__(7);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var DocumentaleDetailsPage = /** @class */ (function () {
+    function DocumentaleDetailsPage(navCtrl, http, store, err, para) {
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.store = store;
+        this.err = err;
+        this.para = para;
+    }
+    DocumentaleDetailsPage.prototype.ngOnInit = function () {
+        var _this = this;
+        this.doc = this.para.get("doc");
+        var s = this.store.userData$.subscribe(function (val) {
+            var s1 = _this.http.getDocumento(val.token_value, _this.doc.documenti_key).subscribe(function (val1) {
+                _this.doc = val1.documento;
+                s1.unsubscribe();
+            });
+            s.unsubscribe();
+        });
+        this.store.getUserData();
+    };
+    DocumentaleDetailsPage.prototype.back = function () {
+        this.navCtrl.pop();
+    };
+    DocumentaleDetailsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
+            selector: 'documentale-details',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\documentale-details\documentale-details.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n    <ion-buttons left>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button><ion-icon class="icon-button" name="contacts" class="nav-icon text-default"></ion-icon></button>\n\n    </ion-buttons>\n\n    <ion-title >\n\n      <div class="text-default">Documentale</div>\n\n    </ion-title>\n\n    \n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <h1>{{doc.doc_titolo}}</h1>\n\n  <p>{{doc.doc_url}}</p>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\documentale-details\documentale-details.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_0__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_4__services_store_store_service__["a" /* StoreService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_shared_error_service__["a" /* ErrorService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavParams */]])
+    ], DocumentaleDetailsPage);
+    return DocumentaleDetailsPage;
+}());
+
+//# sourceMappingURL=documentale-details.js.map
+
+/***/ }),
 /* 78 */,
 /* 79 */,
 /* 80 */,
@@ -1687,16 +1974,21 @@ var ComunicazioniDetailsPage = /** @class */ (function () {
 /* 115 */,
 /* 116 */,
 /* 117 */,
-/* 118 */
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CircolariPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__circolari_details_circolari_details__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(3);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DocumentaleCategoriePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__documentale_lista_documentale_lista__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_shared_error_service__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_store_store_service__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1711,81 +2003,117 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the ComunicazioniPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var CircolariPage = /** @class */ (function () {
-    function CircolariPage(navCtrl, navParams, store, http, alertCtrl) {
+
+var DocumentaleCategoriePage = /** @class */ (function () {
+    function DocumentaleCategoriePage(navCtrl, http, store, err, para) {
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.store = store;
         this.http = http;
-        this.alertCtrl = alertCtrl;
+        this.store = store;
+        this.err = err;
+        this.para = para;
     }
-    CircolariPage.prototype.ngOnInit = function () {
+    DocumentaleCategoriePage.prototype.ngOnInit = function () {
         var _this = this;
+        this.categoria = this.para.get("categoria");
         var s = this.store.userData$.subscribe(function (val) {
-            var s1 = _this.http.getComunicazioniElenco(val.token_value, 0, 0, 'X', 'R').subscribe(function (val1) {
-                _this.comFull = val1.l_lista_comunicazione;
+            var s1 = _this.http.getCategorieDocumenti(val.token_value, _this.categoria).subscribe(function (val1) {
+                _this.categorie = val1.l_lista_categoria_documenti;
                 s1.unsubscribe();
             });
             s.unsubscribe();
         });
         this.store.getUserData();
     };
-    CircolariPage.prototype.goToDetails = function (com) {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_0__circolari_details_circolari_details__["a" /* CircolariDetailsPage */], { com: com });
+    DocumentaleCategoriePage.prototype.goToLista = function (cat) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_0__documentale_lista_documentale_lista__["a" /* DocumentaleListaPage */], { cat: cat });
     };
-    CircolariPage.prototype.back = function () {
-        var _this = this;
-        var s = this.store.userData$.subscribe(function (val) {
-            var s1 = _this.http.getComunicazioniElenco(val.token_value, 0, 0, 'X', 'R').subscribe(function (val1) {
-                _this.comFull = val1.l_lista_comunicazione;
-                var lette = true;
-                for (var i = 1; i < _this.comFull.length; i++) {
-                    if (_this.comFull[i].dc_letta == "N")
-                        lette = false;
-                }
-                if (lette == true)
-                    _this.navCtrl.pop();
-                else {
-                    var alert = _this.alertCtrl.create({
-                        title: 'Aspetta!!',
-                        subTitle: 'prima leggi tutte le circolari',
-                        buttons: ['Ok']
-                    });
-                    alert.present();
-                }
-                s1.unsubscribe();
-            });
-            s.unsubscribe();
-        });
-        this.store.getUserData();
+    DocumentaleCategoriePage.prototype.back = function () {
+        this.navCtrl.pop();
     };
-    CircolariPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
-            selector: 'page-circolari',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\circolari\circolari.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n    <ion-buttons left>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button><ion-icon class="icon-button" name="news" class="nav-icon text-default"></ion-icon></button>\n\n    </ion-buttons>\n\n    <ion-title >\n\n      <div class="text-default">Circolari</div>\n\n    </ion-title>\n\n    \n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <div *ngFor="let com of comFull">\n\n    <ion-card class="border-blue" *ngIf="com.dc_letta==\'N\'" (click)="goToDetails(com)"  >\n\n      <ion-card-content >\n\n        <h1 >\n\n          {{com.cm_titolo}}\n\n        </h1>\n\n        <p>\n\n        {{com.cm_descrizione}}\n\n        </p>\n\n      </ion-card-content>\n\n    </ion-card>\n\n    <ion-card class="border-green" *ngIf="com.dc_letta==\'S\'" (click)="goToDetails(com)"  >\n\n      <ion-card-content >\n\n        <h1 >\n\n          {{com.cm_titolo}}\n\n        </h1>\n\n        <p>\n\n        {{com.cm_descrizione}}\n\n        </p>\n\n      </ion-card-content>\n\n    </ion-card>\n\n</div>\n\n</ion-content>'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\circolari\circolari.html"*/,
+    DocumentaleCategoriePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
+            selector: 'documentale-categorie',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\documentale-categorie\documentale-categorie.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n    <ion-buttons left>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button><ion-icon class="icon-button" name="contacts" class="nav-icon text-default"></ion-icon></button>\n\n    </ion-buttons>\n\n    <ion-title >\n\n      <div class="text-default">Documentale</div>\n\n    </ion-title>\n\n    \n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <div *ngFor="let cate of categorie">\n\n    <ion-card   (click)="goToLista(cate)">\n\n      <ion-card-content >\n\n        <h1 >\n\n          {{cate.tab_categoria_documento_desc}}\n\n        </h1>\n\n        <p>\n\n        {{cate.num_documenti}}\n\n        </p>\n\n      </ion-card-content>\n\n    </ion-card>\n\n</div>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\documentale-categorie\documentale-categorie.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__["a" /* StoreService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__["a" /* StoreService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__["a" /* HttpService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* AlertController */]) === "function" && _e || Object])
-    ], CircolariPage);
-    return CircolariPage;
-    var _a, _b, _c, _d, _e;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_5__services_store_store_service__["a" /* StoreService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_shared_error_service__["a" /* ErrorService */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavParams */]])
+    ], DocumentaleCategoriePage);
+    return DocumentaleCategoriePage;
 }());
 
-//# sourceMappingURL=circolari.js.map
+//# sourceMappingURL=documentale-categorie.js.map
 
 /***/ }),
-/* 119 */
+/* 123 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DocumentalePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__documentale_categorie_documentale_categorie__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_shared_error_service__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_store_store_service__ = __webpack_require__(7);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var DocumentalePage = /** @class */ (function () {
+    function DocumentalePage(navCtrl, http, store, err) {
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.store = store;
+        this.err = err;
+    }
+    DocumentalePage.prototype.ngOnInit = function () {
+        var _this = this;
+        var s = this.store.userData$.subscribe(function (val) {
+            var s1 = _this.http.getElencoTipoDocumenti(val.token_value).subscribe(function (val1) {
+                _this.tipi = val1.l_lista_tipo_documenti;
+                s1.unsubscribe();
+            });
+            s.unsubscribe();
+        });
+        this.store.getUserData();
+    };
+    DocumentalePage.prototype.goToCategorie = function (val) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_0__documentale_categorie_documentale_categorie__["a" /* DocumentaleCategoriePage */], { "categoria": val.tab_tipo_documento_cod });
+    };
+    DocumentalePage.prototype.back = function () {
+        this.navCtrl.pop();
+    };
+    DocumentalePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
+            selector: 'page-documentale',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\documentale\documentale.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n    <ion-buttons left>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button><ion-icon class="icon-button" name="contacts" class="nav-icon text-default"></ion-icon></button>\n\n    </ion-buttons>\n\n    <ion-title >\n\n      <div class="text-default">Documentale</div>\n\n    </ion-title>\n\n    \n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <div *ngFor="let tipo of tipi">\n\n    <ion-card   (click)="goToCategorie(tipo)">\n\n      <ion-card-content >\n\n        <h1 >\n\n          {{tipo.tab_tipo_documento_desc}}\n\n        </h1>\n\n        <p>\n\n        {{tipo.num_documenti}}\n\n        </p>\n\n      </ion-card-content>\n\n    </ion-card>\n\n</div>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\documentale\documentale.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_5__services_store_store_service__["a" /* StoreService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_shared_error_service__["a" /* ErrorService */]])
+    ], DocumentalePage);
+    return DocumentalePage;
+}());
+
+//# sourceMappingURL=documentale.js.map
+
+/***/ }),
+/* 124 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessaggiUscitaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__messaggi_details_messaggi_details__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_store_store_service__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1875,7 +2203,7 @@ var MessaggiUscitaPage = /** @class */ (function () {
     };
     MessaggiUscitaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
-            selector: 'messaggi-uscita',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\messaggi-uscita\messaggi-uscita.html"*/'<ion-header>\n\n    <ion-navbar hideBackButton>\n\n        <ion-buttons left>\n\n            <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n          </ion-buttons>\n\n      <ion-buttons right>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n      </ion-buttons>\n\n      \n\n      <ion-title >\n\n        <div class="text-default">USCITA</div>\n\n      </ion-title>\n\n      \n\n    </ion-navbar>\n\n\n\n  </ion-header>\n\n\n\n  <ion-content>\n\n      <button ion-button menuToggle>Toggle Menu</button>\n\n\n\n          <ion-list >\n\n              \n\n              <ion-item class="list-group-item" *ngFor="let mess of messFull"  >\n\n                  \n\n                  <div class=" box item" >\n\n                      <ion-icon name="eye" (click)="goToDetails(mess)"></ion-icon>\n\n                      <ion-icon name="checkbox"></ion-icon>\n\n                      <ion-icon name="star-outline" *ngIf="mess.preferito==\'\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n                      <ion-icon name="star-outline" *ngIf="mess.preferito==\'N\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n                      <ion-icon name="star" *ngIf="mess.preferito==\'S\'" (click)="setStar(mess,\'N\')"></ion-icon>\n\n                      <ion-icon name="trash" (click)="deleteConfirm(mess)"></ion-icon>\n\n                    </div>\n\n                    <div class=" box brief contact-small ">\n\n                      <h5 class="name ">{{mess.cognome_mit}} {{mess.nome_mit}}</h5>\n\n                      <p class="text ">{{mess.soggetto}}</p>\n\n                      <i class="fa fa-mobile device"></i>\n\n                    </div>\n\n                    <div class="box data">\n\n                      {{mess.data}}\n\n                    </div>\n\n                </ion-item>\n\n        </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\messaggi-uscita\messaggi-uscita.html"*/
+            selector: 'messaggi-uscita',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\messaggi-uscita\messaggi-uscita.html"*/'<ion-header>\n\n    <ion-navbar hideBackButton>\n\n        <ion-buttons left>\n\n            <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n          </ion-buttons>\n\n      <ion-buttons right>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n      </ion-buttons>\n\n      \n\n      <ion-title >\n\n        <div class="text-default">USCITA</div>\n\n      </ion-title>\n\n      \n\n    </ion-navbar>\n\n\n\n  </ion-header>\n\n\n\n  <ion-content>\n\n      <button ion-button menuToggle>Toggle Menu</button>\n\n\n\n          <ion-list >\n\n              \n\n              <ion-item class="list-group-item" *ngFor="let mess of messFull"  >\n\n                  \n\n                  <div class=" box item" >\n\n                      <ion-icon name="eye" (click)="goToDetails(mess)"></ion-icon>\n\n                      <ion-icon name="checkbox"></ion-icon>\n\n                      <ion-icon name="star-outline" *ngIf="mess.preferito==\'\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n                      <ion-icon name="star-outline" *ngIf="mess.preferito==\'N\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n                      <ion-icon name="star" *ngIf="mess.preferito==\'S\'" (click)="setStar(mess,\'N\')"></ion-icon>\n\n                      <ion-icon name="trash" (click)="deleteConfirm(mess)"></ion-icon>\n\n                    </div>\n\n                    <div class=" box brief contact-small ">\n\n                      <h5 class="name ">{{mess.cognome_mit}} {{mess.nome_mit}}</h5>\n\n                      <p class="text ">{{mess.soggetto}}</p>\n\n                      <i class="fa fa-mobile device"></i>\n\n                    </div>\n\n                    <div class="box data">\n\n                      {{mess.data}}\n\n                    </div>\n\n                </ion-item>\n\n        </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\messaggi-uscita\messaggi-uscita.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__services_store_store_service__["a" /* StoreService */], __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__["a" /* HttpService */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]])
@@ -1886,7 +2214,7 @@ var MessaggiUscitaPage = /** @class */ (function () {
 //# sourceMappingURL=messaggi-uscita.js.map
 
 /***/ }),
-/* 120 */
+/* 125 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1940,17 +2268,17 @@ var Messaggi;
 //# sourceMappingURL=messaggi.namespace.js.map
 
 /***/ }),
-/* 121 */
+/* 126 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessaggiCestinoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__messaggi_details_messaggi_details__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_shared_http_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_messaggi_messaggi_namespace__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_messaggi_messaggi_namespace__ = __webpack_require__(125);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2023,7 +2351,7 @@ var MessaggiCestinoPage = /** @class */ (function () {
     };
     MessaggiCestinoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["m" /* Component */])({
-            selector: 'messaggi-cestino',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\messaggi-cestino\messaggi-cestino.html"*/'<ion-header>\n\n    <ion-navbar hideBackButton>\n\n        <ion-buttons left>\n\n            <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n          </ion-buttons>\n\n      <ion-buttons right>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n      </ion-buttons>\n\n      \n\n      <ion-title >\n\n        <div class="text-default">CESTINO</div>\n\n      </ion-title>\n\n      \n\n    </ion-navbar>\n\n\n\n  </ion-header>\n\n\n\n  <ion-content>\n\n      <button ion-button menuToggle>Toggle Menu</button>\n\n\n\n          <ion-list >\n\n              \n\n              <ion-item class="list-group-item" *ngFor="let mess of messFull"  >\n\n                  \n\n                  <div class=" box item" >\n\n                      <ion-icon name="eye" (click)="goToDetails(mess)"></ion-icon>\n\n                      <ion-icon name="close"  (click)="delete(mess)"></ion-icon>\n\n                      <ion-icon name="cloud-upload"  (click)="ripristina(mess)"></ion-icon>\n\n                    </div>\n\n                    <div class=" box brief contact-small ">\n\n                      <h5 class="name ">{{mess.cognome_mit}} {{mess.nome_mit}}</h5>\n\n                      <p class="text ">{{mess.soggetto}}</p>\n\n                      <i class="fa fa-mobile device"></i>\n\n                    </div>\n\n                    <div class="box data">\n\n                      {{mess.data}}\n\n                    </div>\n\n                </ion-item>\n\n        </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\messaggi-cestino\messaggi-cestino.html"*/
+            selector: 'messaggi-cestino',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\messaggi-cestino\messaggi-cestino.html"*/'<ion-header>\n\n    <ion-navbar hideBackButton>\n\n        <ion-buttons left>\n\n            <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n          </ion-buttons>\n\n      <ion-buttons right>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n      </ion-buttons>\n\n      \n\n      <ion-title >\n\n        <div class="text-default">CESTINO</div>\n\n      </ion-title>\n\n      \n\n    </ion-navbar>\n\n\n\n  </ion-header>\n\n\n\n  <ion-content>\n\n      <button ion-button menuToggle>Toggle Menu</button>\n\n\n\n          <ion-list >\n\n              \n\n              <ion-item class="list-group-item" *ngFor="let mess of messFull"  >\n\n                  \n\n                  <div class=" box item" >\n\n                      <ion-icon name="eye" (click)="goToDetails(mess)"></ion-icon>\n\n                      <ion-icon name="close"  (click)="delete(mess)"></ion-icon>\n\n                      <ion-icon name="cloud-upload"  (click)="ripristina(mess)"></ion-icon>\n\n                    </div>\n\n                    <div class=" box brief contact-small ">\n\n                      <h5 class="name ">{{mess.cognome_mit}} {{mess.nome_mit}}</h5>\n\n                      <p class="text ">{{mess.soggetto}}</p>\n\n                      <i class="fa fa-mobile device"></i>\n\n                    </div>\n\n                    <div class="box data">\n\n                      {{mess.data}}\n\n                    </div>\n\n                </ion-item>\n\n        </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\messaggi-cestino\messaggi-cestino.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__["a" /* StoreService */], __WEBPACK_IMPORTED_MODULE_2__services_shared_http_service__["a" /* HttpService */]])
     ], MessaggiCestinoPage);
@@ -2033,15 +2361,15 @@ var MessaggiCestinoPage = /** @class */ (function () {
 //# sourceMappingURL=messaggi-cestino.js.map
 
 /***/ }),
-/* 122 */
+/* 127 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessaggiImportantiPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__messaggi_details_messaggi_details__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2129,7 +2457,7 @@ var MessaggiImportantiPage = /** @class */ (function () {
     };
     MessaggiImportantiPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["m" /* Component */])({
-            selector: 'messaggi-importanti',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\messaggi-importanti\messaggi-importanti.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n      <ion-buttons left>\n\n          <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n        </ion-buttons>\n\n    <ion-buttons right>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    \n\n    <ion-title >\n\n      <div class="text-default">IMPORTANTI</div>\n\n    </ion-title>\n\n    \n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <button ion-button menuToggle>Toggle Menu</button>\n\n\n\n        <ion-list >\n\n            \n\n            <ion-item class="list-group-item" *ngFor="let mess of messFull"  >\n\n                \n\n                <div class=" box item" >\n\n                    <ion-icon name="eye" (click)="goToDetails(mess)"></ion-icon>\n\n                    <ion-icon name="checkbox"></ion-icon>\n\n                    <ion-icon name="star-outline" *ngIf="mess.preferito==\'\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n                      <ion-icon name="star-outline" *ngIf="mess.preferito==\'N\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n                      <ion-icon name="star" *ngIf="mess.preferito==\'S\'" (click)="setStar(mess,\'N\')"></ion-icon>\n\n                      <ion-icon name="trash" (click)="deleteConfirm(mess)"></ion-icon>\n\n                  </div>\n\n                  <div class=" box brief contact-small ">\n\n                    <h5 class="name ">{{mess.cognome_mit}} {{mess.nome_mit}}</h5>\n\n                    <p class="text ">{{mess.soggetto}}</p>\n\n                    <i class="fa fa-mobile device"></i>\n\n                  </div>\n\n                  <div class="box data">\n\n                    {{mess.data}}\n\n                  </div>\n\n              </ion-item>\n\n      </ion-list>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\messaggi-importanti\messaggi-importanti.html"*/
+            selector: 'messaggi-importanti',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\messaggi-importanti\messaggi-importanti.html"*/'<ion-header>\n\n  <ion-navbar hideBackButton>\n\n      <ion-buttons left>\n\n          <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n        </ion-buttons>\n\n    <ion-buttons right>\n\n      <button (click)="back()" ion-button icon-left clear small>\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    \n\n    <ion-title >\n\n      <div class="text-default">IMPORTANTI</div>\n\n    </ion-title>\n\n    \n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <button ion-button menuToggle>Toggle Menu</button>\n\n\n\n        <ion-list >\n\n            \n\n            <ion-item class="list-group-item" *ngFor="let mess of messFull"  >\n\n                \n\n                <div class=" box item" >\n\n                    <ion-icon name="eye" (click)="goToDetails(mess)"></ion-icon>\n\n                    <ion-icon name="checkbox"></ion-icon>\n\n                    <ion-icon name="star-outline" *ngIf="mess.preferito==\'\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n                      <ion-icon name="star-outline" *ngIf="mess.preferito==\'N\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n                      <ion-icon name="star" *ngIf="mess.preferito==\'S\'" (click)="setStar(mess,\'N\')"></ion-icon>\n\n                      <ion-icon name="trash" (click)="deleteConfirm(mess)"></ion-icon>\n\n                  </div>\n\n                  <div class=" box brief contact-small ">\n\n                    <h5 class="name ">{{mess.cognome_mit}} {{mess.nome_mit}}</h5>\n\n                    <p class="text ">{{mess.soggetto}}</p>\n\n                    <i class="fa fa-mobile device"></i>\n\n                  </div>\n\n                  <div class="box data">\n\n                    {{mess.data}}\n\n                  </div>\n\n              </ion-item>\n\n      </ion-list>\n\n\n\n</ion-content>'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\messaggi-importanti\messaggi-importanti.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__["a" /* StoreService */], __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__["a" /* HttpService */],
             __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]])
@@ -2140,20 +2468,20 @@ var MessaggiImportantiPage = /** @class */ (function () {
 //# sourceMappingURL=messaggi-importanti.js.map
 
 /***/ }),
-/* 123 */
+/* 128 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessaggiPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__messaggi_uscita_messaggi_uscita__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__messaggi_cestino_messaggi_cestino__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__messaggi_uscita_messaggi_uscita__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__messaggi_cestino_messaggi_cestino__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_shared_http_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__messaggi_nuovo_messaggi_nuovo__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__messaggi_nuovo_messaggi_nuovo__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__messaggi_details_messaggi_details__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__messaggi_importanti_messaggi_importanti__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__messaggi_importanti_messaggi_importanti__ = __webpack_require__(127);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2185,6 +2513,7 @@ var MessaggiPage = /** @class */ (function () {
         var _this = this;
         this.messFull = this.navParams.get('messFull');
         console.log(this.messFull);
+        this.menuCtrl.enable(true, 'messaggi');
         var s = this.store.userData$.subscribe(function (val) {
             var s1 = _this.http.getMessaggeList(val.token_value, "0", "0", "I").subscribe(function (res) {
                 console.log(res);
@@ -2201,6 +2530,8 @@ var MessaggiPage = /** @class */ (function () {
         this.store.getUserData();
     };
     MessaggiPage.prototype.back = function () {
+        this.menuCtrl.enable(false, 'messaggi');
+        this.menuCtrl.enable(true, 'home');
         this.navCtrl.pop();
     };
     MessaggiPage.prototype.goToDetails = function (mess) {
@@ -2267,7 +2598,7 @@ var MessaggiPage = /** @class */ (function () {
     };
     MessaggiPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_7__angular_core__["m" /* Component */])({
-            selector: 'messaggi',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\messaggi\messaggi.html"*/'<ion-header>\n\n    <ion-navbar hideBackButton>\n\n        <ion-buttons left>\n\n            <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n          </ion-buttons>\n\n      <ion-buttons right>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n      </ion-buttons>\n\n      \n\n      <ion-title >\n\n        <div class="text-default">MESSAGGI</div>\n\n      </ion-title>\n\n      \n\n    </ion-navbar>\n\n\n\n  </ion-header>\n\n  \n\n  <!--<ion-menu type="overlay" id="messaggi" [content]="mycontent1">\n\n      <ion-content>\n\n        <ion-list>\n\n        <ion-item (click)="goTonuovoMessaggio()"> Nuovo </ion-item>\n\n        <ion-item (click)="goToUscitaMessaggi()"> Uscita </ion-item>\n\n        <ion-item (click)="goToImportantiMessaggi()">Importanti</ion-item>\n\n        <ion-item (click)="goToCestinoMessaggio()" >Cestino</ion-item>\n\n        <ion-item menuClose detail-none>Nuovo messaggio</ion-item>\n\n        </ion-list>\n\n      </ion-content>\n\n      </ion-menu>\n\n    <ion-nav #mycontent1 [root]="rootPage" ></ion-nav>-->\n\n\n\n  <ion-content>\n\n      <button ion-button menuToggle>Toggle Menu</button>\n\n      <button ion-button (click)="goTonuovoMessaggio()">Nuovo</button>\n\n      <button ion-button (click)="goToUscitaMessaggi()">Uscita</button>\n\n      <button ion-button (click)="goToImportantiMessaggi()">Importanti</button>\n\n      <button ion-button (click)="goToCestinoMessaggio()">Cestino</button>\n\n       <!--<div *ngFor="let mess of messFull">\n\n         <ion-card   (click)="goToDetails(mess)">\n\n            <ion-card-content >\n\n              <h1 >\n\n                {{mess.cognome_mit}}\n\n              </h1>\n\n              <p>\n\n              {{mess.soggetto}}\n\n              </p>\n\n            </ion-card-content>\n\n          </ion-card>-->\n\n\n\n          <ion-list >\n\n              \n\n              <ion-item class="list-group-item" *ngFor="let mess of messFull"  >\n\n                  \n\n                  <div class=" box item" >\n\n                      <ion-icon name="eye" (click)="goToDetails(mess)"></ion-icon>\n\n                      <ion-icon name="checkbox"></ion-icon>\n\n                      <ion-icon name="star-outline" *ngIf="mess.preferito==\'\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n                      <ion-icon name="star-outline" *ngIf="mess.preferito==\'N\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n                      <ion-icon name="star" *ngIf="mess.preferito==\'S\'" (click)="setStar(mess,\'N\')"></ion-icon>\n\n                      <ion-icon name="trash" (click)="deleteConfirm(mess)"></ion-icon>\n\n                      <!--<div  class="user-small contact-small">\n\n                        <img  src="{{mess.url_avatar}}">\n\n                      </div>-->\n\n                    </div>\n\n                    <div class=" box brief contact-small ">\n\n                      <h5 class="name ">{{mess.cognome_mit}} {{mess.nome_mit}}</h5>\n\n                      <p class="text ">{{mess.soggetto}}</p>\n\n                      <i class="fa fa-mobile device"></i>\n\n                    </div>\n\n                    <div class="box data">\n\n                      {{mess.data}}\n\n                    </div>\n\n                </ion-item>\n\n        </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\messaggi\messaggi.html"*/
+            selector: 'messaggi',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\messaggi\messaggi.html"*/'<ion-header>\n\n    <ion-navbar hideBackButton>\n\n        <ion-buttons left>\n\n            <button ion-button menuToggle><ion-icon ></ion-icon></button>\n\n          </ion-buttons>\n\n      <ion-buttons right>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n      </ion-buttons>\n\n      \n\n      <ion-title >\n\n        <div class="text-default">MESSAGGI</div>\n\n      </ion-title>\n\n      \n\n    </ion-navbar>\n\n\n\n  </ion-header>\n\n  \n\n  <ion-menu type="overlay" id="messaggi" [content]="mycontent1">\n\n      <ion-content>\n\n        <ion-list>\n\n        <ion-item (click)="goTonuovoMessaggio()"> Nuovo </ion-item>\n\n        <ion-item (click)="goToUscitaMessaggi()"> Uscita </ion-item>\n\n        <ion-item (click)="goToImportantiMessaggi()">Importanti</ion-item>\n\n        <ion-item (click)="goToCestinoMessaggio()" >Cestino</ion-item>\n\n        <ion-item menuClose detail-none>Chiudi menu</ion-item>\n\n        </ion-list>\n\n      </ion-content>\n\n      </ion-menu>\n\n    <ion-nav #mycontent1 [root]="rootPage" ></ion-nav>\n\n\n\n  <ion-content>\n\n      <button ion-button menuToggle>Toggle Menu</button>\n\n      <!--<button ion-button (click)="goTonuovoMessaggio()">Nuovo</button>\n\n      <button ion-button (click)="goToUscitaMessaggi()">Uscita</button>\n\n      <button ion-button (click)="goToImportantiMessaggi()">Importanti</button>\n\n      <button ion-button (click)="goToCestinoMessaggio()">Cestino</button>-->\n\n       <!--<div *ngFor="let mess of messFull">\n\n         <ion-card   (click)="goToDetails(mess)">\n\n            <ion-card-content >\n\n              <h1 >\n\n                {{mess.cognome_mit}}\n\n              </h1>\n\n              <p>\n\n              {{mess.soggetto}}\n\n              </p>\n\n            </ion-card-content>\n\n          </ion-card>-->\n\n\n\n          <ion-list >\n\n              \n\n              <ion-item class="list-group-item" *ngFor="let mess of messFull"  >\n\n                  \n\n                  <div class=" box item" >\n\n                      <ion-icon name="eye" (click)="goToDetails(mess)"></ion-icon>\n\n                      <ion-icon name="checkbox"></ion-icon>\n\n                      <ion-icon name="star-outline" *ngIf="mess.preferito==\'\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n                      <ion-icon name="star-outline" *ngIf="mess.preferito==\'N\'" (click)="setStar(mess,\'S\')"></ion-icon>\n\n                      <ion-icon name="star" *ngIf="mess.preferito==\'S\'" (click)="setStar(mess,\'N\')"></ion-icon>\n\n                      <ion-icon name="trash" (click)="deleteConfirm(mess)"></ion-icon>\n\n                      <!--<div  class="user-small contact-small">\n\n                        <img  src="{{mess.url_avatar}}">\n\n                      </div>-->\n\n                    </div>\n\n                    <div class=" box brief contact-small ">\n\n                      <h5 class="name ">{{mess.cognome_mit}} {{mess.nome_mit}}</h5>\n\n                      <p class="text ">{{mess.soggetto}}</p>\n\n                      <i class="fa fa-mobile device"></i>\n\n                    </div>\n\n                    <div class="box data">\n\n                      {{mess.data}}\n\n                    </div>\n\n                </ion-item>\n\n        </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\messaggi\messaggi.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_6_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_6_ionic_angular__["h" /* MenuController */],
             __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__["a" /* StoreService */], __WEBPACK_IMPORTED_MODULE_3__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_6_ionic_angular__["b" /* AlertController */]])
@@ -2278,14 +2609,14 @@ var MessaggiPage = /** @class */ (function () {
 //# sourceMappingURL=messaggi.js.map
 
 /***/ }),
-/* 124 */
+/* 129 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__news_details_news_details__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__news_details_news_details__ = __webpack_require__(65);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2315,7 +2646,7 @@ var NewsPage = /** @class */ (function () {
     };
     NewsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'news',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\news\news.html"*/'<ion-header>\n\n    <ion-navbar hideBackButton>\n\n      <ion-buttons left>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n      </ion-buttons>\n\n      <ion-buttons end>\n\n        <button><ion-icon class="icon-button" name="news" class="nav-icon text-default"></ion-icon></button>\n\n      </ion-buttons>\n\n      <ion-title >\n\n        <div class="text-default">News</div>\n\n      </ion-title>\n\n      \n\n    </ion-navbar>\n\n  </ion-header>\n\n  <ion-content>\n\n    <div *ngFor="let news of newsFull">\n\n      <ion-card  class="border-green" *ngIf="news.dn_letta==\'N\'" (click)="goToDetails(news)">\n\n        <ion-card-content >\n\n          <h1 >\n\n            {{news.nw_titolo}}\n\n          </h1>\n\n          <p>\n\n          {{news.nw_descrizione}}\n\n          </p>\n\n        </ion-card-content>\n\n      </ion-card>\n\n      <ion-card  class="border-blue" *ngIf="news.dn_letta!=\'N\'" (click)="goToDetails(news)">\n\n          <ion-card-content >\n\n            <h1 >\n\n              {{news.nw_titolo}}\n\n            </h1>\n\n            <p>\n\n            {{news.nw_descrizione}}\n\n            </p>\n\n          </ion-card-content>\n\n        </ion-card>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\news\news.html"*/
+            selector: 'news',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\news\news.html"*/'<ion-header>\n\n    <ion-navbar hideBackButton>\n\n      <ion-buttons left>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n      </ion-buttons>\n\n      <ion-buttons end>\n\n        <button><ion-icon class="icon-button" name="news" class="nav-icon text-default"></ion-icon></button>\n\n      </ion-buttons>\n\n      <ion-title >\n\n        <div class="text-default">News</div>\n\n      </ion-title>\n\n      \n\n    </ion-navbar>\n\n  </ion-header>\n\n  <ion-content>\n\n    <div *ngFor="let news of newsFull">\n\n      <ion-card  class="border-green" *ngIf="news.dn_letta==\'N\'" (click)="goToDetails(news)">\n\n        <ion-card-content >\n\n          <h1 >\n\n            {{news.nw_titolo}}\n\n          </h1>\n\n          <p>\n\n          {{news.nw_descrizione}}\n\n          </p>\n\n        </ion-card-content>\n\n      </ion-card>\n\n      <ion-card  class="border-blue" *ngIf="news.dn_letta!=\'N\'" (click)="goToDetails(news)">\n\n          <ion-card-content >\n\n            <h1 >\n\n              {{news.nw_titolo}}\n\n            </h1>\n\n            <p>\n\n            {{news.nw_descrizione}}\n\n            </p>\n\n          </ion-card-content>\n\n        </ion-card>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\news\news.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["j" /* NavParams */]])
     ], NewsPage);
@@ -2325,17 +2656,17 @@ var NewsPage = /** @class */ (function () {
 //# sourceMappingURL=news.js.map
 
 /***/ }),
-/* 125 */
+/* 130 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactDetailsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_contact_contact_service__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_contact_contact_namespace__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_contact_contact_service__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_contact_contact_namespace__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_email_composer__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_email_composer__ = __webpack_require__(245);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2447,7 +2778,7 @@ var ContactDetailsPage = /** @class */ (function () {
     };
     ContactDetailsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
-            selector: 'page-contact-details',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\contact-details\contact-details.html"*/'<!--<ion-header>\n\n<ion-navbar hideBackButton>\n\n  <ion-buttons left>\n\n    <button (click)="back()" ion-button icon-left clear small>\n\n      <ion-icon name="arrow-back"></ion-icon>\n\n    </button>\n\n    </ion-buttons>\n\n    <ion-title>\n\n      Rubrica\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-item>\n\n        <img src={{contact.dipendente.url_avatar}} class="avatar-img">\n\n        <h1>{{contact.dipendente.nome}} {{contact.dipendente.cognome}}</h1>\n\n        <ion-grid>\n\n          <ion-row>\n\n          <ion-col class="propretyName">N° INTERNO </ion-col>\n\n          <ion-col class="proprety">{{contact.dipendente.matricola}}</ion-col>\n\n          </ion-row>\n\n          <ion-row>\n\n              <ion-col class="propretyName">RUOLO AZIENDALE  </ion-col>\n\n              <ion-col class="proprety">{{contact.dipendente.ruolo_aziendale}}</ion-col>\n\n          </ion-row>\n\n          <ion-row>\n\n              <ion-col class="propretyName">DIVISIONE </ion-col>\n\n              <ion-col class="proprety">{{contact.dipendente.divisione}}</ion-col>\n\n            </ion-row>\n\n        </ion-grid>\n\n        <div (click)="presentConfirmCall()" class="mailtel"><ion-icon name="call"></ion-icon>{{contact.dipendente.telefono}}</div>\n\n        <div (click)="presentConfirmEmail()" class="mailtel"><ion-icon name="mail"></ion-icon>{{contact.dipendente.email}}</div>\n\n  </ion-item>\n\n</ion-content>-->\n\n\n\n<ion-header>\n\n    <ion-navbar hideBackButton>\n\n      <ion-buttons left>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n        </ion-buttons>\n\n        <ion-title>\n\n          <div class="text-default" >RUBRICA</div>\n\n        </ion-title>\n\n        <ion-buttons end>\n\n            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>\n\n          </ion-buttons>\n\n      </ion-navbar>\n\n    </ion-header>\n\n    <ion-content>\n\n\n\n      <div class="userData text-center">\n\n        <div class="user-bigger  mt-5 mb-3 addBook marginleftimm">\n\n          <img  src={{contact.dipendente.url_avatar}}>\n\n        </div>\n\n        <h5 class="name">{{contact.dipendente.nome}} {{contact.dipendente.cognome}}</h5>\n\n        <p class="role">{{contact.dipendente.ruolo_aziendale}}</p>\n\n      \n\n        <table class="roleInfo marginleftinfo">\n\n          <tr>\n\n            <td class="text-left">\n\n              N° interno\n\n            </td>\n\n            <td class="text-right">\n\n                {{contact.dipendente.matricola}}\n\n            </td>\n\n          </tr>\n\n          <tr>\n\n            <td class="text-left">\n\n              Ruolo aziendale\n\n            </td>\n\n            <td class="text-right">\n\n                {{contact.dipendente.ruolo_aziendale}}\n\n            </td>\n\n          </tr>\n\n          <tr>\n\n            <td class="text-left">\n\n              Mansione\n\n            </td>\n\n            <td class="text-right">\n\n                {{contact.dipendente.ruolo_aziendale}}\n\n            </td>\n\n          </tr>\n\n        </table>\n\n        <table class="contacts mt-5 mb-5 align-middle marginleftcom">\n\n          <tr (click)="presentConfirmEmail()">\n\n            <td class="text-left">\n\n                <ion-icon name="call"></ion-icon>\n\n            </td>\n\n            <td class="text-right">\n\n              <span>{{contact.dipendente.telefono}}</span>\n\n            </td>\n\n          </tr>\n\n          <tr (click)="presentConfirmCall()">\n\n            <td class="text-left">\n\n                <ion-icon name="mail"></ion-icon>\n\n      \n\n            </td>\n\n            <td class="text-right" >\n\n                {{contact.dipendente.email}}\n\n            </td>\n\n          </tr>\n\n        </table>\n\n        <a href="#" class="btn btn-custom btn-sm">DIPENDENZA GERARCHICA</a>\n\n  </div>\n\n  \n\n\n\n\n\n    </ion-content>\n\n\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\contact-details\contact-details.html"*/
+            selector: 'page-contact-details',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\contact-details\contact-details.html"*/'<!--<ion-header>\n\n<ion-navbar hideBackButton>\n\n  <ion-buttons left>\n\n    <button (click)="back()" ion-button icon-left clear small>\n\n      <ion-icon name="arrow-back"></ion-icon>\n\n    </button>\n\n    </ion-buttons>\n\n    <ion-title>\n\n      Rubrica\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-item>\n\n        <img src={{contact.dipendente.url_avatar}} class="avatar-img">\n\n        <h1>{{contact.dipendente.nome}} {{contact.dipendente.cognome}}</h1>\n\n        <ion-grid>\n\n          <ion-row>\n\n          <ion-col class="propretyName">N° INTERNO </ion-col>\n\n          <ion-col class="proprety">{{contact.dipendente.matricola}}</ion-col>\n\n          </ion-row>\n\n          <ion-row>\n\n              <ion-col class="propretyName">RUOLO AZIENDALE  </ion-col>\n\n              <ion-col class="proprety">{{contact.dipendente.ruolo_aziendale}}</ion-col>\n\n          </ion-row>\n\n          <ion-row>\n\n              <ion-col class="propretyName">DIVISIONE </ion-col>\n\n              <ion-col class="proprety">{{contact.dipendente.divisione}}</ion-col>\n\n            </ion-row>\n\n        </ion-grid>\n\n        <div (click)="presentConfirmCall()" class="mailtel"><ion-icon name="call"></ion-icon>{{contact.dipendente.telefono}}</div>\n\n        <div (click)="presentConfirmEmail()" class="mailtel"><ion-icon name="mail"></ion-icon>{{contact.dipendente.email}}</div>\n\n  </ion-item>\n\n</ion-content>-->\n\n\n\n<ion-header>\n\n    <ion-navbar hideBackButton>\n\n      <ion-buttons left>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n        </ion-buttons>\n\n        <ion-title>\n\n          <div class="text-default" >RUBRICA</div>\n\n        </ion-title>\n\n        <ion-buttons end>\n\n            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>\n\n          </ion-buttons>\n\n      </ion-navbar>\n\n    </ion-header>\n\n    <ion-content>\n\n\n\n      <div class="userData text-center">\n\n        <div class="user-bigger  mt-5 mb-3 addBook marginleftimm">\n\n          <img  src={{contact.dipendente.url_avatar}}>\n\n        </div>\n\n        <h5 class="name">{{contact.dipendente.nome}} {{contact.dipendente.cognome}}</h5>\n\n        <p class="role">{{contact.dipendente.ruolo_aziendale}}</p>\n\n      \n\n        <table class="roleInfo marginleftinfo">\n\n          <tr>\n\n            <td class="text-left">\n\n              N° interno\n\n            </td>\n\n            <td class="text-right">\n\n                {{contact.dipendente.matricola}}\n\n            </td>\n\n          </tr>\n\n          <tr>\n\n            <td class="text-left">\n\n              Ruolo aziendale\n\n            </td>\n\n            <td class="text-right">\n\n                {{contact.dipendente.ruolo_aziendale}}\n\n            </td>\n\n          </tr>\n\n          <tr>\n\n            <td class="text-left">\n\n              Mansione\n\n            </td>\n\n            <td class="text-right">\n\n                {{contact.dipendente.ruolo_aziendale}}\n\n            </td>\n\n          </tr>\n\n        </table>\n\n        <table class="contacts mt-5 mb-5 align-middle marginleftcom">\n\n          <tr (click)="presentConfirmEmail()">\n\n            <td class="text-left">\n\n                <ion-icon name="call"></ion-icon>\n\n            </td>\n\n            <td class="text-right">\n\n              <span>{{contact.dipendente.telefono}}</span>\n\n            </td>\n\n          </tr>\n\n          <tr (click)="presentConfirmCall()">\n\n            <td class="text-left">\n\n                <ion-icon name="mail"></ion-icon>\n\n      \n\n            </td>\n\n            <td class="text-right" >\n\n                {{contact.dipendente.email}}\n\n            </td>\n\n          </tr>\n\n        </table>\n\n        <a href="#" class="btn btn-custom btn-sm">DIPENDENZA GERARCHICA</a>\n\n  </div>\n\n  \n\n\n\n\n\n    </ion-content>\n\n\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\contact-details\contact-details.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_0__services_contact_contact_service__["a" /* ContactService */],
             __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__["a" /* CallNumber */],
@@ -2459,55 +2790,15 @@ var ContactDetailsPage = /** @class */ (function () {
 //# sourceMappingURL=contact-details.js.map
 
 /***/ }),
-/* 126 */,
-/* 127 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ErrorService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__ = __webpack_require__(144);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var ErrorService = /** @class */ (function () {
-    function ErrorService(http) {
-        this.http = http;
-    }
-    /**public sendError(url: string) : Observable<Error.ErrorResponse>{
-        return this.http.get<Error.ErrorResponse>(url);
-    }*/
-    ErrorService.prototype.sendError = function (data) {
-    };
-    ErrorService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
-    ], ErrorService);
-    return ErrorService;
-}());
-
-//# sourceMappingURL=error.service.js.map
-
-/***/ }),
-/* 128 */
+/* 131 */,
+/* 132 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePrioModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_prio_home_prio__ = __webpack_require__(242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_prio_home_prio__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2533,16 +2824,16 @@ var HomePrioModule = /** @class */ (function () {
 //# sourceMappingURL=home-prio.module.js.map
 
 /***/ }),
-/* 129 */
+/* 133 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoadingPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_store_store_service__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_login__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_login__ = __webpack_require__(69);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2596,7 +2887,7 @@ var LoadingPage = /** @class */ (function () {
     };
     LoadingPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-loading',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\loading\loading.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>loading</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n  <!--<ion-spinner name="bubbles"></ion-spinner>-->\n</ion-content>\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\loading\loading.html"*/,
+            selector: 'page-loading',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\loading\loading.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>loading</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content >\n\n  <!--<ion-spinner name="bubbles"></ion-spinner>-->\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\loading\loading.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */],
@@ -2608,19 +2899,19 @@ var LoadingPage = /** @class */ (function () {
 //# sourceMappingURL=loading.js.map
 
 /***/ }),
-/* 130 */
+/* 134 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfiloPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ionic_native_file_transfer__ = __webpack_require__(246);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_login_login_service__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ionic_native_file_transfer__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_login_login_service__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_store_store_service__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_contact_contact_service__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_contact_contact_namespace__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_contact_contact_service__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_contact_contact_namespace__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_camera__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_camera__ = __webpack_require__(251);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2736,7 +3027,7 @@ var ProfiloPage = /** @class */ (function () {
     };
     ProfiloPage = ProfiloPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["m" /* Component */])({
-            selector: 'page-profilo',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\profilo\profilo.html"*/'<ion-header>\n\n    <ion-navbar hideBackButton>\n\n      <ion-buttons left>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n        </ion-buttons>\n\n        <ion-title>\n\n          <div class="text-default" >PROFILO</div>\n\n        </ion-title>\n\n        <ion-buttons end>\n\n            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>\n\n          </ion-buttons>\n\n      </ion-navbar>\n\n    </ion-header>\n\n    <ion-content>\n\n      <!--<ion-item>\n\n            <img src={{user.dipendente.url_avatar}} class="avatar-img"  (click)="presentActionSheet()">\n\n            <ion-icon class="change-img-ico" name="camera" (click)="presentActionSheet()" ></ion-icon>\n\n            <h1>{{user.dipendente.nome}} {{user.dipendente.cognome}}</h1>\n\n            <ion-grid>\n\n              <ion-row>\n\n              <ion-col class="propretyName">RUOLO </ion-col>\n\n              <ion-col class="proprety">{{user.dipendente.ruolo_aziendale}}</ion-col>\n\n              </ion-row>\n\n              <ion-row>\n\n                  <ion-col class="propretyName">UFFICIO </ion-col>\n\n                  <ion-col class="proprety">{{user.dipendente.ufficio}}</ion-col>\n\n              </ion-row>\n\n              <ion-row>\n\n                  <ion-col class="propretyName">RESPONSABILE </ion-col>\n\n                  <ion-col class="proprety">{{user.dipendente.nome_resp_divisione}}</ion-col>\n\n              </ion-row>\n\n              <ion-row>\n\n                <ion-col class="propretyName">SEDE ASSUNZIONE </ion-col>\n\n                <ion-col class="proprety"></ion-col>\n\n              </ion-row>\n\n              <ion-row>\n\n                  <ion-col class="propretyName">SEDE OPERATIVA </ion-col>\n\n                  <ion-col class="proprety"></ion-col>\n\n              </ion-row>\n\n            </ion-grid>\n\n      </ion-item>-->\n\n\n\n\n\n              <div class="userData text-center">\n\n                <div class="user-bigger  mt-5 mb-3 addBook marginleftimm">\n\n                  <img (click)="presentActionSheet()" src={{user.dipendente.url_avatar}}>\n\n                </div>\n\n                <h5 class="name">{{user.dipendente.nome}} {{user.dipendente.cognome}}</h5>\n\n                <p class="role">{{user.dipendente.ruolo_aziendale}}</p>\n\n              \n\n                <table class="roleInfo marginleftinfo">\n\n                  <tr>\n\n                    <td class="text-left">\n\n                      N° interno\n\n                    </td>\n\n                    <td class="text-right">\n\n                        {{user.dipendente.matricola}}\n\n                    </td>\n\n                  </tr>\n\n                  <tr>\n\n                    <td class="text-left">\n\n                      Ruolo aziendale\n\n                    </td>\n\n                    <td class="text-right">\n\n                        {{user.dipendente.ruolo_aziendale}}\n\n                    </td>\n\n                  </tr>\n\n                  <tr>\n\n                    <td class="text-left">\n\n                      Mansione\n\n                    </td>\n\n                    <td class="text-right">\n\n                        {{user.dipendente.ruolo_aziendale}}\n\n                    </td>\n\n                  </tr>\n\n                </table>\n\n                <table class="contacts mt-5 mb-5 align-middle marginleftcom">\n\n                  <tr>\n\n                    <td class="text-left">\n\n                        <ion-icon name="call"></ion-icon>\n\n                    </td>\n\n                    <td class="text-right">\n\n                      <span>{{user.dipendente.telefono}}</span>\n\n                    </td>\n\n                  </tr>\n\n                  <tr>\n\n                    <td class="text-left">\n\n                        <ion-icon name="mail"></ion-icon>\n\n              \n\n                    </td>\n\n                    <td class="text-right">\n\n                        {{user.dipendente.email}}\n\n                    </td>\n\n                  </tr>\n\n                </table>\n\n                <a href="#" class="btn btn-custom btn-sm">DIPENDENZA GERARCHICA</a>\n\n          </div>\n\n  \n\n\n\n\n\n    </ion-content>\n\n\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\profilo\profilo.html"*/
+            selector: 'page-profilo',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\profilo\profilo.html"*/'<ion-header>\n\n    <ion-navbar hideBackButton>\n\n      <ion-buttons left>\n\n        <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n        </button>\n\n        </ion-buttons>\n\n        <ion-title>\n\n          <div class="text-default" >PROFILO</div>\n\n        </ion-title>\n\n        <ion-buttons end>\n\n            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>\n\n          </ion-buttons>\n\n      </ion-navbar>\n\n    </ion-header>\n\n    <ion-content>\n\n      <!--<ion-item>\n\n            <img src={{user.dipendente.url_avatar}} class="avatar-img"  (click)="presentActionSheet()">\n\n            <ion-icon class="change-img-ico" name="camera" (click)="presentActionSheet()" ></ion-icon>\n\n            <h1>{{user.dipendente.nome}} {{user.dipendente.cognome}}</h1>\n\n            <ion-grid>\n\n              <ion-row>\n\n              <ion-col class="propretyName">RUOLO </ion-col>\n\n              <ion-col class="proprety">{{user.dipendente.ruolo_aziendale}}</ion-col>\n\n              </ion-row>\n\n              <ion-row>\n\n                  <ion-col class="propretyName">UFFICIO </ion-col>\n\n                  <ion-col class="proprety">{{user.dipendente.ufficio}}</ion-col>\n\n              </ion-row>\n\n              <ion-row>\n\n                  <ion-col class="propretyName">RESPONSABILE </ion-col>\n\n                  <ion-col class="proprety">{{user.dipendente.nome_resp_divisione}}</ion-col>\n\n              </ion-row>\n\n              <ion-row>\n\n                <ion-col class="propretyName">SEDE ASSUNZIONE </ion-col>\n\n                <ion-col class="proprety"></ion-col>\n\n              </ion-row>\n\n              <ion-row>\n\n                  <ion-col class="propretyName">SEDE OPERATIVA </ion-col>\n\n                  <ion-col class="proprety"></ion-col>\n\n              </ion-row>\n\n            </ion-grid>\n\n      </ion-item>-->\n\n\n\n\n\n              <div class="userData text-center">\n\n                <div class="user-bigger  mt-5 mb-3 addBook marginleftimm">\n\n                  <img (click)="presentActionSheet()" src={{user.dipendente.url_avatar}}>\n\n                </div>\n\n                <h5 class="name">{{user.dipendente.nome}} {{user.dipendente.cognome}}</h5>\n\n                <p class="role">{{user.dipendente.ruolo_aziendale}}</p>\n\n              \n\n                <table class="roleInfo marginleftinfo">\n\n                  <tr>\n\n                    <td class="text-left">\n\n                      N° interno\n\n                    </td>\n\n                    <td class="text-right">\n\n                        {{user.dipendente.matricola}}\n\n                    </td>\n\n                  </tr>\n\n                  <tr>\n\n                    <td class="text-left">\n\n                      Ruolo aziendale\n\n                    </td>\n\n                    <td class="text-right">\n\n                        {{user.dipendente.ruolo_aziendale}}\n\n                    </td>\n\n                  </tr>\n\n                  <tr>\n\n                    <td class="text-left">\n\n                      Mansione\n\n                    </td>\n\n                    <td class="text-right">\n\n                        {{user.dipendente.ruolo_aziendale}}\n\n                    </td>\n\n                  </tr>\n\n                </table>\n\n                <table class="contacts mt-5 mb-5 align-middle marginleftcom">\n\n                  <tr>\n\n                    <td class="text-left">\n\n                        <ion-icon name="call"></ion-icon>\n\n                    </td>\n\n                    <td class="text-right">\n\n                      <span>{{user.dipendente.telefono}}</span>\n\n                    </td>\n\n                  </tr>\n\n                  <tr>\n\n                    <td class="text-left">\n\n                        <ion-icon name="mail"></ion-icon>\n\n              \n\n                    </td>\n\n                    <td class="text-right">\n\n                        {{user.dipendente.email}}\n\n                    </td>\n\n                  </tr>\n\n                </table>\n\n                <a href="#" class="btn btn-custom btn-sm">DIPENDENZA GERARCHICA</a>\n\n          </div>\n\n  \n\n\n\n\n\n    </ion-content>\n\n\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\profilo\profilo.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_6_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_1__services_login_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_3__services_contact_contact_service__["a" /* ContactService */], __WEBPACK_IMPORTED_MODULE_0__ionic_native_file_transfer__["a" /* FileTransfer */],
@@ -2752,17 +3043,17 @@ var ProfiloPage = /** @class */ (function () {
 //# sourceMappingURL=profilo.js.map
 
 /***/ }),
-/* 131 */,
-/* 132 */,
-/* 133 */,
-/* 134 */,
 /* 135 */,
 /* 136 */,
 /* 137 */,
 /* 138 */,
 /* 139 */,
 /* 140 */,
-/* 141 */
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -2775,48 +3066,7 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 141;
-
-/***/ }),
-/* 142 */,
-/* 143 */,
-/* 144 */,
-/* 145 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CheckService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var CheckService = /** @class */ (function () {
-    function CheckService(http) {
-        this.http = http;
-    }
-    /**public sendError(url: string) : Observable<Error.ErrorResponse>{
-        return this.http.get<Error.ErrorResponse>(url);
-    }*/
-    CheckService.prototype.checkToken = function (token) {
-        return this.http.get("http://allinappws.mesys.it/services/checktoken/" + token);
-    };
-    CheckService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
-    ], CheckService);
-    return CheckService;
-}());
-
-//# sourceMappingURL=check.service.js.map
+webpackEmptyAsyncContext.id = 145;
 
 /***/ }),
 /* 146 */,
@@ -2859,7 +3109,10 @@ var CheckService = /** @class */ (function () {
 /* 183 */,
 /* 184 */,
 /* 185 */,
-/* 186 */
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -2872,12 +3125,9 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 186;
+webpackEmptyAsyncContext.id = 189;
 
 /***/ }),
-/* 187 */,
-/* 188 */,
-/* 189 */,
 /* 190 */,
 /* 191 */,
 /* 192 */,
@@ -2914,16 +3164,57 @@ webpackEmptyAsyncContext.id = 186;
 /* 223 */,
 /* 224 */,
 /* 225 */,
-/* 226 */
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CheckService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CheckService = /** @class */ (function () {
+    function CheckService(http) {
+        this.http = http;
+    }
+    /**public sendError(url: string) : Observable<Error.ErrorResponse>{
+        return this.http.get<Error.ErrorResponse>(url);
+    }*/
+    CheckService.prototype.checkToken = function (token) {
+        return this.http.get("http://allinappws.mesys.it/services/checktoken/" + token);
+    };
+    CheckService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+    ], CheckService);
+    return CheckService;
+}());
+
+//# sourceMappingURL=check.service.js.map
+
+/***/ }),
+/* 230 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CircolariCardPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__circolari_details_circolari_details__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__circolari_circolari__ = __webpack_require__(118);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_comunicazione_comunicazione_namespace__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_shared_http_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__circolari_details_circolari_details__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__circolari_circolari__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_comunicazione_comunicazione_namespace__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_store_store_service__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2975,7 +3266,7 @@ var CircolariCardPage = /** @class */ (function () {
     };
     CircolariCardPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["m" /* Component */])({
-            selector: 'circolari-card',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\circolari-card\circolari-card.html"*/'<div class="card card-large">\n\n    <div class="card-header bg-comm text-header text-white" (click)="goToCircolari()" >Circolari</div>\n\n    <div class="card-body">\n\n        \n\n        <ul class="list-group list-group-flush comm " >\n\n            <home-com  *ngFor="let data of comunicazioniMin" [data] = "data" (click)="goToDetails(data)" >\n\n            </home-com>\n\n        </ul>\n\n\n\n    </div>\n\n</div>'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\circolari-card\circolari-card.html"*/
+            selector: 'circolari-card',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\circolari-card\circolari-card.html"*/'<div class="card card-large">\n\n    <div class="card-header bg-comm text-header text-white" (click)="goToCircolari()" >Circolari</div>\n\n    <div class="card-body">\n\n        \n\n        <ul class="list-group list-group-flush comm " >\n\n            <home-com  *ngFor="let data of comunicazioniMin" [data] = "data" (click)="goToDetails(data)" >\n\n            </home-com>\n\n        </ul>\n\n\n\n    </div>\n\n</div>'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\circolari-card\circolari-card.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_6__services_store_store_service__["a" /* StoreService */]])
     ], CircolariCardPage);
@@ -2985,15 +3276,15 @@ var CircolariCardPage = /** @class */ (function () {
 //# sourceMappingURL=circolari-card.js.map
 
 /***/ }),
-/* 227 */
+/* 231 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CircolariCardModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_circolari_card_circolari_card__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_com_home_com_module__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_circolari_card_circolari_card__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_com_home_com_module__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3020,13 +3311,13 @@ var CircolariCardModule = /** @class */ (function () {
 //# sourceMappingURL=circolari-card.module.js.map
 
 /***/ }),
-/* 228 */
+/* 232 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_comunicazione_comunicazione_namespace__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_comunicazione_comunicazione_namespace__ = __webpack_require__(48);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3079,7 +3370,7 @@ var HomeComPage = /** @class */ (function () {
     ], HomeComPage.prototype, "data", void 0);
     HomeComPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'home-com',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\home-com\home-com.html"*/'<li class="list-group-item">\n\n	<div class="item">\n\n		<span class="day">{{giorno}}</span>\n\n		<span class="mounth">{{mese}}</span>\n\n	</div>\n\n	<div class="brief">\n\n		<h5 class="title">{{data.cm_titolo}}</h5>\n\n		<p class="text">{{data.cm_descrizione}}</p>\n\n	</div>\n\n</li>'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\home-com\home-com.html"*/
+            selector: 'home-com',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\home-com\home-com.html"*/'<li class="list-group-item">\n\n	<div class="item">\n\n		<span class="day">{{giorno}}</span>\n\n		<span class="mounth">{{mese}}</span>\n\n	</div>\n\n	<div class="brief">\n\n		<h5 class="title">{{data.cm_titolo}}</h5>\n\n		<p class="text">{{data.cm_descrizione}}</p>\n\n	</div>\n\n</li>'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\home-com\home-com.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], HomeComPage);
@@ -3089,12 +3380,12 @@ var HomeComPage = /** @class */ (function () {
 //# sourceMappingURL=home-com.js.map
 
 /***/ }),
-/* 229 */
+/* 233 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeMessPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_messaggi_messaggi_namespace__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_messaggi_messaggi_namespace__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3118,7 +3409,7 @@ var HomeMessPage = /** @class */ (function () {
     ], HomeMessPage.prototype, "data", void 0);
     HomeMessPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'home-mess',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\home-mess\home-mess.html"*/'\n\n<li class="list-group-item" >\n\n	<div class="item">\n\n		<i class="fa fa-bell "><ion-icon  name="flash"></ion-icon></i>\n\n	</div>\n\n	<div class="brief">\n\n		<h5>{{data.nome_mit}} {{data.cognome_mit}}</h5>\n\n		<p>{{data.soggetto}}</p>\n\n	</div>\n\n</li>\n\n			'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\home-mess\home-mess.html"*/
+            selector: 'home-mess',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\home-mess\home-mess.html"*/'\n\n<li class="list-group-item" >\n\n	<div class="item">\n\n		<i class="fa fa-bell "><ion-icon  name="flash"></ion-icon></i>\n\n	</div>\n\n	<div class="brief">\n\n		<h5>{{data.nome_mit}} {{data.cognome_mit}}</h5>\n\n		<p>{{data.soggetto}}</p>\n\n	</div>\n\n</li>\n\n			'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\home-mess\home-mess.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], HomeMessPage);
@@ -3128,15 +3419,15 @@ var HomeMessPage = /** @class */ (function () {
 //# sourceMappingURL=home-mess.js.map
 
 /***/ }),
-/* 230 */
+/* 234 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessaggiCardPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__messaggi_details_messaggi_details__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__messaggi_messaggi__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_shared_http_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__messaggi_messaggi__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_store_store_service__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -3155,10 +3446,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var MessaggiCardPage = /** @class */ (function () {
-    function MessaggiCardPage(navCtrl, http, store) {
+    function MessaggiCardPage(navCtrl, http, store, menuCtrl) {
         this.navCtrl = navCtrl;
         this.http = http;
         this.store = store;
+        this.menuCtrl = menuCtrl;
         this.messFull = [];
         this.messMin = [];
     }
@@ -3206,15 +3498,17 @@ var MessaggiCardPage = /** @class */ (function () {
     MessaggiCardPage.prototype.goToMessaggi = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_1__messaggi_messaggi__["a" /* MessaggiPage */], { messFull: this.messFull });
         //this.navCtrl.setRoot(MessaggiPage);
+        this.menuCtrl.enable(false, 'home');
     };
     MessaggiCardPage.prototype.goToDetails = function (mess) {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_0__messaggi_details_messaggi_details__["a" /* MessaggiDetailsPage */], { mess: mess });
     };
     MessaggiCardPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["m" /* Component */])({
-            selector: 'messaggi-card',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\messaggi-card\messaggi-card.html"*/'<div class="card" >\n\n    <div class="card-header bg-comm text-header text-white" (click)="goToMessaggi()">Messaggi</div>\n\n    <div class="card-body">\n\n        <ul class="list-group list-group-flush priority" >\n\n            <home-mess *ngFor="let data of messMin" [data] = "data" (click)="goToDetails(data)" >\n\n            </home-mess>\n\n        </ul>\n\n    </div>\n\n</div>'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\messaggi-card\messaggi-card.html"*/
+            selector: 'messaggi-card',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\messaggi-card\messaggi-card.html"*/'<div class="card" >\n\n    <div class="card-header bg-comm text-header text-white" (click)="goToMessaggi()">Messaggi</div>\n\n    <div class="card-body">\n\n        <ul class="list-group list-group-flush priority" >\n\n            <home-mess *ngFor="let data of messMin" [data] = "data" (click)="goToDetails(data)" >\n\n            </home-mess>\n\n        </ul>\n\n    </div>\n\n</div>'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\messaggi-card\messaggi-card.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_5__services_store_store_service__["a" /* StoreService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_5__services_store_store_service__["a" /* StoreService */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* MenuController */]])
     ], MessaggiCardPage);
     return MessaggiCardPage;
 }());
@@ -3222,14 +3516,14 @@ var MessaggiCardPage = /** @class */ (function () {
 //# sourceMappingURL=messaggi-card.js.map
 
 /***/ }),
-/* 231 */
+/* 235 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeMessModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_mess_home_mess__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_mess_home_mess__ = __webpack_require__(233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3255,15 +3549,15 @@ var HomeMessModule = /** @class */ (function () {
 //# sourceMappingURL=home-mess.module.js.map
 
 /***/ }),
-/* 232 */
+/* 236 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessaggiCardModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_mess_home_mess_module__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_messaggi_card_messaggi_card__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_mess_home_mess_module__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_messaggi_card_messaggi_card__ = __webpack_require__(234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3290,16 +3584,16 @@ var MessaggiCardModule = /** @class */ (function () {
 //# sourceMappingURL=messaggi-card.module.js.map
 
 /***/ }),
-/* 233 */
+/* 237 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComunicazioniCardPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__comunicazioni_details_comunicazioni_details__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__comunicazioni_comunicazioni__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_comunicazione_comunicazione_namespace__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_shared_http_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__comunicazioni_details_comunicazioni_details__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__comunicazioni_comunicazioni__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_comunicazione_comunicazione_namespace__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_store_store_service__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -3351,26 +3645,25 @@ var ComunicazioniCardPage = /** @class */ (function () {
     };
     ComunicazioniCardPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["m" /* Component */])({
-            selector: 'comunicazioni-card',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\comunicazioni-card\comunicazioni-card.html"*/'<div class="card card-large">\n\n    <div class="card-header bg-comm text-header text-white" (click)="goToComunicazioni()" >Comunicazioni</div>\n\n    <div class="card-body">\n\n        \n\n        <ul class="list-group list-group-flush comm " >\n\n            <home-com  *ngFor="let data of comunicazioniMin" [data] = "data" (click)="goToDetails(data)" >\n\n            </home-com>\n\n        </ul>\n\n\n\n    </div>\n\n</div>'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\comunicazioni-card\comunicazioni-card.html"*/
+            selector: 'comunicazioni-card',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\comunicazioni-card\comunicazioni-card.html"*/'<div class="card card-large">\n\n    <div class="card-header bg-comm text-header text-white" (click)="goToComunicazioni()" >Comunicazioni</div>\n\n    <div class="card-body">\n\n        \n\n        <ul class="list-group list-group-flush comm " >\n\n            <home-com  *ngFor="let data of comunicazioniMin" [data] = "data" (click)="goToDetails(data)" >\n\n            </home-com>\n\n        </ul>\n\n\n\n    </div>\n\n</div>'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\comunicazioni-card\comunicazioni-card.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_shared_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_shared_http_service__["a" /* HttpService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_6__services_store_store_service__["a" /* StoreService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_store_store_service__["a" /* StoreService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_6__services_store_store_service__["a" /* StoreService */]])
     ], ComunicazioniCardPage);
     return ComunicazioniCardPage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=comunicazioni-card.js.map
 
 /***/ }),
-/* 234 */
+/* 238 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewsCardPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__news_details_news_details__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__news_news__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_shared_http_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__news_details_news_details__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__news_news__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_store_store_service__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -3425,7 +3718,7 @@ var NewsCardPage = /** @class */ (function () {
     };
     NewsCardPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["m" /* Component */])({
-            selector: 'news-card',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\news-card\news-card.html"*/'<div class="card" >\n\n    <div class="card-header bg-comm text-header text-white" (click)="goToNews()">News</div>\n\n    <div class="card-body">\n\n        <ul class="list-group list-group-flush priority" >\n\n            <home-news *ngFor="let data of newsMin" [data] = "data" (click)="goToDetails(data)" >\n\n            </home-news>\n\n        </ul>\n\n    </div>\n\n</div>'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\news-card\news-card.html"*/
+            selector: 'news-card',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\news-card\news-card.html"*/'<div class="card" >\n\n    <div class="card-header bg-comm text-header text-white" (click)="goToNews()">News</div>\n\n    <div class="card-body">\n\n        <ul class="list-group list-group-flush priority" >\n\n            <home-news *ngFor="let data of newsMin" [data] = "data" (click)="goToDetails(data)" >\n\n            </home-news>\n\n        </ul>\n\n    </div>\n\n</div>'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\news-card\news-card.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_shared_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_5__services_store_store_service__["a" /* StoreService */]])
     ], NewsCardPage);
@@ -3435,15 +3728,15 @@ var NewsCardPage = /** @class */ (function () {
 //# sourceMappingURL=news-card.js.map
 
 /***/ }),
-/* 235 */
+/* 239 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewsCardModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_news_home_com_module__ = __webpack_require__(330);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_news_card_news_card__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_news_home_com_module__ = __webpack_require__(337);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_news_card_news_card__ = __webpack_require__(238);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3470,14 +3763,14 @@ var NewsCardModule = /** @class */ (function () {
 //# sourceMappingURL=news-card.module.js.map
 
 /***/ }),
-/* 236 */
+/* 240 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactCardModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_contact_card_contact_card__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_contact_card_contact_card__ = __webpack_require__(241);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3503,13 +3796,13 @@ var ContactCardModule = /** @class */ (function () {
 //# sourceMappingURL=contact-card.module.js.map
 
 /***/ }),
-/* 237 */
+/* 241 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactCardPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__contacts_contacts__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__contacts_contacts__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3534,7 +3827,7 @@ var ContactCardPage = /** @class */ (function () {
     };
     ContactCardPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
-            selector: 'contact-card',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\contact-card\contact-card.html"*/'\n\n    <button (click)="goToContact()"  block outline class="text-default rounded-generic-card button-large button-large-blue" ion-button>\n\n        <div>Rubrica</div>\n\n        <ion-icon class="icon-button" name="contacts">\n\n        </ion-icon>				\n\n    </button>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\contact-card\contact-card.html"*/
+            selector: 'contact-card',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\contact-card\contact-card.html"*/'\n\n    <button (click)="goToContact()"  block outline class="text-default rounded-generic-card button-large button-large-blue" ion-button>\n\n        <div>Rubrica</div>\n\n        <ion-icon class="icon-button" name="contacts">\n\n        </ion-icon>				\n\n    </button>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\contact-card\contact-card.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]])
     ], ContactCardPage);
@@ -3544,7 +3837,7 @@ var ContactCardPage = /** @class */ (function () {
 //# sourceMappingURL=contact-card.js.map
 
 /***/ }),
-/* 238 */
+/* 242 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3585,16 +3878,16 @@ var Contact;
 //# sourceMappingURL=contact.namespace.js.map
 
 /***/ }),
-/* 239 */,
-/* 240 */,
-/* 241 */,
-/* 242 */
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePrioPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_home_element_home_element_namespace__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_home_element_home_element_namespace__ = __webpack_require__(247);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3618,7 +3911,7 @@ var HomePrioPage = /** @class */ (function () {
     ], HomePrioPage.prototype, "data", void 0);
     HomePrioPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'home-prio',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\home-prio\home-prio.html"*/'\n\n<li class="list-group-item" >\n\n	<div class="item">\n\n		<i class="fa fa-bell"><ion-icon name="notifications"></ion-icon></i>\n\n	</div>\n\n	<div class="brief">\n\n		<h5>{{data.titolo}}</h5>\n\n		<p>{{data.testo}}</p>\n\n	</div>\n\n</li>\n\n			'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\home-prio\home-prio.html"*/
+            selector: 'home-prio',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\home-prio\home-prio.html"*/'\n\n<li class="list-group-item" >\n\n	<div class="item">\n\n		<i class="fa fa-bell"><ion-icon name="notifications"></ion-icon></i>\n\n	</div>\n\n	<div class="brief">\n\n		<h5>{{data.titolo}}</h5>\n\n		<p>{{data.testo}}</p>\n\n	</div>\n\n</li>\n\n			'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\home-prio\home-prio.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], HomePrioPage);
@@ -3628,7 +3921,7 @@ var HomePrioPage = /** @class */ (function () {
 //# sourceMappingURL=home-prio.js.map
 
 /***/ }),
-/* 243 */
+/* 247 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3651,19 +3944,19 @@ var HomeElement;
 //# sourceMappingURL=home-element.namespace.js.map
 
 /***/ }),
-/* 244 */,
-/* 245 */,
-/* 246 */,
-/* 247 */,
-/* 248 */
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComunicazioniCardModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_com_home_com_module__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_comunicazioni_card_comunicazioni_card__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_com_home_com_module__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_comunicazioni_card_comunicazioni_card__ = __webpack_require__(237);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3690,14 +3983,14 @@ var ComunicazioniCardModule = /** @class */ (function () {
 //# sourceMappingURL=comunicazioni-card.module.js.map
 
 /***/ }),
-/* 249 */
+/* 253 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyChatPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3759,7 +4052,7 @@ var MyChatPage = /** @class */ (function () {
     };
     MyChatPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-mychat',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\mychat\mychat.html"*/'<ion-header>\n\n    <ion-navbar  hideBackButton>\n\n        <ion-buttons left>\n\n            <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n          </button>\n\n          </ion-buttons>\n\n      <ion-title>\n\n        CometChat Ionic Sample App\n\n      </ion-title>\n\n    </ion-navbar>\n\n  </ion-header>\n\n  \n\n  <ion-content padding>\n\n    <div class="cometchat_logodiv">\n\n      <ion-avatar class="cometchat_logo" width="150" height="150">\n\n        <ion-img width="50" height="50" src="assets/imgs/logo.png"></ion-img>\n\n      </ion-avatar>\n\n    </div>\n\n    <ion-list>\n\n      <ion-row>\n\n        \n\n      </ion-row>\n\n    </ion-list>\n\n  </ion-content>'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\mychat\mychat.html"*/
+            selector: 'page-mychat',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\mychat\mychat.html"*/'<ion-header>\n\n    <ion-navbar  hideBackButton>\n\n        <ion-buttons left>\n\n            <button (click)="back()" ion-button icon-left clear small>\n\n          <ion-icon name="arrow-back"></ion-icon>\n\n          </button>\n\n          </ion-buttons>\n\n      <ion-title>\n\n        CometChat Ionic Sample App\n\n      </ion-title>\n\n    </ion-navbar>\n\n  </ion-header>\n\n  \n\n  <ion-content padding>\n\n    <div class="cometchat_logodiv">\n\n      <ion-avatar class="cometchat_logo" width="150" height="150">\n\n        <ion-img width="50" height="50" src="assets/imgs/logo.png"></ion-img>\n\n      </ion-avatar>\n\n    </div>\n\n    <ion-list>\n\n      <ion-row>\n\n        \n\n      </ion-row>\n\n    </ion-list>\n\n  </ion-content>'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\mychat\mychat.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_core__["j" /* ChangeDetectorRef */], __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */]])
@@ -3770,23 +4063,19 @@ var MyChatPage = /** @class */ (function () {
 //# sourceMappingURL=mychat.js.map
 
 /***/ }),
-/* 250 */
+/* 254 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(251);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(275);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
 //# sourceMappingURL=main.js.map
 
 /***/ }),
-/* 251 */,
-/* 252 */,
-/* 253 */,
-/* 254 */,
 /* 255 */,
 /* 256 */,
 /* 257 */,
@@ -3803,94 +4092,113 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* 268 */,
 /* 269 */,
 /* 270 */,
-/* 271 */
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_comunicazioni_details_comunicazioni_details__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_circolari_details_circolari_details_module__ = __webpack_require__(320);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_circolari_details_circolari_details__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_circolari_card_circolari_card__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_circolari_circolari__ = __webpack_require__(118);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_circolari_card_circolari_card_module__ = __webpack_require__(227);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modules_circolari_circolari_module__ = __webpack_require__(321);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modules_comunicazioni_details_comunicazioni_details_module__ = __webpack_require__(322);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__modules_comunicazioni_comunicazioni_module__ = __webpack_require__(323);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_messaggi_uscita_messaggi_uscita__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_messaggi_cestino_messaggi_cestino__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_messaggi_importanti_messaggi_importanti__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__modules_messaggi_uscita_messaggi_uscita_module__ = __webpack_require__(324);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modules_messaggi_cestino_messaggi_cestino_module__ = __webpack_require__(325);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__modules_messaggi_importanti_messaggi_importanti_module__ = __webpack_require__(326);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_messaggi_nuovo_messaggi_nuovo__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__modules_messaggi_nuovo_messaggi_nuovo_module__ = __webpack_require__(327);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_home_mess_home_mess__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_messaggi_card_messaggi_card__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_messaggi_details_messaggi_details__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_messaggi_messaggi__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__modules_home_mess_home_mess_module__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__modules_messaggi_card_messaggi_card_module__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_comunicazioni_card_comunicazioni_card__ = __webpack_require__(233);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_news_details_news_details__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__modules_news_details_news_details_module__ = __webpack_require__(328);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_news_card_news_card__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__modules_news_news_module__ = __webpack_require__(329);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__modules_news_card_news_card_module__ = __webpack_require__(235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__modules_contact_card_contact_card_module__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_contact_card_contact_card__ = __webpack_require__(237);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_home_prio_home_prio__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__modules_home_prio_home_prio_module__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pages_home_com_home_com__ = __webpack_require__(228);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__modules_home_com_home_com_module__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__ionic_native_base64__ = __webpack_require__(341);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__ionic_native_email_composer__ = __webpack_require__(241);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__ionic_native_call_number__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__services_shared_error_service__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__angular_platform_browser__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__angular_common_http__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__ionic_native_status_bar__ = __webpack_require__(244);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__ionic_native_splash_screen__ = __webpack_require__(245);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__app_component__ = __webpack_require__(342);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__ionic_native_file_transfer__ = __webpack_require__(246);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__ionic_native_file__ = __webpack_require__(344);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__ionic_native_camera__ = __webpack_require__(247);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__modules_login_login_module__ = __webpack_require__(345);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__modules_home_home_module__ = __webpack_require__(346);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__modules_loading_loading_module__ = __webpack_require__(353);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__modules_chat_chat_module__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__modules_mychat_mychat_module__ = __webpack_require__(355);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__modules_profilo_profilo_module__ = __webpack_require__(356);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__pages_home_home__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__pages_login_login__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__pages_loading_loading__ = __webpack_require__(129);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__pages_chat_chat__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__pages_mychat_mychat__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__pages_contacts_contacts__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__pages_contact_details_contact_details__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__pages_profilo_profilo__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__services_comunicazione_service__ = __webpack_require__(357);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__services_shared_http_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__services_login_login_service__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_66__ionic_storage__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_67__services_store_store_service__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_68__services_contact_contact_service__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_69__modules_contacts_contacts_module__ = __webpack_require__(358);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_70__modules_contact_details_contact_details_module__ = __webpack_require__(359);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_71__services_shared_check_service__ = __webpack_require__(145);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_72__pages_news_news__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_73__modules_comunicazioni_card_comunicazioni_card_module__ = __webpack_require__(248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_74__modules_messaggi_messaggi_module__ = __webpack_require__(360);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_75__modules_messaggi_details_messaggi_details_module__ = __webpack_require__(361);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_76__pages_comunicazioni_comunicazioni__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_documentale_lista_documentale_lista__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_documentale_lista_documentale_lista_module__ = __webpack_require__(324);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_documentale_details_documentale_details__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_documentale_details_documentale_details_module__ = __webpack_require__(325);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_documentale_categorie_documentale_categorie__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_documentale_documentale__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modules_documentale_documentale_module__ = __webpack_require__(326);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_comunicazioni_details_comunicazioni_details__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__modules_circolari_details_circolari_details_module__ = __webpack_require__(327);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_circolari_details_circolari_details__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_circolari_card_circolari_card__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_circolari_circolari__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__modules_circolari_card_circolari_card_module__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modules_circolari_circolari_module__ = __webpack_require__(328);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__modules_comunicazioni_details_comunicazioni_details_module__ = __webpack_require__(329);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__modules_comunicazioni_comunicazioni_module__ = __webpack_require__(330);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_messaggi_uscita_messaggi_uscita__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_messaggi_cestino_messaggi_cestino__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_messaggi_importanti_messaggi_importanti__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__modules_messaggi_uscita_messaggi_uscita_module__ = __webpack_require__(331);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__modules_messaggi_cestino_messaggi_cestino_module__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__modules_messaggi_importanti_messaggi_importanti_module__ = __webpack_require__(333);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_messaggi_nuovo_messaggi_nuovo__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__modules_messaggi_nuovo_messaggi_nuovo_module__ = __webpack_require__(334);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_home_mess_home_mess__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_messaggi_card_messaggi_card__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_messaggi_details_messaggi_details__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_messaggi_messaggi__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__modules_home_mess_home_mess_module__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__modules_messaggi_card_messaggi_card_module__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_comunicazioni_card_comunicazioni_card__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_news_details_news_details__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__modules_news_details_news_details_module__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pages_news_card_news_card__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__modules_news_news_module__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__modules_news_card_news_card_module__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__modules_contact_card_contact_card_module__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pages_contact_card_contact_card__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pages_home_prio_home_prio__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__modules_home_prio_home_prio_module__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_home_com_home_com__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__modules_home_com_home_com_module__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__ionic_native_base64__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__ionic_native_email_composer__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__ionic_native_call_number__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__services_shared_error_service__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__angular_platform_browser__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__angular_common_http__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__ionic_native_status_bar__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__ionic_native_splash_screen__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__app_component__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__ionic_native_file_transfer__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__ionic_native_file__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__ionic_native_camera__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__modules_login_login_module__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__modules_home_home_module__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__modules_loading_loading_module__ = __webpack_require__(360);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__modules_chat_chat_module__ = __webpack_require__(361);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__modules_mychat_mychat_module__ = __webpack_require__(362);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__modules_profilo_profilo_module__ = __webpack_require__(363);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__pages_home_home__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__pages_login_login__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__pages_loading_loading__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__pages_chat_chat__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_66__pages_mychat_mychat__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_67__pages_contacts_contacts__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_68__pages_contact_details_contact_details__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_69__pages_profilo_profilo__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_70__services_comunicazione_service__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_71__services_shared_http_service__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_72__services_login_login_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_73__ionic_storage__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_74__services_store_store_service__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_75__services_contact_contact_service__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_76__modules_contacts_contacts_module__ = __webpack_require__(365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_77__modules_contact_details_contact_details_module__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_78__services_shared_check_service__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_79__pages_news_news__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_80__modules_comunicazioni_card_comunicazioni_card_module__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_81__modules_messaggi_messaggi_module__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_82__modules_messaggi_details_messaggi_details_module__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_83__pages_comunicazioni_comunicazioni__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_84__modules_documentale_categorie_documentale_categorie_module__ = __webpack_require__(369);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
+
+
+
 
 
 
@@ -3973,101 +4281,110 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_39__angular_core__["I" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_46__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_45__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_52__app_component__["a" /* MyApp */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_41_ionic_angular__["e" /* IonicModule */],
-                __WEBPACK_IMPORTED_MODULE_40__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_49__modules_login_login_module__["a" /* LoginModule */],
-                __WEBPACK_IMPORTED_MODULE_42__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_50__modules_home_home_module__["a" /* HomeModule */],
-                __WEBPACK_IMPORTED_MODULE_73__modules_comunicazioni_card_comunicazioni_card_module__["a" /* ComunicazioniCardModule */],
-                __WEBPACK_IMPORTED_MODULE_8__modules_comunicazioni_comunicazioni_module__["a" /* ComunicazioniPageModule */],
-                __WEBPACK_IMPORTED_MODULE_7__modules_comunicazioni_details_comunicazioni_details_module__["a" /* ComunicazioniDetailsModule */],
-                __WEBPACK_IMPORTED_MODULE_34__modules_home_com_home_com_module__["a" /* HomeComModule */],
-                __WEBPACK_IMPORTED_MODULE_32__modules_home_prio_home_prio_module__["a" /* HomePrioModule */],
-                __WEBPACK_IMPORTED_MODULE_51__modules_loading_loading_module__["a" /* LoadingModule */],
-                __WEBPACK_IMPORTED_MODULE_52__modules_chat_chat_module__["a" /* ChatModule */],
-                __WEBPACK_IMPORTED_MODULE_53__modules_mychat_mychat_module__["a" /* MyChatModule */],
-                __WEBPACK_IMPORTED_MODULE_69__modules_contacts_contacts_module__["a" /* ContactsModule */],
-                __WEBPACK_IMPORTED_MODULE_70__modules_contact_details_contact_details_module__["a" /* ContactDetailsModule */],
-                __WEBPACK_IMPORTED_MODULE_54__modules_profilo_profilo_module__["a" /* ProfiloModule */],
-                __WEBPACK_IMPORTED_MODULE_29__modules_contact_card_contact_card_module__["a" /* ContactCardModule */],
-                __WEBPACK_IMPORTED_MODULE_28__modules_news_card_news_card_module__["a" /* NewsCardModule */],
-                __WEBPACK_IMPORTED_MODULE_27__modules_news_news_module__["a" /* NewsModule */],
-                __WEBPACK_IMPORTED_MODULE_25__modules_news_details_news_details_module__["a" /* NewsDetailsModule */],
-                __WEBPACK_IMPORTED_MODULE_74__modules_messaggi_messaggi_module__["a" /* MessaggiModule */],
-                __WEBPACK_IMPORTED_MODULE_75__modules_messaggi_details_messaggi_details_module__["a" /* MessaggiDetailsModule */],
-                __WEBPACK_IMPORTED_MODULE_22__modules_messaggi_card_messaggi_card_module__["a" /* MessaggiCardModule */],
-                __WEBPACK_IMPORTED_MODULE_21__modules_home_mess_home_mess_module__["a" /* HomeMessModule */],
-                __WEBPACK_IMPORTED_MODULE_16__modules_messaggi_nuovo_messaggi_nuovo_module__["a" /* MessaggiNuovoModule */],
-                __WEBPACK_IMPORTED_MODULE_14__modules_messaggi_importanti_messaggi_importanti_module__["a" /* MessaggiImportantiModule */],
-                __WEBPACK_IMPORTED_MODULE_12__modules_messaggi_uscita_messaggi_uscita_module__["a" /* MessaggiUscitaModule */],
-                __WEBPACK_IMPORTED_MODULE_13__modules_messaggi_cestino_messaggi_cestino_module__["a" /* MessaggiCestinoModule */],
-                __WEBPACK_IMPORTED_MODULE_6__modules_circolari_circolari_module__["a" /* CircolariPageModule */],
-                __WEBPACK_IMPORTED_MODULE_5__modules_circolari_card_circolari_card_module__["a" /* CircolariCardModule */],
-                __WEBPACK_IMPORTED_MODULE_1__modules_circolari_details_circolari_details_module__["a" /* CircolariDetailsModule */],
-                __WEBPACK_IMPORTED_MODULE_41_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_45__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_48_ionic_angular__["e" /* IonicModule */],
+                __WEBPACK_IMPORTED_MODULE_47__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_56__modules_login_login_module__["a" /* LoginModule */],
+                __WEBPACK_IMPORTED_MODULE_49__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_57__modules_home_home_module__["a" /* HomeModule */],
+                __WEBPACK_IMPORTED_MODULE_80__modules_comunicazioni_card_comunicazioni_card_module__["a" /* ComunicazioniCardModule */],
+                __WEBPACK_IMPORTED_MODULE_15__modules_comunicazioni_comunicazioni_module__["a" /* ComunicazioniPageModule */],
+                __WEBPACK_IMPORTED_MODULE_14__modules_comunicazioni_details_comunicazioni_details_module__["a" /* ComunicazioniDetailsModule */],
+                __WEBPACK_IMPORTED_MODULE_41__modules_home_com_home_com_module__["a" /* HomeComModule */],
+                __WEBPACK_IMPORTED_MODULE_39__modules_home_prio_home_prio_module__["a" /* HomePrioModule */],
+                __WEBPACK_IMPORTED_MODULE_58__modules_loading_loading_module__["a" /* LoadingModule */],
+                __WEBPACK_IMPORTED_MODULE_59__modules_chat_chat_module__["a" /* ChatModule */],
+                __WEBPACK_IMPORTED_MODULE_60__modules_mychat_mychat_module__["a" /* MyChatModule */],
+                __WEBPACK_IMPORTED_MODULE_76__modules_contacts_contacts_module__["a" /* ContactsModule */],
+                __WEBPACK_IMPORTED_MODULE_77__modules_contact_details_contact_details_module__["a" /* ContactDetailsModule */],
+                __WEBPACK_IMPORTED_MODULE_61__modules_profilo_profilo_module__["a" /* ProfiloModule */],
+                __WEBPACK_IMPORTED_MODULE_36__modules_contact_card_contact_card_module__["a" /* ContactCardModule */],
+                __WEBPACK_IMPORTED_MODULE_35__modules_news_card_news_card_module__["a" /* NewsCardModule */],
+                __WEBPACK_IMPORTED_MODULE_34__modules_news_news_module__["a" /* NewsModule */],
+                __WEBPACK_IMPORTED_MODULE_32__modules_news_details_news_details_module__["a" /* NewsDetailsModule */],
+                __WEBPACK_IMPORTED_MODULE_81__modules_messaggi_messaggi_module__["a" /* MessaggiModule */],
+                __WEBPACK_IMPORTED_MODULE_82__modules_messaggi_details_messaggi_details_module__["a" /* MessaggiDetailsModule */],
+                __WEBPACK_IMPORTED_MODULE_29__modules_messaggi_card_messaggi_card_module__["a" /* MessaggiCardModule */],
+                __WEBPACK_IMPORTED_MODULE_28__modules_home_mess_home_mess_module__["a" /* HomeMessModule */],
+                __WEBPACK_IMPORTED_MODULE_23__modules_messaggi_nuovo_messaggi_nuovo_module__["a" /* MessaggiNuovoModule */],
+                __WEBPACK_IMPORTED_MODULE_21__modules_messaggi_importanti_messaggi_importanti_module__["a" /* MessaggiImportantiModule */],
+                __WEBPACK_IMPORTED_MODULE_19__modules_messaggi_uscita_messaggi_uscita_module__["a" /* MessaggiUscitaModule */],
+                __WEBPACK_IMPORTED_MODULE_20__modules_messaggi_cestino_messaggi_cestino_module__["a" /* MessaggiCestinoModule */],
+                __WEBPACK_IMPORTED_MODULE_13__modules_circolari_circolari_module__["a" /* CircolariPageModule */],
+                __WEBPACK_IMPORTED_MODULE_12__modules_circolari_card_circolari_card_module__["a" /* CircolariCardModule */],
+                __WEBPACK_IMPORTED_MODULE_8__modules_circolari_details_circolari_details_module__["a" /* CircolariDetailsModule */],
+                __WEBPACK_IMPORTED_MODULE_6__modules_documentale_documentale_module__["a" /* DocumentaleModule */],
+                __WEBPACK_IMPORTED_MODULE_84__modules_documentale_categorie_documentale_categorie_module__["a" /* DocumentaleCategorieModule */],
+                __WEBPACK_IMPORTED_MODULE_3__modules_documentale_details_documentale_details_module__["a" /* DocumentaleDetailsModule */],
+                __WEBPACK_IMPORTED_MODULE_1__modules_documentale_lista_documentale_lista_module__["a" /* DocumentaleListaModule */],
+                __WEBPACK_IMPORTED_MODULE_48_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_52__app_component__["a" /* MyApp */], {}, {
                     links: []
                 }),
-                __WEBPACK_IMPORTED_MODULE_66__ionic_storage__["a" /* IonicStorageModule */].forRoot()
+                __WEBPACK_IMPORTED_MODULE_73__ionic_storage__["a" /* IonicStorageModule */].forRoot()
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_41_ionic_angular__["c" /* IonicApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_48_ionic_angular__["c" /* IonicApp */]],
             entryComponents: [
-                __WEBPACK_IMPORTED_MODULE_45__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_55__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_23__pages_comunicazioni_card_comunicazioni_card__["a" /* ComunicazioniCardPage */],
-                __WEBPACK_IMPORTED_MODULE_33__pages_home_com_home_com__["a" /* HomeComPage */],
-                __WEBPACK_IMPORTED_MODULE_31__pages_home_prio_home_prio__["a" /* HomePrioPage */],
-                __WEBPACK_IMPORTED_MODULE_60__pages_contacts_contacts__["a" /* ContactsPage */],
+                __WEBPACK_IMPORTED_MODULE_52__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_62__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_30__pages_comunicazioni_card_comunicazioni_card__["a" /* ComunicazioniCardPage */],
+                __WEBPACK_IMPORTED_MODULE_40__pages_home_com_home_com__["a" /* HomeComPage */],
+                __WEBPACK_IMPORTED_MODULE_38__pages_home_prio_home_prio__["a" /* HomePrioPage */],
+                __WEBPACK_IMPORTED_MODULE_67__pages_contacts_contacts__["a" /* ContactsPage */],
                 // TabsPage,
-                __WEBPACK_IMPORTED_MODULE_76__pages_comunicazioni_comunicazioni__["a" /* ComunicazioniPage */],
-                __WEBPACK_IMPORTED_MODULE_0__pages_comunicazioni_details_comunicazioni_details__["a" /* ComunicazioniDetailsPage */],
-                __WEBPACK_IMPORTED_MODULE_56__pages_login_login__["a" /* LoginPage */],
-                __WEBPACK_IMPORTED_MODULE_57__pages_loading_loading__["a" /* LoadingPage */],
-                __WEBPACK_IMPORTED_MODULE_58__pages_chat_chat__["a" /* ChatPage */],
-                __WEBPACK_IMPORTED_MODULE_59__pages_mychat_mychat__["a" /* MyChatPage */],
-                __WEBPACK_IMPORTED_MODULE_62__pages_profilo_profilo__["a" /* ProfiloPage */],
-                __WEBPACK_IMPORTED_MODULE_61__pages_contact_details_contact_details__["a" /* ContactDetailsPage */],
-                __WEBPACK_IMPORTED_MODULE_30__pages_contact_card_contact_card__["a" /* ContactCardPage */],
-                __WEBPACK_IMPORTED_MODULE_26__pages_news_card_news_card__["a" /* NewsCardPage */],
-                __WEBPACK_IMPORTED_MODULE_72__pages_news_news__["a" /* NewsPage */],
-                __WEBPACK_IMPORTED_MODULE_24__pages_news_details_news_details__["a" /* NewsDetailsPage */],
-                __WEBPACK_IMPORTED_MODULE_20__pages_messaggi_messaggi__["a" /* MessaggiPage */],
-                __WEBPACK_IMPORTED_MODULE_19__pages_messaggi_details_messaggi_details__["a" /* MessaggiDetailsPage */],
-                __WEBPACK_IMPORTED_MODULE_18__pages_messaggi_card_messaggi_card__["a" /* MessaggiCardPage */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_home_mess_home_mess__["a" /* HomeMessPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_messaggi_nuovo_messaggi_nuovo__["a" /* MessaggiNuovoPage */],
-                __WEBPACK_IMPORTED_MODULE_11__pages_messaggi_importanti_messaggi_importanti__["a" /* MessaggiImportantiPage */],
-                __WEBPACK_IMPORTED_MODULE_9__pages_messaggi_uscita_messaggi_uscita__["a" /* MessaggiUscitaPage */],
-                __WEBPACK_IMPORTED_MODULE_10__pages_messaggi_cestino_messaggi_cestino__["a" /* MessaggiCestinoPage */],
-                __WEBPACK_IMPORTED_MODULE_4__pages_circolari_circolari__["a" /* CircolariPage */],
-                __WEBPACK_IMPORTED_MODULE_3__pages_circolari_card_circolari_card__["a" /* CircolariCardPage */],
-                __WEBPACK_IMPORTED_MODULE_2__pages_circolari_details_circolari_details__["a" /* CircolariDetailsPage */]
+                __WEBPACK_IMPORTED_MODULE_83__pages_comunicazioni_comunicazioni__["a" /* ComunicazioniPage */],
+                __WEBPACK_IMPORTED_MODULE_7__pages_comunicazioni_details_comunicazioni_details__["a" /* ComunicazioniDetailsPage */],
+                __WEBPACK_IMPORTED_MODULE_63__pages_login_login__["a" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_64__pages_loading_loading__["a" /* LoadingPage */],
+                __WEBPACK_IMPORTED_MODULE_65__pages_chat_chat__["a" /* ChatPage */],
+                __WEBPACK_IMPORTED_MODULE_66__pages_mychat_mychat__["a" /* MyChatPage */],
+                __WEBPACK_IMPORTED_MODULE_69__pages_profilo_profilo__["a" /* ProfiloPage */],
+                __WEBPACK_IMPORTED_MODULE_68__pages_contact_details_contact_details__["a" /* ContactDetailsPage */],
+                __WEBPACK_IMPORTED_MODULE_37__pages_contact_card_contact_card__["a" /* ContactCardPage */],
+                __WEBPACK_IMPORTED_MODULE_33__pages_news_card_news_card__["a" /* NewsCardPage */],
+                __WEBPACK_IMPORTED_MODULE_79__pages_news_news__["a" /* NewsPage */],
+                __WEBPACK_IMPORTED_MODULE_31__pages_news_details_news_details__["a" /* NewsDetailsPage */],
+                __WEBPACK_IMPORTED_MODULE_27__pages_messaggi_messaggi__["a" /* MessaggiPage */],
+                __WEBPACK_IMPORTED_MODULE_26__pages_messaggi_details_messaggi_details__["a" /* MessaggiDetailsPage */],
+                __WEBPACK_IMPORTED_MODULE_25__pages_messaggi_card_messaggi_card__["a" /* MessaggiCardPage */],
+                __WEBPACK_IMPORTED_MODULE_24__pages_home_mess_home_mess__["a" /* HomeMessPage */],
+                __WEBPACK_IMPORTED_MODULE_22__pages_messaggi_nuovo_messaggi_nuovo__["a" /* MessaggiNuovoPage */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_messaggi_importanti_messaggi_importanti__["a" /* MessaggiImportantiPage */],
+                __WEBPACK_IMPORTED_MODULE_16__pages_messaggi_uscita_messaggi_uscita__["a" /* MessaggiUscitaPage */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_messaggi_cestino_messaggi_cestino__["a" /* MessaggiCestinoPage */],
+                __WEBPACK_IMPORTED_MODULE_11__pages_circolari_circolari__["a" /* CircolariPage */],
+                __WEBPACK_IMPORTED_MODULE_10__pages_circolari_card_circolari_card__["a" /* CircolariCardPage */],
+                __WEBPACK_IMPORTED_MODULE_9__pages_circolari_details_circolari_details__["a" /* CircolariDetailsPage */],
+                __WEBPACK_IMPORTED_MODULE_5__pages_documentale_documentale__["a" /* DocumentalePage */],
+                __WEBPACK_IMPORTED_MODULE_4__pages_documentale_categorie_documentale_categorie__["a" /* DocumentaleCategoriePage */],
+                __WEBPACK_IMPORTED_MODULE_2__pages_documentale_details_documentale_details__["a" /* DocumentaleDetailsPage */],
+                __WEBPACK_IMPORTED_MODULE_0__pages_documentale_lista_documentale_lista__["a" /* DocumentaleListaPage */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_43__ionic_native_status_bar__["a" /* StatusBar */],
-                __WEBPACK_IMPORTED_MODULE_44__ionic_native_splash_screen__["a" /* SplashScreen */],
-                __WEBPACK_IMPORTED_MODULE_67__services_store_store_service__["a" /* StoreService */],
-                __WEBPACK_IMPORTED_MODULE_63__services_comunicazione_service__["a" /* ComunicazioneService */],
-                __WEBPACK_IMPORTED_MODULE_64__services_shared_http_service__["a" /* HttpService */],
-                __WEBPACK_IMPORTED_MODULE_65__services_login_login_service__["a" /* LoginService */],
-                __WEBPACK_IMPORTED_MODULE_38__services_shared_error_service__["a" /* ErrorService */],
-                __WEBPACK_IMPORTED_MODULE_68__services_contact_contact_service__["a" /* ContactService */],
-                __WEBPACK_IMPORTED_MODULE_71__services_shared_check_service__["a" /* CheckService */],
-                __WEBPACK_IMPORTED_MODULE_37__ionic_native_call_number__["a" /* CallNumber */],
-                __WEBPACK_IMPORTED_MODULE_36__ionic_native_email_composer__["a" /* EmailComposer */],
-                __WEBPACK_IMPORTED_MODULE_46__ionic_native_file_transfer__["a" /* FileTransfer */],
-                __WEBPACK_IMPORTED_MODULE_47__ionic_native_file__["a" /* File */],
-                __WEBPACK_IMPORTED_MODULE_48__ionic_native_camera__["a" /* Camera */],
-                __WEBPACK_IMPORTED_MODULE_35__ionic_native_base64__["a" /* Base64 */],
-                { provide: __WEBPACK_IMPORTED_MODULE_39__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_41_ionic_angular__["d" /* IonicErrorHandler */] },
+                __WEBPACK_IMPORTED_MODULE_50__ionic_native_status_bar__["a" /* StatusBar */],
+                __WEBPACK_IMPORTED_MODULE_51__ionic_native_splash_screen__["a" /* SplashScreen */],
+                __WEBPACK_IMPORTED_MODULE_74__services_store_store_service__["a" /* StoreService */],
+                __WEBPACK_IMPORTED_MODULE_70__services_comunicazione_service__["a" /* ComunicazioneService */],
+                __WEBPACK_IMPORTED_MODULE_71__services_shared_http_service__["a" /* HttpService */],
+                __WEBPACK_IMPORTED_MODULE_72__services_login_login_service__["a" /* LoginService */],
+                __WEBPACK_IMPORTED_MODULE_45__services_shared_error_service__["a" /* ErrorService */],
+                __WEBPACK_IMPORTED_MODULE_75__services_contact_contact_service__["a" /* ContactService */],
+                __WEBPACK_IMPORTED_MODULE_78__services_shared_check_service__["a" /* CheckService */],
+                __WEBPACK_IMPORTED_MODULE_44__ionic_native_call_number__["a" /* CallNumber */],
+                __WEBPACK_IMPORTED_MODULE_43__ionic_native_email_composer__["a" /* EmailComposer */],
+                __WEBPACK_IMPORTED_MODULE_53__ionic_native_file_transfer__["a" /* FileTransfer */],
+                __WEBPACK_IMPORTED_MODULE_54__ionic_native_file__["a" /* File */],
+                __WEBPACK_IMPORTED_MODULE_55__ionic_native_camera__["a" /* Camera */],
+                __WEBPACK_IMPORTED_MODULE_42__ionic_native_base64__["a" /* Base64 */],
+                { provide: __WEBPACK_IMPORTED_MODULE_46__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_48_ionic_angular__["d" /* IonicErrorHandler */] },
             ]
         })
     ], AppModule);
@@ -4077,10 +4394,6 @@ var AppModule = /** @class */ (function () {
 //# sourceMappingURL=app.module.js.map
 
 /***/ }),
-/* 272 */,
-/* 273 */,
-/* 274 */,
-/* 275 */,
 /* 276 */,
 /* 277 */,
 /* 278 */,
@@ -4125,14 +4438,117 @@ var AppModule = /** @class */ (function () {
 /* 317 */,
 /* 318 */,
 /* 319 */,
-/* 320 */
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DocumentaleListaModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_documentale_lista_documentale_lista__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var DocumentaleListaModule = /** @class */ (function () {
+    function DocumentaleListaModule() {
+    }
+    DocumentaleListaModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
+            declarations: [__WEBPACK_IMPORTED_MODULE_0__pages_documentale_lista_documentale_lista__["a" /* DocumentaleListaPage */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */]],
+            exports: [__WEBPACK_IMPORTED_MODULE_0__pages_documentale_lista_documentale_lista__["a" /* DocumentaleListaPage */]]
+        })
+    ], DocumentaleListaModule);
+    return DocumentaleListaModule;
+}());
+
+//# sourceMappingURL=documentale-lista.module.js.map
+
+/***/ }),
+/* 325 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DocumentaleDetailsModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_documentale_details_documentale_details__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var DocumentaleDetailsModule = /** @class */ (function () {
+    function DocumentaleDetailsModule() {
+    }
+    DocumentaleDetailsModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
+            declarations: [__WEBPACK_IMPORTED_MODULE_0__pages_documentale_details_documentale_details__["a" /* DocumentaleDetailsPage */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */]],
+            exports: [__WEBPACK_IMPORTED_MODULE_0__pages_documentale_details_documentale_details__["a" /* DocumentaleDetailsPage */]]
+        })
+    ], DocumentaleDetailsModule);
+    return DocumentaleDetailsModule;
+}());
+
+//# sourceMappingURL=documentale-details.module.js.map
+
+/***/ }),
+/* 326 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DocumentaleModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_documentale_documentale__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var DocumentaleModule = /** @class */ (function () {
+    function DocumentaleModule() {
+    }
+    DocumentaleModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
+            declarations: [__WEBPACK_IMPORTED_MODULE_0__pages_documentale_documentale__["a" /* DocumentalePage */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */]],
+            exports: [__WEBPACK_IMPORTED_MODULE_0__pages_documentale_documentale__["a" /* DocumentalePage */]]
+        })
+    ], DocumentaleModule);
+    return DocumentaleModule;
+}());
+
+//# sourceMappingURL=documentale.module.js.map
+
+/***/ }),
+/* 327 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CircolariDetailsModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_circolari_details_circolari_details__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_circolari_details_circolari_details__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4161,14 +4577,14 @@ var CircolariDetailsModule = /** @class */ (function () {
 //# sourceMappingURL=circolari-details.module.js.map
 
 /***/ }),
-/* 321 */
+/* 328 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CircolariPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_circolari_circolari__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_circolari_circolari__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4194,14 +4610,14 @@ var CircolariPageModule = /** @class */ (function () {
 //# sourceMappingURL=circolari.module.js.map
 
 /***/ }),
-/* 322 */
+/* 329 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComunicazioniDetailsModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_comunicazioni_details_comunicazioni_details__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_comunicazioni_details_comunicazioni_details__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4230,14 +4646,14 @@ var ComunicazioniDetailsModule = /** @class */ (function () {
 //# sourceMappingURL=comunicazioni-details.module.js.map
 
 /***/ }),
-/* 323 */
+/* 330 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComunicazioniPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_comunicazioni_comunicazioni__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_comunicazioni_comunicazioni__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4263,14 +4679,14 @@ var ComunicazioniPageModule = /** @class */ (function () {
 //# sourceMappingURL=comunicazioni.module.js.map
 
 /***/ }),
-/* 324 */
+/* 331 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessaggiUscitaModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_messaggi_uscita_messaggi_uscita__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_messaggi_uscita_messaggi_uscita__ = __webpack_require__(124);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4296,14 +4712,14 @@ var MessaggiUscitaModule = /** @class */ (function () {
 //# sourceMappingURL=messaggi-uscita.module.js.map
 
 /***/ }),
-/* 325 */
+/* 332 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessaggiCestinoModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_messaggi_cestino_messaggi_cestino__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_messaggi_cestino_messaggi_cestino__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4329,14 +4745,14 @@ var MessaggiCestinoModule = /** @class */ (function () {
 //# sourceMappingURL=messaggi-cestino.module.js.map
 
 /***/ }),
-/* 326 */
+/* 333 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessaggiImportantiModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_messaggi_importanti_messaggi_importanti__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_messaggi_importanti_messaggi_importanti__ = __webpack_require__(127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4362,14 +4778,14 @@ var MessaggiImportantiModule = /** @class */ (function () {
 //# sourceMappingURL=messaggi-importanti.module.js.map
 
 /***/ }),
-/* 327 */
+/* 334 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessaggiNuovoModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_messaggi_nuovo_messaggi_nuovo__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_messaggi_nuovo_messaggi_nuovo__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4395,14 +4811,14 @@ var MessaggiNuovoModule = /** @class */ (function () {
 //# sourceMappingURL=messaggi-nuovo.module.js.map
 
 /***/ }),
-/* 328 */
+/* 335 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewsDetailsModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_news_details_news_details__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_news_details_news_details__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4428,14 +4844,14 @@ var NewsDetailsModule = /** @class */ (function () {
 //# sourceMappingURL=news-details.module.js.map
 
 /***/ }),
-/* 329 */
+/* 336 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewsModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_news_news__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_news_news__ = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4461,14 +4877,14 @@ var NewsModule = /** @class */ (function () {
 //# sourceMappingURL=news.module.js.map
 
 /***/ }),
-/* 330 */
+/* 337 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeNewsModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_news_home_news__ = __webpack_require__(331);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_news_home_news__ = __webpack_require__(338);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4494,13 +4910,13 @@ var HomeNewsModule = /** @class */ (function () {
 //# sourceMappingURL=home-com.module.js.map
 
 /***/ }),
-/* 331 */
+/* 338 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeNewsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_news_news_namespace__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_news_news_namespace__ = __webpack_require__(339);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4523,7 +4939,7 @@ var HomeNewsPage = /** @class */ (function () {
     ], HomeNewsPage.prototype, "data", void 0);
     HomeNewsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'home-news',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\home-news\home-news.html"*/'\n\n<li class="list-group-item" >\n\n	<div class="item">\n\n		<i class="fa fa-bell "><ion-icon  name="flash"></ion-icon></i>\n\n	</div>\n\n	<div class="brief">\n\n		<h5>{{data.nw_titolo}}</h5>\n\n		<p>{{data.nw_descrizione}}</p>\n\n	</div>\n\n</li>\n\n			'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\home-news\home-news.html"*/
+            selector: 'home-news',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\home-news\home-news.html"*/'\n\n<li class="list-group-item" >\n\n	<div class="item">\n\n		<i class="fa fa-bell "><ion-icon  name="flash"></ion-icon></i>\n\n	</div>\n\n	<div class="brief">\n\n		<h5>{{data.nw_titolo}}</h5>\n\n		<p>{{data.nw_descrizione}}</p>\n\n	</div>\n\n</li>\n\n			'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\home-news\home-news.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], HomeNewsPage);
@@ -4533,7 +4949,7 @@ var HomeNewsPage = /** @class */ (function () {
 //# sourceMappingURL=home-news.js.map
 
 /***/ }),
-/* 332 */
+/* 339 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4568,26 +4984,26 @@ var News;
 //# sourceMappingURL=news.namespace.js.map
 
 /***/ }),
-/* 333 */,
-/* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */,
-/* 339 */,
 /* 340 */,
 /* 341 */,
-/* 342 */
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_loading_loading__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_loading_loading__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(244);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(249);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4615,7 +5031,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__["a" /* SplashScreen */],
             __WEBPACK_IMPORTED_MODULE_1__services_store_store_service__["a" /* StoreService */]])
@@ -4626,7 +5042,7 @@ var MyApp = /** @class */ (function () {
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
-/* 343 */
+/* 350 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4655,17 +5071,17 @@ var Login;
 //# sourceMappingURL=login.namespace.js.map
 
 /***/ }),
-/* 344 */,
-/* 345 */
+/* 351 */,
+/* 352 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_login_login__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_login_login_service__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_login_login__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_login_login_service__ = __webpack_require__(41);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4703,24 +5119,24 @@ var LoginModule = /** @class */ (function () {
 //# sourceMappingURL=login.module.js.map
 
 /***/ }),
-/* 346 */
+/* 353 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__circolari_card_circolari_card_module__ = __webpack_require__(227);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__messaggi_card_messaggi_card_module__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__news_card_news_card_module__ = __webpack_require__(235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__priorita_card_priorita_module__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__chat_card_contact_card_module__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__documentale_card_documentale_card_module__ = __webpack_require__(351);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__contact_card_contact_card_module__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__home_prio_home_prio_module__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__home_com_home_com_module__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__circolari_card_circolari_card_module__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__messaggi_card_messaggi_card_module__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__news_card_news_card_module__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__priorita_card_priorita_module__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__chat_card_contact_card_module__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__documentale_card_documentale_card_module__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__contact_card_contact_card_module__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__home_prio_home_prio_module__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__home_com_home_com_module__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_home_home__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__comunicazioni_card_comunicazioni_card_module__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_home_home__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__comunicazioni_card_comunicazioni_card_module__ = __webpack_require__(252);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4758,15 +5174,15 @@ var HomeModule = /** @class */ (function () {
 //# sourceMappingURL=home.module.js.map
 
 /***/ }),
-/* 347 */
+/* 354 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PrioritaCardModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_priorita_card_priorita_card__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_prio_home_prio_module__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_priorita_card_priorita_card__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_prio_home_prio_module__ = __webpack_require__(132);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4793,14 +5209,14 @@ var PrioritaCardModule = /** @class */ (function () {
 //# sourceMappingURL=priorita.module.js.map
 
 /***/ }),
-/* 348 */
+/* 355 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PrioritaCardPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_home_element_home_element_namespace__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_home_element_home_element_namespace__ = __webpack_require__(247);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4833,7 +5249,7 @@ var PrioritaCardPage = /** @class */ (function () {
     };
     PrioritaCardPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'priorita-card',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\priorita-card\priorita-card.html"*/'<div class="card">\n\n    <div class="card-header bg-priority text-header text-white">Priorità</div>\n\n    <div class="card-body">\n\n        <ul class="list-group list-group-flush priority" >\n\n            <home-prio *ngFor="let data of prioritaMin" [data] = "data">\n\n            </home-prio>\n\n        </ul>\n\n    </div>\n\n</div>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\priorita-card\priorita-card.html"*/
+            selector: 'priorita-card',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\priorita-card\priorita-card.html"*/'<div class="card">\n\n    <div class="card-header bg-priority text-header text-white">Priorità</div>\n\n    <div class="card-body">\n\n        <ul class="list-group list-group-flush priority" >\n\n            <home-prio *ngFor="let data of prioritaMin" [data] = "data">\n\n            </home-prio>\n\n        </ul>\n\n    </div>\n\n</div>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\priorita-card\priorita-card.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["j" /* NavParams */]])
     ], PrioritaCardPage);
@@ -4843,14 +5259,14 @@ var PrioritaCardPage = /** @class */ (function () {
 //# sourceMappingURL=priorita-card.js.map
 
 /***/ }),
-/* 349 */
+/* 356 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatCardModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_chat_card_chat_card__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_chat_card_chat_card__ = __webpack_require__(357);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4876,13 +5292,13 @@ var ChatCardModule = /** @class */ (function () {
 //# sourceMappingURL=contact-card.module.js.map
 
 /***/ }),
-/* 350 */
+/* 357 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatCardPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chat_chat__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chat_chat__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4907,7 +5323,7 @@ var ChatCardPage = /** @class */ (function () {
     };
     ChatCardPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
-            selector: 'chat-card',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\chat-card\chat-card.html"*/'<div class="card" (click)="goToChat()">\n\n    <div class="card-header bg-chat text-header text-white">Chat</div>\n\n    <div class="card-body">Vai alla chat</div>\n\n</div>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\chat-card\chat-card.html"*/
+            selector: 'chat-card',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\chat-card\chat-card.html"*/'<div class="card" (click)="goToChat()">\n\n    <div class="card-header bg-chat text-header text-white">Chat</div>\n\n    <div class="card-body">Vai alla chat</div>\n\n</div>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\chat-card\chat-card.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]])
     ], ChatCardPage);
@@ -4917,14 +5333,14 @@ var ChatCardPage = /** @class */ (function () {
 //# sourceMappingURL=chat-card.js.map
 
 /***/ }),
-/* 351 */
+/* 358 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DocumentaleCardModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_documentale_card_documentale_card__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_documentale_card_documentale_card__ = __webpack_require__(359);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4950,13 +5366,14 @@ var DocumentaleCardModule = /** @class */ (function () {
 //# sourceMappingURL=documentale-card.module.js.map
 
 /***/ }),
-/* 352 */
+/* 359 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DocumentaleCardPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__documentale_documentale__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4968,17 +5385,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var DocumentaleCardPage = /** @class */ (function () {
     function DocumentaleCardPage(navCtrl) {
         this.navCtrl = navCtrl;
     }
     DocumentaleCardPage.prototype.ngOnInit = function () {
     };
+    DocumentaleCardPage.prototype.goToDocumentale = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_0__documentale_documentale__["a" /* DocumentalePage */]);
+    };
     DocumentaleCardPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'documentale-card',template:/*ion-inline-start:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\documentale-card\documentale-card.html"*/'\n\n    <button  block outline class="rounded-generic-card button-large button-large-green" ion-button>\n\n        <div>Documentale</div>\n\n        <ion-icon class="icon-button" name="paper">\n\n        </ion-icon>      \n\n    </button>\n\n'/*ion-inline-end:"C:\Users\osiris\Documents\GitHub\AllinApp\AllInApp_App\src\app\pages\documentale-card\documentale-card.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
+            selector: 'documentale-card',template:/*ion-inline-start:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\documentale-card\documentale-card.html"*/'\n\n    <button (click)="goToDocumentale()" block outline class="rounded-generic-card button-large button-large-green" ion-button>\n\n        <div>Documentale</div>\n\n        <ion-icon class="icon-button" name="paper">\n\n        </ion-icon>      \n\n    </button>\n\n'/*ion-inline-end:"E:\Marte5 - progetti\projects\AllinApp\AllinApp sito\AllInApp_App\src\app\pages\documentale-card\documentale-card.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["i" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]])
     ], DocumentaleCardPage);
     return DocumentaleCardPage;
 }());
@@ -4986,15 +5407,15 @@ var DocumentaleCardPage = /** @class */ (function () {
 //# sourceMappingURL=documentale-card.js.map
 
 /***/ }),
-/* 353 */
+/* 360 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoadingModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_loading_loading__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_loading_loading__ = __webpack_require__(133);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5029,14 +5450,14 @@ var LoadingModule = /** @class */ (function () {
 //# sourceMappingURL=loading.module.js.map
 
 /***/ }),
-/* 354 */
+/* 361 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_chat_chat__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_chat_chat__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5062,14 +5483,14 @@ var ChatModule = /** @class */ (function () {
 //# sourceMappingURL=chat.module.js.map
 
 /***/ }),
-/* 355 */
+/* 362 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyChatModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_mychat_mychat__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_mychat_mychat__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5095,14 +5516,14 @@ var MyChatModule = /** @class */ (function () {
 //# sourceMappingURL=mychat.module.js.map
 
 /***/ }),
-/* 356 */
+/* 363 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfiloModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_profilo_profilo__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_profilo_profilo__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5128,13 +5549,13 @@ var ProfiloModule = /** @class */ (function () {
 //# sourceMappingURL=profilo.module.js.map
 
 /***/ }),
-/* 357 */
+/* 364 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComunicazioneService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_shared_http_service__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5163,14 +5584,14 @@ var ComunicazioneService = /** @class */ (function () {
 //# sourceMappingURL=comunicazione.service.js.map
 
 /***/ }),
-/* 358 */
+/* 365 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_contacts_contacts__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_contacts_contacts__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5196,14 +5617,14 @@ var ContactsModule = /** @class */ (function () {
 //# sourceMappingURL=contacts.module.js.map
 
 /***/ }),
-/* 359 */
+/* 366 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactDetailsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_contact_details_contact_details__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_contact_details_contact_details__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5229,14 +5650,14 @@ var ContactDetailsModule = /** @class */ (function () {
 //# sourceMappingURL=contact-details.module.js.map
 
 /***/ }),
-/* 360 */
+/* 367 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessaggiModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_messaggi_messaggi__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_messaggi_messaggi__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5262,14 +5683,14 @@ var MessaggiModule = /** @class */ (function () {
 //# sourceMappingURL=messaggi.module.js.map
 
 /***/ }),
-/* 361 */
+/* 368 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessaggiDetailsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_messaggi_details_messaggi_details__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5294,6 +5715,39 @@ var MessaggiDetailsModule = /** @class */ (function () {
 
 //# sourceMappingURL=messaggi-details.module.js.map
 
+/***/ }),
+/* 369 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DocumentaleCategorieModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_documentale_categorie_documentale_categorie__ = __webpack_require__(122);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var DocumentaleCategorieModule = /** @class */ (function () {
+    function DocumentaleCategorieModule() {
+    }
+    DocumentaleCategorieModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [__WEBPACK_IMPORTED_MODULE_2__pages_documentale_categorie_documentale_categorie__["a" /* DocumentaleCategoriePage */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicModule */]],
+            exports: [__WEBPACK_IMPORTED_MODULE_2__pages_documentale_categorie_documentale_categorie__["a" /* DocumentaleCategoriePage */]]
+        })
+    ], DocumentaleCategorieModule);
+    return DocumentaleCategorieModule;
+}());
+
+//# sourceMappingURL=documentale-categorie.module.js.map
+
 /***/ })
-],[250]);
+],[254]);
 //# sourceMappingURL=main.js.map
