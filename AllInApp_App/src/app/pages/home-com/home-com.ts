@@ -10,6 +10,7 @@ import { Comunicazione } from '../../models/comunicazione/comunicazione.namespac
 export class HomeComPage implements OnInit{
  
   @Input('data') data : Comunicazione.ComunicazioneElencoElem;
+  @Input('color') color : string;
 
   giorno;
   mese;

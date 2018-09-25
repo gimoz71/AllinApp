@@ -29,18 +29,28 @@ export class LoadingPage implements OnInit, OnDestroy {
 
   ngOnInit(){
     this.presentLoadingDefault();
-    this.subscrition = this.store.userData$.subscribe((val: Login.Token) =>{
+    /**this.subscrition = this.store.userData$.subscribe((val: Login.Token) =>{
       if (val != null){
         this.navCtrl.setRoot(HomePage);
       }else{
         this.navCtrl.setRoot(LoginPage);
       }
     })
-    this.store.getUserData();
+    this.store.getUserData();**/
+
+    this.store.getUserDataPromise().then(
+      (val: Login.Token) =>{
+        if (val != null){
+          this.navCtrl.setRoot(HomePage);
+        }else{
+          this.navCtrl.setRoot(LoginPage);
+        }
+      }
+    )
   }
 
   ngOnDestroy(){
-    this.subscrition.unsubscribe();
+    //this.subscrition.unsubscribe();
   }
 
   presentLoadingDefault() {

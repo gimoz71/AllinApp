@@ -36,7 +36,7 @@ export class DocumentaleListaPage implements OnInit{
               
           }
         )**/
-        let s1 = this.http.getElencoDocumenti(val.token_value, 0,0,0,0).subscribe(
+        let s1 = this.http.getElencoDocumenti(val.token_value, 0,0,cat.tab_tipo_documento_cod,cat.tab_categoria_documento_cod).subscribe(
           (val1)=>{
             if (val1.ErrorMessage.msg_code == 0){
               this.lista = val1.l_lista_documenti;

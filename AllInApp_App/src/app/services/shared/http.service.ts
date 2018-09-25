@@ -1,3 +1,4 @@
+import { StoreService } from './../store/store.service';
 import { News } from './../../models/news/news.namespace';
 import { Http } from './../../models/shared/http.namespace';
 
@@ -10,11 +11,12 @@ import { Contact } from "../../models/contact/contact.namespace";
 import { Messaggi } from '../../models/messaggi/messaggi.namespace';
 import { Comunicazione } from '../../models/comunicazione/comunicazione.namespace';
 import { Documentale } from '../../models/documentale/documentale.namespace';
+import { Module } from '../../models/modules/modules.namespace';
 //SERVICE NON UTILIZZATO
 @Injectable()
 export class HttpService{
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient, private store : StoreService){}
 
     public getToken(url: string) : Observable<Login.Token>{
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -132,4 +134,26 @@ export class HttpService{
         return this.http.get<Documentale.DocumentoResult>(url);
     }
 
+    public getModules(){
+        return new Promise((resolve, reject) => {
+            this.store.getUserDataPromise().then(
+                (token :Login.Token)=>{
+                    let url = "http://allinappws.mesys.it/services/get_modules/" + token.token_value;
+                    console.log(url);
+                    let s = this.http.get<Module.ModuleResult>(url).subscribe(
+                        (r : Module.ModuleResult)=>{
+                            if (r.ErrorMessage.msg_code==0){
+                                resolve(r.l_moduli);
+                            }else{
+                                reject(r.ErrorMessage);
+                            }
+                            
+                            s.unsubscribe();
+                        }  
+                    )
+                }
+            )
+            
+        });
+    }
 }

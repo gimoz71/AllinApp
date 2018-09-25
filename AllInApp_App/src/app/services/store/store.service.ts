@@ -39,7 +39,7 @@ export class StoreService{
                                             console.log("log userdata 1");
                                             this.setUserData(rl);
                                         if (rl.ErrorMessage.msg_code == 0){
-                                                this.ud = val;
+                                                this.ud = rl;
                                                 this.userData.next(rl);
                                         }
                                     }
@@ -94,4 +94,66 @@ export class StoreService{
         return 1;
     }
 
+    public getUserDataPromise(){
+        return new Promise(resolve=>{
+            if (this.ud == null ){
+                //store service prima inizializzaione
+                this.storage.get("userData").then((val : Login.Token ) => {
+                    //recuperato token dal database
+                    if (val != null && val.ErrorMessage.msg_code == 0){
+                        //controllo la validità del token
+                        this.check.checkToken(val.token_value).subscribe(
+                            (r)=>{
+                                //token corretto lo invio
+                                if (r.ErrorMessage.msg_code == 0){
+                                    this.ud = r;
+                                    resolve(r);
+                                }else{
+                                    //token non corretto faccio il login
+                                    this.login.login(val.token_user, val.token_password).subscribe(
+                                        (rl : Login.Token)=>{
+                                                console.log("log userdata 1");
+                                                this.setUserData(rl);
+                                            if (rl.ErrorMessage.msg_code == 0){
+                                                    this.ud = rl;
+                                                    resolve(rl)
+                                            }
+                                        }
+                                    );
+                                }
+                            }
+                        )
+                    }else{
+                        //devo andare alla pagina del login
+                        resolve(null);
+                    }
+                  })
+            } else {
+                //store service già inizializzato
+                this.check.checkToken(this.ud.token_value).subscribe(
+                    //check sul token
+                    (r: Login.Token)=>{
+                        //token valido lo invio
+                        if (r.ErrorMessage.msg_code == 0){
+                            resolve(r);
+                        }else{
+                            this.login.login(r.token_user, r.token_password).subscribe(
+                                //token non valido faccio il login
+                               (rl : Login.Token)=>{
+                                console.log("log userdata 2");
+                                   if (rl.ErrorMessage.msg_code == 0){
+                                    this.setUserData(rl);
+                                    this.ud = rl;
+                                    resolve(rl);
+                                   }else{
+                                       alert("login non riuscito");
+                                   }
+                               }
+                            );
+                        }
+                    }
+                )
+            }
+        })
+    }
 }

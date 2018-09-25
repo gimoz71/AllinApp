@@ -14,6 +14,13 @@
 		<ion-item (click)="GoProfile()"> Profilo </ion-item>
 		<ion-item (click)="logOut()"> LogOut </ion-item>
 		<ion-item (click)="changePassword()">Cambia password</ion-item>
+		<ion-item (click)="goToComunicazioni()">Comunicazioni</ion-item>
+		<ion-item (click)="goToCircolari()">Circolari</ion-item>	
+		<ion-item (click)="goToChat()">Chat</ion-item>
+		<ion-item (click)="goToNews()">News</ion-item>
+		<ion-item (click)="goToMessaggi()">Messaggi</ion-item>
+		<ion-item (click)="goToDocumentale()">Documentale</ion-item>
+		<ion-item (click)="goToContact()">Rubrica</ion-item>			  
 		<ion-item menuClose detail-none>Close Menu</ion-item>
 	  </ion-list>
 	</ion-content>
@@ -24,95 +31,26 @@
 <ion-content >
 	<ion-grid >
 		<ion-row class="cards-container">
-			<!--<ion-col>
-				<ion-card class="no-border" (click)="load()">
-					<ion-card-header class="bg-comm text-white">{{header1}}</ion-card-header>
-					<ion-card-content class="list-group list-group-flush comm">{{content1}}</ion-card-content>
-						<ion-list>
-							<ion-item>
-								<comunicazione></comunicazione>
-							</ion-item>
-							<ion-item>
-								<comunicazione></comunicazione>
-							</ion-item>
-							<ion-item>
-								<comunicazione></comunicazione>
-							</ion-item>
-							<ion-item>
-								<comunicazione></comunicazione>
-							</ion-item>
-						</ion-list>
-				</ion-card> 
-			</ion-col>-->
-			<!-- <ion-col  >
-					<ion-card color="primary" class="rounded-generic-card generic-card-blue">
-						<ion-card-header class="generic-card-header blue-header">{{header3}}</ion-card-header>
-						<ion-card-content class="yellow-header">{{content3}}</ion-card-content>
-					</ion-card>
-			</ion-col> -->
-			<ion-col  col-sm col-12>
-				<!--<div class="card card-large">
-					<div class="card-header bg-comm text-header text-white">{{header3}}</div>
-					<div class="card-body">
-						
-						<ul class="list-group list-group-flush comm" >
-							<home-com *ngFor="let data of comunicazioniMin" [data] = "data">
-							</home-com>
-						</ul>
-
-					</div>
-				</div>-->
-				<comunicazioni-card></comunicazioni-card>
+			<ion-col  *ngIf="this.presenze['Comunicazioni']=='true'" col-sm col-12>
+				<comunicazioni-card [modules]=modules></comunicazioni-card>
 			</ion-col>
-			<ion-col  col-sm col-12>
+			<ion-col *ngIf="this.presenze['Circolari']=='true'" col-sm col-12>
 				<circolari-card></circolari-card>
 			</ion-col>
-			<ion-col  col-sm col-6>
-				<!--<div class="card" (click)="goToChat()">
-					<div class="card-header bg-chat text-header text-white">{{headerChat}}</div>
-					<div class="card-body">{{contentChat}}</div>
-				</div>-->
-				<chat-card *ngIf="this.presenze['chat']='true'"></chat-card>
+			<ion-col *ngIf="this.presenze['Chat']=='true'"  col-sm col-6>
+				<chat-card ></chat-card>
 			</ion-col>
-			<ion-col  col-sm col-6>
-				<!--<div class="card">
-					<div class="card-header bg-priority text-header text-white">{{header2}}</div>
-					<div class="card-body">
-						<ul class="list-group list-group-flush priority" >
-							<home-prio *ngFor="let data of prioritaMin" [data] = "data">
-							</home-prio>
-						</ul>
-					</div>
-				</div>-->
-				<priorita-card *ngIf="this.presenze['priorita']='true'"  ></priorita-card>
+			<ion-col *ngIf="this.presenze['News']=='true'" col-6>
+				<news-card  ></news-card>
 			</ion-col>
-		
-			<!--<ion-col col-6>
-					<button  block outline class="rounded-generic-card button-large button-large-green" ion-button>
-						<div>Documentale</div>
-						<ion-icon class="icon-button" name="paper">
-						</ion-icon>
-						
-					</button>
-			</ion-col>-->
-			<ion-col col-6>
-				<news-card *ngIf="this.presenze['news']='true'" ></news-card>
+			<ion-col *ngIf="this.presenze['Messaggi']=='true'" col-6>
+				<messaggi-card  ></messaggi-card>
 			</ion-col>
-			<ion-col col-6>
-				<messaggi-card *ngIf="this.presenze['messaggi']='true'" ></messaggi-card>
+			<ion-col *ngIf="this.presenze['Documentale']=='true'" col-6>
+				<documentale-card [modules]=modules  ></documentale-card>
 			</ion-col>
-			<ion-col col-6>
-				<documentale-card *ngIf="this.presenze['documentale']='true'" ></documentale-card>
-			</ion-col>
-			<!--<ion-col col-6>
-				<button (click)="goToContact()"  block outline class="text-default rounded-generic-card button-large button-large-blue" ion-button>
-					<div>Rubrica</div>
-					<ion-icon class="icon-button" name="contacts">
-					</ion-icon>				
-				</button>
-			</ion-col>-->
-			<ion-col col-6>
-				<contact-card *ngIf="this.presenze['contatti']='true'" ></contact-card>
+			<ion-col *ngIf="this.presenze['Rubrica']=='true'" col-6>
+				<contact-card  ></contact-card>
 			</ion-col>
 			
 		</ion-row>

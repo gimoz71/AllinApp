@@ -38,7 +38,7 @@ export class LoginPage {
   }
 
   public login(): void {
-    this.loginService.login(this.username, this.password).subscribe(r => {
+    let s = this.loginService.login(this.username, this.password).subscribe(r => {
       console.log(r);
       if(r.result != "E"){
         this.userData = r;
@@ -52,6 +52,7 @@ export class LoginPage {
         //this.error.sendError(ed);
         this.presentAlert();
       }
+      s.unsubscribe();
     });
   }
 
