@@ -32202,7 +32202,8 @@ input[type="button"].btn-block {
   user-select: none;
   vertical-align: middle;
   text-indent: calc(calc(calc(2.375rem * .8) * 2) + .5rem);
-  font-size: .7em !important;
+  font-size: .5em !important;
+  font-weight: lighter;
 }
 
 .switch input + label::before,

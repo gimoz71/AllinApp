@@ -232,7 +232,8 @@ box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         user-select: none;
         vertical-align: middle;
         text-indent: calc(calc(#{$switch-height} * 2) + .5rem);
-        font-size: .7em !important;
+        font-size: .5em !important;
+        font-weight: lighter;
       }
   
       + label::before,
