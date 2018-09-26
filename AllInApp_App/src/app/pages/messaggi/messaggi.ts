@@ -13,6 +13,7 @@ import { NewsDetailsPage } from '../news-details/news-details';
 import { Messaggi } from '../../models/messaggi/messaggi.namespace';
 import { Login } from '../../models/login/login.namespace';
 import { MessaggiImportantiPage } from '../messaggi-importanti/messaggi-importanti';
+import { Module } from '../../models/modules/modules.namespace';
 
 
 @Component({
@@ -22,6 +23,8 @@ import { MessaggiImportantiPage } from '../messaggi-importanti/messaggi-importan
 export class MessaggiPage implements OnInit{
 
   public messFull : Messaggi.MessaggiElem[];
+  color : string;
+  icon : string;
   
   constructor(private navCtrl : NavController,private navParams: NavParams, public menuCtrl: MenuController,
     private store: StoreService, private http : HttpService, private alertCtrl: AlertController) {
@@ -29,6 +32,20 @@ export class MessaggiPage implements OnInit{
   }
 
   public ngOnInit() : void {
+    this.http.getModules().then(
+      (modules : Module.ModuleElem[])=>{
+        console.log(modules);
+        for (let i = 0 ; i < modules.length ; i++){
+          if (modules[i].tab_moduli_cod == 7){
+            this.color = modules[i].tab_moduli_colore;
+            this.icon = modules[i].tab_moduli_icona;
+          }
+        }
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
     this.messFull =this.navParams.get('messFull');
     console.log(this.messFull);
     this.menuCtrl.enable(true, 'messaggi');

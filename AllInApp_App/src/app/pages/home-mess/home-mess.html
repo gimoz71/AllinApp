@@ -1,11 +1,11 @@
 
 <li class="list-group-item" >
 	<div class="item">
-		<i class="fa fa-bell "></i>
+		<i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
 	</div>
 	<div class="brief">
-		<h5>{{data.nome_mit}} {{data.cognome_mit}}</h5>
-		<p>{{data.soggetto}}</p>
+		<h5>{{titolo}}</h5>
+		<p [ngStyle]="{'color' : color }" >{{descrizione}}</p>
 	</div>
 </li>
 			

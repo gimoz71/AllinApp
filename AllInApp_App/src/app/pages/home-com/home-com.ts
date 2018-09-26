@@ -9,8 +9,10 @@ import { Comunicazione } from '../../models/comunicazione/comunicazione.namespac
 })
 export class HomeComPage implements OnInit{
  
-  @Input('data') data : Comunicazione.ComunicazioneElencoElem;
   @Input('color') color : string;
+  @Input('date') date : string;
+  @Input('titolo') titolo : string;
+  @Input('descrizione') descrizione : string;
 
   giorno;
   mese;
@@ -22,8 +24,8 @@ export class HomeComPage implements OnInit{
   public ngOnInit() : void {
     this.giorno = " ";
     this.mese = " ";
-    if (this.data.cm_data != null) this.mese = this.data.cm_data.charAt(5) + this.data.cm_data.charAt(6);
-    if (this.data.cm_data != null) this.giorno = this.data.cm_data.charAt(8) + this.data.cm_data.charAt(9);
+    if (this.date != null) this.mese = this.date.charAt(5) + this.date.charAt(6);
+    if (this.date != null) this.giorno = this.date.charAt(8) + this.date.charAt(9);
     if (this.mese == "01") this.mese = "Gennaio";
     else if (this.mese == "02") this.mese = "Febbraio";
     else if (this.mese == "03") this.mese = "Marzo";

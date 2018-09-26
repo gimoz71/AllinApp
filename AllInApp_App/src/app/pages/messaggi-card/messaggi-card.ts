@@ -3,7 +3,6 @@ import { MessaggiDetailsPage } from './../messaggi-details/messaggi-details';
 import { MessaggiPage } from './../messaggi/messaggi';
 import { NewsDetailsPage } from './../news-details/news-details';
 import { NewsPage } from './../news/news';
-import { HomeNewsPage } from './../home-news/home-news';
 import { HttpService } from './../../services/shared/http.service';
 import { NavController, MenuController } from 'ionic-angular';
 
@@ -30,6 +29,7 @@ export class MessaggiCardPage implements OnInit {
   public color : string;
   public icon : string;
   public colonne : number;
+  
   @Input() modules: Module.ModuleElem[];
   
   constructor(private navCtrl : NavController, private http : HttpService, private store : StoreService,
@@ -38,6 +38,17 @@ export class MessaggiCardPage implements OnInit {
   }
 
   ngOnInit(){
+
+    if (this.modules != undefined){
+      for (let i = 0 ; i < this.modules.length; i++){
+        if (this.modules[i].tab_moduli_cod==5){
+          this.color = this.modules[i].tab_moduli_colore;
+          this.icon = this.modules[i].tab_moduli_icona;
+          this.colonne = this.modules[i].tab_moduli_colonne;
+        }
+      }
+    }
+
     let s = this.store.userData$.subscribe((val)=>{
         let s1 = this.http.getMessaggeList(val.token_value,"0","0","I").subscribe(
             (res)=>{

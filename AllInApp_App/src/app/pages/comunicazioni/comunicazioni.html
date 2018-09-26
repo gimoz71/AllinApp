@@ -1,4 +1,4 @@
-<ion-header>
+<!--<ion-header>
   <ion-navbar hideBackButton>
     <ion-buttons left>
       <button (click)="back()" ion-button icon-left clear small>
@@ -37,4 +37,64 @@
       </ion-card-content>
     </ion-card>
 </div>
-</ion-content>
+</ion-content>-->
+
+<body class="fixed-nav sticky-footer bg-light sidenav-toggled" id="page-top">
+    <!-- Navigation-->
+    <div class="content-wrapper">
+      <div class="container-fluid">
+  
+        <div class="row">
+  
+          <!-- CARDS COMUNICAZIONE-->
+          <div class="col mb-4" >
+            <div class="card-header text-white" [ngStyle]="{'color' : color }">Comunicazioni
+              <a (click)="back()" class="float-right">
+                <i class="fa fa-fw fa-chevron-left"></i>
+              </a>
+  
+            </div>
+            <div class="card no-border mb-3 mt-3" >
+              <ul class="list-group list-group-flush comm" [ngStyle]="{'color' : color }">
+                <div *ngFor="let com of comFull">
+                  <li class="list-group-item" *ngIf="com.dc_letta=='N'" (click)="goToDetails(com)">
+                    <div  class="item">
+                      <span class="day">21</span>
+                      <span [ngStyle]="{'color' : color }" class="mounth">Dicembre</span>
+                    </div>
+                    <div class="brief">
+                      <h5 class="title">{{com.cm_titolo}}</h5>
+                      <p [ngStyle]="{'color' : color }" class="text">{{com.cm_descrizione}}</p>
+                      <i [ngStyle]="{'color' : color }" class="fa fa-eye read"></i>
+                    </div>
+                  </li>
+                  <li class="list-group-item" *ngIf="com.dc_letta=='S'" (click)="goToDetails(com)">
+                    <div class="item">
+                      <span class="day">21</span>
+                      <span class="mounth">Settembre</span>
+                    </div>
+                    <div class="brief">
+                      <h5 class="title">{{com.cm_titolo}}</h5>
+                      <p class="text">{{com.cm_descrizione}}</p>
+                      <i class="fa fa-eye read"></i>
+                    </div>
+                  </li>
+              </div>
+              </ul>
+  
+            
+            </div>
+          </div>
+  
+        </div>
+  
+      </div>
+      <!-- /.container-fluid-->
+      <!-- /.content-wrapper-->
+      <footer class="sticky-footer">
+        <div class="container">
+          <div class="text-center">
+            <small>Copyright AllinApp 2018</small>
+          </div>
+        </div>
+      </footer>

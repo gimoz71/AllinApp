@@ -10,7 +10,10 @@ import { News } from '../../models/news/news.namespace';
 })
 export class HomeMessPage implements OnInit{
  
-  @Input('data') data : Messaggi.MessaggiElem;
+  @Input('color') color : string;
+  @Input('icon') icon : string;
+  @Input('titolo') titolo : string;
+  @Input('descrizione') descrizione : string;
   constructor() {
     
   }

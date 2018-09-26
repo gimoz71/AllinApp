@@ -19,7 +19,6 @@ export class DocumentaleCardPage implements OnInit {
   @Input() modules: Module.ModuleElem[];
 
   constructor(private navCtrl : NavController) {
-        
   }
 
   ngOnInit(){

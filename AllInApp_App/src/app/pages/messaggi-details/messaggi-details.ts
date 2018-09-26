@@ -8,6 +8,7 @@ import { OnInit, Component } from '@angular/core';
 import { News } from '../../models/news/news.namespace';
 import { Messaggi } from '../../models/messaggi/messaggi.namespace';
 import { Login } from '../../models/login/login.namespace';
+import { Module } from '../../models/modules/modules.namespace';
 
 
 
@@ -19,6 +20,9 @@ import { Login } from '../../models/login/login.namespace';
 export class MessaggiDetailsPage implements OnInit {
 
   public mess : Messaggi.Messaggio;
+  color : string;
+  icon : string;
+Module
   constructor(private navCtrl : NavController, private navParams: NavParams,
      private http: HttpService, private store:  StoreService, private alertCtrl: AlertController,
     ) {
@@ -26,6 +30,20 @@ export class MessaggiDetailsPage implements OnInit {
   }
 
   ngOnInit(){
+    this.http.getModules().then(
+      (modules : Module.ModuleElem[])=>{
+        console.log(modules);
+        for (let i = 0 ; i < modules.length ; i++){
+          if (modules[i].tab_moduli_cod == 7){
+            this.color = modules[i].tab_moduli_colore;
+            this.icon = modules[i].tab_moduli_icona;
+          }
+        }
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
     this.mess =this.navParams.get('mess');
     let s = this.store.userData$.subscribe(
       (val: Login.Token)=>{

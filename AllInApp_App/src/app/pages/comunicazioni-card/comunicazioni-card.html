@@ -3,7 +3,7 @@
     <div class="card-body">
         
         <ul class="list-group list-group-flush comm  " >
-            <home-com  *ngFor="let data of comunicazioniMin" [color]="color"  [data] = "data" (click)="goToDetails(data)" >
+            <home-com  *ngFor="let data of comunicazioniMin" [color]="color" [date]="data.cm_data" [titolo]="data.cm_titolo" [descrizione]="data.cm_descrizione" (click)="goToDetails(data)" >
             </home-com>
         </ul>
 

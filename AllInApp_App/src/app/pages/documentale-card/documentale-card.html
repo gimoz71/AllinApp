@@ -1,6 +1,8 @@
-
-    <button (click)="goToDocumentale()" block outline class="rounded-generic-card button-large button-large-green" ion-button>
-        <div>Documentale</div>
-        <ion-icon class="icon-button" name="paper">
-        </ion-icon>      
-    </button>
+<div class="card" (click)="goToDocumentale()">
+    <div [ngStyle]="{'background-color' : color }" class="card-header bg-comm text-header text-white" >Documentale</div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush priority" >
+                <i [ngClass]="icon" [ngStyle]="{'color' : color }" style="font-size: 5em"></i>
+        </ul>
+    </div>
+</div>

@@ -11,6 +11,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { OnInit, Component } from '@angular/core';
 import { Messaggi } from '../../models/messaggi/messaggi.namespace';
 import { Contact } from '../../models/contact/contact.namespace';
+import { Module } from '../../models/modules/modules.namespace';
 
 
 
@@ -30,12 +31,28 @@ export class MessaggiNuovoPage implements OnInit {
   conoscenza : Contact.ContactDataMin;
   nomeConoscenza : string;
   private mess : Messaggi.MessaggiElem;
+  color : string;
+  icon : string;
   constructor(public navCtrl: NavController, private store : StoreService, 
     private conService : ContactService, private http: HttpService,  private navParams: NavParams) {
           
   }
 
   ngOnInit(){
+    this.http.getModules().then(
+      (modules : Module.ModuleElem[])=>{
+        console.log(modules);
+        for (let i = 0 ; i < modules.length ; i++){
+          if (modules[i].tab_moduli_cod == 7){
+            this.color = modules[i].tab_moduli_colore;
+            this.icon = modules[i].tab_moduli_icona;
+          }
+        }
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
     let mess1 = this.navParams.get('reply');
     let mess2 = this.navParams.get('inoltro');
 

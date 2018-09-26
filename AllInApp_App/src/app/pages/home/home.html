@@ -31,26 +31,26 @@
 <ion-content >
 	<ion-grid >
 		<ion-row class="cards-container">
+				<ion-col *ngIf="this.presenze['Circolari']=='true'" col-sm col-12>
+						<circolari-card [modules]=modules ></circolari-card>
+					</ion-col>
 			<ion-col  *ngIf="this.presenze['Comunicazioni']=='true'" col-sm col-12>
 				<comunicazioni-card [modules]=modules></comunicazioni-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['Circolari']=='true'" col-sm col-12>
-				<circolari-card></circolari-card>
-			</ion-col>
 			<ion-col *ngIf="this.presenze['Chat']=='true'"  col-sm col-6>
-				<chat-card ></chat-card>
+				<chat-card [modules]=modules ></chat-card>
 			</ion-col>
 			<ion-col *ngIf="this.presenze['News']=='true'" col-6>
-				<news-card  ></news-card>
+				<news-card [modules]=modules  ></news-card>
 			</ion-col>
 			<ion-col *ngIf="this.presenze['Messaggi']=='true'" col-6>
-				<messaggi-card  ></messaggi-card>
+				<messaggi-card [modules]=modules  ></messaggi-card>
 			</ion-col>
 			<ion-col *ngIf="this.presenze['Documentale']=='true'" col-6>
 				<documentale-card [modules]=modules  ></documentale-card>
 			</ion-col>
 			<ion-col *ngIf="this.presenze['Rubrica']=='true'" col-6>
-				<contact-card  ></contact-card>
+				<contact-card [modules]=modules  ></contact-card>
 			</ion-col>
 			
 		</ion-row>

@@ -38,8 +38,6 @@ import { NewsModule } from './modules/news/news.module';
 import { NewsCardModule } from './modules/news-card/news-card.module';
 import { ContactCardModule } from './modules/contact-card/contact-card.module';
 import { ContactCardPage } from './pages/contact-card/contact-card';
-import { HomePrioPage } from './pages/home-prio/home-prio';
-import { HomePrioModule } from './modules/home-prio/home-prio.module';
 import { HomeComPage } from './pages/home-com/home-com';
 import { HomeComModule } from './modules/home-com/home-com.module';
 import { Base64 } from '@ionic-native/base64';
@@ -112,7 +110,6 @@ import { DocumentaleCategorieModule } from './modules/documentale-categorie/docu
     ComunicazioniPageModule,
     ComunicazioniDetailsModule,
     HomeComModule,
-    HomePrioModule,
     LoadingModule,
     ChatModule,
     MyChatModule,
@@ -147,7 +144,6 @@ import { DocumentaleCategorieModule } from './modules/documentale-categorie/docu
     HomePage,
     ComunicazioniCardPage,
     HomeComPage,
-    HomePrioPage,
     ContactsPage,
     // TabsPage,
     ComunicazioniPage,
