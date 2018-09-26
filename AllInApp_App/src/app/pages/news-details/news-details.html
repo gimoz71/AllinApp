@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+      <ion-buttons left>
+        <button (click)="back()" ion-button icon-left clear small>
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+        </ion-buttons>
+        <ion-title>
+          <div class="text-default" >NEWS</div>
+        </ion-title>
+        <ion-buttons end>
+            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>
+          </ion-buttons>
+      </ion-navbar>
+    </ion-header>
+    <ion-content>
+    <img src={{news.nw_immagine}}>
+     <h1>{{news.nw_titolo}}</h1>
+      <p>{{news.nw_descrizione}}</p>
+      <p>{{news.nw_link}}</p>
+      <p>{{news.nw_data}}</p>
+    </ion-content>

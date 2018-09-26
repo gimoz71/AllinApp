@@ -16,6 +16,7 @@ export namespace Login {
         public token_password: string;
         public token_dipendente_key : number;
         public result: string;
+        public flag_richiesta_lettura : boolean;
         public ErrorMessage: MessaggioErrore;
     }
 

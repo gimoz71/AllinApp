@@ -1,14 +1,14 @@
 <ion-content class="bg-dark login" padding>
   <form (ngSubmit)="login()" #registerForm="ngForm" class="container">
-    <div class="card card-transp card-login mx-auto mt-5">
+    <div class="card-transp card-login mx-auto mt-5">
         <ion-row class="card-header-login">
             <ion-col>
               <div class="logo">AllInApp</div>
             </ion-col>
           </ion-row>
-          <ion-row class="card-body">
+          <ion-row >
             <ion-col>
-              <ion-list inset>
+              <ion-list >
                 <div class="form-group">
                   <input class="form-control" type="text" placeholder="Email" name="email" [(ngModel)]="username" required/>
                 </div>
@@ -20,7 +20,7 @@
           </ion-row>
         <ion-row>
           <ion-col>
-            <span class="switch switch-sm">
+            <span class="switch switch-lg">
               <input type="checkbox" class="switch" id="switch-id">
               <label for="switch-id">Salva</label>
             </span>

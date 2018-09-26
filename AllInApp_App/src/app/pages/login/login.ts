@@ -39,6 +39,7 @@ export class LoginPage {
 
   public login(): void {
     this.loginService.login(this.username, this.password).subscribe(r => {
+      console.log(r);
       if(r.result != "E"){
         this.userData = r;
         this.store.setUserData(this.userData);

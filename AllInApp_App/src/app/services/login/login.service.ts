@@ -16,8 +16,9 @@ export class LoginService {
     }
   
     public login(username: string, password: string): Observable<Login.Token> {
-      return this.http.get<Login.Token>("http://allinappws.mesys.it/services/token/"+ username+ "/"+ 
-            password);
+        let url = "http://allinappws.mesys.it/services/token/"+ username+ "/"+ password;
+        console.log(url);
+      return this.http.get<Login.Token>(url);
     }
 
     public changePassword(token, pass, newp , rep): Observable<Login.Result>  {

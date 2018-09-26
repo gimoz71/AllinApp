@@ -1,5 +1,6 @@
 /AllInApp_App/node_modules/
 /AllInApp_App/.sourcemaps/
-/AllInApp_App/plugins/
 /AllInApp_App/www/
 /AllinApp_App/platforms/
+AllInApp_App/www/
+AllInApp_App/plugins/

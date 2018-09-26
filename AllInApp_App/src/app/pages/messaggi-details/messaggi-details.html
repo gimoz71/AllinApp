@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+      <ion-buttons left>
+        <button (click)="back()" ion-button icon-left clear small>
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+        </ion-buttons>
+        <ion-title>
+          <div class="text-default" >MESSAGGIO</div>
+        </ion-title>
+        <ion-buttons end>
+            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>
+          </ion-buttons>
+      </ion-navbar>
+    </ion-header>
+    <ion-content>
+      <div style="float:right;font-size:2em">
+          <ion-icon name="undo" (click)="reply(mess)"></ion-icon>
+          <ion-icon name="redo" (click)="inoltro(mess)"></ion-icon>
+        <ion-icon name="trash" (click)="deleteConfirm(mess)"></ion-icon>
+        <ion-icon name="star-outline" *ngIf="mess.preferito==''" (click)="setStar(mess,'S')"></ion-icon>
+        <ion-icon name="star-outline" *ngIf="mess.preferito=='N'" (click)="setStar(mess,'S')"></ion-icon>
+        <ion-icon name="star" *ngIf="mess.preferito=='S'" (click)="setStar(mess,'N')"></ion-icon>
+      </div>
+    <img src={{mess.nw_immagine}}>
+     <h1>{{mess.soggetto}}</h1>
+      <p>{{mess.descrizione}}</p>
+      <p>{{mess.messaggio}}</p>
+      <p>{{mess.cognome_mit}}</p>
+    </ion-content>

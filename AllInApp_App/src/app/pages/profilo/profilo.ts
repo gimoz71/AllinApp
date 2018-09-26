@@ -91,9 +91,6 @@ export class ProfiloPage implements OnInit {
 }
 
   changeAvatar(mode){
-    console.log("sono in change avatar 1");
-    
-      console.log("sono in change avatar 2");
       let options: CameraOptions = {
         quality: 100,
         destinationType: this.camera.DestinationType.DATA_URL,
@@ -133,67 +130,5 @@ export class ProfiloPage implements OnInit {
     
   }  
 
-  changePassword() {
-    const prompt = this.alertCtrl.create({
-      title: 'Cambio Password',
-      message: "inserisci i dati",
-      inputs: [
-        {
-          name: 'old',
-          placeholder: 'password corrente'
-        },
-        {
-          name: 'new',
-          placeholder: 'Nuova password'
-        },
-        {
-          name: 'repeat',
-          placeholder: 'reinserisci nuova passoword'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-
-          }
-        },
-        {
-          text: 'Send',
-          handler: data => {
-            if (this.checkPassword(data.old) == true){
-              if (data.new.length > 5){
-                if (data.new == data.repeat ){
-                  let s = this.store.userData$.subscribe((val)=>{
-                    s.unsubscribe();
-                    let s1 =this.login.changePassword(val, data.old, data.new , data.repeat).subscribe((r)=>{
-                      s1.unsubscribe();
-                      if (r.ErrorMessage.msg_code == 0){
-                        alert("password cambiata correttamente");
-                      }else{
-                        alert("errore modifica password");
-                      }
-                    });
-                  })
-                  this.store.getUserData();
-                }else{
-                  alert("le password non corrispondono");
-                }
-              }else{
-                alert("la password deve essere più lunga di 5 caratteri");
-              }
-            }else{
-              alert("password corrente non corretta");
-            }
-          }
-        }
-      ],
-      enableBackdropDismiss: false
-    });
-    prompt.present();
-  }
-
-  checkPassword(old): boolean{
-    return true;
-  }
+  
 }
