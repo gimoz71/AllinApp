@@ -1,9 +1,13 @@
 <div class="card" >
     <div [ngStyle]="{'background-color' : color }" class="card-header bg-comm text-header text-white" (click)="goToNews()">News</div>
     <div class="card-body">
-        <ul class="list-group list-group-flush priority" >
+        <ul *ngIf="colonne==1"  class="list-group list-group-flush priority" >
             <home-mess *ngFor="let data of newsMin" [titolo]="data.nw_titolo" [descrizione]="data.nw_descrizione" [color]="color" [icon]="icon"(click)="goToDetails(data)" >
             </home-mess>
+        </ul>
+        <ul *ngIf="colonne==2"  class="list-group list-group-flush comm" >
+            <home-com *ngFor="let data of newsMin" [titolo]="data.nw_titolo" [descrizione]="data.nw_descrizione" [color]="color" [date]="data.nw_data" (click)="goToDetails(data)" >
+            </home-com>
         </ul>
     </div>
 </div>

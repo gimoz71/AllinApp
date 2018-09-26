@@ -49,11 +49,20 @@ export class NewsCardPage implements OnInit {
               console.log(res);
               if (res.ErrorMessage.msg_code == 0){
                 this.newsFull = res.l_lista_news;
-                for (let i = 0 ; i < 4 ; i++){
-                  if (this.newsFull[i] != null){
-                    this.newsMin[i]=  this.newsFull[i];
+                if (this.colonne == 1){
+                  for (let i = 0 ; i < 4 ; i++){
+                    if (this.newsFull[i] != null){
+                      this.newsMin[i]=  this.newsFull[i];
+                    }
+                  }
+                }else{
+                  for (let i = 0 ; i < 3 ; i++){
+                    if (this.newsFull[i] != null){
+                      this.newsMin[i]=  this.newsFull[i];
+                    }
                   }
                 }
+                
               }else{
                 console.log("errore ricezione News");
               }

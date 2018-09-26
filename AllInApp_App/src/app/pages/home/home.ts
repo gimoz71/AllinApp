@@ -25,18 +25,13 @@ import { HttpService } from '../../services/shared/http.service';
 })
 export class HomePage implements OnInit{
 
-  public header1: string;
-  public header2: string;
-  public header3: string;
-  public headerChat : string;
-
-  public content1: string;
-  public content2: string;
-  public content3: string;
-  public contentChat: string;
   public contentCom : string;
 
   public presenze : string[] = [];
+  public colonne : string[] = [];
+  public posizione : string[] = [];
+  public icone : string[] = [];
+  public colori : string [] = [];
 
   public logoImg : string;
 
@@ -58,10 +53,35 @@ export class HomePage implements OnInit{
      this.presenze["Comunicazioni"]= "false"; 
      this.presenze["Circolari"] == "false";
      this.presenze["Chat"]= "false"; 
-     this.presenze["Priorita"]= "false"; 
      this.presenze["Documentale"]= "false";
      this.presenze["Rubrica"] = "false"; 
      this.presenze["Messaggi"] = "false"; 
+     this.presenze["News"] = "false"; 
+
+
+     this.colonne["Comunicazioni"]= 1; 
+     this.colonne["Circolari"] = 1;
+     this.colonne["Chat"]= 1; 
+     this.colonne["Documentale"]= 1;
+     this.colonne["Rubrica"] = 1; 
+     this.colonne["Messaggi"] = 1; 
+     this.colonne["News"] = 1; 
+
+     this.icone["Comunicazioni"]= ""; 
+     this.icone["Circolari"] = "";
+     this.icone["Chat"]= ""; 
+     this.icone["Documentale"]= "";
+     this.icone["Rubrica"] = ""; 
+     this.icone["Messaggi"] = ""; 
+     this.icone["News"] = ""; 
+
+     this.colori["Comunicazioni"]= ""; 
+     this.colori["Circolari"] = "";
+     this.colori["Chat"]= ""; 
+     this.colori["Documentale"]= "";
+     this.colori["Rubrica"] = ""; 
+     this.colori["Messaggi"] = ""; 
+     this.colori["News"] = ""; 
 
     this.http.getModules().then(
       (modules : Module.ModuleElem[])=>{
@@ -70,7 +90,16 @@ export class HomePage implements OnInit{
         for (let i = 0 ; i < modules.length ; i++){
           if (modules[i].tab_moduli_attivo == "S"){
             this.presenze[modules[i].tab_moduli_desc]= "true";
+            this.colonne[modules[i].tab_moduli_desc]= modules[i].tab_moduli_colonne;
+            this.icone[modules[i].tab_moduli_desc]= modules[i].tab_moduli_icona;
+            this.colori[modules[i].tab_moduli_desc]= modules[i].tab_moduli_colore;
+            //this.colonne[modules[i].tab_moduli_desc]= 1;
+            //this.modules[i].tab_moduli_colonne = 1;
           }
+          /**if (this.modules[i].tab_moduli_desc=="Messaggi"){
+            this.modules[i].tab_moduli_colonne = 2;
+            this.colonne["Messaggi"]= 2;
+          }**/
         }
       },
       (error)=>{

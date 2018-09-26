@@ -1,3 +1,4 @@
+import { HomeComModule } from './../home-com/home-com.module';
 import { NewsCardPage } from './../../pages/news-card/news-card';
 import { HomeMessModule } from './../home-mess/home-mess.module';
 
@@ -6,7 +7,7 @@ import { IonicModule } from 'ionic-angular';
 
 @NgModule({
 	declarations: [NewsCardPage],
-	imports: [IonicModule, HomeMessModule],
+	imports: [IonicModule, HomeMessModule, HomeComModule],
 	exports: [NewsCardPage]
 })
 export class NewsCardModule {}

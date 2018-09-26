@@ -7,6 +7,7 @@ import { OnInit, Component } from '@angular/core';
 import { Messaggi } from '../../models/messaggi/messaggi.namespace';
 import { StoreService } from '../../services/store/store.service';
 import { Login } from '../../models/login/login.namespace';
+import { Module } from '../../models/modules/modules.namespace';
 
 
 
@@ -19,7 +20,8 @@ import { Login } from '../../models/login/login.namespace';
 export class MessaggiUscitaPage implements OnInit {
 
   public messFull : Messaggi.MessaggiElem[];
-
+  color : string;
+  icon : string;
   constructor(public navCtrl: NavController, private store : StoreService, private http : HttpService,
      private alertCtrl: AlertController) {
           

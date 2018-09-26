@@ -2,10 +2,15 @@
     <div [ngStyle]="{'background-color' : color }" class="card-header text-header text-white"  (click)="goToComunicazioni()" >Comunicazioni</div>
     <div class="card-body">
         
-        <ul class="list-group list-group-flush comm  " >
+        <ul *ngIf="colonne==2" class="list-group list-group-flush comm  " >
             <home-com  *ngFor="let data of comunicazioniMin" [color]="color" [date]="data.cm_data" [titolo]="data.cm_titolo" [descrizione]="data.cm_descrizione" (click)="goToDetails(data)" >
             </home-com>
         </ul>
-
+        
+        <ul *ngIf="colonne==1" class="list-group list-group-flush priority  " >
+            <home-mess  *ngFor="let data of comunicazioniMin" [color]="color" [icon]="icon" [titolo]="data.cm_titolo" [descrizione]="data.cm_descrizione" (click)="goToDetails(data)">
+            </home-mess>
+        </ul>
+        
     </div>
 </div>

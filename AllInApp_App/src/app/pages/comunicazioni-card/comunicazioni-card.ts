@@ -37,20 +37,27 @@ export class ComunicazioniCardPage implements OnInit {
         if (this.modules[i].tab_moduli_cod==1){
           this.color = this.modules[i].tab_moduli_colore;
           this.icon = this.modules[i].tab_moduli_icona;
-          this.colonne = this.modules[i].tab_moduli_colonne * 6;
+          this.colonne = this.modules[i].tab_moduli_colonne;
         }
       }
     }
-
+    //this.colonne = 1;
     let s = this.store.userData$.subscribe(
       (val)=>{
         let s1 = this.http.getComunicazioniElenco(val.token_value,0,0,'X','C').subscribe(
           (val1)=>{
             this.comunicazioniFull = val1.l_lista_comunicazione;
             s1.unsubscribe();
-            for (let i = 0; i < 3 ; i++){
-              this.comunicazioniMin[i]= new Comunicazione.ComunicazioneElencoElem();
-              if (this.comunicazioniFull[i] != null)this.comunicazioniMin[i] = this.comunicazioniFull[i];
+            if (this.colonne == 2){
+              for (let i = 0; i < 3 ; i++){
+                this.comunicazioniMin[i]= new Comunicazione.ComunicazioneElencoElem();
+                if (this.comunicazioniFull[i] != null)this.comunicazioniMin[i] = this.comunicazioniFull[i];
+              }
+            }else{
+              for (let i = 0; i < 4 ; i++){
+                this.comunicazioniMin[i]= new Comunicazione.ComunicazioneElencoElem();
+                if (this.comunicazioniFull[i] != null)this.comunicazioniMin[i] = this.comunicazioniFull[i];
+              }
             }
           }
         )

@@ -38,7 +38,7 @@ export class CircolariCardPage implements OnInit {
         if (this.modules[i].tab_moduli_cod==3){
           this.color = this.modules[i].tab_moduli_colore;
           this.icon = this.modules[i].tab_moduli_icona;
-          this.colonne = this.modules[i].tab_moduli_colonne * 6;
+          this.colonne = this.modules[i].tab_moduli_colonne ;
         }
       }
     }
@@ -49,9 +49,16 @@ export class CircolariCardPage implements OnInit {
           (val1)=>{
             this.comunicazioniFull = val1.l_lista_comunicazione;
             s1.unsubscribe();
-            for (let i = 0; i < 3 ; i++){
-              this.comunicazioniMin[i]= new Comunicazione.ComunicazioneElencoElem();
-              if (this.comunicazioniFull[i] != null)this.comunicazioniMin[i] = this.comunicazioniFull[i];
+            if (this.colonne == 2){
+              for (let i = 0; i < 3 ; i++){
+                this.comunicazioniMin[i]= new Comunicazione.ComunicazioneElencoElem();
+                if (this.comunicazioniFull[i] != null)this.comunicazioniMin[i] = this.comunicazioniFull[i];
+              }
+            }else{
+              for (let i = 0; i < 4 ; i++){
+                this.comunicazioniMin[i]= new Comunicazione.ComunicazioneElencoElem();
+                if (this.comunicazioniFull[i] != null)this.comunicazioniMin[i] = this.comunicazioniFull[i];
+              }
             }
           }
         )
