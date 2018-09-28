@@ -44,9 +44,9 @@ export class ComunicazioniPage implements OnInit{
           console.log(error);
         }
       )
-    let s = this.store.userData$.subscribe(
+    /**let s = this.store.userData$.subscribe(
       (val)=>{
-        let s1 = this.http.getComunicazioniElenco(val.token_value,0,0,'X','C').subscribe(
+        let s1 = this.http.getComunicazioniElenco(0,0,'X','C').subscribe(
           (val1)=>{
             this.comFull = val1.l_lista_comunicazione;
             s1.unsubscribe();
@@ -55,7 +55,15 @@ export class ComunicazioniPage implements OnInit{
         s.unsubscribe();
       }
     )
-    this.store.getUserData();
+    this.store.getUserData();*/
+    this.http.getComunicazioniElenco(0,0,'X','C').then(
+      (val1 : Comunicazione.ComunicazioneElencoElem[])=>{
+        this.comFull = val1;
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 
   goToDetails(com){

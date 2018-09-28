@@ -44,18 +44,13 @@ export class DocumentaleCategoriePage implements OnInit{
     )
 
   this.categoria = this.para.get("categoria");
-   let s = this.store.userData$.subscribe(
-     (val)=>{
-       let s1 = this.http.getCategorieDocumenti(val.token_value, this.categoria).subscribe(
-         (val1)=>{
-            this.categorie = val1.l_lista_categoria_documenti;
-            s1.unsubscribe();
-         }
-       )
-       s.unsubscribe();
-     }
-   )
-   this.store.getUserData();
+  this.http.getCategorieDocumenti(this.categoria).then(
+    (val1 : Documentale.Categoria[])=>{
+      this.categorie = val1;
+    },
+    (error)=>{
+      console.log(error);
+    })
   }
 
   goToLista(cat){

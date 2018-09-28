@@ -49,7 +49,7 @@ export class MessaggiCardPage implements OnInit {
       }
     }
 
-    let s = this.store.userData$.subscribe((val)=>{
+    /**let s = this.store.userData$.subscribe((val)=>{
         let s1 = this.http.getMessaggeList(val.token_value,"0","0","I").subscribe(
             (res)=>{
               console.log(res);
@@ -78,7 +78,30 @@ export class MessaggiCardPage implements OnInit {
           s.unsubscribe();
          }
       );
-      this.store.getUserData();
+      this.store.getUserData();*/
+
+      this.http.getMessaggeList("0","0","I").then(
+        (res : Messaggi.MessaggiElem[])=>{
+          console.log(res);
+          this.messFull = res;
+          if (this.colonne==1){
+            for (let i = 0 ; i < 4 ; i++){
+              if (this.messFull[i] != null){
+                this.messMin[i]=  this.messFull[i];
+              }
+            }
+          }else{
+            for (let i = 0 ; i < 3 ; i++){
+              if (this.messFull[i] != null){
+                this.messMin[i]=  this.messFull[i];
+              }
+            }
+          }        
+        },
+        (error)=>{
+          console.log(error);
+        }
+      );
     }
 
     public goToMessaggi(){

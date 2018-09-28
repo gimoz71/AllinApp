@@ -44,7 +44,7 @@ export class CircolariPage implements OnInit{
         console.log(error);
       }
     )
-    let s = this.store.userData$.subscribe(
+    /**let s = this.store.userData$.subscribe(
       (val)=>{
         let s1 = this.http.getComunicazioniElenco(val.token_value,0,0,'X','R').subscribe(
           (val1)=>{
@@ -55,7 +55,16 @@ export class CircolariPage implements OnInit{
         s.unsubscribe();
       }
     )
-    this.store.getUserData();
+    this.store.getUserData();*/
+    let s1 = this.http.getComunicazioniElenco(0,0,'X','R').then(
+      (val1 : Comunicazione.ComunicazioneElencoElem[] )=>{
+        this.comFull = val1;
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
+    
   }
 
   goToDetails(com){
@@ -63,7 +72,7 @@ export class CircolariPage implements OnInit{
   }
 
   back(){
-    let s = this.store.userData$.subscribe(
+    /**let s = this.store.userData$.subscribe(
       (val)=>{
         let s1 = this.http.getComunicazioniElenco(val.token_value,0,0,'X','R').subscribe(
           (val1)=>{
@@ -87,7 +96,30 @@ export class CircolariPage implements OnInit{
         s.unsubscribe();
       }
     )
-    this.store.getUserData();
-  }
+    this.store.getUserData();*/
 
+    this.http.getComunicazioniElenco(0,0,'X','R').then(
+          (val1 : Comunicazione.ComunicazioneElencoElem[])=>{
+            this.comFull = val1;
+            let lette = true;
+            for (let i = 1 ; i < this.comFull.length ; i++){
+              if (this.comFull[i].dc_letta == "N") lette = false;
+            }
+            if (lette == true )this.navCtrl.pop();
+            else{
+              let alert = this.alertCtrl.create({
+                title: 'Aspetta!!',
+                subTitle: 'prima leggi tutte le circolari',
+                buttons: ['Ok']
+              });
+              alert.present();
+            }
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+        
+  
+  }
 }

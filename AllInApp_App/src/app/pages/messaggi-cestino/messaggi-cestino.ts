@@ -40,7 +40,7 @@ export class MessaggiCestinoPage implements OnInit {
         console.log(error);
       }
     )
-    let s= this.store.userData$.subscribe(
+    /**let s= this.store.userData$.subscribe(
       (val)=>{
         let s1 = this.http.getMessaggeList(val.token_value,'0','0','D').subscribe(
           (val1)=>{
@@ -51,7 +51,15 @@ export class MessaggiCestinoPage implements OnInit {
         s.unsubscribe();
       }
     )
-    this.store.getUserData();
+    this.store.getUserData();*/
+    this.http.getMessaggeList("0","0","D").then(
+      (res : Messaggi.MessaggiElem[])=>{
+        this.messFull = res;      
+      },
+      (error)=>{
+        console.log(error);
+      }
+    );
   }
 
   public goToDetails(mess){
@@ -63,7 +71,7 @@ export class MessaggiCestinoPage implements OnInit {
   }
   
   delete(mess){
-    let s = this.store.userData$.subscribe(
+    /**let s = this.store.userData$.subscribe(
       (val)=>{
         let busta = new Messaggi.BustaMessaggio();
         busta.messaggio = mess;
@@ -89,7 +97,31 @@ export class MessaggiCestinoPage implements OnInit {
         s.unsubscribe();
       }
     )
-    this.store.getUserData();
+    this.store.getUserData();*/
+    this.store.getUserDataPromise().then((val)=>{
+      (val)=>{
+        let busta = new Messaggi.BustaMessaggio();
+        busta.messaggio = mess;
+        busta.token = val.token_value;
+      this.http.deleteMessage(busta).then(
+         (val1)=>{
+            console.log (busta);
+            console.log(val1);
+            let canc = null;
+            for (let i ; i < this.messFull.length ; i++){
+              if (this.messFull[i].messaggi_key == mess.messaggi_key){
+                canc = i;
+              }
+            };
+            if (canc != null)this.messFull.slice(canc,1);
+            alert ("messaggio eliminato");
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+      }
+    })
   }
 
   ripristina (mess){

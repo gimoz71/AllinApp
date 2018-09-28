@@ -41,18 +41,13 @@ export class DocumentaleDetailsPage implements OnInit{
     )
 
   this.doc  = this.para.get("doc");
-  let s = this.store.userData$.subscribe(
-     (val)=>{
-       let s1 = this.http.getDocumento(val.token_value, this.doc.documenti_key).subscribe(
-         (val1)=>{
-            this.doc = val1.documento;
-            s1.unsubscribe();
-         }
-       )
-       s.unsubscribe();
-     }
-   )
-   this.store.getUserData();
+    let s1 = this.http.getDocumento(this.doc.documenti_key).then(
+      (val1 : Documentale.Documento)=>{
+        this.doc = val1;
+      },
+    (error)=>{
+      console.log(error);
+    })
   }
 
   back(){

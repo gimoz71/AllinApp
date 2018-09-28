@@ -17,7 +17,7 @@ export class ContactDetailsPage implements OnInit, OnDestroy{
 
   message : string;
   contactMin : Contact.ContactDataMin;
-  contact : Contact.ContactDataFull;
+  contact : Contact.Dipendente;
   color : string;
   icon : string;
 
@@ -33,7 +33,7 @@ export class ContactDetailsPage implements OnInit, OnDestroy{
       (modules : Module.ModuleElem[])=>{
         console.log(modules);
         for (let i = 0 ; i < modules.length ; i++){
-          if (modules[i].tab_moduli_cod == 7){
+          if (modules[i].tab_moduli_cod == 6){
             this.color = modules[i].tab_moduli_colore;
             this.icon = modules[i].tab_moduli_icona;
           }
@@ -43,13 +43,12 @@ export class ContactDetailsPage implements OnInit, OnDestroy{
         console.log(error);
       }
     )
-      this.contact = new Contact.ContactDataFull();
-      this.contact.dipendente = new Contact.Dipendente();
+      this.contact = new Contact.Dipendente();
       this.contactMin =this.navParams.get('contact');
       if (this.contactMin) {
         this.message = 'utente trovato ' + this.contactMin.nome;
 
-        this.conService.contactsFull$.subscribe((val)=>{
+        /**this.conService.contactsFull$.subscribe((val)=>{
           console.log(val);
             if (val != null){
               this.contact = val;
@@ -57,7 +56,14 @@ export class ContactDetailsPage implements OnInit, OnDestroy{
               alert("errore recupero risorsa");
             }
           })
-        this.conService.GetContactDetails(this.contactMin.dipendenti_key);
+        this.conService.GetContactDetails(this.contactMin.dipendenti_key);**/
+        
+        this.conService.GetContactDetails(this.contactMin.dipendenti_key).then(
+          (val : Contact.Dipendente)=>{
+            this.contact = val;
+          }
+        )
+        
       } else {
         this.message = 'utente non trovato';
       }
@@ -72,14 +78,14 @@ export class ContactDetailsPage implements OnInit, OnDestroy{
   }
 
   call(){
-    this.callNumber.callNumber(this.contact.dipendente.telefono, true)
+    this.callNumber.callNumber(this.contact.telefono, true)
     .then(res => console.log('Launched dialer!', res))
     .catch(err => console.log('Error launching dialer', err));
   }
 
   email(){
      let email = {
-      to: this.contact.dipendente.email,
+      to: this.contact.email,
     };
     this.emailComposer.open(email);
   }
@@ -87,8 +93,8 @@ export class ContactDetailsPage implements OnInit, OnDestroy{
   presentConfirmEmail() {
     let alert = this.alertCtrl.create({
       title: 'Conferma invio e-mail',
-      message: 'Vuoi inviare un\'e-mail a ' + this.contact.dipendente.nome
-        + " " + this.contact.dipendente.cognome +'?',
+      message: 'Vuoi inviare un\'e-mail a ' + this.contact.nome
+        + " " + this.contact.cognome +'?',
       buttons: [
         {
           text: 'Indietro',
@@ -111,8 +117,8 @@ export class ContactDetailsPage implements OnInit, OnDestroy{
   presentConfirmCall() {
     let alert = this.alertCtrl.create({
       title: 'Conferma chiamata',
-      message: 'Vuoi chiamare ' + this.contact.dipendente.nome
-      + " " + this.contact.dipendente.cognome +'?',
+      message: 'Vuoi chiamare ' + this.contact.nome
+      + " " + this.contact.cognome +'?',
       buttons: [
         {
           text: 'Indietro',

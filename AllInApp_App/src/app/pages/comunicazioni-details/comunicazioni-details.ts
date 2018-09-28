@@ -46,7 +46,7 @@ export class ComunicazioniDetailsPage implements OnInit{
 
     let c = this.navParams.get('com');
     this.com = new Comunicazione.Comunicazione;
-    let s = this.store.userData$.subscribe(
+    /**let s = this.store.userData$.subscribe(
       (val)=>{
         let s1 = this.http.getComunicazione(val.token_value,c.comunicazione_key).subscribe(
           (val1)=>{
@@ -62,7 +62,24 @@ export class ComunicazioniDetailsPage implements OnInit{
         s.unsubscribe();
       }
     )
-    this.store.getUserData();
+    this.store.getUserData();*/
+    this.http.getComunicazione(c.comunicazione_key).then(
+          (val1 : Comunicazione.Comunicazione)=>{
+            this.com = val1;
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+        
+    this.http.setReadComunicazione( c.comunicazione_key).then(
+          (val2)=>{
+            console.log(val2);
+          },
+          (error)=>{
+            console.log(error);
+          }
+        );
   }
 
   back(){
@@ -70,7 +87,7 @@ export class ComunicazioniDetailsPage implements OnInit{
   }
 
   delete(){
-    let s = this.store.userData$.subscribe(
+    /**let s = this.store.userData$.subscribe(
       (val)=>{
         let s1 = this.http.setDeletedComunicazione(val.token_value, this.com.comunicazione_key).subscribe(
           (val1)=>{
@@ -96,7 +113,30 @@ export class ComunicazioniDetailsPage implements OnInit{
         s.unsubscribe();
       }
     )
-    this.store.getUserData();
+    this.store.getUserData();*/
+      this.http.setDeletedComunicazione(this.com.comunicazione_key).then(
+          (val1 : Comunicazione.Result)=>{
+            if (val1.ErrorMessage.msg_code == 0){
+              let alert = this.alertCtrl.create({
+                title: 'Cancellazione',
+                subTitle: 'Cancellazzione andata a buon fine',
+                buttons: ['Dismiss']
+              });
+              alert.present();
+              this.navCtrl.pop();
+            }else{
+              let alert = this.alertCtrl.create({
+                title: 'Cancellazione',
+                subTitle: 'Cancellazzione fallita',
+                buttons: ['Dismiss']
+              });
+              alert.present();
+            }
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
   }
 
 }

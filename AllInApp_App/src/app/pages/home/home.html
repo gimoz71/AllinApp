@@ -11,7 +11,7 @@
 <ion-menu id="home"[content]="mycontent">
 	<ion-content>
 	  <ion-list>
-			<ion-item><img width="30em" src="assets/imgs/logo.png"> ALL IN APP </ion-item>
+			<ion-item><img width="30em" src="assets/imgs/logo.png"> <div style="position : absolute; left : 4em; top: 1.2em;">ALL IN APP</div></ion-item>
 			<ion-item (click)="GoProfile()">  Profilo </ion-item>
 			<ion-item *ngIf="this.presenze['Comunicazioni']=='true'"(click)="goToComunicazioni()">  <i [ngStyle]="{'color' : colori['Comunicazioni'] }" [ngClass]="icone['Comunicazioni']"></i> Comunicazioni</ion-item>
 			<ion-item *ngIf="this.presenze['Circolari']=='true'"(click)="goToCircolari()"> <i [ngStyle]="{'color' : colori['Circolari'] }" [ngClass]="icone['Circolari']"></i> Circolari</ion-item>	
@@ -31,7 +31,7 @@
 
 <ion-content >
 	<ion-grid >
-		<ion-row  class="cards-container">
+		<ion-row  class="cards-container" >
 			<ion-col *ngIf="this.presenze['Circolari']=='true'&&this.colonne['Circolari']==2"  col-12>
 				<circolari-card [modules]=modules ></circolari-card>
 			</ion-col>
@@ -73,9 +73,7 @@
 			</ion-col>
 			<ion-col *ngIf="this.presenze['Rubrica']=='true'&&this.colonne['Rubrica']==1" col-6>
 				<contact-card [modules]=modules  ></contact-card>
-			</ion-col>
-			
-			
+			</ion-col>	
 		</ion-row>
 		
 	</ion-grid>

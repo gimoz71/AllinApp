@@ -1,5 +1,5 @@
 export namespace Error {
-    export class ws_result {
+    export class Result {
             public errorMessage : {
                 msg_tipo : string;
                 msg_code : number;
@@ -11,7 +11,7 @@ export namespace Error {
             public result_key: number;
     }
 
-    export class ws_log_errore{
+    export class LogErrore{
             public token : string;
             public log_stacktrace: string;
             public log_descrerr : string;

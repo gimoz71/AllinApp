@@ -49,7 +49,8 @@ export class MessaggiPage implements OnInit{
     this.messFull =this.navParams.get('messFull');
     console.log(this.messFull);
     this.menuCtrl.enable(true, 'messaggi');
-    let s = this.store.userData$.subscribe((val)=>{
+
+    /**let s = this.store.userData$.subscribe((val)=>{
       let s1 = this.http.getMessaggeList(val.token_value,"0","0","I").subscribe(
           (res)=>{
             console.log(res);
@@ -64,7 +65,16 @@ export class MessaggiPage implements OnInit{
         s.unsubscribe();
        }
     );
-    this.store.getUserData();
+    this.store.getUserData();*/
+
+    this.http.getMessaggeList("0","0","I").then(
+      (res : Messaggi.MessaggiElem[])=>{
+        this.messFull = res;      
+      },
+      (error)=>{
+        console.log(error);
+      }
+    );
   }
 
   back(){
@@ -91,7 +101,7 @@ export class MessaggiPage implements OnInit{
   }
 
   setStar (mess : Messaggi.MessaggiElem, stato){
-      let s = this.store.userData$.subscribe(
+      /**let s = this.store.userData$.subscribe(
         (val: Login.Token)=>{
           let s1 = this.http.setStarMessage(val.token_value,mess.messaggi_key,stato).subscribe(
             (r)=>{
@@ -105,11 +115,20 @@ export class MessaggiPage implements OnInit{
           s.unsubscribe();
         }
       );
-      this.store.getUserData();
+      this.store.getUserData();*/
+
+      this.http.setStarMessage(mess.messaggi_key,stato).then(
+        (r)=>{
+          mess.preferito = stato; 
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
   }
 
   setDelete(mess : Messaggi.MessaggiElem){
-    let s = this.store.userData$.subscribe(
+    /**let s = this.store.userData$.subscribe(
       (val: Login.Token)=>{
         let s1 = this.http.setDeleteMessage(val.token_value, mess.messaggi_key).subscribe(
           (r)=>{
@@ -120,7 +139,16 @@ export class MessaggiPage implements OnInit{
         s.unsubscribe();
       }
     );
-    this.store.getUserData();
+    this.store.getUserData();*/
+
+    this.http.setDeleteMessage( mess.messaggi_key).then(
+      (r)=>{
+        console.log(r);
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 
   deleteConfirm(mess : Messaggi.MessaggiElem) {

@@ -39,7 +39,7 @@ export class NewsDetailsPage implements OnInit {
       )
 
     this.news =this.navParams.get('news');
-    let s = this.store.userData$.subscribe((val)=>{
+    /**let s = this.store.userData$.subscribe((val)=>{
       let s1 = this.http.setReadNews(val.token_value, this.news.news_key).subscribe(
         (r)=>{
           console.log(r);
@@ -48,7 +48,16 @@ export class NewsDetailsPage implements OnInit {
       s.unsubscribe();
       }
     );
-    this.store.getUserData();
+    this.store.getUserData();*/
+    this.http.setReadNews(this.news.news_key).then(
+      (val)=>{
+        console.log("news letta");
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+
   }
 
   back(){

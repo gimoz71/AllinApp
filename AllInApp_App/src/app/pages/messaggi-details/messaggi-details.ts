@@ -45,7 +45,7 @@ Module
       }
     )
     this.mess =this.navParams.get('mess');
-    let s = this.store.userData$.subscribe(
+    /**let s = this.store.userData$.subscribe(
       (val: Login.Token)=>{
         let s1 = this.http.getMessagge(val.token_value, this.mess.messaggi_key).subscribe(
           (val1)=>{
@@ -57,7 +57,16 @@ Module
         s.unsubscribe();
       }
     );
-    this.store.getUserData();
+    this.store.getUserData();*/
+
+    this.http.getMessagge(this.mess.messaggi_key).then ((val1 : Messaggi.BustaMessaggio)=>{
+      this.mess = val1.messaggio;
+          console.log(this.mess);
+    },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 
   public back(){
@@ -65,7 +74,7 @@ Module
   }
 
   setDelete(mess : Messaggi.MessaggiElem){
-    let s = this.store.userData$.subscribe(
+    /**let s = this.store.userData$.subscribe(
       (val: Login.Token)=>{
         let s1 = this.http.setDeleteMessage(val.token_value, mess.messaggi_key).subscribe(
           (r)=>{
@@ -76,7 +85,15 @@ Module
         s.unsubscribe();
       }
     );
-    this.store.getUserData();
+    this.store.getUserData();*/
+    this.http.setDeleteMessage( mess.messaggi_key).then(
+      (r)=>{
+        console.log(r);
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
   
     deleteConfirm(mess : Messaggi.MessaggiElem) {
@@ -103,7 +120,7 @@ Module
     }  
 
 setStar (mess : Messaggi.MessaggiElem, stato){
-  let s = this.store.userData$.subscribe(
+  /**let s = this.store.userData$.subscribe(
     (val: Login.Token)=>{
       let s1 = this.http.setStarMessage(val.token_value,mess.messaggi_key,stato).subscribe(
         (r)=>{
@@ -117,7 +134,15 @@ setStar (mess : Messaggi.MessaggiElem, stato){
       s.unsubscribe();
     }
   );
-  this.store.getUserData();
+  this.store.getUserData();*/
+  this.http.setStarMessage(mess.messaggi_key,stato).then(
+    (r)=>{
+      mess.preferito = stato; 
+    },
+    (error)=>{
+      console.log(error);
+    }
+  )
 }
 
 reply( mess : Messaggi.MessaggiElem){

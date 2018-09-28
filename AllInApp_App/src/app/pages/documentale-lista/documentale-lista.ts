@@ -43,32 +43,14 @@ export class DocumentaleListaPage implements OnInit{
     )
     
     let cat : Documentale.Categoria = this.para.get("cat");
-    let s = this.store.userData$.subscribe(
-      (val)=>{
-        /**this.http.getElencoDocumenti(val.token_value, 0,0,cat.tab_tipo_documento_cod,cat.tab_categoria_documento_cod).subscribe(
-          (val1)=>{
-            if (val1.ErrorMessage.msg_code == 0){
-              this.lista = val1.l_lista_documenti;
-            }else{
-              alert("errore ricezione lista");
-            }
-              
-          }
-        )**/
-        let s1 = this.http.getElencoDocumenti(val.token_value, 0,0,cat.tab_tipo_documento_cod,cat.tab_categoria_documento_cod).subscribe(
-          (val1)=>{
-            if (val1.ErrorMessage.msg_code == 0){
-              this.lista = val1.l_lista_documenti;
-            }else{
-              alert("errore ricezione lista");
-            }
-            s1.unsubscribe();
+    this.http.getElencoDocumenti( 0,0,cat.tab_tipo_documento_cod,cat.tab_categoria_documento_cod).then(
+          (val1 : Documentale.Documento[])=>{
+              this.lista = val1;
+          },
+          (error)=>{
+            console.log(error);
           }
         )
-        s.unsubscribe();
-      }
-    )
-    this.store.getUserData();
   }
 
   back(){

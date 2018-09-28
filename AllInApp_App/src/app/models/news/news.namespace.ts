@@ -32,9 +32,23 @@ export namespace News {
 
     export class NewsResult
     {
-        public errorMessage : MessaggioErrore;
+        public ErrorMessage : MessaggioErrore;
         public result : string;
         public result_key : number;
-        }
+    }
+
+    export class NewsSingleResult
+    {
+        ErrorMessage: {
+            msg_tipo: string,
+            msg_code: 0,
+            msg_testo : string,
+            msg_method : string,
+            msg_techdata : string
+        };
+        news : NewsElem;
+        token : string;
+        result : string;
+    }
 
 }

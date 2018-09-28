@@ -1,4 +1,3 @@
-
 import { HttpService } from './../../services/shared/http.service';
 import { HttpClient } from '@angular/common/http';
 import { ContactService } from './../../services/contact/contact.service';
@@ -12,6 +11,7 @@ import { OnInit, Component } from '@angular/core';
 import { Messaggi } from '../../models/messaggi/messaggi.namespace';
 import { Contact } from '../../models/contact/contact.namespace';
 import { Module } from '../../models/modules/modules.namespace';
+import { Login } from '../../models/login/login.namespace';
 
 
 
@@ -70,7 +70,7 @@ export class MessaggiNuovoPage implements OnInit {
     } 
     else this.mess = new Messaggi.MessaggiElem();
     console.log (this.mess);
-    let s  = this.conService.contactsList$.subscribe((val)=>{
+    /**let s  = this.conService.contactsList$.subscribe((val)=>{
       if (val != null){
         if (val.ErrorMessage.msg_code == 0){
           this.contacts = val.l_dipendenti;
@@ -83,7 +83,15 @@ export class MessaggiNuovoPage implements OnInit {
       }
       s.unsubscribe();
     });
-    this.conService.GetContacts("X");
+    this.conService.GetContacts("X");*/
+
+    this.conService.GetContacts("X").then((val :Contact.ContactDataMin[])=>{
+      this.contacts = val;
+          console.log(this.contacts);
+    },
+      (error)=>{
+        alert("errore recupero della risorsa");
+      })
   }
 
   public goToDetails(mess){
@@ -96,7 +104,7 @@ export class MessaggiNuovoPage implements OnInit {
 
   public inviaMessaggio(){
     console.log (this.destinatario);
-    let s = this.store.userData$.subscribe((val)=>{
+    /**let s = this.store.userData$.subscribe((val)=>{
       let mit : Contact.ContactDataMin;
       for (let i=0; i< this.contacts.length; i++ ){
         if (this.contacts[i].dipendenti_key == val.token_dipendente_key){
@@ -162,7 +170,71 @@ export class MessaggiNuovoPage implements OnInit {
       alert("selezionare destinatario");
     }
     });
-    this.store.getUserData();
+    this.store.getUserData();*/
+    let s = this.store.getUserDataPromise().then((val : Login.Token)=>{
+      let mit : Contact.ContactDataMin;
+      for (let i=0; i< this.contacts.length; i++ ){
+        if (this.contacts[i].dipendenti_key == val.token_dipendente_key){
+          mit = this.contacts[i]; 
+        }
+      }
+      for (let i=0; i< this.contacts.length; i++ ){
+        let s = this.contacts[i].nome + " " + this.contacts[i].cognome;
+        if (s  == this.nomeDestinatario){
+          this.destinatario = this.contacts[i]; 
+        }
+      }
+      for (let i=0; i< this.contacts.length; i++ ){
+        let s = this.contacts[i].nome + " " + this.contacts[i].cognome;
+        if (s  == this.nomeConoscenza){
+          this.conoscenza = this.contacts[i]; 
+        }
+      }
+      if (mit != null){
+        if (this.destinatario != null){
+        let busta: Messaggi.BustaMessaggio = new Messaggi.BustaMessaggio();
+        let mess : Messaggi.Messaggio = new Messaggi.Messaggio();
+        let con : Messaggi.Conoscenza = new Messaggi.Conoscenza();
+        
+        mess.mittente_key = val.token_dipendente_key;
+        mess.destinatario_key = this.destinatario.dipendenti_key;
+        mess.data = new Date().getTime().toString();
+        mess.soggetto = this.oggetto;
+        mess.messaggio = this.messaggio;
+        mess.preferito = 'N';
+        mess.stato_lettura =  'N';
+        //stato_messaggio: string;
+        mess.cognome_mit = mit.cognome;
+        mess.nome_mit = mit.nome;
+        mess.cognome_des = this.destinatario.cognome;
+        mess.nome_des = this.destinatario.nome;
+
+        if (this.conoscenza != null){
+          con.dipendente_key = this.conoscenza.dipendenti_key;
+          con.nominativo = this.conoscenza.nome + " " + this.conoscenza.cognome;
+        }
+
+        busta.c_conoscenza = [];
+        busta.c_conoscenza.push(con);
+        busta.messaggio = mess;
+        busta.token = val.token_value;
+
+        this.http.sendMessage( busta).then((r : Messaggi.MessaggioResult )=>{
+          console.log (r);
+          if (r.ErrorMessage.msg_code == 0){
+            console.log(busta);
+            alert ("messaggio inviato correttamente");
+          }else{
+            alert("errore nell'invio del messaggio");
+          }
+          });
+        }else{
+          alert("errore recupero mittente");
+        }
+      }else{
+        alert("selezionare destinatario");
+      }
+    });
   }
 
 }

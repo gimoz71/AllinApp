@@ -30,7 +30,7 @@ export class ContactsPage implements OnInit, OnDestroy{
       (modules : Module.ModuleElem[])=>{
         console.log(modules);
         for (let i = 0 ; i < modules.length ; i++){
-          if (modules[i].tab_moduli_cod == 7){
+          if (modules[i].tab_moduli_cod == 6){
             this.color = modules[i].tab_moduli_colore;
             this.icon = modules[i].tab_moduli_icona;
           }
@@ -42,7 +42,7 @@ export class ContactsPage implements OnInit, OnDestroy{
     )
 
     this.contacts = [];  
-    this.subscrition = this.conService.contactsList$.subscribe((val)=>{
+    /**this.subscrition = this.conService.contactsList$.subscribe((val)=>{
       console.log(val);
       console.log("sono nel costruttore di contact page");
       if (val != null){
@@ -59,11 +59,24 @@ export class ContactsPage implements OnInit, OnDestroy{
         console.log("errore in contacts service");
       }
     })
-    this.conService.GetContacts("X");
+    this.conService.GetContacts("X");**/
+
+    this.conService.GetContacts("X").then(
+      (val : Contact. ContactDataMin[])=>{
+        this.contacts = val;
+        this.clonedContacts  = Object.assign([], this.contacts);
+        this.groupContacts(this.contacts);
+        console.log(this.contacts);
+        
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 
   ngOnDestroy(){
-    this.subscrition.unsubscribe();
+    //this.subscrition.unsubscribe();
   }
 
   back(){

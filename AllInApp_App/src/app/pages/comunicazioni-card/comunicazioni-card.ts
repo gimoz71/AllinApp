@@ -42,7 +42,7 @@ export class ComunicazioniCardPage implements OnInit {
       }
     }
     //this.colonne = 1;
-    let s = this.store.userData$.subscribe(
+    /**let s = this.store.userData$.subscribe(
       (val)=>{
         let s1 = this.http.getComunicazioniElenco(val.token_value,0,0,'X','C').subscribe(
           (val1)=>{
@@ -64,9 +64,27 @@ export class ComunicazioniCardPage implements OnInit {
         s.unsubscribe();
       }
     )
-    this.store.getUserData();
+    this.store.getUserData();*/
     
-
+    this.http.getComunicazioniElenco(0,0,'X','C').then(
+      (val1 : Comunicazione.ComunicazioneElencoElem[])=>{
+        this.comunicazioniFull = val1;
+        if (this.colonne == 2){
+          for (let i = 0; i < 3 ; i++){
+            this.comunicazioniMin[i]= new Comunicazione.ComunicazioneElencoElem();
+            if (this.comunicazioniFull[i] != null)this.comunicazioniMin[i] = this.comunicazioniFull[i];
+          }
+        }else{
+          for (let i = 0; i < 4 ; i++){
+            this.comunicazioniMin[i]= new Comunicazione.ComunicazioneElencoElem();
+            if (this.comunicazioniFull[i] != null)this.comunicazioniMin[i] = this.comunicazioniFull[i];
+          }
+        }
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 
   goToComunicazioni(){

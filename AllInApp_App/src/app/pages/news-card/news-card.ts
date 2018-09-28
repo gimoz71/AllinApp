@@ -43,7 +43,7 @@ export class NewsCardPage implements OnInit {
       }
     }
     
-    let s = this.store.userData$.subscribe((val)=>{
+    /**let s = this.store.userData$.subscribe((val)=>{
         let s1 = this.http.getNewsList(val.token_value,"0","0","X").subscribe(
             (res)=>{
               console.log(res);
@@ -72,7 +72,30 @@ export class NewsCardPage implements OnInit {
           s.unsubscribe();
          }
       );
-      this.store.getUserData();
+      this.store.getUserData();**/
+
+      this.http.getNewsList("0","0","X").then(
+        (res : News.NewsElem[])=>{
+          this.newsFull = res;
+          if (this.colonne == 1){
+            for (let i = 0 ; i < 4 ; i++){
+              if (this.newsFull[i] != null){
+                this.newsMin[i]=  this.newsFull[i];
+              }
+            }
+          }else{
+            for (let i = 0 ; i < 3 ; i++){
+              if (this.newsFull[i] != null){
+                this.newsMin[i]=  this.newsFull[i];
+              }
+            }
+          }
+        },
+        (error)=>{
+          console.log("errore ricezione News");
+          console.log(error);
+        }
+      );
     }
 
     public goToNews(){

@@ -41,7 +41,7 @@ export class DocumentalePage implements OnInit{
       }
     )
 
-   let s = this.store.userData$.subscribe(
+   /**let s = this.store.userData$.subscribe(
      (val)=>{
        let s1 = this.http.getElencoTipoDocumenti(val.token_value).subscribe(
          (val1)=>{
@@ -52,7 +52,17 @@ export class DocumentalePage implements OnInit{
        s.unsubscribe();
      }
    )
-   this.store.getUserData();
+   this.store.getUserData();*/
+      let s1 = this.http.getElencoTipoDocumenti().then(
+        (val1 : Documentale.Tipi[])=>{
+          console.log(val1 );
+           this.tipi = val1;
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
+
   }
 
   goToCategorie(val){

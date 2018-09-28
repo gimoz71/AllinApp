@@ -40,6 +40,7 @@ export class HomePage implements OnInit{
 
   public modules : Module.ModuleElem[];
 
+
   constructor(public navCtrl: NavController,
     private storage :Storage, private http : HttpService, private alertCtrl: AlertController,
     private store : StoreService, private login : LoginService
@@ -48,7 +49,7 @@ export class HomePage implements OnInit{
   }
 
   public ngOnInit() : void {
-    
+
      //richiedo quali servizi devono essere visualizzati 
      this.presenze["Comunicazioni"]= "false"; 
      this.presenze["Circolari"] == "false";
@@ -99,7 +100,7 @@ export class HomePage implements OnInit{
           /**if (this.modules[i].tab_moduli_desc=="Messaggi"){
             this.modules[i].tab_moduli_colonne = 2;
             this.colonne["Messaggi"]= 2;
-          }**/
+          }*/
         }
       },
       (error)=>{
