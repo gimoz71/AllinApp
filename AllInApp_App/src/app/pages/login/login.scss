@@ -1,4 +1,11 @@
-$font-size-base: 1rem;
+
+ion-grid {
+    height: 100%;
+    justify-content: center;
+}
+
+
+$font-size-base: 2rem;
 $font-size-lg: ($font-size-base * 1.25);
 $font-size-sm: ($font-size-base * .875);
 $input-height: 2.375rem;
@@ -150,6 +157,9 @@ border-top: 0;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    &::placeholder {
+      color: rgba(255,255,255,.8);
+    }
 }
 
 
@@ -166,10 +176,13 @@ outline: 0;
 box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
+.btn {
+  box-shadow: none;
+}
 
 .btn-transparent { 
     background-color: rgba(255, 255, 255, 0.2); 
-    border-color: white; 
+    border: solid 1px white; 
     color: #fff; }
 .btn-transparent:hover { 
     background-color: white; 
@@ -219,6 +232,8 @@ box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         user-select: none;
         vertical-align: middle;
         text-indent: calc(calc(#{$switch-height} * 2) + .5rem);
+        font-size: .5em !important;
+        font-weight: lighter;
       }
   
       + label::before,
