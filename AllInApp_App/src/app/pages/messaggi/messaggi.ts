@@ -23,8 +23,8 @@ import { Module } from '../../models/modules/modules.namespace';
 export class MessaggiPage implements OnInit{
 
   public messFull : Messaggi.MessaggiElem[];
-  color : string;
-  icon : string;
+  public color : string;
+  public icon : string;
   
   constructor(private navCtrl : NavController,private navParams: NavParams, public menuCtrl: MenuController,
     private store: StoreService, private http : HttpService, private alertCtrl: AlertController) {

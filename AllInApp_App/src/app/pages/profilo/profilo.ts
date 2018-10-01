@@ -47,14 +47,13 @@ export class ProfiloPage implements OnInit {
   ngOnInit(){
     this.user = new Contact.ContactDataFull();
     this.user.dipendente = new Contact.Dipendente();
-    this.conService.contactsFull$.subscribe((val)=>{
+    this.conService.GetContactDetails(-1).then((val : Contact.Dipendente)=>{
         if (val != null){
-          this.user = val;
+          this.user.dipendente = val;
         }else{
           alert("errore recupero risorsa");
         }
       })
-    this.conService.GetContactDetails(-1);
     }
 
   back(){

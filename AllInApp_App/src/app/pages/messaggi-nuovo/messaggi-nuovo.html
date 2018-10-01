@@ -15,7 +15,7 @@
 </ion-header>
 <ion-content>
   <ion-item>
-    <ion-label>Destinatario</ion-label>
+    <ion-label >Destinatario</ion-label>
     <ion-select [(ngModel)]="nomeDestinatario">
       <ion-option *ngFor="let con of contacts">{{con.nome}} {{con.cognome}}</ion-option>
     </ion-select>
@@ -26,7 +26,7 @@
       <ion-option *ngFor="let con of contacts">{{con.nome}} {{con.cognome}}</ion-option>
     </ion-select>
   </ion-item>
-  <div>Oggetto</div>
+  <div >Oggetto</div>
   <ion-input style="background-color: white"[(ngModel)]="oggetto"></ion-input>
   <div>Messaggio</div>
   <ion-textarea style="background-color: white" [(ngModel)]="messaggio"></ion-textarea>

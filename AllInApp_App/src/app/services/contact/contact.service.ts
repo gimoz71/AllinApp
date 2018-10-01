@@ -130,6 +130,7 @@ export class ContactService implements OnInit{
         return new Promise((resolve, reject) => {
             this.store.getUserDataPromise().then(
                 (token :Login.Token)=>{
+                    if (key == -1) key = token.token_dipendente_key ;
                     let url = "http://allinappws.mesys.it/services/get_scheda_dipendente/"+ token.token_value+"/"+ key;
                     console.log(url);
                     let s = this.http.get<Contact.ContactDataFull>(url).subscribe(
