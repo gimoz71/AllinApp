@@ -97,10 +97,10 @@ export class HomePage implements OnInit{
             //this.colonne[modules[i].tab_moduli_desc]= 1;
             //this.modules[i].tab_moduli_colonne = 1;
           }
-          /**if (this.modules[i].tab_moduli_desc=="Messaggi"){
+          if (this.modules[i].tab_moduli_desc=="Messaggi"){
             this.modules[i].tab_moduli_colonne = 2;
             this.colonne["Messaggi"]= 2;
-          }*/
+          }
         }
       },
       (error)=>{
