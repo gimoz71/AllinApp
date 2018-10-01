@@ -7,7 +7,7 @@ import { IonicModule } from 'ionic-angular';
 
 @NgModule({
 	declarations: [ComunicazioniPage],
-	imports: [IonicModule],
+	imports: [IonicModule, HomeComModule], 
 	exports: [ComunicazioniPage]
 })
 export class ComunicazioniPageModule {}

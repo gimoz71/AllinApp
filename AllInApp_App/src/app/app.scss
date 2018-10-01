@@ -67,7 +67,8 @@
   border-radius: 0.25rem;
   -moz-border-radius: 10px; /* firefox */
   -webkit-border-radius: 10px; /* safari, chrome */
-  height: 10em;
+  //height: 10em;
+  height: 10.5em;
 }
 /**classe icon sulla destra nella nav-bar**/
 .nav-icon{
@@ -75,7 +76,8 @@
 }
 
 .card-large {
-  height: 11em;
+  //height: 11em;
+  height: auto !important;
 }
 
 .card > hr {

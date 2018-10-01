@@ -137,7 +137,7 @@ body, .content-wrapper {
         margin-right: 10px;
         line-height: 2rem;
         position: relative;
-        &::after {
+        /*&::after {
             content: "";
             position: absolute;
             border-right: solid 4px $color-comm;
@@ -148,7 +148,7 @@ body, .content-wrapper {
         &.readed:after {
             border-right: solid 1px $gray-500;
             right: 0;
-        }
+        }*/
         
         .day {
             font-size: 2rem;
@@ -357,23 +357,23 @@ ion-title {
   }
 
 .comm .list-group-item { display: flex; }
-.comm .item { display: inline-block; width: 60px; padding-right: 10px; margin-right: 10px; line-height: 2rem; position: relative; }
-.comm .item::after { content: ""; position: absolute; border-right: solid 4px #E7967B; top: 0; right: -2px; height: 100%; }
+.comm .item { display: inline-block; width: 70px; padding-right: 10px; margin-right: 10px; line-height: 2rem; position: relative; }
+//.comm .item::after { content: ""; position: absolute; border-right: solid 4px #E7967B; top: 0; right: -2px; height: 100%; }
 .comm .item.readed:after { border-right: solid 1px #adb5bd; right: 0; }
 .comm .item .day { font-size: 2rem; color: #adb5bd; display: block; text-align: center; line-height: 2rem; }
-.comm .item .mounth { font-size: .5rem; text-transform: uppercase; color: #E7967B; display: block; text-align: center; line-height: 1rem; }
-.comm .brief { min-width: 0; flex: 1; }
-.comm .brief .title { font-size: 1.3rem; line-height: 1.3rem; margin: 0; font-weight: normal; color: #868e96; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.comm .brief .text { color: #E7967B; font-size: .75rem; line-height: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.comm .item .mounth { font-size: .7rem; text-transform: uppercase; color: #E7967B; display: block; text-align: center; line-height: 1.5rem; }
+.comm .brief { min-width: 0; flex: 1; margin-bottom: .2em; }
+.comm .brief .title { font-size: 1.3rem; line-height: 1.5rem; margin: 0; margin-top: .3rem; font-weight: normal; color: #868e96; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.comm .brief .text { color: #E7967B;  margin: 0;  font-size: 1.1rem; line-height: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
 .comm .brief .read { position: absolute; right: 1rem; top: 1.5rem; font-size: 1.5rem; color: #E7967B; }
 
 .priority .list-group-item { display: flex; }
 .priority .list-group-item.readed { opacity: .5; }
-.priority .item { margin-right: 15px; font-size: 1.2rem; color: #FAB900; }
-.priority .brief { min-width: 0; flex: 1; }
-.priority .brief h5 { font-size: 1rem; line-height: 1.5rem; margin-top: .35rem; font-weight: normal; color: #868e96; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.priority .brief h5 { font-size: 1rem; line-height: 1.5rem; margin: 0; font-weight: normal; color: #868e96; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.priority .brief p { color: #adb5bd; margin: 0; font-size: .75rem; line-height: .75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.priority .item { margin-right: 10px; font-size: 2rem; color: #FAB900; }
+.priority .brief { min-width: 0; flex: 1; margin-bottom: .2em; }
+.priority .brief .title { font-size: 1.3rem; line-height: 1.5rem; margin: 0;font-weight: normal; color: #868e96; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.priority .brief .text { color: #adb5bd; margin: 0; font-size: 1.1rem; line-height: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 
 .card-body > ul {
