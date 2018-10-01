@@ -1,3 +1,4 @@
+import { ListObjectModule } from './../list-object/list-object.module';
 import { ComunicazioniPage } from './../../pages/comunicazioni/comunicazioni';
 import { HomeComModule } from './../home-com/home-com.module';
 
@@ -7,7 +8,7 @@ import { IonicModule } from 'ionic-angular';
 
 @NgModule({
 	declarations: [ComunicazioniPage],
-	imports: [IonicModule, HomeComModule], 
+	imports: [IonicModule, ListObjectModule], 
 	exports: [ComunicazioniPage]
 })
 export class ComunicazioniPageModule {}

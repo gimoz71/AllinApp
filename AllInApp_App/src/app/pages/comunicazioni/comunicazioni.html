@@ -21,16 +21,9 @@
     <div class="card-body">
   
       <ul class="list-group list-group-flush comm" >
-        <li class="list-group-item">
-          <div class="item" [ngStyle]="{'border-right' : 'solid', 'border-size' : '4px', 'border-color' : color}">
-            <span class="day">{{giorno}}</span>
-            <span [ngStyle]="{'color' : color }" class="mounth">{{mese}}</span>
-          </div>
-          <div class="brief">
-            <h5 class="title">{{titolo}}</h5>
-            <p [ngStyle]="{'color' : color }" class="text">{{descrizione}}</p>
-          </div>
-        </li>
+        <list-object *ngFor="let data of comFull" [color]="color" [date]="data.cm_data" 
+                [titolo]="data.cm_titolo" [descrizione]="data.cm_descrizione" [letta]="data.dc_letta"
+                (click)="goToDetails(data)"></list-object>
       </ul>
   
     </div>

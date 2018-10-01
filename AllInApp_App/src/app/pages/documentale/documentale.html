@@ -1,4 +1,4 @@
-<!--<ion-header>
+<ion-header>
   <ion-navbar hideBackButton>
     <ion-buttons left>
       <button (click)="back()" ion-button icon-left clear small>
@@ -15,64 +15,19 @@
 </ion-navbar>
 </ion-header>
 <ion-content>
-  <div *ngFor="let tipo of tipi">
-    <ion-card   (click)="goToCategorie(tipo)">
-      <ion-card-content >
-        <h1 >
-          {{tipo.tab_tipo_documento_desc}}
-        </h1>
-        <p>
-        {{tipo.num_documenti}}
-        </p>
-      </ion-card-content>
-    </ion-card>
-</div>
+    <div class="card no-border mb-3 ">
+        
+        <ul class="list-group list-group-flush docs addBook">
+            <li  *ngFor="let tipo of tipi" (click)="goToCategorie(tipo)" class="list-group-item">
+              <div class="item">
+                  <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+              </div>
+              <div class="brief">
+                <h5 class="name">{{tipo.tab_tipo_documento_desc}}  {{tipo.num_documenti}}</h5>
+              </div>
+            </li>
+        </ul>
+      </div>
 </ion-content>
 
-  -->
-<body class="fixed-nav sticky-footer bg-light sidenav-toggled" id="page-top">
 
-	<div class="content-wrapper">
-		<div class="container-fluid">
-
-			<div class="row">
-
-				<!-- CARDS DOCUMENTALE-->
-				<div class="col mb-4">
-							<div class="card no-border mb-3 ">
-								<div class="card-header " [ngStyle]="{'color' : color }"><i [ngClass]="icon"></i>Documentale
-									<a (click)="back()" class="float-right">
-										<i class="fa fa-fw fa-chevron-left"></i>
-									</a>
-								</div>
-								<ul class="list-group list-group-flush docs addBook">
-                    <li  *ngFor="let tipo of tipi" (click)="goToCategorie(tipo)" class="list-group-item">
-                      <div class="item">
-                          <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
-                      </div>
-                      <div class="brief">
-                        <h5 class="name">{{tipo.tab_tipo_documento_desc}}  {{tipo.num_documenti}}</h5>
-                      </div>
-                    </li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-		<!-- /.container-fluid-->
-		<!-- /.content-wrapper-->
-		<footer class="sticky-footer">
-			<div class="container">
-				<div class="text-center">
-					<small>Copyright AllinApp 2018</small>
-				</div>
-			</div>
-		</footer>
-		<!-- Scroll to Top Button-->
-		<a class="scroll-to-top rounded" href="#page-top">
-			<i class="fa fa-angle-up"></i>
-		</a>
-		

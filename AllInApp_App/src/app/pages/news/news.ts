@@ -30,6 +30,8 @@ export class NewsPage implements OnInit{
           if (modules[i].tab_moduli_cod == 7){
             this.color = modules[i].tab_moduli_colore;
             this.icon = modules[i].tab_moduli_icona;
+            this.newsFull =this.navParams.get('news');
+            console.log(this.newsFull);
           }
         }
       },
@@ -37,7 +39,7 @@ export class NewsPage implements OnInit{
         console.log(error);
       }
     )
-    this.newsFull =this.navParams.get('news');
+    
   }
 
   back(){

@@ -1,3 +1,5 @@
+import { ListObjectModule } from './modules/list-object/list-object.module';
+import { ListObjectPage } from './pages/list-object/list-object';
 import { DocumentaleListaPage } from './pages/documentale-lista/documentale-lista';
 import { DocumentaleListaModule } from './modules/documentale-lista/documentale-lista.module';
 import { DocumentaleDetailsPage } from './pages/documentale-details/documentale-details';
@@ -135,6 +137,7 @@ import { DocumentaleCategorieModule } from './modules/documentale-categorie/docu
     DocumentaleCategorieModule,
     DocumentaleDetailsModule,
     DocumentaleListaModule,
+    ListObjectModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -172,7 +175,8 @@ import { DocumentaleCategorieModule } from './modules/documentale-categorie/docu
     DocumentalePage,
     DocumentaleCategoriePage,
     DocumentaleDetailsPage,
-    DocumentaleListaPage
+    DocumentaleListaPage,
+    ListObjectPage
   ],
   providers: [
     StatusBar,

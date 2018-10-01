@@ -1,4 +1,4 @@
-<!--<ion-header>
+<ion-header>
   <ion-navbar hideBackButton>
     <ion-buttons left>
       <button (click)="back()" ion-button icon-left clear small>
@@ -6,8 +6,8 @@
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button><ion-icon class="icon-button" name="contacts" class="nav-icon text-default"></ion-icon></button>
-    </ion-buttons>
+        <button><i [ngClass]="icon" [ngStyle]="{'color' : color }"></i></button>
+      </ion-buttons>
     <ion-title >
       <div class="text-default">Documentale</div>
     </ion-title>
@@ -15,62 +15,17 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <div *ngFor="let doc of lista">
-    <ion-card   (click)="goToDetails(doc)">
-      <ion-card-content >
-        <h1 >
-          {{doc.tab_tipo_documento_desc}}
-        </h1>
-        <p>
-        {{doc.doc_titolo}}
-        </p>
-      </ion-card-content>
-    </ion-card>
-</div>
-</ion-content>-->
-
-<body class="fixed-nav sticky-footer bg-light sidenav-toggled" id="page-top">
-
-    <div class="content-wrapper">
-      <div class="container-fluid">
-  
-        <div class="row">
-  
-          <!-- CARDS DOCUMENTALE-->
-          <div class="col mb-4">
-                <div class="card no-border mb-3 ">
-                  <div class="card-header " [ngStyle]="{'color' : color }"><i [ngClass]="icon"></i>Documentale
-                    <a (click)="back()" class="float-right">
-                      <i class="fa fa-fw fa-chevron-left"></i>
-                    </a>
-                  </div>
-                  <ul class="list-group list-group-flush docs addBook">
-                      <li  *ngFor="let doc of lista" (click)="goToDetails(doc)" class="list-group-item">
-                        <div class="item">
-                            <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
-                        </div>
-                        <div class="brief">
-                          <h5 class="name">{{doc.tab_tipo_documento_desc}}  {{doc.doc_titolo}}</h5>
-                        </div>
-                      </li>
-                  </ul>
+    <div class="col mb-4">
+          <ul class="list-group list-group-flush docs addBook">
+              <li  *ngFor="let doc of lista" (click)="goToDetails(doc)" class="list-group-item">
+                <div class="item">
+                    <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
                 </div>
-              </div>
-            </div>
-          </div>
-  
+                <div class="brief">
+                  <h5 class="name">{{doc.tab_tipo_documento_desc}}  {{doc.doc_titolo}}</h5>
+                </div>
+              </li>
+          </ul>
         </div>
-  
-      <!-- /.container-fluid-->
-      <!-- /.content-wrapper-->
-      <footer class="sticky-footer">
-        <div class="container">
-          <div class="text-center">
-            <small>Copyright AllinApp 2018</small>
-          </div>
-        </div>
-      </footer>
-      <!-- Scroll to Top Button-->
-      <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fa fa-angle-up"></i>
-      </a>
+</ion-content>
+

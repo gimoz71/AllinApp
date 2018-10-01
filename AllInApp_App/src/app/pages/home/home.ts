@@ -1,3 +1,5 @@
+import { MessaggiPage } from './../messaggi/messaggi';
+import { DocumentalePage } from './../documentale/documentale';
 import { Module } from './../../models/modules/modules.namespace';
 
 import { CircolariPage } from './../circolari/circolari';
@@ -215,10 +217,10 @@ export class HomePage implements OnInit{
   }
 
   public goToMessaggi(){
-    this.navCtrl.push(ComunicazioniPage);
+    this.navCtrl.push(MessaggiPage);
   }
 
   public goToDocumentale(){
-    this.navCtrl.push(ComunicazioniPage);
+    this.navCtrl.push(DocumentalePage);
   }
 }
