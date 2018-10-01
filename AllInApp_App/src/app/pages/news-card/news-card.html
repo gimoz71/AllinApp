@@ -1,5 +1,5 @@
 <div class="card" >
-    <div [ngStyle]="{'background-color' : color }" class="card-header bg-comm text-header text-white" (click)="goToNews()">News</div>
+    <div [ngStyle]="{'background-color' : color }" class="card-header bg-comm text-header text-white" (click)="goToNews()">News <div class="card-header-forward"><i class="fa fa-fw fa-chevron-right"></i></div></div>
     <div class="card-body">
         <ul *ngIf="colonne==1"  class="list-group list-group-flush priority" >
             <home-mess *ngFor="let data of newsMin" [titolo]="data.nw_titolo" [descrizione]="data.nw_descrizione" [color]="color" [icon]="icon"(click)="goToDetails(data)" >

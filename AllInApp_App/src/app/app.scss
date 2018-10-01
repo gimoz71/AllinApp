@@ -140,8 +140,12 @@
   -moz-border-radius: 10px 10px 0px 0px;
   -webkit-border-radius: 10px 10px 0px 0px;
   height: 23px;
+  position: relative;
 }
 
+.card-header .card-header-forward{
+  position: absolute; right:5px; top: 5px; font-size: .75em;
+}
 .card-header:first-child {
   //border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
 }
