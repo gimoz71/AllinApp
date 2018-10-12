@@ -6,10 +6,10 @@
         </button>
         </ion-buttons>
         <ion-title>
-          <div class="text-default" >NEWS</div>
+          <div [ngStyle]="{'color' : color }" >NEWS</div>
         </ion-title>
         <ion-buttons end>
-            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>
+            <button><i [ngClass]="icon" [ngStyle]="{'color' : color }"></i></button>    
           </ion-buttons>
       </ion-navbar>
     </ion-header>

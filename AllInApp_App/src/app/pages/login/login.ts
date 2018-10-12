@@ -40,7 +40,7 @@ export class LoginPage {
   public login(): void {
     let s = this.loginService.login(this.username, this.password).subscribe(r => {
       console.log(r);
-      if(r.result != "E"){
+      if(r.ErrorMessage.msg_code == 0){
         this.userData = r;
         this.store.setUserData(this.userData);
       

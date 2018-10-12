@@ -6,25 +6,27 @@
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button><ion-icon class="icon-button" name="news" class="nav-icon text-default"></ion-icon></button>
+        <button><i [ngClass]="icon" [ngStyle]="{'color' : color }"></i></button>    
     </ion-buttons>
     <ion-title >
-      <div class="text-default">Circolari</div>
+      <div [ngStyle]="{'color' : color }">Circolari</div>
     </ion-title>
     
   </ion-navbar>
 </ion-header>
 <ion-content>
+    <ion-searchbar  (ionInput)="getItems($event)"></ion-searchbar>
   <div class="card card-large">
     
     <div class="card-body">
-  
-      <ul class="list-group list-group-flush comm" >
-        <list-object *ngFor="let data of comFull" [color]="color" [date]="data.cm_data" 
-                [titolo]="data.cm_titolo" [descrizione]="data.cm_descrizione" [letta]="data.dc_letta"
-                (click)="goToDetails(data)"></list-object>
-      </ul>
-  
+      <div class="list-group list-group-flush comm" *ngFor="let group of groupedCom">
+        <div [ngStyle]="{'background-color' : color }" class="group-header  small text-white" >{{group.mese}} {{group.anno}}</div>
+
+          <list-object *ngFor="let data of group.com"[color]="color" [date]="data.cm_data" 
+          [titolo]="data.cm_titolo" [descrizione]="data.cm_descrizione" [letta]="data.dc_letta"
+          (click)="goToDetails(data)"></list-object>
+
+      </div>
     </div>
   </div>
 </ion-content>

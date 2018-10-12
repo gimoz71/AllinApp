@@ -32,6 +32,7 @@
 
   <ion-content>
       <button ion-button menuToggle>Toggle Menu</button>
+      <ion-searchbar  (ionInput)="getItems($event)"></ion-searchbar>  
       <!--<button ion-button (click)="goTonuovoMessaggio()">Nuovo</button>
       <button ion-button (click)="goToUscitaMessaggi()">Uscita</button>
       <button ion-button (click)="goToImportantiMessaggi()">Importanti</button>
@@ -75,3 +76,14 @@
         </ion-list>
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-list>
+      <ion-item (click)="goTonuovoMessaggio()"> Nuovo </ion-item>
+      <ion-item (click)="goToUscitaMessaggi()"> Uscita </ion-item>
+      <ion-item (click)="goToImportantiMessaggi()">Importanti</ion-item>
+      <ion-item (click)="goToCestinoMessaggio()" >Cestino</ion-item>
+      </ion-list>
+  </ion-toolbar>
+</ion-footer>

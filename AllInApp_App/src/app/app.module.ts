@@ -92,7 +92,7 @@ import { MessaggiModule } from './modules/messaggi/messaggi.module';
 import { MessaggiDetailsModule } from './modules/messaggi-details/messaggi-details.module';
 import { ComunicazioniPage } from './pages/comunicazioni/comunicazioni';
 import { DocumentaleCategorieModule } from './modules/documentale-categorie/documentale-categorie.module';
-
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
   declarations: [
@@ -138,6 +138,7 @@ import { DocumentaleCategorieModule } from './modules/documentale-categorie/docu
     DocumentaleDetailsModule,
     DocumentaleListaModule,
     ListObjectModule,
+    IonicSelectableModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],

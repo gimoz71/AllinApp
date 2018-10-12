@@ -14,6 +14,7 @@ import { Module } from '../../models/modules/modules.namespace';
 export class NewsPage implements OnInit{
 
   public newsFull : News.NewsElem[];
+  public clonedNews : News.NewsElem[];
   public borderColor = "border-blue";
   color : string;
   icon : string;
@@ -30,8 +31,7 @@ export class NewsPage implements OnInit{
           if (modules[i].tab_moduli_cod == 7){
             this.color = modules[i].tab_moduli_colore;
             this.icon = modules[i].tab_moduli_icona;
-            this.newsFull =this.navParams.get('news');
-            console.log(this.newsFull);
+
           }
         }
       },
@@ -39,7 +39,34 @@ export class NewsPage implements OnInit{
         console.log(error);
       }
     )
+    this.http.getNewsList("0","0","X").then(
+      (val1 : News.NewsElem[])=>{
+        console.log(val1 );
+        this.newsFull = val1;
+         this.clonedNews  = Object.assign([], this.newsFull);
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
     
+  }
+  
+  getItems(ev) {
+    // Reset items back to all of the items
+    this.newsFull = [];
+    this.newsFull  = Object.assign([], this.clonedNews );
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.newsFull = this.newsFull.filter((item) => {
+        return (item.nw_titolo.toLowerCase().indexOf(val.toLowerCase()) > -1
+                || item.nw_data.toLowerCase().indexOf(val.toLowerCase()) > -1
+                );
+      })
+    }
   }
 
   back(){

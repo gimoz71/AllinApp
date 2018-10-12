@@ -20,6 +20,7 @@ import { Module } from '../../models/modules/modules.namespace';
 export class MessaggiUscitaPage implements OnInit {
 
   public messFull : Messaggi.MessaggiElem[];
+  public clonedMess : Messaggi.MessaggiElem[];
   color : string;
   icon : string;
   constructor(public navCtrl: NavController, private store : StoreService, private http : HttpService,
@@ -57,6 +58,7 @@ export class MessaggiUscitaPage implements OnInit {
     this.http.getMessaggeList("0","0","O").then(
       (res : Messaggi.MessaggiElem[])=>{
         this.messFull = res;      
+        this.clonedMess  = Object.assign([], this.messFull);   
       },
       (error)=>{
         console.log(error);
@@ -66,6 +68,24 @@ export class MessaggiUscitaPage implements OnInit {
 
   back(){
     this.navCtrl.pop();
+  }
+  getItems(ev) {
+    // Reset items back to all of the items
+    this.messFull = [];
+    this.messFull  = Object.assign([], this.clonedMess );
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.messFull = this.messFull.filter((item) => {
+        return (item.cognome_mit.toLowerCase().indexOf(val.toLowerCase()) > -1
+                || item.nome_mit.toLowerCase().indexOf(val.toLowerCase()) > -1
+                || item.messaggio.toLowerCase().indexOf(val.toLowerCase()) > -1
+                || item.soggetto.toLowerCase().indexOf(val.toLowerCase()) > -1
+                );
+      })
+    }
   }
 
   public goToDetails(mess){

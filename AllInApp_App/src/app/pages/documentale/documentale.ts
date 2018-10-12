@@ -1,3 +1,4 @@
+import { DocumentaleListaPage } from './../documentale-lista/documentale-lista';
 import { DocumentaleCategoriePage } from './../documentale-categorie/documentale-categorie';
 
 import { HttpService } from './../../services/shared/http.service';
@@ -18,6 +19,7 @@ import { Module } from '../../models/modules/modules.namespace';
 export class DocumentalePage implements OnInit{
 
   tipi : Documentale.Tipi[];
+  clonedTipi : Documentale.Tipi[];
   color : string;
   icon : string;
   
@@ -53,10 +55,11 @@ export class DocumentalePage implements OnInit{
      }
    )
    this.store.getUserData();*/
-      let s1 = this.http.getElencoTipoDocumenti().then(
+      this.http.getElencoTipoDocumenti().then(
         (val1 : Documentale.Tipi[])=>{
           console.log(val1 );
            this.tipi = val1;
+           this.clonedTipi  = Object.assign([], this.tipi);
         },
         (error)=>{
           console.log(error);
@@ -65,8 +68,28 @@ export class DocumentalePage implements OnInit{
 
   }
 
-  goToCategorie(val){
-    this.navCtrl.push(DocumentaleCategoriePage, {"categoria": val.tab_tipo_documento_cod})
+  getItems(ev) {
+    // Reset items back to all of the items
+    this.tipi = [];
+    this.tipi  = Object.assign([], this.clonedTipi );
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.tipi = this.tipi.filter((item) => {
+        return (item.tab_tipo_documento_desc.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
+
+  goToCategorie(val : Documentale.Tipi){
+    if (val.categorie == "S"){
+      this.navCtrl.push(DocumentaleCategoriePage, {"categoria": val.tab_tipo_documento_cod})
+    }else{
+      this.navCtrl.push(DocumentaleListaPage, {"tipo" : val.tab_tipo_documento_cod});
+    }
+    
   }
 
   back(){

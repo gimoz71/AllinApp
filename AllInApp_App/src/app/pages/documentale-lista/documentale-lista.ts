@@ -17,6 +17,7 @@ import { Module } from '../../models/modules/modules.namespace';
 export class DocumentaleListaPage implements OnInit{
 
   lista : Documentale.Documento[];
+  clonedLista : Documentale.Documento[];
   color : string;
   icon : string;
 
@@ -43,14 +44,45 @@ export class DocumentaleListaPage implements OnInit{
     )
     
     let cat : Documentale.Categoria = this.para.get("cat");
-    this.http.getElencoDocumenti( 0,0,cat.tab_tipo_documento_cod,cat.tab_categoria_documento_cod).then(
-          (val1 : Documentale.Documento[])=>{
-              this.lista = val1;
-          },
-          (error)=>{
-            console.log(error);
-          }
-        )
+    let tipo = this.para.get("tipo");
+    if  ( cat != null){
+      this.http.getElencoDocumenti( 0,0,cat.tab_tipo_documento_cod,cat.tab_categoria_documento_cod).then(
+        (val1 : Documentale.Documento[])=>{
+            this.lista = val1;
+            this.clonedLista  = Object.assign([], this.lista);
+
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
+    }else{
+      this.http.getElencoDocumenti( 0,0,tipo,0).then(
+        (val1 : Documentale.Documento[])=>{
+            this.lista = val1;
+            this.clonedLista  = Object.assign([], this.lista);
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
+    }
+    
+  }
+
+  getItems(ev) {
+    // Reset items back to all of the items
+    this.lista = [];
+    this.lista  = Object.assign([], this.clonedLista );
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.lista = this.lista.filter((item) => {
+        return (item.doc_titolo.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
   back(){

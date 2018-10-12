@@ -86,6 +86,18 @@ export class HomePage implements OnInit{
      this.colori["Messaggi"] = ""; 
      this.colori["News"] = ""; 
 
+    //ricevo tutti i dati 
+    //le prossime verranno eseguite solo se sono presenti nei dati
+
+    let s1 = this.store.getUserDataPromise().then(
+      (val : Login.Token)=>{
+        console.log(val);
+        if (val.flag_richiesta_lettura == true){
+          this.navCtrl.push(CircolariPage);
+        }
+      }
+    )
+
     this.http.getModules().then(
       (modules : Module.ModuleElem[])=>{
         console.log(modules);
@@ -99,10 +111,10 @@ export class HomePage implements OnInit{
             //this.colonne[modules[i].tab_moduli_desc]= 1;
             //this.modules[i].tab_moduli_colonne = 1;
           }
-          if (this.modules[i].tab_moduli_desc=="Messaggi"){
+          /**if (this.modules[i].tab_moduli_desc=="Messaggi"){
             this.modules[i].tab_moduli_colonne = 2;
             this.colonne["Messaggi"]= 2;
-          }
+          }**/
         }
       },
       (error)=>{
@@ -110,18 +122,6 @@ export class HomePage implements OnInit{
       }
     )
 
-   
-    //ricevo tutti i dati 
-    //le prossime verranno eseguite solo se sono presenti nei dati
-
-    let s1 = this.store.getUserDataPromise().then(
-      (val : Login.Token)=>{
-        console.log(val);
-        if (val.flag_richiesta_lettura == true){
-          this.navCtrl.push(CircolariPage);
-        }
-      }
-    )
   }
 
   public GoProfile(){

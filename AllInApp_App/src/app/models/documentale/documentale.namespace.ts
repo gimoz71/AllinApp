@@ -14,6 +14,7 @@ export namespace Documentale {
     }
 
     export class Tipi{
+            categorie : string;
             tab_tipo_documento_cod : number;
             tab_tipo_documento_desc : string;
             num_documenti : number;

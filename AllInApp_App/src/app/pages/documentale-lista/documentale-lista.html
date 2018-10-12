@@ -9,12 +9,13 @@
         <button><i [ngClass]="icon" [ngStyle]="{'color' : color }"></i></button>
       </ion-buttons>
     <ion-title >
-      <div class="text-default">Documentale</div>
+      <div [ngStyle]="{'color' : color }">Documentale</div>
     </ion-title>
     
   </ion-navbar>
 </ion-header>
 <ion-content>
+    <ion-searchbar  (ionInput)="getItems($event)"></ion-searchbar>
     <div class="col mb-4">
           <ul class="list-group list-group-flush docs addBook">
               <li  *ngFor="let doc of lista" (click)="goToDetails(doc)" class="list-group-item">
@@ -22,7 +23,7 @@
                     <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
                 </div>
                 <div class="brief">
-                  <h5 class="name">{{doc.tab_tipo_documento_desc}}  {{doc.doc_titolo}}</h5>
+                  <h5 class="name">{{doc.doc_titolo}}</h5>
                 </div>
               </li>
           </ul>

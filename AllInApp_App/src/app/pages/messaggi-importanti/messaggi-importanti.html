@@ -18,6 +18,7 @@
 </ion-header>
 
 <ion-content>
+    <ion-searchbar  (ionInput)="getItems($event)"></ion-searchbar>  
     <button ion-button menuToggle>Toggle Menu</button>
 
         <ion-list >

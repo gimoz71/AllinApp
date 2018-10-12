@@ -18,6 +18,7 @@ import { Module } from '../../models/modules/modules.namespace';
 export class DocumentaleCategoriePage implements OnInit{
 
   categorie : Documentale.Categoria[];
+  clonedCat : Documentale.Categoria[];
   categoria : number;
   color : string;
   icon : string;
@@ -47,10 +48,26 @@ export class DocumentaleCategoriePage implements OnInit{
   this.http.getCategorieDocumenti(this.categoria).then(
     (val1 : Documentale.Categoria[])=>{
       this.categorie = val1;
+      this.clonedCat  = Object.assign([], this.categorie);
     },
     (error)=>{
       console.log(error);
     })
+  }
+
+  getItems(ev) {
+    // Reset items back to all of the items
+    this.categorie = [];
+    this.categorie  = Object.assign([], this.clonedCat );
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.categorie = this.categorie.filter((item) => {
+        return (item.tab_categoria_documento_desc.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
   goToLista(cat){

@@ -68,6 +68,7 @@ export namespace Contact {
         public telefono : string;
         public ufficio : string;
         public url_avatar : string;
+        public nomeCognome : string;
     }
 
     export class ContactList {

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar >
 	<button ion-button menuToggle ><ion-icon name="menu"></ion-icon></button>
-	<ion-title >ALL IN APP</ion-title>
+	<ion-title class="text-default" >ALL IN APP</ion-title>
 	
     <ion-buttons end><img width="30em" src="assets/imgs/logo.png"></ion-buttons>
 	
@@ -13,8 +13,8 @@
 	  <ion-list>
 			<ion-item><img width="30em" src="assets/imgs/logo.png"> <div style="position : absolute; left : 4em; top: 1.2em;">ALL IN APP</div></ion-item>
 			<ion-item (click)="GoProfile()">  Profilo </ion-item>
-			<ion-item *ngIf="this.presenze['Comunicazioni']=='true'"(click)="goToComunicazioni()">  <i [ngStyle]="{'color' : colori['Comunicazioni'] }" [ngClass]="icone['Comunicazioni']"></i> Comunicazioni</ion-item>
 			<ion-item *ngIf="this.presenze['Circolari']=='true'"(click)="goToCircolari()"> <i [ngStyle]="{'color' : colori['Circolari'] }" [ngClass]="icone['Circolari']"></i> Circolari</ion-item>	
+			<ion-item *ngIf="this.presenze['Comunicazioni']=='true'"(click)="goToComunicazioni()">  <i [ngStyle]="{'color' : colori['Comunicazioni'] }" [ngClass]="icone['Comunicazioni']"></i> Comunicazioni</ion-item>
 			<ion-item *ngIf="this.presenze['Chat']=='true'" (click)="goToChat()"> <i [ngStyle]="{'color' : colori['Chat'] }"  [ngClass]="icone['Chat']"></i> Chat</ion-item>
 			<ion-item *ngIf="this.presenze['News']=='true'"(click)="goToNews()"> <i [ngStyle]="{'color' : colori['News'] }" [ngClass]="icone['News']"></i> News</ion-item>
 			<ion-item *ngIf="this.presenze['Messaggi']=='true'"(click)="goToMessaggi()"> <i [ngStyle]="{'color' : colori['Messaggi'] }" [ngClass]="icone['Messaggi']"></i> Messaggi</ion-item>
