@@ -12,7 +12,7 @@ export namespace News {
 
     export class NewsElem {
         news_key : number;
-        nw_data : Date;
+        nw_data : string;
         nw_titolo : string;
         nw_descrizione: string;
         nw_immagine : string;

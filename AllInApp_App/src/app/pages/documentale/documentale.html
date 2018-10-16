@@ -17,6 +17,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <div class="card no-border card-large docs">
     <div [ngStyle]="{'background-color' : color }" class="card-header  small text-white">1° livello</div>
     <div class="card-body">
@@ -27,7 +28,7 @@
               <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
             </div>
             <div class="brief">
-              <h5 class="name">{{tipo.tab_tipo_documento_desc}} {{tipo.num_documenti}}</h5>
+              <h5 class="name">{{tipo.tab_tipo_documento_desc}} : {{tipo.num_documenti}}</h5>
             </div>
           </li>
         </ion-item>

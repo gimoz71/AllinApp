@@ -83,11 +83,12 @@ export class StoreService{
 
     public setUserData(udata) : number{
         console.log(udata);
+        this.ud = udata;
         if (udata != null){
             this.storage.set("userData" , udata).then((val) =>{
                 console.log(val);
             });
-            this.ud = udata;
+            
         }else{
             return -1
         }
@@ -100,23 +101,31 @@ export class StoreService{
                 //store service prima inizializzaione
                 this.storage.get("userData").then((val : Login.Token ) => {
                     //recuperato token dal database
+                    console.log(val);
                     if (val != null && val.ErrorMessage.msg_code == 0){
                         //controllo la validità del token
                         this.check.checkToken(val.token_value).subscribe(
                             (r)=>{
+                                console.log(r);
                                 //token corretto lo invio
                                 if (r.ErrorMessage.msg_code == 0){
-                                    this.ud = r;
-                                    resolve(r);
+                                    resolve(val);
                                 }else{
                                     //token non corretto faccio il login
                                     this.login.login(val.token_user, val.token_password).subscribe(
                                         (rl : Login.Token)=>{
+                                            console.log(rl);
                                                 console.log("log userdata 1");
-                                                this.setUserData(rl);
+                                                
                                             if (rl.ErrorMessage.msg_code == 0){
+                                                    this.setUserData(rl);
                                                     this.ud = rl;
                                                     resolve(rl)
+                                            }else{
+                                                console.log("errore login 4");
+                                                this.setUserData(null);
+                                                 this.ud = null;
+                                                resolve(null);
                                             }
                                         }
                                     );
@@ -124,6 +133,7 @@ export class StoreService{
                             }
                         )
                     }else{
+                        console.log ("login non riuscito 5");
                         //devo andare alla pagina del login
                         resolve(null);
                     }
@@ -135,18 +145,22 @@ export class StoreService{
                     (r: Login.Token)=>{
                         //token valido lo invio
                         if (r.ErrorMessage.msg_code == 0){
-                            resolve(r);
+                            resolve(this.ud);
                         }else{
-                            this.login.login(r.token_user, r.token_password).subscribe(
+                            this.login.login(this.ud.token_user, this.ud.token_password).subscribe(
                                 //token non valido faccio il login
                                (rl : Login.Token)=>{
-                                console.log("log userdata 2");
+                                console.log("log userdata 3");
+                                console.log(rl);
                                    if (rl.ErrorMessage.msg_code == 0){
                                     this.setUserData(rl);
                                     this.ud = rl;
                                     resolve(rl);
                                    }else{
-                                       alert("login non riuscito");
+                                        resolve (null);
+                                        this.setUserData(null);
+                                        this.ud = null;
+                                       console.log("login non riuscito 1");
                                    }
                                }
                             );

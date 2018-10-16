@@ -17,7 +17,9 @@
 </ion-header>
 <ion-nav #mycontent1 [root]="rootPage"></ion-nav>
 <ion-content>
+  
   <ion-list>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
     <div class="card no-border card-large messaggi">
       <div [ngStyle]="{'background-color' : color }" class="card-header  small text-white">Tutti i Messaggi</div>
       <div class="card-body">

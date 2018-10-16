@@ -12,25 +12,16 @@
 
 <ion-menu id="home" [content]="mycontent">
 	<ion-content>
-		<ion-list>
-			<ion-item><img width="30em" src="assets/imgs/logo.png">
-				<div style="position : absolute; left : 4em; top: 1.2em;">ALL IN APP</div>
-			</ion-item>
-			<ion-item (click)="GoProfile()"> Profilo </ion-item>
-			<ion-item *ngIf="this.presenze['Comunicazioni']=='true'" (click)="goToComunicazioni()"> <i [ngStyle]="{'color' : colori['Comunicazioni'] }"
-				 [ngClass]="icone['Comunicazioni']"></i> Comunicazioni</ion-item>
-			<ion-item *ngIf="this.presenze['Circolari']=='true'" (click)="goToCircolari()"> <i [ngStyle]="{'color' : colori['Circolari'] }"
-				 [ngClass]="icone['Circolari']"></i> Circolari</ion-item>
-			<ion-item *ngIf="this.presenze['Chat']=='true'" (click)="goToChat()"> <i [ngStyle]="{'color' : colori['Chat'] }"
-				 [ngClass]="icone['Chat']"></i> Chat</ion-item>
-			<ion-item *ngIf="this.presenze['News']=='true'" (click)="goToNews()"> <i [ngStyle]="{'color' : colori['News'] }"
-				 [ngClass]="icone['News']"></i> News</ion-item>
-			<ion-item *ngIf="this.presenze['Messaggi']=='true'" (click)="goToMessaggi()"> <i [ngStyle]="{'color' : colori['Messaggi'] }"
-				 [ngClass]="icone['Messaggi']"></i> Messaggi</ion-item>
-			<ion-item *ngIf="this.presenze['Documentale']=='true'" (click)="goToDocumentale()"> <i [ngStyle]="{'color' : colori['Documentale'] }"
-				 [ngClass]="icone['Documentale']"></i> Documentale</ion-item>
-			<ion-item *ngIf="this.presenze['Rubrica']=='true'" (click)="goToContact()"> <i [ngStyle]="{'color' : colori['Rubrica'] }"
-				 [ngClass]="icone['Rubrica']"></i> Rubrica</ion-item>
+	  <ion-list>
+			<ion-item><img width="30em" src="assets/imgs/logo.png"> <div style="position : absolute; left : 4em; top: 1.2em;">ALL IN APP</div></ion-item>
+			<ion-item (click)="GoProfile()">  Profilo </ion-item>
+			<ion-item *ngIf="this.presenze['Circolari']=='true'"(click)="goToCircolari()"> <i [ngStyle]="{'color' : colori['Circolari'] }" [ngClass]="icone['Circolari']"></i> Circolari</ion-item>	
+			<ion-item *ngIf="this.presenze['Comunicazioni']=='true'"(click)="goToComunicazioni()">  <i [ngStyle]="{'color' : colori['Comunicazioni'] }" [ngClass]="icone['Comunicazioni']"></i> Comunicazioni</ion-item>
+			<ion-item *ngIf="this.presenze['Chat']=='true'" (click)="goToChat()"> <i [ngStyle]="{'color' : colori['Chat'] }"  [ngClass]="icone['Chat']"></i> Chat</ion-item>
+			<ion-item *ngIf="this.presenze['News']=='true'"(click)="goToNews()"> <i [ngStyle]="{'color' : colori['News'] }" [ngClass]="icone['News']"></i> News</ion-item>
+			<ion-item *ngIf="this.presenze['Messaggi']=='true'"(click)="goToMessaggi()"> <i [ngStyle]="{'color' : colori['Messaggi'] }" [ngClass]="icone['Messaggi']"></i> Messaggi</ion-item>
+			<ion-item *ngIf="this.presenze['Documentale']=='true'" (click)="goToDocumentale()"> <i [ngStyle]="{'color' : colori['Documentale'] }" [ngClass]="icone['Documentale']"></i> Documentale</ion-item>
+			<ion-item *ngIf="this.presenze['Rubrica']=='true'"(click)="goToContact()"> <i  [ngStyle]="{'color' : colori['Rubrica'] }" [ngClass]="icone['Rubrica']"></i> Rubrica</ion-item>			  
 			<ion-item (click)="logOut()"> LogOut </ion-item>
 			<ion-item (click)="changePassword()">Cambia password</ion-item>
 			<ion-item menuClose detail-none>Close Menu</ion-item>
