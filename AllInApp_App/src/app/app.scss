@@ -56,10 +56,10 @@
   font-weight: 600;
   font-size: 16px;
 }
-.circolari, .comunicazioni, .messaggi, .docs {
+.circolari, .comunicazioni, .messaggi, .docs, .contatti {
     .card, .card-header {border-radius: 0;}
     .list-group {
-        padding: 10px;
+        //padding: 10px;
         list-style-type: none;
     }
 }

@@ -17,7 +17,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <div class="card no-border card-large docs">
     <div [ngStyle]="{'background-color' : color }" class="card-header  small text-white">3° livello</div>
     <div class="card-body">

@@ -17,17 +17,15 @@
 </ion-header>
 <ion-content>
   <div class="card no-border card-large circolari">
-    <div class="list-group list-group-flush comm" *ngFor="let group of groupedCom">
-      <div class="card-body">
-
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <div *ngFor="let group of groupedCom">
       <div [ngStyle]="{'background-color' : color }" class="card-header bg-comm small text-white">{{group.mese}} {{group.anno}}</div>
-
-        <list-object *ngFor="let data of group.com" [color]="color" [date]="data.cm_data" [titolo]="data.cm_titolo"
-          [descrizione]="data.cm_descrizione" [letta]="data.dc_letta" (click)="goToDetails(data)"></list-object>
-
+      <div class="list-group list-group-flush comm">
+        <div class="card-body">
+          <list-object *ngFor="let data of group.com" [color]="color" [date]="data.cm_data" [titolo]="data.cm_titolo"
+            [descrizione]="data.cm_descrizione" [letta]="data.dc_letta" (click)="goToDetails(data)"></list-object>
+        </div>
       </div>
-      <div [ngStyle]="{'background-color' : color }" class="card-header bg-comm small text-white">Agosto 2017</div>
     </div>
   </div>
- 
 </ion-content>

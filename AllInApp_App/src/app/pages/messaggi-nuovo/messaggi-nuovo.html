@@ -24,15 +24,23 @@
           <ul class="list-group list-group-flush">
             <ion-item>
               <ion-label >Destinatario</ion-label>
-              <ion-select [(ngModel)]="nomeDestinatario">
+              <ionic-selectable item-content [(ngModel)]="destinatario" [items]="contacts" itemTextField="nomeCognome" [canSearch]="true"
+                (onSearch)="desChange($event)">
+              </ionic-selectable>
+
+              <!--<ion-select [(ngModel)]="nomeDestinatario">
                 <ion-option *ngFor="let con of contacts">{{con.nome}} {{con.cognome}}</ion-option>
-              </ion-select>
+              </ion-select>-->
             </ion-item>
             <ion-item>
               <ion-label>Per conoscenza</ion-label>
-              <ion-select [(ngModel)]="nomeConoscenza">
+                <ionic-selectable item-content [(ngModel)]="conoscenza" [items]="contacts" itemTextField="nomeCognome" [canSearch]="true"
+                  [isMultiple]="true" (onSearch)="conChange($event)">
+                </ionic-selectable>
+
+              <!--<ion-select [(ngModel)]="nomeConoscenza">
                 <ion-option *ngFor="let con of contacts">{{con.nome}} {{con.cognome}}</ion-option>
-              </ion-select>
+              </ion-select>-->
             </ion-item>
             <ion-item>
               <ion-input [(ngModel)]="oggetto" placeholder="Oggetto"></ion-input>
