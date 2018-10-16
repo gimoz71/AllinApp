@@ -2,16 +2,17 @@
   <ion-navbar hideBackButton>
     <ion-buttons left>
       <button (click)="back()" ion-button icon-left clear small>
-        <ion-icon name="arrow-back"></ion-icon>
+        <ion-icon name="apps"></ion-icon>
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button><i [ngStyle]="{'color' : color, 'font-size': '2em' }" [ngClass]="icon"></i></button>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
     </ion-buttons>
-    <ion-title >
-      <div [ngStyle]="{'color' : color}" class="text-default">Rubrica</div>
+    <ion-title>
+      <div class="text-default" [ngStyle]="{'color' : color }">RUBRICA</div>
     </ion-title>
-    
   </ion-navbar>
 </ion-header>
 <ion-content>

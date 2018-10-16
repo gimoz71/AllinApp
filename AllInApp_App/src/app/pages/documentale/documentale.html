@@ -2,32 +2,36 @@
   <ion-navbar hideBackButton>
     <ion-buttons left>
       <button (click)="back()" ion-button icon-left clear small>
-        <ion-icon name="arrow-back"></ion-icon>
+        <ion-icon name="apps"></ion-icon>
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button><i [ngClass]="icon" [ngStyle]="{'color' : color }"></i></button>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
     </ion-buttons>
-    <ion-title >
-      <div class="text-default">Documentale</div>
+    <ion-title>
+      <div class="text-default" [ngStyle]="{'color' : color }">DOCUMENTALE</div>
     </ion-title>
-    
-</ion-navbar>
+
+  </ion-navbar>
 </ion-header>
 <ion-content>
-    <div class="card no-border mb-3 ">
-        
-        <ul class="list-group list-group-flush docs addBook">
-            <li  *ngFor="let tipo of tipi" (click)="goToCategorie(tipo)" class="list-group-item">
-              <div class="item">
-                  <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
-              </div>
-              <div class="brief">
-                <h5 class="name">{{tipo.tab_tipo_documento_desc}}  {{tipo.num_documenti}}</h5>
-              </div>
-            </li>
-        </ul>
-      </div>
+  <div class="card no-border card-large docs">
+    <div [ngStyle]="{'background-color' : color }" class="card-header  small text-white">1° livello</div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <ion-item *ngFor="let tipo of tipi" (click)="goToCategorie(tipo)" class="comm">
+          <li  class="list-group-item">
+            <div class="item">
+              <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+            </div>
+            <div class="brief">
+              <h5 class="name">{{tipo.tab_tipo_documento_desc}} {{tipo.num_documenti}}</h5>
+            </div>
+          </li>
+        </ion-item>
+      </ul>
+    </div>
+  </div>
 </ion-content>
-
-

@@ -1,104 +1,72 @@
 <ion-header>
-    <ion-navbar hideBackButton>
-      <ion-buttons left>
-        <button (click)="back()" ion-button icon-left clear small>
-          <ion-icon name="arrow-back"></ion-icon>
-        </button>
-        </ion-buttons>
-        <ion-title>
-          <div class="text-default" >PROFILO</div>
-        </ion-title>
-        <ion-buttons end>
-            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>
-          </ion-buttons>
-      </ion-navbar>
-    </ion-header>
-    <ion-content>
-      <!--<ion-item>
-            <img src={{user.dipendente.url_avatar}} class="avatar-img"  (click)="presentActionSheet()">
-            <ion-icon class="change-img-ico" name="camera" (click)="presentActionSheet()" ></ion-icon>
-            <h1>{{user.dipendente.nome}} {{user.dipendente.cognome}}</h1>
-            <ion-grid>
-              <ion-row>
-              <ion-col class="propretyName">RUOLO </ion-col>
-              <ion-col class="proprety">{{user.dipendente.ruolo_aziendale}}</ion-col>
-              </ion-row>
-              <ion-row>
-                  <ion-col class="propretyName">UFFICIO </ion-col>
-                  <ion-col class="proprety">{{user.dipendente.ufficio}}</ion-col>
-              </ion-row>
-              <ion-row>
-                  <ion-col class="propretyName">RESPONSABILE </ion-col>
-                  <ion-col class="proprety">{{user.dipendente.nome_resp_divisione}}</ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col class="propretyName">SEDE ASSUNZIONE </ion-col>
-                <ion-col class="proprety"></ion-col>
-              </ion-row>
-              <ion-row>
-                  <ion-col class="propretyName">SEDE OPERATIVA </ion-col>
-                  <ion-col class="proprety"></ion-col>
-              </ion-row>
-            </ion-grid>
-      </ion-item>-->
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button (click)="back()" ion-button icon-left clear small>
+        <ion-icon name="apps"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
+    </ion-buttons>
+    <ion-title>
+      <div class="text-default">PROFILO</div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="userData text-center">
+    <div class="user-bigger mx-auto  mb-3 addBook ">
+      <img (click)="presentActionSheet()" src={{user.dipendente.url_avatar}}>
+    </div>
+    <h5 class="name">{{user.dipendente.nome}} {{user.dipendente.cognome}}</h5>
+    <p class="role">{{user.dipendente.ruolo_aziendale}}</p>
+    <table class="roleInfo mx-auto">
+      <tr>
+        <td class="text-left">
+          N° interno
+        </td>
+        <td class="text-right">
+          {{user.dipendente.matricola}}
+        </td>
+      </tr>
+      <tr>
+        <td class="text-left">
+          Ruolo aziendale
+        </td>
+        <td class="text-right">
+          {{user.dipendente.ruolo_aziendale}}
+        </td>
+      </tr>
+      <tr>
+        <td class="text-left">
+          Mansione
+        </td>
+        <td class="text-right">
+          {{user.dipendente.ruolo_aziendale}}
+        </td>
+      </tr>
+    </table>
+    <table class="contacts mt-5 mb-5 mx-auto">
+      <tr>
+        <td class="text-left">
+          <ion-icon name="call"></ion-icon>
+        </td>
+        <td class="text-right">
+          <span>{{user.dipendente.telefono}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="text-left">
+          <ion-icon name="mail"></ion-icon>
 
-
-              <div class="userData text-center">
-                <div class="user-bigger  mt-5 mb-3 addBook marginleftimm">
-                  <img (click)="presentActionSheet()" src={{user.dipendente.url_avatar}}>
-                </div>
-                <h5 class="name">{{user.dipendente.nome}} {{user.dipendente.cognome}}</h5>
-                <p class="role">{{user.dipendente.ruolo_aziendale}}</p>
-              
-                <table class="roleInfo marginleftinfo">
-                  <tr>
-                    <td class="text-left">
-                      N° interno
-                    </td>
-                    <td class="text-right">
-                        {{user.dipendente.matricola}}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-left">
-                      Ruolo aziendale
-                    </td>
-                    <td class="text-right">
-                        {{user.dipendente.ruolo_aziendale}}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-left">
-                      Mansione
-                    </td>
-                    <td class="text-right">
-                        {{user.dipendente.ruolo_aziendale}}
-                    </td>
-                  </tr>
-                </table>
-                <table class="contacts mt-5 mb-5 align-middle marginleftcom">
-                  <tr>
-                    <td class="text-left">
-                        <ion-icon name="call"></ion-icon>
-                    </td>
-                    <td class="text-right">
-                      <span>{{user.dipendente.telefono}}</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-left">
-                        <ion-icon name="mail"></ion-icon>
-              
-                    </td>
-                    <td class="text-right">
-                        {{user.dipendente.email}}
-                    </td>
-                  </tr>
-                </table>
-                <a href="#" class="btn btn-custom btn-sm">DIPENDENZA GERARCHICA</a>
-          </div>
-  
-
-
-    </ion-content>
-
+        </td>
+        <td class="text-right">
+          {{user.dipendente.email}}
+        </td>
+      </tr>
+    </table>
+    <button href="#" [ngStyle]="{'backgroundColor' : color }" class="btn btn-custom">DIPENDENZA GERARCHICA</button>
+  </div>
+</ion-content>

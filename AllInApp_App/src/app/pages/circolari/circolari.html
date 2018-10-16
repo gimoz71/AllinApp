@@ -2,21 +2,22 @@
   <ion-navbar hideBackButton>
     <ion-buttons left>
       <button (click)="back()" ion-button icon-left clear small>
-        <ion-icon name="arrow-back"></ion-icon>
+        <ion-icon name="apps"></ion-icon>
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button><ion-icon class="icon-button" name="news" class="nav-icon text-default"></ion-icon></button>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
     </ion-buttons>
     <ion-title >
-      <div class="text-default">Circolari</div>
+      <div class="text-default" [ngStyle]="{'color' : color }">CIRCOLARI</div>
     </ion-title>
-    
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <div class="card card-large">
-    
+  <div class="card no-border card-large circolari">
+    <div [ngStyle]="{'background-color' : color }" class="card-header  small text-white">Agosto 2017</div>
     <div class="card-body">
   
       <ul class="list-group list-group-flush comm" >
@@ -26,6 +27,7 @@
       </ul>
   
     </div>
+    <div [ngStyle]="{'background-color' : color }" class="card-header small text-white">Agosto 2017</div>
   </div>
 </ion-content>
 

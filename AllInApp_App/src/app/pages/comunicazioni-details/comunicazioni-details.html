@@ -4,22 +4,34 @@
       <button (click)="back()" ion-button icon-left clear small>
         <ion-icon name="arrow-back"></ion-icon>
       </button>
-      </ion-buttons>
-      <ion-title>
-        <div class="text-default" >Comunicazioni</div>
-      </ion-title>
-      <ion-buttons end>
-          <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>
-        </ion-buttons>
-    </ion-navbar>
-  </ion-header>
-  <ion-content>
-    <div style="float:right;font-size: 2em;">
-      <ion-icon (click)="delete()"  name="trash"></ion-icon>
+    </ion-buttons>
+    <ion-buttons end>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
+    </ion-buttons>
+    <ion-title>
+      <div class="text-default" [ngStyle]="{'color' : color }">COMUNICAZIONI</div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="card no-border card-large comunicazioni">
+    <div [ngStyle]="{'background-color' : color }" class="card-header small text-white">{{com.cm_titolo}} <ion-icon
+        (click)="delete()" name="trash" class="trash"></ion-icon>
     </div>
-  <img src={{com.cm_immagine}}>
-   <h1>{{com.cm_titolo}}</h1>
-    <p>{{com.cm_descrizione}}</p>
-    <p>{{com.cm_allegato}}</p>
-    <p>{{com.cm_data}}</p>
-  </ion-content>
+    <div class="card-body">
+
+      <ul class="list-group list-group-flush comm">
+        <li>
+          <img src="{{com.cm_immagine}}">
+          <p><small><i>{{com.cm_data}}</i></small></p>
+          <p>{{com.cm_descrizione}}</p>
+          <p>{{com.cm_allegato}}</p>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</ion-content>

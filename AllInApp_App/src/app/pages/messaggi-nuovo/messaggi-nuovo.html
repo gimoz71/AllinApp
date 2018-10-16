@@ -1,34 +1,49 @@
 <ion-header>
-<ion-navbar hideBackButton>
-  <ion-buttons left>
-    <button (click)="back()" ion-button icon-left clear small>
-      <ion-icon name="arrow-back"></ion-icon>
-    </button>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button (click)="back()" ion-button icon-left clear small>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
     </ion-buttons>
     <ion-title>
-      <div class="text-default" >NUOVO</div>
+      <div [ngClass]="{'messq': true}" [ngStyle]="{'color' : color }">MESSAGGI</div>
     </ion-title>
-    <ion-buttons end>
-        <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>
-      </ion-buttons>
   </ion-navbar>
 </ion-header>
+
 <ion-content>
-  <ion-item>
-    <ion-label >Destinatario</ion-label>
-    <ion-select [(ngModel)]="nomeDestinatario">
-      <ion-option *ngFor="let con of contacts">{{con.nome}} {{con.cognome}}</ion-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-  <ion-label>Per conoscenza</ion-label>
-    <ion-select [(ngModel)]="nomeConoscenza">
-      <ion-option *ngFor="let con of contacts">{{con.nome}} {{con.cognome}}</ion-option>
-    </ion-select>
-  </ion-item>
-  <div >Oggetto</div>
-  <ion-input style="background-color: white"[(ngModel)]="oggetto"></ion-input>
-  <div>Messaggio</div>
-  <ion-textarea style="background-color: white" [(ngModel)]="messaggio"></ion-textarea>
-  <button ion-button (click)="inviaMessaggio()">INVIA</button>
+  <ion-list>
+    <div class="card no-border card-large messaggi">
+      <div [ngStyle]="{'background-color' : color }" class="card-header  small text-white">Nuovo messaggio</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <ion-item>
+              <ion-label >Destinatario</ion-label>
+              <ion-select [(ngModel)]="nomeDestinatario">
+                <ion-option *ngFor="let con of contacts">{{con.nome}} {{con.cognome}}</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Per conoscenza</ion-label>
+              <ion-select [(ngModel)]="nomeConoscenza">
+                <ion-option *ngFor="let con of contacts">{{con.nome}} {{con.cognome}}</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-input [(ngModel)]="oggetto" placeholder="Oggetto"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-textarea [(ngModel)]="messaggio" placeholder="Messaggio"></ion-textarea>
+            </ion-item>
+            
+            <button ion-button block outline (click)="inviaMessaggio()">INVIA</button>
+          </ul>
+      </div>
+    </div>
+  </ion-list>
 </ion-content>

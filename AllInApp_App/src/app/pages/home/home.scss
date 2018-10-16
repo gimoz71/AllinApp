@@ -137,18 +137,6 @@ body, .content-wrapper {
         margin-right: 10px;
         line-height: 2rem;
         position: relative;
-        /*&::after {
-            content: "";
-            position: absolute;
-            border-right: solid 4px $color-comm;
-            top: 0;
-            right: -2px;
-            height: 85%
-        }
-        &.readed:after {
-            border-right: solid 1px $gray-500;
-            right: 0;
-        }*/
         
         .day {
             font-size: 2rem;
@@ -160,7 +148,6 @@ body, .content-wrapper {
         .mounth {
             font-size: .5rem;
             text-transform: uppercase;
-            color: $color-comm;
             display: block;
             text-align: center;
             line-height: 1rem;

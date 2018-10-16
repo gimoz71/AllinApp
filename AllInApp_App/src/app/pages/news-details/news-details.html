@@ -1,22 +1,32 @@
 <ion-header>
-    <ion-navbar hideBackButton>
-      <ion-buttons left>
-        <button (click)="back()" ion-button icon-left clear small>
-          <ion-icon name="arrow-back"></ion-icon>
-        </button>
-        </ion-buttons>
-        <ion-title>
-          <div class="text-default" >NEWS</div>
-        </ion-title>
-        <ion-buttons end>
-            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>
-          </ion-buttons>
-      </ion-navbar>
-    </ion-header>
-    <ion-content>
-    <img src={{news.nw_immagine}}>
-     <h1>{{news.nw_titolo}}</h1>
-      <p>{{news.nw_descrizione}}</p>
-      <p>{{news.nw_link}}</p>
-      <p>{{news.nw_data}}</p>
-    </ion-content>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button (click)="back()" ion-button icon-left clear small>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
+    </ion-buttons>
+    <ion-title>
+      <div [ngClass]="{'messq': true}" [ngStyle]="{'color' : color }">NEWS</div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="card no-border card-large comunicazioni">
+    <div [ngStyle]="{'background-color' : color }" class="card-header small text-white">{{news.nw_titolo}}</div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush comm">
+        <li>
+          <img src={{news.nw_immagine}}>
+          <p><small><i>{{news.nw_data}}</i></small></p>
+          <p>{{news.nw_descrizione}}</p>
+          <p><small><a href="{{news.nw_link}}">{{news.nw_link}}</a></small></p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ion-content>

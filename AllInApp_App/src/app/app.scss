@@ -37,7 +37,12 @@
 .text-white {
   color: #fff;
 }
-
+.icon-section {
+  position: absolute;
+  top: -0.6em;
+  right: 0.75em;
+  font-size: 1.5em;
+}
 .text-header {
   // text-align: center;
   // font-family: Arial, Helvetica, sans-serif;
@@ -48,6 +53,13 @@
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 600;
   font-size: 16px;
+}
+.circolari, .comunicazioni, .messaggi, .docs {
+    .card, .card-header {border-radius: 0;}
+    .list-group {
+        padding: 10px;
+        list-style-type: none;
+    }
 }
 
 .card {
@@ -70,6 +82,8 @@
   //height: 10em;
   height: 10.5em;
 }
+
+
 /**classe icon sulla destra nella nav-bar**/
 .nav-icon{
   font-size: 2.5em;
@@ -133,7 +147,7 @@
 
 
 
-  padding: 0.20rem 0.30rem;
+  padding: 0.4rem 0.30rem;
   margin-bottom: 1;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem 0.25rem 0rem 0rem;
@@ -143,8 +157,72 @@
   position: relative;
 }
 
+.card-header {
+    height: auto;
+    &.small {
+        padding: .4em 1.5em;
+    }
+    a {
+        color: rgba(255,255,255, .75) !important;
+        &.disabled {
+            color: #fff !important;
+            cursor: default;
+            &:first-child {
+                padding-left: 0;
+            }
+        }
+        &:hover {
+            color: rgba(255,255,255, 1) !important;
+        }
+    }
+    .nav-link {
+        padding: 0rem .7rem;
+        &.active { // per i nav-pills nelle header di sezione
+            background-color: #fff;
+            color: #666 !important;
+        }
+    }
+}
+
+.messaggi, .docs {
+    .list-group {
+        padding: 0 10px;
+    }
+    .item-md {
+        background: none !important;
+        padding: 0 !important;
+    }
+    ion-label {
+        white-space: normal; 
+    }
+    ion-icon {
+        font-size: 1.3em;
+        width: 1.2em;
+        min-height: 1.2em;
+        text-align: center;
+        //color: rgb(102, 102, 102);
+    }
+    .device {
+       position: absolute; right: 1rem; top: 1rem; font-size: 3rem; 
+    }
+}
+
+.docs {
+  .item {
+    font-size: 1.3em !important;
+    text-align: center;
+  }
+  .brief {
+    .name {
+      font-size: 1em !important;
+      line-height: 1.2em;
+      text-align: left;
+    }
+  }
+}
+
 .card-header .card-header-forward{
-  position: absolute; right:5px; top: 5px; font-size: .75em;
+  position: absolute; right:8px; top: .6em; font-size: .75em;
 }
 .card-header:first-child {
   //border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
@@ -256,5 +334,119 @@
   margin-bottom: 15px;
 }
 
+/**.avatar-img  {     
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-left: 30%;
+    }
 
+h1{
+    text-align: center;
+}
+
+.proprety{
+    text-align: end;
+    font-size: 12pt;
+}
+
+.propretyName{
+    font-size: 12pt;
+}
+
+.mailtel{
+    text-align: center;
+    font-size: 15pt;
+}**/
+
+.userData {
+  background: #efefef;
+  padding: 3em 0;
+}
+
+.user-bigger { width: 100px; }
+.user-bigger img { border-radius: 50%; border: solid 6px #3FA397; width: 100%; }
+.user-bigger.dashed img { border-style: dashed; }
+.user-bigger.disabled img { border-color: #aaa; }
+
+.user-big { width: 60px; }
+.user-big img { border-radius: 50%; border: solid 4px #3FA397; width: 100%; }
+.user-big.dashed img { border-style: dashed; }
+.user-big.disabled img { border-color: #aaa; }
+
+.userData .name { font-size: 1.5em; line-height: 1em; font-weight: normal; color: #868e96; margin: 0; padding: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.userData .role { font-size: 1em;  color: #8EA7BD; margin: 5px;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.addBook img { border-color: #8EA7BD; }
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.mx-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.mt-5 {
+    margin-top: 3rem !important;
+}
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.mb-5 {
+    margin-bottom: 3rem !important;
+}
+
+
+.marginleftimm{
+    margin-left: 8em;
+}
+
+.marginleftinfo{
+    margin-left: 3.8em;
+}
+
+.marginleftcom{
+    margin-left: 6em;
+}
+
+
+
+.roleInfo { width: 70%; }
+.roleInfo tr {border-bottom: solid 1px rgba(0, 0, 0, 0.05);}
+.roleInfo td { font-size: .85em !important; padding: 5px 0; }
+.roleInfo td:first-child { color: #adb5bd; }
+.roleInfo td:last-child { color: #868e96; font-weight: 600; }
+
+
+.contacts { width: 50%; }
+.contacts td { font-size: 1rem; padding: 5px 0; }
+.contacts td span { font-size: 1.2rem; }
+.contacts td img { height: 40px; padding-right: 30px; }
+.contacts td:first-child { font-size: 2rem; color: #adb5bd; }
+.contacts td:last-child { font-size: inherit; color: #868e96; font-weight: 600; }
+
+.btn-custom {
+    color: #fff;
+    padding: 10px 15px;
+    //background-color: #8EA7BD;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
 
