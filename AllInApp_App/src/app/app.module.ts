@@ -1,3 +1,14 @@
+import { BachecaDetailsModule } from './modules/bacheca-details/bacheca-details.module';
+import { BachecaDetailsPage } from './pages/bacheca-details/bacheca-details';
+import { BachecaMieiPage } from './pages/bacheca-miei/bacheca-miei';
+import { BachecaPreferitiModule } from './modules/bacheca-preferiti/bacheca-preferiti.module';
+import { BachecaPreferitiPage } from './pages/bacheca-preferiti/bacheca-preferiti';
+import { BachecaNuovoModule } from './modules/bacheca-nuovo/bacheca-nuovo.module';
+import { BachecaNuovoPage } from './pages/bacheca-nuovo/bacheca-nuovo';
+import { BachecaPage } from './pages/bacheca/bacheca';
+import { BachecaCardPage } from './pages/bacheca-card/bacheca-card';
+import { BachecaModule } from './modules/bacheca/bacheca.module';
+import { BachecaCardModule } from './modules/bacheca-card/bacheca-card.module';
 import { ListObjectModule } from './modules/list-object/list-object.module';
 import { ListObjectPage } from './pages/list-object/list-object';
 import { DocumentaleListaPage } from './pages/documentale-lista/documentale-lista';
@@ -93,6 +104,7 @@ import { MessaggiDetailsModule } from './modules/messaggi-details/messaggi-detai
 import { ComunicazioniPage } from './pages/comunicazioni/comunicazioni';
 import { DocumentaleCategorieModule } from './modules/documentale-categorie/documentale-categorie.module';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { BachecaMieiModule } from './modules/bacheca-miei/bacheca-miei.module';
 
 @NgModule({
   declarations: [
@@ -139,6 +151,13 @@ import { IonicSelectableModule } from 'ionic-selectable';
     DocumentaleListaModule,
     ListObjectModule,
     IonicSelectableModule,
+    BachecaCardModule,
+    BachecaModule,
+    BachecaNuovoModule,
+    BachecaPreferitiModule,
+    BachecaMieiModule,
+    BachecaCardModule,
+    BachecaDetailsModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -177,7 +196,13 @@ import { IonicSelectableModule } from 'ionic-selectable';
     DocumentaleCategoriePage,
     DocumentaleDetailsPage,
     DocumentaleListaPage,
-    ListObjectPage
+    ListObjectPage,
+    BachecaCardPage,
+    BachecaPage,
+    BachecaNuovoPage,
+    BachecaPreferitiPage,
+    BachecaMieiPage,
+    BachecaDetailsPage
   ],
   providers: [
     StatusBar,

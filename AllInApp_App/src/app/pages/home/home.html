@@ -20,6 +20,7 @@
 			<ion-item *ngIf="this.presenze['Chat']=='true'" (click)="goToChat()"> <i [ngStyle]="{'color' : colori['Chat'] }"  [ngClass]="icone['Chat']"></i> Chat</ion-item>
 			<ion-item *ngIf="this.presenze['News']=='true'"(click)="goToNews()"> <i [ngStyle]="{'color' : colori['News'] }" [ngClass]="icone['News']"></i> News</ion-item>
 			<ion-item *ngIf="this.presenze['Messaggi']=='true'"(click)="goToMessaggi()"> <i [ngStyle]="{'color' : colori['Messaggi'] }" [ngClass]="icone['Messaggi']"></i> Messaggi</ion-item>
+			<ion-item *ngIf="this.presenze['Bacheca']=='true'"(click)="goToBacheca()"> <i  [ngStyle]="{'color' : colori['Bacheca'] }" [ngClass]="icone['Bacheca']"></i> Bacheca</ion-item>
 			<ion-item *ngIf="this.presenze['Documentale']=='true'" (click)="goToDocumentale()"> <i [ngStyle]="{'color' : colori['Documentale'] }" [ngClass]="icone['Documentale']"></i> Documentale</ion-item>
 			<ion-item *ngIf="this.presenze['Rubrica']=='true'"(click)="goToContact()"> <i  [ngStyle]="{'color' : colori['Rubrica'] }" [ngClass]="icone['Rubrica']"></i> Rubrica</ion-item>			  
 			<ion-item (click)="logOut()"> LogOut </ion-item>
@@ -49,6 +50,9 @@
 			<ion-col *ngIf="this.presenze['Messaggi']=='true'&&this.colonne['Messaggi']==2" col-12>
 				<messaggi-card [modules]=modules></messaggi-card>
 			</ion-col>
+			<ion-col *ngIf="this.presenze['Bacheca']=='true'&&this.colonne['Bacheca']==2" col-12>
+				<bacheca-card [modules]=modules></bacheca-card>
+			</ion-col>
 			<ion-col *ngIf="this.presenze['Documentale']=='true'&&this.colonne['Documentale']==2" col-12>
 				<documentale-card [modules]=modules></documentale-card>
 			</ion-col>
@@ -60,13 +64,18 @@
 			</ion-col>
 			<ion-col *ngIf="this.presenze['Comunicazioni']=='true'&&this.colonne['Comunicazioni']==1" col-6>
 				<comunicazioni-card [modules]=modules></comunicazioni-card>
-			</ion-col><ion-col *ngIf="this.presenze['Messaggi']=='true'&&this.colonne['Messaggi']==1" col-6>
+			</ion-col>
+			<ion-col *ngIf="this.presenze['Messaggi']=='true'&&this.colonne['Messaggi']==1" col-6>
 				<messaggi-card [modules]=modules></messaggi-card>
-			</ion-col><ion-col *ngIf="this.presenze['News']=='true'&&this.colonne['News']==1" col-6>
+			</ion-col>
+			<ion-col *ngIf="this.presenze['News']=='true'&&this.colonne['News']==1" col-6>
 				<news-card [modules]=modules></news-card>
 			</ion-col>
 			<ion-col *ngIf="this.presenze['Chat']=='true'&&this.colonne['Chat']==1" col-6>
 				<chat-card [modules]=modules></chat-card>
+			</ion-col>
+			<ion-col *ngIf="this.presenze['Bacheca']=='true'&&this.colonne['Bacheca']==1" col-6>
+				<bacheca-card [modules]=modules></bacheca-card>
 			</ion-col>
 			<ion-col *ngIf="this.presenze['Documentale']=='true'&&this.colonne['Documentale']==1" col-6>
 				<documentale-card [modules]=modules></documentale-card>

@@ -25,6 +25,7 @@ export class ListObjectPage implements OnInit{
   }
 
   public ngOnInit() : void {
+    console.log(this.letta);
     this.giorno = " ";
     this.ora = " ";
     if (this.date != null) this.ora = this.date.charAt(11) + this.date.charAt(12) + ":" + this.date.charAt(13) + this.date.charAt(14);

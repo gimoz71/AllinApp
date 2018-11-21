@@ -28,7 +28,7 @@ export class NewsPage implements OnInit{
       (modules : Module.ModuleElem[])=>{
         console.log(modules);
         for (let i = 0 ; i < modules.length ; i++){
-          if (modules[i].tab_moduli_cod == 7){
+          if (modules[i].tab_moduli_cod == 2){
             this.color = modules[i].tab_moduli_colore;
             this.icon = modules[i].tab_moduli_icona;
 

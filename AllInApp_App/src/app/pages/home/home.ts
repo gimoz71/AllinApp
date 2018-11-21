@@ -1,3 +1,4 @@
+import { BachecaPage } from './../bacheca/bacheca';
 import { MessaggiPage } from './../messaggi/messaggi';
 import { DocumentalePage } from './../documentale/documentale';
 import { Module } from './../../models/modules/modules.namespace';
@@ -60,7 +61,7 @@ export class HomePage implements OnInit{
      this.presenze["Rubrica"] = "false"; 
      this.presenze["Messaggi"] = "false"; 
      this.presenze["News"] = "false"; 
-
+     this.presenze["Bacheca"] = "false";
 
      this.colonne["Comunicazioni"]= 1; 
      this.colonne["Circolari"] = 1;
@@ -69,6 +70,7 @@ export class HomePage implements OnInit{
      this.colonne["Rubrica"] = 1; 
      this.colonne["Messaggi"] = 1; 
      this.colonne["News"] = 1; 
+     this.colonne["Bacheca"] = 1; 
 
      this.icone["Comunicazioni"]= ""; 
      this.icone["Circolari"] = "";
@@ -77,6 +79,7 @@ export class HomePage implements OnInit{
      this.icone["Rubrica"] = ""; 
      this.icone["Messaggi"] = ""; 
      this.icone["News"] = ""; 
+     this.icone["Bacheca"] = "fa fa-file"; 
 
      this.colori["Comunicazioni"]= ""; 
      this.colori["Circolari"] = "";
@@ -85,6 +88,7 @@ export class HomePage implements OnInit{
      this.colori["Rubrica"] = ""; 
      this.colori["Messaggi"] = ""; 
      this.colori["News"] = ""; 
+     this.colori["Bacheca"] = "#88d379"; 
 
     //ricevo tutti i dati 
     //le prossime verranno eseguite solo se sono presenti nei dati
@@ -115,6 +119,7 @@ export class HomePage implements OnInit{
             this.modules[i].tab_moduli_colonne = 2;
             this.colonne["Messaggi"]= 2;
           }**/
+          this.presenze["Bacheca"] = "true";
         }
       },
       (error)=>{
@@ -222,5 +227,9 @@ export class HomePage implements OnInit{
 
   public goToDocumentale(){
     this.navCtrl.push(DocumentalePage);
+  }
+
+  public goToBacheca(){
+    this.navCtrl.push(BachecaPage);
   }
 }

@@ -1,3 +1,4 @@
+
 import { StoreService } from './../store/store.service';
 import { News } from './../../models/news/news.namespace';
 import { Http } from './../../models/shared/http.namespace';
@@ -12,6 +13,7 @@ import { Messaggi } from '../../models/messaggi/messaggi.namespace';
 import { Comunicazione } from '../../models/comunicazione/comunicazione.namespace';
 import { Documentale } from '../../models/documentale/documentale.namespace';
 import { Module } from '../../models/modules/modules.namespace';
+import { Bacheca } from '../../models/bacheca/bacheca.namespace';
 //SERVICE NON UTILIZZATO
 @Injectable()
 export class HttpService{
@@ -529,6 +531,215 @@ export class HttpService{
                 }
             )
             
+        });
+    }
+
+    public getElencoAnnunci(from, to, preferiti){
+        return new Promise((resolve, reject) => {
+            this.store.getUserDataPromise().then(
+                (token :Login.Token)=>{
+                    let url = "http://allinappws.mesys.it/services/get_elenco_annunci/" + token.token_value +"/"+from+"/"+to +"/"+ preferiti;
+                    console.log(url);
+                    let s = this.http.get<Bacheca.BachecaList>(url).subscribe(
+                        (r : Bacheca.BachecaList)=>{
+                            if (r.ErrorMessage.msg_code==0){
+                                resolve(r.l_lista_annunci);
+                            }else{
+                                reject(r.ErrorMessage);
+                            }
+                            
+                            s.unsubscribe();
+                        }  
+                    )
+                }
+            )
+            
+        });
+    }
+
+    public getMieiAnnunci(from, to){
+        return new Promise((resolve, reject) => {
+            this.store.getUserDataPromise().then(
+                (token :Login.Token)=>{
+                    let url = "http://allinappws.mesys.it/services/get_miei_annunci/" + token.token_value +"/"+from+"/"+to ;
+                    console.log(url);
+                    let s = this.http.get<Bacheca.BachecaList>(url).subscribe(
+                        (r :Bacheca.BachecaList)=>{
+                            if (r.ErrorMessage.msg_code==0){
+                                resolve(r.l_lista_annunci);
+                            }else{
+                                reject(r.ErrorMessage);
+                            }
+                            
+                            s.unsubscribe();
+                        }  
+                    )
+                }
+            )
+            
+        });
+    }
+
+    public getSchedaAnnuncio(key){
+        return new Promise((resolve, reject) => {
+            this.store.getUserDataPromise().then(
+                (token :Login.Token)=>{
+                    let url = "http://allinappws.mesys.it/services/get_public_annunci" + token.token_value +"/"+key ;
+                    console.log(url);
+                    let s = this.http.get<Bacheca.BachecaSingleResult>(url).subscribe(
+                        (r :Bacheca.BachecaSingleResult)=>{
+                            if (r.ErrorMessage.msg_code==0){
+                                resolve(r.news);
+                            }else{
+                                reject(r.ErrorMessage);
+                            }
+                            
+                            s.unsubscribe();
+                        }  
+                    )
+                }
+            )
+            
+        });
+    }
+
+    public getListaCategorieAnnuncio(){
+        return new Promise((resolve, reject) => {
+            this.store.getUserDataPromise().then(
+                (token :Login.Token)=>{
+                    let url = "http://allinappws.mesys.it/services/get_lista_categoria_annuncio/" + token.token_value  ;
+                    console.log(url);
+                    let s = this.http.get<Bacheca.BachecaCategoriaResult>(url).subscribe(
+                        (r : Bacheca.BachecaCategoriaResult)=>{
+                            if (r.ErrorMessage.msg_code==0){
+                                resolve(r.l_tab_categorie_annuncio);
+                            }else{
+                                reject(r.ErrorMessage);
+                            }
+                            
+                            s.unsubscribe();
+                        }  
+                    )
+                }
+            )
+            
+        });
+    }
+
+    public setStatoAnnuncio(key,stato){
+        return new Promise((resolve, reject) => {
+            this.store.getUserDataPromise().then(
+                (token :Login.Token)=>{
+                    let url = "http://allinappws.mesys.it/services/set_stato_annuncio/" + token.token_value +"/"+key+"/"+stato ;
+                    console.log(url);
+                    let s = this.http.get<Bacheca.BachecaResult>(url).subscribe(
+                        (r : Bacheca.BachecaResult)=>{
+                            if (r.ErrorMessage.msg_code==0){
+                                resolve(r.result);
+                            }else{
+                                reject(r.ErrorMessage);
+                            }
+                            
+                            s.unsubscribe();
+                        }  
+                    )
+                }
+            )
+            
+        });
+    }
+
+    public setPreferitoAnnuncio(key,stato){
+        return new Promise((resolve, reject) => {
+            this.store.getUserDataPromise().then(
+                (token :Login.Token)=>{
+                    let url = "http://allinappws.mesys.it/services/set_preferred_annuncio/" + token.token_value +"/"+key;
+                    console.log(url);
+                    let s = this.http.get<Bacheca.BachecaResult>(url).subscribe(
+                        (r : Bacheca.BachecaResult)=>{
+                            console.log(r);
+                            if (r.ErrorMessage.msg_code==0){
+                                resolve(r.result);
+                            }else{
+                                reject(r.ErrorMessage);
+                            }
+                            
+                            s.unsubscribe();
+                        }  
+                    )
+                }
+            )
+            
+        });
+    }
+
+
+    public setDeletedAnnuncio(key){
+        return new Promise((resolve, reject) => {
+            this.store.getUserDataPromise().then(
+                (token :Login.Token)=>{
+                    let url = "http://allinappws.mesys.it/services/set_deleted_annuncio/" + token.token_value +"/"+key;
+                    console.log(url);
+                    let s = this.http.get<Bacheca.BachecaResult>(url).subscribe(
+                        (r : Bacheca.BachecaResult)=>{
+                            if (r.ErrorMessage.msg_code==0){
+                                resolve(r.result);
+                            }else{
+                                reject(r.ErrorMessage);
+                            }
+                            
+                            s.unsubscribe();
+                        }  
+                    )
+                }
+            )
+            
+        });
+    }
+
+    public putAnnuncio( mess: Bacheca.BachecaRichiestaPut){
+        return new Promise((resolve, reject) => {
+            this.store.getUserDataPromise().then(
+                (token :Login.Token)=>{
+                    let url = "http://allinappws.mesys.it/services/put_annuncio";
+                    console.log(url);
+                    let s = this.http.post<Bacheca.BachecaResult>(url, mess).subscribe(
+                        (r : Bacheca.BachecaResult)=>{
+                            if (r.ErrorMessage.msg_code==0){
+                                resolve(r);
+                            }else{
+                                console.log(r);
+                                reject(r.ErrorMessage);
+                            }
+                            
+                            s.unsubscribe();
+                        }  
+                    )
+                }
+            )
+        });
+    }
+    
+    public delAnnuncio( mess: Bacheca.BachecaRichiestaPut){
+        return new Promise((resolve, reject) => {
+            this.store.getUserDataPromise().then(
+                (token :Login.Token)=>{
+                    let url = "http://allinappws.mesys.it/services/del_annuncio";
+                    console.log(url);
+                    let s = this.http.post<Bacheca.BachecaResult>(url, mess).subscribe(
+                        (r : Bacheca.BachecaResult)=>{
+                            if (r.ErrorMessage.msg_code==0){
+                                resolve(r);
+                            }else{
+                                console.log(r);
+                                reject(r.ErrorMessage);
+                            }
+                            
+                            s.unsubscribe();
+                        }  
+                    )
+                }
+            )
         });
     }
 }

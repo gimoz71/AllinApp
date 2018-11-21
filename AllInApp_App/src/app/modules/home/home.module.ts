@@ -1,3 +1,4 @@
+import { BachecaCardModule } from './../bacheca-card/bacheca-card.module';
 import { CircolariCardModule } from './../circolari-card/circolari-card.module';
 import { MessaggiCardModule } from './../messaggi-card/messaggi-card.module';
 import { NewsCardModule } from './../news-card/news-card.module';
@@ -16,7 +17,8 @@ import { ComunicazioniCardModule } from '../comunicazioni-card/comunicazioni-car
 	declarations: [HomePage],
 	imports: [IonicModule, HomeComModule, ContactCardModule, 
 		DocumentaleCardModule, ChatCardModule,  MessaggiCardModule,
-		NewsCardModule, ComunicazioniCardModule, CircolariCardModule],
+		NewsCardModule, ComunicazioniCardModule, CircolariCardModule, 
+	BachecaCardModule],
 	exports: [HomePage]
 })
 export class HomeModule {}
