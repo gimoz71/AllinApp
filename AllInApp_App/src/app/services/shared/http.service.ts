@@ -584,12 +584,12 @@ export class HttpService{
         return new Promise((resolve, reject) => {
             this.store.getUserDataPromise().then(
                 (token :Login.Token)=>{
-                    let url = "http://allinappws.mesys.it/services/get_public_annunci" + token.token_value +"/"+key ;
+                    let url = "http://allinappws.mesys.it/services/get_public_annunci/" + token.token_value +"/"+key ;
                     console.log(url);
                     let s = this.http.get<Bacheca.BachecaSingleResult>(url).subscribe(
                         (r :Bacheca.BachecaSingleResult)=>{
                             if (r.ErrorMessage.msg_code==0){
-                                resolve(r.news);
+                                resolve(r.annunci);
                             }else{
                                 reject(r.ErrorMessage);
                             }
@@ -653,7 +653,7 @@ export class HttpService{
         return new Promise((resolve, reject) => {
             this.store.getUserDataPromise().then(
                 (token :Login.Token)=>{
-                    let url = "http://allinappws.mesys.it/services/set_preferred_annuncio/" + token.token_value +"/"+key;
+                    let url = "http://allinappws.mesys.it/services/set_preferred_annuncio/" + token.token_value +"/"+key+"/"+stato;
                     console.log(url);
                     let s = this.http.get<Bacheca.BachecaResult>(url).subscribe(
                         (r : Bacheca.BachecaResult)=>{
@@ -742,4 +742,35 @@ export class HttpService{
             )
         });
     }
+
+    public imgAnnuncio( key, tipologia, immagine){
+        
+        return new Promise((resolve, reject) => {
+            this.store.getUserDataPromise().then(
+                (token :Login.Token)=>{
+                    let o = {
+                        token : token.token_value,                     
+                        oggetto_key : key,                      
+                        tipologia : tipologia,
+                        immagine : immagine
+                      }
+                    let url = "http://allinappws.mesys.it/services/img_annuncio";
+                    console.log(url);
+                    let s = this.http.post<Bacheca.BachecaResult>(url,o).subscribe(
+                        (r : Bacheca.BachecaResult)=>{
+                            if (r.ErrorMessage.msg_code==0){
+                                resolve(r);
+                            }else{
+                                console.log(r);
+                                reject(r.ErrorMessage);
+                            }
+                            
+                            s.unsubscribe();
+                        }  
+                    )
+                }
+            )
+        });
+    }
+
 }
