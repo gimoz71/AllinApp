@@ -1,30 +1,66 @@
 <ion-header>
-    <ion-navbar hideBackButton>
-      <ion-buttons left>
-        <button (click)="back()" ion-button icon-left clear small>
-          <ion-icon name="arrow-back"></ion-icon>
-        </button>
-        </ion-buttons>
-        <ion-title>
-          <div class="text-default" >MESSAGGIO</div>
-        </ion-title>
-        <ion-buttons end>
-            <button><ion-icon class="icon-button" name="contact" class="nav-icon text-default"></ion-icon></button>
-          </ion-buttons>
-      </ion-navbar>
-    </ion-header>
-    <ion-content>
-      <div style="float:right;font-size:2em">
-          <ion-icon name="undo" (click)="reply(mess)"></ion-icon>
-          <ion-icon name="redo" (click)="inoltro(mess)"></ion-icon>
-        <ion-icon name="trash" (click)="deleteConfirm(mess)"></ion-icon>
-        <ion-icon name="star-outline" *ngIf="mess.preferito==''" (click)="setStar(mess,'S')"></ion-icon>
-        <ion-icon name="star-outline" *ngIf="mess.preferito=='N'" (click)="setStar(mess,'S')"></ion-icon>
-        <ion-icon name="star" *ngIf="mess.preferito=='S'" (click)="setStar(mess,'N')"></ion-icon>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button (click)="back()" ion-button icon-left clear small>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
       </div>
-    <img src={{mess.nw_immagine}}>
-     <h1>{{mess.soggetto}}</h1>
-      <p>{{mess.descrizione}}</p>
-      <p>{{mess.messaggio}}</p>
-      <p>{{mess.cognome_mit}}</p>
-    </ion-content>
+    </ion-buttons>
+    <ion-title>
+      <div [ngClass]="{'messq': true}" [ngStyle]="{'color' : color }">MESSAGGI</div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="card no-border card-large circolari">
+    <div [ngStyle]="{'background-color' : color }" [ngStyle]="{'background-color' : color }" class="card-header ì small text-white">{{mess.soggetto}}
+
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush comm">
+        <li style="padding:10px;">
+          <p><small>Mittente: {{mess.cognome_mit}}</small></p>
+          <p><small><i>{{mess.descrizione}}</i></small></p>
+          <p>{{mess.messaggio}}</p>
+          <img src="{{mess.nw_immagine}}">
+
+        </li>
+      </ul>
+    </div>
+   
+  </div>
+</ion-content>
+<ion-footer>
+  <div [ngStyle]="{'background-color' : color }" class="small text-white">
+    <ion-grid class="messaggi-action">
+      <ion-row>
+        <ion-col>
+          <ion-icon name="undo" (click)="reply(mess)"></ion-icon>
+
+        </ion-col>
+        <ion-col>
+
+          <ion-icon name="redo" (click)="inoltro(mess)"></ion-icon>
+
+        </ion-col>
+        <ion-col>
+
+          <ion-icon name="trash" (click)="deleteConfirm(mess)"></ion-icon>
+
+        </ion-col>
+        <ion-col>
+
+          <ion-icon name="star-outline" *ngIf="mess.preferito==''" (click)="setStar(mess,'S')"></ion-icon>
+          <ion-icon name="star-outline" *ngIf="mess.preferito=='N'" (click)="setStar(mess,'S')"></ion-icon>
+          <ion-icon name="star" *ngIf="mess.preferito=='S'" (click)="setStar(mess,'N')"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+</ion-footer>
+

@@ -14,7 +14,7 @@ export namespace Comunicazione {
     }
 
     export class ComunicazioniElenco{
-        errorMessage: {
+        ErrorMessage: {
             msg_tipo: string;
             msg_code : number;
             msg_testo : string;
@@ -28,7 +28,7 @@ export namespace Comunicazione {
         }
     
     export class ComunicazioneResult {
-        errorMessage: {
+        ErrorMessage: {
             msg_tipo: string,
             msg_code: number,
             msg_testo: string,

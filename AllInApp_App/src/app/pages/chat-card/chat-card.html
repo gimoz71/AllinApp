@@ -1,4 +1,8 @@
 <div class="card" (click)="goToChat()">
-    <div class="card-header bg-chat text-header text-white">Chat</div>
-    <div class="card-body">Vai alla chat</div>
+    <div [ngStyle]="{'background-color' : color }" class="card-header bg-comm text-header text-white" >Chat</div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush priority" style="text-align: center;">
+                <i [ngClass]="icon" [ngStyle]="{'color' : color }" style="font-size: 5em; margin: 15px;"></i>
+        </ul>
+    </div>
 </div>

@@ -2,39 +2,30 @@
   <ion-navbar hideBackButton>
     <ion-buttons left>
       <button (click)="back()" ion-button icon-left clear small>
-        <ion-icon name="arrow-back"></ion-icon>
+        <ion-icon name="apps"></ion-icon>
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button><ion-icon class="icon-button" name="news" class="nav-icon text-default"></ion-icon></button>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
     </ion-buttons>
-    <ion-title >
-      <div class="text-default">Circolari</div>
+    <ion-title>
+      <div class="text-default" [ngStyle]="{'color' : color }">CIRCOLARI</div>
     </ion-title>
-    
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <div *ngFor="let com of comFull">
-    <ion-card class="border-blue" *ngIf="com.dc_letta=='N'" (click)="goToDetails(com)"  >
-      <ion-card-content >
-        <h1 >
-          {{com.cm_titolo}}
-        </h1>
-        <p>
-        {{com.cm_descrizione}}
-        </p>
-      </ion-card-content>
-    </ion-card>
-    <ion-card class="border-green" *ngIf="com.dc_letta=='S'" (click)="goToDetails(com)"  >
-      <ion-card-content >
-        <h1 >
-          {{com.cm_titolo}}
-        </h1>
-        <p>
-        {{com.cm_descrizione}}
-        </p>
-      </ion-card-content>
-    </ion-card>
-</div>
+  <div class="card no-border card-large circolari">
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <div *ngFor="let group of groupedCom">
+      <div [ngStyle]="{'background-color' : color }" class="card-header bg-comm small text-white">{{group.mese}} {{group.anno}}</div>
+      <div class="list-group list-group-flush comm">
+        <div class="card-body">
+          <list-object *ngFor="let data of group.com" [color]="color" [date]="data.cm_data" [titolo]="data.cm_titolo"
+            [descrizione]="data.cm_descrizione" [letta]="data.dc_letta" (click)="goToDetails(data)"></list-object>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

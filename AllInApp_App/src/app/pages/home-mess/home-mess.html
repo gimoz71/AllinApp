@@ -1,11 +1,11 @@
 
-<li class="list-group-item" >
+<li class="list-group-item" style="border-bottom: 1px solid #dedede">
 	<div class="item">
-		<i class="fa fa-bell "><ion-icon  name="flash"></ion-icon></i>
+		<i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
 	</div>
 	<div class="brief">
-		<h5>{{data.nome_mit}} {{data.cognome_mit}}</h5>
-		<p>{{data.soggetto}}</p>
+		<h5 class="title">{{titolo}}</h5>
+		<p [ngStyle]="{'color' : color }" class="text">{{descrizione}}</p>
 	</div>
 </li>
 			

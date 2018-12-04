@@ -6,25 +6,33 @@
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button><ion-icon class="icon-button" name="contacts" class="nav-icon text-default"></ion-icon></button>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
     </ion-buttons>
-    <ion-title >
-      <div class="text-default">Documentale</div>
+    <ion-title>
+      <div class="text-default" [ngStyle]="{'color' : color }">DOCUMENTALE</div>
     </ion-title>
-    
+
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <div *ngFor="let doc of lista">
-    <ion-card   (click)="goToDetails(doc)">
-      <ion-card-content >
-        <h1 >
-          {{doc.tab_tipo_documento_desc}}
-        </h1>
-        <p>
-        {{doc.doc_titolo}}
-        </p>
-      </ion-card-content>
-    </ion-card>
-</div>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <div class="card no-border card-large docs">
+    <div [ngStyle]="{'background-color' : color }" class="card-header  small text-white">3° livello</div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <ion-item *ngFor="let doc of lista" (click)="goToDetails(doc)" class="comm">
+          <li class="list-group-item">
+            <div class="item">
+              <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+            </div>
+            <div class="brief">
+              <h5 class="name">{{doc.doc_titolo}}</h5>
+            </div>
+          </li>
+        </ion-item>
+      </ul>
+    </div>
+  </div>
 </ion-content>

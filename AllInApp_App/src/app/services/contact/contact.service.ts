@@ -45,7 +45,7 @@ export class ContactService implements OnInit{
            {username: "Rodolfo", ruoloAziendale: "duca di Borgogna", avatarUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Rudolph_of_France.jpg/110px-Rudolph_of_France.jpg"}, 
           {username: "Filippo I il giusto", ruoloAziendale: "Re dei Franchi", avatarUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Filip_i.jpg/120px-Filip_i.jpg"},             
       ];**/
-        this.attivo = attivo;
+       /** this.attivo = attivo;
         this.subscription = this.store.userData$.subscribe((val : Login.Token) =>{
             this.token = val.token_value;
             let url = "http://allinappws.mesys.it/services/get_elenco_dipendenti/"+ this.token +"/"+this.attivo;
@@ -57,7 +57,28 @@ export class ContactService implements OnInit{
             this.subscription.unsubscribe();
             }
         );
-        this.store.getUserData();
+        this.store.getUserData();**/
+
+        return new Promise((resolve, reject) => {
+            this.store.getUserDataPromise().then(
+                (token :Login.Token)=>{
+                    let url = "http://allinappws.mesys.it/services/get_elenco_dipendenti/"+ token.token_value +"/"+ attivo;
+                    console.log(url);
+                    let s = this.http.get<Contact.ContactList>(url).subscribe(
+                        (r : Contact.ContactList)=>{
+                            if (r.ErrorMessage.msg_code==0){
+                                resolve(r.l_dipendenti);
+                            }else{
+                                reject(r.ErrorMessage);
+                            }
+                            
+                            s.unsubscribe();
+                        }  
+                    )
+                }
+            )
+            
+        });
     }
 
     public GetContactDetails(key : number){
@@ -89,11 +110,13 @@ export class ContactService implements OnInit{
             }
         })
         return find;**/
-        console.log("sono in get contacts details");
+        /**console.log("sono in get contacts details");
         this.subscriptionFull = this.store.userData$.subscribe((val : Login.Token) =>{
             if (key == -1) key = val.token_dipendente_key ;
             this.token = val.token_value;
             let url = "http://allinappws.mesys.it/services/get_scheda_dipendente/"+ this.token +"/"+ key;
+            console.log(url);
+            console.log (val);
             this.http.get<Contact.ContactDataFull>(url).subscribe((val)=>{
                     this.cd = val;
                     this.contactFull.next(this.cd);    
@@ -102,8 +125,29 @@ export class ContactService implements OnInit{
             this.subscriptionFull.unsubscribe();
             }
         );
-        this.store.getUserData();
+        this.store.getUserData();**/
 
+        return new Promise((resolve, reject) => {
+            this.store.getUserDataPromise().then(
+                (token :Login.Token)=>{
+                    if (key == -1) key = token.token_dipendente_key ;
+                    let url = "http://allinappws.mesys.it/services/get_scheda_dipendente/"+ token.token_value+"/"+ key;
+                    console.log(url);
+                    let s = this.http.get<Contact.ContactDataFull>(url).subscribe(
+                        (r : Contact.ContactDataFull)=>{
+                            if (r.ErrorMessage.msg_code==0){
+                                resolve(r.dipendente);
+                            }else{
+                                reject(r.ErrorMessage);
+                            }
+                            
+                            s.unsubscribe();
+                        }  
+                    )
+                }
+            )
+            
+        });
     }
 
 }

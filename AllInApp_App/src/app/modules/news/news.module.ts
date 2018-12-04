@@ -1,3 +1,4 @@
+import { ListObjectModule } from './../list-object/list-object.module';
 import { NewsPage } from './../../pages/news/news';
 import { NewsCardPage } from './../../pages/news-card/news-card';
 import { NgModule } from '@angular/core';
@@ -6,7 +7,7 @@ import { IonicModule } from 'ionic-angular';
 
 @NgModule({
 	declarations: [NewsPage],
-	imports: [IonicModule],
+	imports: [IonicModule, ListObjectModule],
 	exports: [NewsPage]
 })
 export class NewsModule {}

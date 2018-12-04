@@ -1,10 +1,10 @@
-<li class="list-group-item">
-	<div class="item">
+<li class="list-group-item" >
+	<div class="item" [ngStyle]="{'border-right' : 'solid', 'border-size' : '4px', 'border-color' : color}">
 		<span class="day">{{giorno}}</span>
-		<span class="mounth">{{mese}}</span>
+		<span [ngStyle]="{'color' : color }" class="mounth">{{mese}}</span>
 	</div>
-	<div class="brief">
-		<h5 class="title">{{data.cm_titolo}}</h5>
-		<p class="text">{{data.cm_descrizione}}</p>
+	<div class="brief" >
+		<h5 class="title">{{titolo}}</h5>
+		<p  [ngStyle]="{'color' : color }" class="text">{{descrizione}}</p>
 	</div>
 </li>

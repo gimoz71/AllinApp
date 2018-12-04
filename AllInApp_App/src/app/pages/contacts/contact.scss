@@ -8,12 +8,12 @@ page-contact {
     height: 20px;
 }
 
-.addressBook .list-group-item { display: flex; }
-.addressBook .list-group-item .item { margin-right: 15px; }
+.addressBook .list-group-item { display: flex; background: #fff;}
+.addressBook .list-group-item .item { margin-right: 15px;float:left;}
 .addressBook .list-group-item .brief { min-width: 0; flex: 1; }
-.addressBook .list-group-item .brief .name { font-size: 1rem; line-height: 1rem; margin: 0; font-weight: normal; color: #868e96; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.addressBook .list-group-item .brief .text { color: #adb5bd; margin: 0; font-size: .75rem; line-height: .75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.addressBook .list-group-item .brief .device { position: absolute; right: 1rem; top: 1rem; font-size: 1.5rem; color: #8EA7BD; }
+.addressBook .list-group-item .brief .name { font-size: 1.3rem; line-height: 1.75rem; margin: 0; font-weight: normal; color: #868e96; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.addressBook .list-group-item .brief .text { color: #adb5bd; margin: 0; font-size: 1.1rem; line-height: 1.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.addressBook .list-group-item .brief .device { position: absolute; right: 1rem; top: 1rem; font-size: 3rem; color: #8EA7BD; }
 .addressBook .list-group-item.other .item { margin-left: 15px; margin-right: auto; }
 
 .user-small { width: 30px; }

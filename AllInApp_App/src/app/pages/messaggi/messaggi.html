@@ -1,77 +1,72 @@
 <ion-header>
-    <ion-navbar hideBackButton>
-        <ion-buttons left>
-            <button ion-button menuToggle><ion-icon ></ion-icon></button>
-          </ion-buttons>
-      <ion-buttons right>
-        <button (click)="back()" ion-button icon-left clear small>
-          <ion-icon name="arrow-back"></ion-icon>
-        </button>
-      </ion-buttons>
-      
-      <ion-title >
-        <div class="text-default">MESSAGGI</div>
-      </ion-title>
-      
-    </ion-navbar>
-
-  </ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button (click)="back()" ion-button icon-left clear small>
+        <ion-icon name="apps"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
+    </ion-buttons>
+    <ion-title>
+      <div [ngClass]="{'messq': true}" [ngStyle]="{'color' : color }">MESSAGGI</div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-nav #mycontent1 [root]="rootPage"></ion-nav>
+<ion-content>
   
-  <ion-menu type="overlay" id="messaggi" [content]="mycontent1">
-      <ion-content>
-        <ion-list>
-        <ion-item (click)="goTonuovoMessaggio()"> Nuovo </ion-item>
-        <ion-item (click)="goToUscitaMessaggi()"> Uscita </ion-item>
-        <ion-item (click)="goToImportantiMessaggi()">Importanti</ion-item>
-        <ion-item (click)="goToCestinoMessaggio()" >Cestino</ion-item>
-        <ion-item menuClose detail-none>Chiudi menu</ion-item>
-        </ion-list>
-      </ion-content>
-      </ion-menu>
-    <ion-nav #mycontent1 [root]="rootPage" ></ion-nav>
-
-  <ion-content>
-      <button ion-button menuToggle>Toggle Menu</button>
-      <!--<button ion-button (click)="goTonuovoMessaggio()">Nuovo</button>
-      <button ion-button (click)="goToUscitaMessaggi()">Uscita</button>
-      <button ion-button (click)="goToImportantiMessaggi()">Importanti</button>
-      <button ion-button (click)="goToCestinoMessaggio()">Cestino</button>-->
-       <!--<div *ngFor="let mess of messFull">
-         <ion-card   (click)="goToDetails(mess)">
-            <ion-card-content >
-              <h1 >
-                {{mess.cognome_mit}}
-              </h1>
-              <p>
-              {{mess.soggetto}}
-              </p>
-            </ion-card-content>
-          </ion-card>-->
-
-          <ion-list >
-              
-              <ion-item class="list-group-item" *ngFor="let mess of messFull"  >
-                  
-                  <div class=" box item" >
-                      <ion-icon name="eye" (click)="goToDetails(mess)"></ion-icon>
-                      <ion-icon name="checkbox"></ion-icon>
-                      <ion-icon name="star-outline" *ngIf="mess.preferito==''" (click)="setStar(mess,'S')"></ion-icon>
-                      <ion-icon name="star-outline" *ngIf="mess.preferito=='N'" (click)="setStar(mess,'S')"></ion-icon>
-                      <ion-icon name="star" *ngIf="mess.preferito=='S'" (click)="setStar(mess,'N')"></ion-icon>
-                      <ion-icon name="trash" (click)="deleteConfirm(mess)"></ion-icon>
-                      <!--<div  class="user-small contact-small">
-                        <img  src="{{mess.url_avatar}}">
-                      </div>-->
-                    </div>
-                    <div class=" box brief contact-small ">
-                      <h5 class="name ">{{mess.cognome_mit}} {{mess.nome_mit}}</h5>
-                      <p class="text ">{{mess.soggetto}}</p>
-                      <i class="fa fa-mobile device"></i>
-                    </div>
-                    <div class="box data">
-                      {{mess.data}}
-                    </div>
-                </ion-item>
-        </ion-list>
-
+  <ion-list>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <div class="card no-border card-large messaggi">
+      <div [ngStyle]="{'background-color' : color }" class="card-header  small text-white">Tutti i Messaggi</div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <ion-item *ngFor="let mess of messFull" class="comm">
+            <li class="list-group-item ">
+              <div class=" item ">
+                <ion-icon name="eye" [ngStyle]="{'color' : color }" (click)="goToDetails(mess)"></ion-icon>
+                <ion-icon name="checkbox" [ngStyle]="{'color' : color }"></ion-icon>
+                <ion-icon name="star-outline" [ngStyle]="{'color' : color }" *ngIf="mess.preferito==''" (click)="setStar(mess,'S')"></ion-icon>
+                <ion-icon name="star-outline" [ngStyle]="{'color' : color }" *ngIf="mess.preferito=='N'" (click)="setStar(mess,'S')"></ion-icon>
+                <ion-icon name="star" [ngStyle]="{'color' : color }" *ngIf="mess.preferito=='S'" (click)="setStar(mess,'N')"></ion-icon>
+                <ion-icon name="trash" [ngStyle]="{'color' : color }" (click)="deleteConfirm(mess)"></ion-icon>
+                <!--<div  class="user-small contact-small">
+                  <img  src="{{mess.url_avatar}}">
+                </div>-->
+              </div>
+              <div class="brief" (click)="goToDetails(mess)">
+                <h5 class="name ">{{mess.cognome_mit}} {{mess.nome_mit}}</h5>
+                <p [ngStyle]="{'color' : color }" class="text ">{{mess.soggetto}}</p>
+                <p [ngStyle]="{'color' : color }">{{mess.data}}</p>
+                <i [ngStyle]="{'color' : color }" class="fa fa-mobile device"></i>
+              </div>
+            </li>
+          </ion-item>
+        </ul>
+      </div>
+    </div>
+  </ion-list>
 </ion-content>
+<ion-footer>
+  <div [ngStyle]="{'background-color' : color }" class=" small text-white">
+    <ion-grid class="messaggi-action">
+      <ion-row>
+        <ion-col>
+          <div (click)="goTonuovoMessaggio()"> Nuovo </div>
+        </ion-col>
+        <ion-col>
+          <div (click)="goToUscitaMessaggi()"> Uscita </div>
+        </ion-col>
+        <ion-col>
+          <div (click)="goToImportantiMessaggi()"> Importanti </div>
+        </ion-col>
+        <ion-col>
+          <div (click)="goToCestinoMessaggio()"> Cestino </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-footer>

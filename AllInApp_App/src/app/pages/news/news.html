@@ -1,40 +1,31 @@
 <ion-header>
-    <ion-navbar hideBackButton>
-      <ion-buttons left>
-        <button (click)="back()" ion-button icon-left clear small>
-          <ion-icon name="arrow-back"></ion-icon>
-        </button>
-      </ion-buttons>
-      <ion-buttons end>
-        <button><ion-icon class="icon-button" name="news" class="nav-icon text-default"></ion-icon></button>
-      </ion-buttons>
-      <ion-title >
-        <div class="text-default">News</div>
-      </ion-title>
-      
-    </ion-navbar>
-  </ion-header>
-  <ion-content>
-    <div *ngFor="let news of newsFull">
-      <ion-card  class="border-green" *ngIf="news.dn_letta=='N'" (click)="goToDetails(news)">
-        <ion-card-content >
-          <h1 >
-            {{news.nw_titolo}}
-          </h1>
-          <p>
-          {{news.nw_descrizione}}
-          </p>
-        </ion-card-content>
-      </ion-card>
-      <ion-card  class="border-blue" *ngIf="news.dn_letta!='N'" (click)="goToDetails(news)">
-          <ion-card-content >
-            <h1 >
-              {{news.nw_titolo}}
-            </h1>
-            <p>
-            {{news.nw_descrizione}}
-            </p>
-          </ion-card-content>
-        </ion-card>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button (click)="back()" ion-button icon-left clear small>
+        <ion-icon name="apps"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
+    </ion-buttons>
+    <ion-title>
+      <div [ngClass]="{'messq': true}" [ngStyle]="{'color' : color }">NEWS</div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <div class="card card-large">
+
+    <div class="card-body">
+
+      <ul class="list-group list-group-flush comm">
+        <list-object *ngFor="let data of newsFull" [color]="color" [date]="" [titolo]="data.nw_titolo" [descrizione]="data.nw_descrizione"
+          [letta]="data.dn_letta" (click)="goToDetails(data)"></list-object>
+      </ul>
+
+    </div>
   </div>
 </ion-content>

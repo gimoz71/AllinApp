@@ -13,6 +13,7 @@ import { NewsDetailsPage } from '../news-details/news-details';
 import { Messaggi } from '../../models/messaggi/messaggi.namespace';
 import { Login } from '../../models/login/login.namespace';
 import { MessaggiImportantiPage } from '../messaggi-importanti/messaggi-importanti';
+import { Module } from '../../models/modules/modules.namespace';
 
 
 @Component({
@@ -22,6 +23,9 @@ import { MessaggiImportantiPage } from '../messaggi-importanti/messaggi-importan
 export class MessaggiPage implements OnInit{
 
   public messFull : Messaggi.MessaggiElem[];
+  public clonedMess : Messaggi.MessaggiElem[];
+  public color : string;
+  public icon : string;
   
   constructor(private navCtrl : NavController,private navParams: NavParams, public menuCtrl: MenuController,
     private store: StoreService, private http : HttpService, private alertCtrl: AlertController) {
@@ -29,10 +33,25 @@ export class MessaggiPage implements OnInit{
   }
 
   public ngOnInit() : void {
+    this.http.getModules().then(
+      (modules : Module.ModuleElem[])=>{
+        console.log(modules);
+        for (let i = 0 ; i < modules.length ; i++){
+          if (modules[i].tab_moduli_cod == 5){
+            this.color = modules[i].tab_moduli_colore;
+            this.icon = modules[i].tab_moduli_icona;
+          }
+        }
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
     this.messFull =this.navParams.get('messFull');
     console.log(this.messFull);
     this.menuCtrl.enable(true, 'messaggi');
-    let s = this.store.userData$.subscribe((val)=>{
+
+    /**let s = this.store.userData$.subscribe((val)=>{
       let s1 = this.http.getMessaggeList(val.token_value,"0","0","I").subscribe(
           (res)=>{
             console.log(res);
@@ -47,13 +66,42 @@ export class MessaggiPage implements OnInit{
         s.unsubscribe();
        }
     );
-    this.store.getUserData();
+    this.store.getUserData();*/
+
+    this.http.getMessaggeList("0","0","I").then(
+      (res : Messaggi.MessaggiElem[])=>{
+        this.messFull = res;
+        this.clonedMess  = Object.assign([], this.messFull);      
+      },
+      (error)=>{
+        console.log(error);
+      }
+    );
   }
 
   back(){
     this.menuCtrl.enable(false, 'messaggi');
     this.menuCtrl.enable(true, 'home');
     this.navCtrl.pop();
+  }
+
+  getItems(ev) {
+    // Reset items back to all of the items
+    this.messFull = [];
+    this.messFull  = Object.assign([], this.clonedMess );
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.messFull = this.messFull.filter((item) => {
+        return (item.cognome_mit.toLowerCase().indexOf(val.toLowerCase()) > -1
+                || item.nome_mit.toLowerCase().indexOf(val.toLowerCase()) > -1
+                || item.messaggio.toLowerCase().indexOf(val.toLowerCase()) > -1
+                || item.soggetto.toLowerCase().indexOf(val.toLowerCase()) > -1
+                );
+      })
+    }
   }
   
   public goToDetails(mess){
@@ -74,7 +122,7 @@ export class MessaggiPage implements OnInit{
   }
 
   setStar (mess : Messaggi.MessaggiElem, stato){
-      let s = this.store.userData$.subscribe(
+      /**let s = this.store.userData$.subscribe(
         (val: Login.Token)=>{
           let s1 = this.http.setStarMessage(val.token_value,mess.messaggi_key,stato).subscribe(
             (r)=>{
@@ -88,11 +136,20 @@ export class MessaggiPage implements OnInit{
           s.unsubscribe();
         }
       );
-      this.store.getUserData();
+      this.store.getUserData();*/
+
+      this.http.setStarMessage(mess.messaggi_key,stato).then(
+        (r)=>{
+          mess.preferito = stato; 
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
   }
 
   setDelete(mess : Messaggi.MessaggiElem){
-    let s = this.store.userData$.subscribe(
+    /**let s = this.store.userData$.subscribe(
       (val: Login.Token)=>{
         let s1 = this.http.setDeleteMessage(val.token_value, mess.messaggi_key).subscribe(
           (r)=>{
@@ -103,7 +160,16 @@ export class MessaggiPage implements OnInit{
         s.unsubscribe();
       }
     );
-    this.store.getUserData();
+    this.store.getUserData();*/
+
+    this.http.setDeleteMessage( mess.messaggi_key).then(
+      (r)=>{
+        console.log(r);
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 
   deleteConfirm(mess : Messaggi.MessaggiElem) {

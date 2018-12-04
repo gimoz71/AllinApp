@@ -1,3 +1,16 @@
+import { BachecaDetailsModule } from './modules/bacheca-details/bacheca-details.module';
+import { BachecaDetailsPage } from './pages/bacheca-details/bacheca-details';
+import { BachecaMieiPage } from './pages/bacheca-miei/bacheca-miei';
+import { BachecaPreferitiModule } from './modules/bacheca-preferiti/bacheca-preferiti.module';
+import { BachecaPreferitiPage } from './pages/bacheca-preferiti/bacheca-preferiti';
+import { BachecaNuovoModule } from './modules/bacheca-nuovo/bacheca-nuovo.module';
+import { BachecaNuovoPage } from './pages/bacheca-nuovo/bacheca-nuovo';
+import { BachecaPage } from './pages/bacheca/bacheca';
+import { BachecaCardPage } from './pages/bacheca-card/bacheca-card';
+import { BachecaModule } from './modules/bacheca/bacheca.module';
+import { BachecaCardModule } from './modules/bacheca-card/bacheca-card.module';
+import { ListObjectModule } from './modules/list-object/list-object.module';
+import { ListObjectPage } from './pages/list-object/list-object';
 import { DocumentaleListaPage } from './pages/documentale-lista/documentale-lista';
 import { DocumentaleListaModule } from './modules/documentale-lista/documentale-lista.module';
 import { DocumentaleDetailsPage } from './pages/documentale-details/documentale-details';
@@ -38,8 +51,6 @@ import { NewsModule } from './modules/news/news.module';
 import { NewsCardModule } from './modules/news-card/news-card.module';
 import { ContactCardModule } from './modules/contact-card/contact-card.module';
 import { ContactCardPage } from './pages/contact-card/contact-card';
-import { HomePrioPage } from './pages/home-prio/home-prio';
-import { HomePrioModule } from './modules/home-prio/home-prio.module';
 import { HomeComPage } from './pages/home-com/home-com';
 import { HomeComModule } from './modules/home-com/home-com.module';
 import { Base64 } from '@ionic-native/base64';
@@ -92,7 +103,8 @@ import { MessaggiModule } from './modules/messaggi/messaggi.module';
 import { MessaggiDetailsModule } from './modules/messaggi-details/messaggi-details.module';
 import { ComunicazioniPage } from './pages/comunicazioni/comunicazioni';
 import { DocumentaleCategorieModule } from './modules/documentale-categorie/documentale-categorie.module';
-
+import { IonicSelectableModule } from 'ionic-selectable';
+import { BachecaMieiModule } from './modules/bacheca-miei/bacheca-miei.module';
 
 @NgModule({
   declarations: [
@@ -112,7 +124,6 @@ import { DocumentaleCategorieModule } from './modules/documentale-categorie/docu
     ComunicazioniPageModule,
     ComunicazioniDetailsModule,
     HomeComModule,
-    HomePrioModule,
     LoadingModule,
     ChatModule,
     MyChatModule,
@@ -138,6 +149,15 @@ import { DocumentaleCategorieModule } from './modules/documentale-categorie/docu
     DocumentaleCategorieModule,
     DocumentaleDetailsModule,
     DocumentaleListaModule,
+    ListObjectModule,
+    IonicSelectableModule,
+    BachecaCardModule,
+    BachecaModule,
+    BachecaNuovoModule,
+    BachecaPreferitiModule,
+    BachecaMieiModule,
+    BachecaCardModule,
+    BachecaDetailsModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -147,7 +167,6 @@ import { DocumentaleCategorieModule } from './modules/documentale-categorie/docu
     HomePage,
     ComunicazioniCardPage,
     HomeComPage,
-    HomePrioPage,
     ContactsPage,
     // TabsPage,
     ComunicazioniPage,
@@ -176,7 +195,14 @@ import { DocumentaleCategorieModule } from './modules/documentale-categorie/docu
     DocumentalePage,
     DocumentaleCategoriePage,
     DocumentaleDetailsPage,
-    DocumentaleListaPage
+    DocumentaleListaPage,
+    ListObjectPage,
+    BachecaCardPage,
+    BachecaPage,
+    BachecaNuovoPage,
+    BachecaPreferitiPage,
+    BachecaMieiPage,
+    BachecaDetailsPage
   ],
   providers: [
     StatusBar,

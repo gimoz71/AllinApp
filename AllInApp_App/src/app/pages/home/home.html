@@ -1,122 +1,90 @@
 <ion-header>
-  <ion-navbar >
-	<button ion-button menuToggle ><ion-icon name="menu"></ion-icon></button>
-	<ion-title >ALL IN APP</ion-title>
-	
-    <ion-buttons end><img width="30em" src="assets/imgs/logo.png"></ion-buttons>
-	
-  </ion-navbar>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>ALL IN APP</ion-title>
+
+		<ion-buttons end><img style="width: 30px; margin-right: 10px;" src="assets/imgs/logo.png"></ion-buttons>
+
+	</ion-navbar>
 </ion-header>
 
-<ion-menu id="home"[content]="mycontent">
+<ion-menu id="home" [content]="mycontent">
 	<ion-content>
 	  <ion-list>
-		<ion-item (click)="GoProfile()"> Profilo </ion-item>
-		<ion-item (click)="logOut()"> LogOut </ion-item>
-		<ion-item (click)="changePassword()">Cambia password</ion-item>
-		<ion-item menuClose detail-none>Close Menu</ion-item>
-	  </ion-list>
+			<ion-item><img width="30em" src="assets/imgs/logo.png"> <div style="position : absolute; left : 4em; top: 1.2em;">ALL IN APP</div></ion-item>
+			<ion-item (click)="GoProfile()">  Profilo </ion-item>
+			<ion-item *ngIf="this.presenze['Circolari']=='true'"(click)="goToCircolari()"> <i [ngStyle]="{'color' : colori['Circolari'] }" [ngClass]="icone['Circolari']"></i> Circolari</ion-item>	
+			<ion-item *ngIf="this.presenze['Comunicazioni']=='true'"(click)="goToComunicazioni()">  <i [ngStyle]="{'color' : colori['Comunicazioni'] }" [ngClass]="icone['Comunicazioni']"></i> Comunicazioni</ion-item>
+			<ion-item *ngIf="this.presenze['Chat']=='true'" (click)="goToChat()"> <i [ngStyle]="{'color' : colori['Chat'] }"  [ngClass]="icone['Chat']"></i> Chat</ion-item>
+			<ion-item *ngIf="this.presenze['News']=='true'"(click)="goToNews()"> <i [ngStyle]="{'color' : colori['News'] }" [ngClass]="icone['News']"></i> News</ion-item>
+			<ion-item *ngIf="this.presenze['Messaggi']=='true'"(click)="goToMessaggi()"> <i [ngStyle]="{'color' : colori['Messaggi'] }" [ngClass]="icone['Messaggi']"></i> Messaggi</ion-item>
+			<ion-item *ngIf="this.presenze['Bacheca']=='true'"(click)="goToBacheca()"> <i  [ngStyle]="{'color' : colori['Bacheca'] }" [ngClass]="icone['Bacheca']"></i> Bacheca</ion-item>
+			<ion-item *ngIf="this.presenze['Documentale']=='true'" (click)="goToDocumentale()"> <i [ngStyle]="{'color' : colori['Documentale'] }" [ngClass]="icone['Documentale']"></i> Documentale</ion-item>
+			<ion-item *ngIf="this.presenze['Rubrica']=='true'"(click)="goToContact()"> <i  [ngStyle]="{'color' : colori['Rubrica'] }" [ngClass]="icone['Rubrica']"></i> Rubrica</ion-item>			  
+			<ion-item (click)="logOut()"> LogOut </ion-item>
+			<ion-item (click)="changePassword()">Cambia password</ion-item>
+			<ion-item menuClose detail-none>Close Menu</ion-item>
+		</ion-list>
 	</ion-content>
-  </ion-menu>
-  
-  <ion-nav #mycontent [root]="rootPage"  ></ion-nav>
+</ion-menu>
 
-<ion-content >
-	<ion-grid >
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
+<ion-content>
+	<ion-grid>
 		<ion-row class="cards-container">
-			<!--<ion-col>
-				<ion-card class="no-border" (click)="load()">
-					<ion-card-header class="bg-comm text-white">{{header1}}</ion-card-header>
-					<ion-card-content class="list-group list-group-flush comm">{{content1}}</ion-card-content>
-						<ion-list>
-							<ion-item>
-								<comunicazione></comunicazione>
-							</ion-item>
-							<ion-item>
-								<comunicazione></comunicazione>
-							</ion-item>
-							<ion-item>
-								<comunicazione></comunicazione>
-							</ion-item>
-							<ion-item>
-								<comunicazione></comunicazione>
-							</ion-item>
-						</ion-list>
-				</ion-card> 
-			</ion-col>-->
-			<!-- <ion-col  >
-					<ion-card color="primary" class="rounded-generic-card generic-card-blue">
-						<ion-card-header class="generic-card-header blue-header">{{header3}}</ion-card-header>
-						<ion-card-content class="yellow-header">{{content3}}</ion-card-content>
-					</ion-card>
-			</ion-col> -->
-			<ion-col  col-sm col-12>
-				<!--<div class="card card-large">
-					<div class="card-header bg-comm text-header text-white">{{header3}}</div>
-					<div class="card-body">
-						
-						<ul class="list-group list-group-flush comm" >
-							<home-com *ngFor="let data of comunicazioniMin" [data] = "data">
-							</home-com>
-						</ul>
-
-					</div>
-				</div>-->
-				<comunicazioni-card></comunicazioni-card>
+			<ion-col *ngIf="this.presenze['Circolari']=='true'&&this.colonne['Circolari']==2" col-12>
+				<circolari-card [modules]=modules></circolari-card>
 			</ion-col>
-			<ion-col  col-sm col-12>
-				<circolari-card></circolari-card>
+			<ion-col *ngIf="this.presenze['Comunicazioni']=='true'&&this.colonne['Comunicazioni']==2" col-12>
+				<comunicazioni-card [modules]=modules></comunicazioni-card>
 			</ion-col>
-			<ion-col  col-sm col-6>
-				<!--<div class="card" (click)="goToChat()">
-					<div class="card-header bg-chat text-header text-white">{{headerChat}}</div>
-					<div class="card-body">{{contentChat}}</div>
-				</div>-->
-				<chat-card *ngIf="this.presenze['chat']='true'"></chat-card>
+			<ion-col *ngIf="this.presenze['Chat']=='true'&&this.colonne['Chat']==2" col-12>
+				<chat-card [modules]=modules></chat-card>
 			</ion-col>
-			<ion-col  col-sm col-6>
-				<!--<div class="card">
-					<div class="card-header bg-priority text-header text-white">{{header2}}</div>
-					<div class="card-body">
-						<ul class="list-group list-group-flush priority" >
-							<home-prio *ngFor="let data of prioritaMin" [data] = "data">
-							</home-prio>
-						</ul>
-					</div>
-				</div>-->
-				<priorita-card *ngIf="this.presenze['priorita']='true'"  ></priorita-card>
+			<ion-col *ngIf="this.presenze['News']=='true'&&this.colonne['News']==2" col-12>
+				<news-card [modules]=modules></news-card>
 			</ion-col>
-		
-			<!--<ion-col col-6>
-					<button  block outline class="rounded-generic-card button-large button-large-green" ion-button>
-						<div>Documentale</div>
-						<ion-icon class="icon-button" name="paper">
-						</ion-icon>
-						
-					</button>
-			</ion-col>-->
-			<ion-col col-6>
-				<news-card *ngIf="this.presenze['news']='true'" ></news-card>
+			<ion-col *ngIf="this.presenze['Messaggi']=='true'&&this.colonne['Messaggi']==2" col-12>
+				<messaggi-card [modules]=modules></messaggi-card>
 			</ion-col>
-			<ion-col col-6>
-				<messaggi-card *ngIf="this.presenze['messaggi']='true'" ></messaggi-card>
+			<ion-col *ngIf="this.presenze['Bacheca']=='true'&&this.colonne['Bacheca']==2" col-12>
+				<bacheca-card [modules]=modules></bacheca-card>
 			</ion-col>
-			<ion-col col-6>
-				<documentale-card *ngIf="this.presenze['documentale']='true'" ></documentale-card>
+			<ion-col *ngIf="this.presenze['Documentale']=='true'&&this.colonne['Documentale']==2" col-12>
+				<documentale-card [modules]=modules></documentale-card>
 			</ion-col>
-			<!--<ion-col col-6>
-				<button (click)="goToContact()"  block outline class="text-default rounded-generic-card button-large button-large-blue" ion-button>
-					<div>Rubrica</div>
-					<ion-icon class="icon-button" name="contacts">
-					</ion-icon>				
-				</button>
-			</ion-col>-->
-			<ion-col col-6>
-				<contact-card *ngIf="this.presenze['contatti']='true'" ></contact-card>
+			<ion-col *ngIf="this.presenze['Rubrica']=='true'&&this.colonne['Rubrica']==2" col-12>
+				<contact-card [modules]=modules></contact-card>
 			</ion-col>
-			
+			<ion-col *ngIf="this.presenze['Circolari']=='true'&&this.colonne['Circolari']==1" col-6>
+				<circolari-card [modules]=modules></circolari-card>
+			</ion-col>
+			<ion-col *ngIf="this.presenze['Comunicazioni']=='true'&&this.colonne['Comunicazioni']==1" col-6>
+				<comunicazioni-card [modules]=modules></comunicazioni-card>
+			</ion-col>
+			<ion-col *ngIf="this.presenze['Messaggi']=='true'&&this.colonne['Messaggi']==1" col-6>
+				<messaggi-card [modules]=modules></messaggi-card>
+			</ion-col>
+			<ion-col *ngIf="this.presenze['News']=='true'&&this.colonne['News']==1" col-6>
+				<news-card [modules]=modules></news-card>
+			</ion-col>
+			<ion-col *ngIf="this.presenze['Chat']=='true'&&this.colonne['Chat']==1" col-6>
+				<chat-card [modules]=modules></chat-card>
+			</ion-col>
+			<ion-col *ngIf="this.presenze['Bacheca']=='true'&&this.colonne['Bacheca']==1" col-6>
+				<bacheca-card [modules]=modules></bacheca-card>
+			</ion-col>
+			<ion-col *ngIf="this.presenze['Documentale']=='true'&&this.colonne['Documentale']==1" col-6>
+				<documentale-card [modules]=modules></documentale-card>
+			</ion-col>
+			<ion-col *ngIf="this.presenze['Rubrica']=='true'&&this.colonne['Rubrica']==1" col-6>
+				<contact-card [modules]=modules></contact-card>
+			</ion-col>
 		</ion-row>
-		
+
 	</ion-grid>
-	
+
 </ion-content>

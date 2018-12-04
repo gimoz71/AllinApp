@@ -1,0 +1,21 @@
+<li *ngIf="letta=='N'" class="list-group-item" >
+	<div class="item" [ngStyle]="{'border-right' : 'solid', 'border-size' : '4px', 'border-color' : color}">
+		<span class="day">{{giorno}}</span>
+		<span [ngStyle]="{'color' : color }" class="mounth">{{mese}}</span>
+	</div>
+	<div class="brief" >
+		<h5 class="title">{{titolo}}</h5>
+		<p  [ngStyle]="{'color' : color }" class="text">{{descrizione}}</p>
+		<i class="fa fa-eye read"></i>
+	</div>
+</li>
+<li *ngIf="letta=='S'" class="list-group-item" >
+	<div class="item readed" [ngStyle]="{'border-right' : 'solid', 'border-size' : '1px', 'border-color' : color}">
+		<span class="day">{{giorno}}</span>
+		<span [ngStyle]="{'color' : color }" class="mounth">{{ora}}</span>
+	</div>
+	<div class="brief" >
+		<h5 class="title">{{titolo}}</h5>
+		<p  [ngStyle]="{'color' : color }" class="text">{{descrizione}}</p>
+	</div>
+</li>

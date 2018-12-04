@@ -1,6 +1,8 @@
-
-    <button (click)="goToContact()"  block outline class="text-default rounded-generic-card button-large button-large-blue" ion-button>
-        <div>Rubrica</div>
-        <ion-icon class="icon-button" name="contacts">
-        </ion-icon>				
-    </button>
+<div class="card" (click)="goToContact()">
+    <div [ngStyle]="{'background-color' : color }" class="card-header bg-comm text-header text-white" >Rubrica <div class="card-header-forward"><i class="fa fa-fw fa-chevron-right"></i></div></div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush priority" style="text-align: center;">
+            <i [ngClass]="icon" [ngStyle]="{'color' : color }" style="font-size: 5em; margin: 15px;"></i>
+        </ul>
+    </div>
+</div>

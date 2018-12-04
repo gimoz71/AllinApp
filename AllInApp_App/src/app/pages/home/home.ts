@@ -1,3 +1,8 @@
+import { BachecaPage } from './../bacheca/bacheca';
+import { MessaggiPage } from './../messaggi/messaggi';
+import { DocumentalePage } from './../documentale/documentale';
+import { Module } from './../../models/modules/modules.namespace';
+
 import { CircolariPage } from './../circolari/circolari';
 import { NewsPage } from './../news/news';
 import { LoginService } from './../../services/login/login.service';
@@ -7,7 +12,6 @@ import { StoreService } from './../../services/store/store.service';
 import { HomeElement } from './../../models/home-element/home-element.namespace';
 import { ProfiloPage } from './../profilo/profilo';
 import { ContactsPage } from './../contacts/contacts';
-import { HttpClient } from '@angular/common/http';
 import { ChatPage } from './../chat/chat';
 import { MyChatPage } from './../mychat/mychat';
 import { LoginPage } from '../../pages/login/login';
@@ -15,6 +19,8 @@ import { Storage } from '@ionic/storage';
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { ComunicazioniPage } from '../comunicazioni/comunicazioni';
+import { Login } from '../../models/login/login.namespace';
+import { HttpService } from '../../services/shared/http.service';
 
 @Component({
   selector: 'page-home',
@@ -22,78 +28,105 @@ import { ComunicazioniPage } from '../comunicazioni/comunicazioni';
 })
 export class HomePage implements OnInit{
 
-  public header1: string;
-  public header2: string;
-  public header3: string;
-  public headerChat : string;
-
-  public content1: string;
-  public content2: string;
-  public content3: string;
-  public contentChat: string;
   public contentCom : string;
 
   public presenze : string[] = [];
+  public colonne : string[] = [];
+  public posizione : string[] = [];
+  public icone : string[] = [];
+  public colori : string [] = [];
 
   public logoImg : string;
 
   public name : string;
   public message : string;
 
+  public modules : Module.ModuleElem[];
+
+
   constructor(public navCtrl: NavController,
-    private storage :Storage, private http : HttpClient, private alertCtrl: AlertController,
+    private storage :Storage, private http : HttpService, private alertCtrl: AlertController,
     private store : StoreService, private login : LoginService
   ) {
 
   }
 
   public ngOnInit() : void {
-    this.header1 = "header1_prova";
-    this.header2 = "Priorità";
-    this.header3 = "Comunicazioni";
-    this.headerChat = "Chat";
-    this.content1 = "content1_prova";
-    this.content2 = "content2_prova";
-    this.content3 = "content3_prova";
-    this.contentChat = "vai alla chat";
-    this.contentCom = '';
 
-    //richiedo quali servizi devono essere visualizzati 
-    this.presenze["comunicazioni"]= "true"; 
-    this.presenze["chat"]= "true"; 
-    this.presenze["priorita"]= "true"; 
-    this.presenze["documentale"]= "true";
-    this.presenze["contatti"] = "true"; 
-    this.presenze["messaggi"] = "true"; 
+     //richiedo quali servizi devono essere visualizzati 
+     this.presenze["Comunicazioni"]= "false"; 
+     this.presenze["Circolari"] == "false";
+     this.presenze["Chat"]= "false"; 
+     this.presenze["Documentale"]= "false";
+     this.presenze["Rubrica"] = "false"; 
+     this.presenze["Messaggi"] = "false"; 
+     this.presenze["News"] = "false"; 
+     this.presenze["Bacheca"] = "false";
+
+     this.colonne["Comunicazioni"]= 1; 
+     this.colonne["Circolari"] = 1;
+     this.colonne["Chat"]= 1; 
+     this.colonne["Documentale"]= 1;
+     this.colonne["Rubrica"] = 1; 
+     this.colonne["Messaggi"] = 1; 
+     this.colonne["News"] = 1; 
+     this.colonne["Bacheca"] = 1; 
+
+     this.icone["Comunicazioni"]= ""; 
+     this.icone["Circolari"] = "";
+     this.icone["Chat"]= ""; 
+     this.icone["Documentale"]= "";
+     this.icone["Rubrica"] = ""; 
+     this.icone["Messaggi"] = ""; 
+     this.icone["News"] = ""; 
+     this.icone["Bacheca"] = "fa fa-file"; 
+
+     this.colori["Comunicazioni"]= ""; 
+     this.colori["Circolari"] = "";
+     this.colori["Chat"]= ""; 
+     this.colori["Documentale"]= "";
+     this.colori["Rubrica"] = ""; 
+     this.colori["Messaggi"] = ""; 
+     this.colori["News"] = ""; 
+     this.colori["Bacheca"] = "#88d379"; 
+
     //ricevo tutti i dati 
     //le prossime verranno eseguite solo se sono presenti nei dati
 
-    let s1 = this.store.userData$.subscribe(
-      (val)=>{
+    let s1 = this.store.getUserDataPromise().then(
+      (val : Login.Token)=>{
         console.log(val);
         if (val.flag_richiesta_lettura == true){
           this.navCtrl.push(CircolariPage);
         }
       }
     )
-    this.store.getUserData();
-  }
 
-  public load() : void {
-    this.navCtrl.push(ComunicazioniPage, {val: 'pippo'});
-  }
+    this.http.getModules().then(
+      (modules : Module.ModuleElem[])=>{
+        console.log(modules);
+        this.modules = modules;
+        for (let i = 0 ; i < modules.length ; i++){
+          if (modules[i].tab_moduli_attivo == "S"){
+            this.presenze[modules[i].tab_moduli_desc]= "true";
+            this.colonne[modules[i].tab_moduli_desc]= modules[i].tab_moduli_colonne;
+            this.icone[modules[i].tab_moduli_desc]= modules[i].tab_moduli_icona;
+            this.colori[modules[i].tab_moduli_desc]= modules[i].tab_moduli_colore;
+            //this.colonne[modules[i].tab_moduli_desc]= 1;
+            //this.modules[i].tab_moduli_colonne = 1;
+          }
+          /**if (this.modules[i].tab_moduli_desc=="Messaggi"){
+            this.modules[i].tab_moduli_colonne = 2;
+            this.colonne["Messaggi"]= 2;
+          }**/
+          this.presenze["Bacheca"] = "true";
+        }
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
 
-  public goToChat(){
-    this.navCtrl.push(ChatPage);
-  }
-
-  public goToContact(){
-    this.navCtrl.push(ContactsPage);
-  }
-
-  public logOut(): void{
-    this.storage.clear();
-    this.navCtrl.setRoot(LoginPage);
   }
 
   public GoProfile(){
@@ -163,5 +196,40 @@ export class HomePage implements OnInit{
   checkPassword(old): boolean{
     return true;
   }
-  
+  public goToChat(){
+    this.navCtrl.push(ChatPage);
+  }
+
+  public goToContact(){
+    this.navCtrl.push(ContactsPage);
+  }
+
+  public logOut(): void{
+    this.storage.clear();
+    this.navCtrl.setRoot(LoginPage);
+  }
+
+  public goToComunicazioni(){
+    this.navCtrl.push(ComunicazioniPage);
+  }
+
+  public goToCircolari(){
+    this.navCtrl.push(CircolariPage);
+  }
+
+  public goToNews(){
+    this.navCtrl.push(NewsPage);
+  }
+
+  public goToMessaggi(){
+    this.navCtrl.push(MessaggiPage);
+  }
+
+  public goToDocumentale(){
+    this.navCtrl.push(DocumentalePage);
+  }
+
+  public goToBacheca(){
+    this.navCtrl.push(BachecaPage);
+  }
 }

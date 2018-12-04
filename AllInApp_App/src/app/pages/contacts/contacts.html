@@ -2,42 +2,41 @@
   <ion-navbar hideBackButton>
     <ion-buttons left>
       <button (click)="back()" ion-button icon-left clear small>
-        <ion-icon name="arrow-back"></ion-icon>
+        <ion-icon name="apps"></ion-icon>
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button><ion-icon class="icon-button" name="contacts" class="nav-icon text-default"></ion-icon></button>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
     </ion-buttons>
-    <ion-title >
-      <div class="text-default">Rubrica</div>
+    <ion-title>
+      <div class="text-default" [ngStyle]="{'color' : color }">RUBRICA</div>
     </ion-title>
-    
   </ion-navbar>
 </ion-header>
 <ion-content>
   
+  <div class="card no-border card-large contatti">
     <ion-searchbar  (ionInput)="getItems($event)"></ion-searchbar>
-    <ion-list >
-        <ion-item-group class="list-group list-group-flush addressBook addBook" *ngFor="let group of groupedContacts">
-          <ion-item-divider class="group-header bg-default small text-white" >{{group.letter}}</ion-item-divider>
-          <ion-item class="list-group-item" *ngFor="let contact of group.contacts" (click)="goToDetails(contact)" >
-              <div class="item" >
-                  <div  class="user-small contact-small">
-                    <img  src="{{contact.url_avatar}}">
-                  </div>
+    <div *ngFor="let group of groupedContacts">
+      <div [ngStyle]="{'background-color' : color }" class="card-header bg-comm small text-white">{{group.letter}}</div>
+      <ion-item-group class="list-group list-group-flush addressBook addBook">
+        <ion-item class="list-group-item" *ngFor="let contact of group.contacts" (click)="goToDetails(contact)" >
+            <div class="item" >
+                <div  class="user-small">
+                  <img  src="{{contact.url_avatar}}">
                 </div>
-                <div class="brief contact-small ">
-                  <h5 class="name ">{{contact.nome}} {{contact.cognome}}</h5>
-                  <p class="text ">{{contact.ruolo_aziendale}}</p>
-                  <i class="fa fa-mobile device"></i>
-                </div>
-            </ion-item>
-        </ion-item-group>
-    </ion-list>
-    
-
-
-
+              </div>
+              <div class="brief">
+                <h5 class="name ">{{contact.nome}} {{contact.cognome}}</h5>
+                <p class="text ">{{contact.ruolo_aziendale}}</p>
+                <i class="fa fa-mobile device"></i>
+              </div>
+        </ion-item>
+      </ion-item-group>
+    </div>
+  </div>
     <!--<div class="tab-content mt-3">
         <div class="card no-border mb-3 ">
           <div class="card-header bg-default small text-white">R</div>
@@ -57,7 +56,4 @@
             
           </ul>
           </div></div>-->
-      
-
-
 </ion-content>

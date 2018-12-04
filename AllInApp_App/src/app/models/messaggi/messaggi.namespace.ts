@@ -49,6 +49,7 @@ export namespace Messaggi {
         operazione: string;
         messaggio_op_key: number;
         token : string;
+        ErrorMessage : MessaggiErrore;
         }
 
     export class Messaggio {

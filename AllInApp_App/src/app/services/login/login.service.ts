@@ -1,3 +1,4 @@
+
 import { Observable } from 'rxjs/observable';
 
 import { HttpClient } from '@angular/common/http';
@@ -5,7 +6,7 @@ import { Subject } from 'rxjs/Subject';
 import { Injectable } from "@angular/core";
 import { HttpService } from "../shared/http.service";
 import { Login } from "../../models/login/login.namespace";
-import { StoreService } from '../store/store.service';
+
 
 
 @Injectable()
@@ -31,7 +32,6 @@ export class LoginService {
             };
             let url : string = "http://allinappws.mesys.it/services/change_password";
             return this.http.post<Login.Result>(url,op);
-        
     }
 
     public changeAvatar (imm, token : Login.Token) : Observable<Login.Result>{
@@ -44,4 +44,5 @@ export class LoginService {
         let url : string = "http://allinappws.mesys.it/services/change_avatar";
         return this.http.post<Login.Result>(url,op);
     }
+    
 }

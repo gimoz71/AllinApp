@@ -7,6 +7,7 @@ import { OnInit, Component } from '@angular/core';
 import { News } from '../../models/news/news.namespace';
 import { Messaggi } from '../../models/messaggi/messaggi.namespace';
 import { Login } from '../../models/login/login.namespace';
+import { Module } from '../../models/modules/modules.namespace';
 
 
 
@@ -18,13 +19,29 @@ import { Login } from '../../models/login/login.namespace';
 export class MessaggiCestinoPage implements OnInit {
 
   public messFull : Messaggi.MessaggiElem[];
-
+  color : string;
+  icon : string;
+  public clonedMess : Messaggi.MessaggiElem[];
   constructor(public navCtrl: NavController, private store : StoreService, private http : HttpService) {
           
   }
 
   ngOnInit(){
-    let s= this.store.userData$.subscribe(
+    this.http.getModules().then(
+      (modules : Module.ModuleElem[])=>{
+        console.log(modules);
+        for (let i = 0 ; i < modules.length ; i++){
+          if (modules[i].tab_moduli_cod == 5){
+            this.color = modules[i].tab_moduli_colore;
+            this.icon = modules[i].tab_moduli_icona;
+          }
+        }
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+    /**let s= this.store.userData$.subscribe(
       (val)=>{
         let s1 = this.http.getMessaggeList(val.token_value,'0','0','D').subscribe(
           (val1)=>{
@@ -35,7 +52,16 @@ export class MessaggiCestinoPage implements OnInit {
         s.unsubscribe();
       }
     )
-    this.store.getUserData();
+    this.store.getUserData();*/
+    this.http.getMessaggeList("0","0","D").then(
+      (res : Messaggi.MessaggiElem[])=>{
+        this.messFull = res;    
+        this.clonedMess  = Object.assign([], this.messFull);     
+      },
+      (error)=>{
+        console.log(error);
+      }
+    );
   }
 
   public goToDetails(mess){
@@ -45,9 +71,28 @@ export class MessaggiCestinoPage implements OnInit {
   back(){
     this.navCtrl.pop();
   }
+
+  getItems(ev) {
+    // Reset items back to all of the items
+    this.messFull = [];
+    this.messFull  = Object.assign([], this.clonedMess );
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.messFull = this.messFull.filter((item) => {
+        return (item.cognome_mit.toLowerCase().indexOf(val.toLowerCase()) > -1
+                || item.nome_mit.toLowerCase().indexOf(val.toLowerCase()) > -1
+                || item.messaggio.toLowerCase().indexOf(val.toLowerCase()) > -1
+                || item.soggetto.toLowerCase().indexOf(val.toLowerCase()) > -1
+                );
+      })
+    }
+   }
   
   delete(mess){
-    let s = this.store.userData$.subscribe(
+    /**let s = this.store.userData$.subscribe(
       (val)=>{
         let busta = new Messaggi.BustaMessaggio();
         busta.messaggio = mess;
@@ -73,7 +118,31 @@ export class MessaggiCestinoPage implements OnInit {
         s.unsubscribe();
       }
     )
-    this.store.getUserData();
+    this.store.getUserData();*/
+    this.store.getUserDataPromise().then((val)=>{
+      (val)=>{
+        let busta = new Messaggi.BustaMessaggio();
+        busta.messaggio = mess;
+        busta.token = val.token_value;
+      this.http.deleteMessage(busta).then(
+         (val1)=>{
+            console.log (busta);
+            console.log(val1);
+            let canc = null;
+            for (let i ; i < this.messFull.length ; i++){
+              if (this.messFull[i].messaggi_key == mess.messaggi_key){
+                canc = i;
+              }
+            };
+            if (canc != null)this.messFull.slice(canc,1);
+            alert ("messaggio eliminato");
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+      }
+    })
   }
 
   ripristina (mess){
