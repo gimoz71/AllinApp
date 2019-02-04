@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button (click)="back()" ion-button icon-left clear small>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
+    </ion-buttons>
+    <ion-title>
+      <div [ngClass]="{'messq': true}" [ngStyle]="{'color' : color }">BACHECA</div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="card no-border card-large comunicazioni">
+    <div [ngStyle]="{'background-color' : color }" class="card-header small text-white">{{bacheca.an_titolo}}</div>
+    <div class="card-body">
+        <button ion-button *ngIf="mio==true&&stato=='N'" (click)="setStato('S')" > PUBBLICA</button>
+        <button ion-button *ngIf="mio==true&&stato=='S'" (click)="setStato('N')" > NASCONDI</button>
+        <button ion-button *ngIf="mio==true" (click)="presentActionSheet()" > IMMAGINE</button>
+        <button ion-button *ngIf="mio==true" (click)="goToNuovoAnnuncio()" > MODIFICA</button>
+      <ul class="list-group list-group-flush comm">
+        <li style="padding: 10px;">
+          <div style="float:left"> {{bacheca.an_titolo}}</div>
+          <div style="float:left; color:red"> {{bacheca.an_richiesta}}</div>
+          <div style="float:right">inserito da  {{bacheca.dp_nome}} {{bacheca.dp_cognome}}</div>
+          <div style="float:right">in data {{bacheca.an_data}}</div>
+          <p></p>
+          <img src={{bacheca.an_immagine}}>
+          <p>{{bacheca.an_descrizione}}</p>
+          <div style="color:red">Prezzo: {{bacheca.an_richiesta}}</div>
+          <div >Comune: {{bacheca.an_localita}}</div>
+          <div >Tipologia: {{bacheca.tab_categoria_annuncio_desc}}</div>
+        </li>
+      </ul>
+    </div>
+    <table style="border-width: 3px" class="contacts mt-5 mb-5 mx-auto">
+        <tr (click)="presentConfirmCall()">
+          <td class="text-left">
+            <ion-icon name="call"></ion-icon>
+          </td>
+          <td class="text-right">
+            <span>{{bacheca.an_telefono}}</span>
+          </td>
+        </tr>
+        <tr (click)="presentConfirmEmail()">
+          <td class="text-left">
+            <ion-icon name="mail"></ion-icon>
+  
+          </td>
+          <td class="text-right">
+            {{bacheca.an_email}}
+          </td>
+        </tr>
+      </table>
+  </div>
+  
+</ion-content>

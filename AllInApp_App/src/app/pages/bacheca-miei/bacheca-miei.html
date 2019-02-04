@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button (click)="back()" ion-button icon-left clear small>
+        <ion-icon name="apps"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
+    </ion-buttons>
+    <ion-title>
+      <div [ngClass]="{'messq': true}" [ngStyle]="{'color' : color }">BACHECA</div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-nav #mycontent1 [root]="rootPage"></ion-nav>
+<ion-content>
+  
+  <ion-list>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <div class="card no-border card-large messaggi">
+      <div [ngStyle]="{'background-color' : color }" class="card-header  small text-white">Miei Annunci</div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <ion-item *ngFor="let mess of bachecaFull" class="comm">
+            <li class="list-group-item ">
+              <div class=" item ">
+                <ion-icon name="eye" [ngStyle]="{'color' : color }" (click)="goToDetails(mess)"></ion-icon>
+                <ion-icon name="checkbox" [ngStyle]="{'color' : color }"></ion-icon>
+                <ion-icon name="star-outline" [ngStyle]="{'color' : color }" *ngIf="mess.da_preferito==''" (click)="setStar(mess,'S')"></ion-icon>
+                <ion-icon name="star-outline" [ngStyle]="{'color' : color }" *ngIf="mess.da_preferito=='N'" (click)="setStar(mess,'S')"></ion-icon>
+                <ion-icon name="star" [ngStyle]="{'color' : color }" *ngIf="mess.da_preferito=='S'" (click)="setStar(mess,'N')"></ion-icon>
+                <ion-icon name="trash" [ngStyle]="{'color' : color }" (click)="deleteConfirm(mess)"></ion-icon>
+                <!--<div  class="user-small contact-small">
+                  <img  src="{{mess.url_avatar}}">
+                </div>-->
+              </div>
+              <div class="brief" (click)="goToDetails(mess)">
+                <h5 class="name ">{{mess.an_titolo}}</h5>
+                <p [ngStyle]="{'color' : color }" class="text ">{{mess.dp_nome}} {{mess.dp_cognome}}</p>
+                <p [ngStyle]="{'color' : color }">{{mess.an_data}}</p>
+                <i [ngStyle]="{'color' : color }" class="fa fa-mobile device"></i>
+              </div>
+            </li>
+          </ion-item>
+        </ul>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <div [ngStyle]="{'background-color' : color }" class=" small text-white">
+    <ion-grid class="messaggi-action">
+      <ion-row>
+        <ion-col>
+          <div (click)="goToNuovoAnnuncio()"> Nuovo </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-footer>

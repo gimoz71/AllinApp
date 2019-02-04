@@ -1,0 +1,13 @@
+<div class="card" >
+    <div [ngStyle]="{'background-color' : color }" class="card-header bg-comm text-header text-white" (click)="goToBacheca()">Bacheca <div class="card-header-forward"><i class="fa fa-fw fa-chevron-right"></i></div></div>
+    <div class="card-body">
+        <ul *ngIf="colonne==1"  class="list-group list-group-flush priority" >
+            <home-mess *ngFor="let data of bachecaMin" [titolo]="data.an_titolo" [descrizione]="data.an_descrizione" [color]="color" [icon]="icon"(click)="goToDetails(data)" >
+            </home-mess>
+        </ul>
+        <ul *ngIf="colonne==2"  class="list-group list-group-flush comm" >
+            <home-com *ngFor="let data of bachecaMin" [titolo]="data.an_titolo" [descrizione]="data.an_descrizione" [color]="color" [date]="data.an_data" (click)="goToDetails(data)" >
+            </home-com>
+        </ul>
+    </div>
+</div>

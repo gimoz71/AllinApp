@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button (click)="back()" ion-button icon-left clear small>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <div class="icon-section">
+        <i [ngClass]="icon" [ngStyle]="{'color' : color }"></i>
+      </div>
+    </ion-buttons>
+    <ion-title>
+      <div [ngClass]="{'messq': true}" [ngStyle]="{'color' : color }">MESSAGGI</div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <div class="card no-border card-large messaggi">
+      <div [ngStyle]="{'background-color' : color }" class="card-header  small text-white">Nuovo Annuncio</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <ion-item>
+              <ion-label >Categoria</ion-label>
+              <ionic-selectable item-content [(ngModel)]="categoria" [items]="categorie" itemTextField="tab_categoria_annuncio_desc" [canSearch]="true"
+                (onSearch)="desChange($event)">
+              </ionic-selectable>
+            </ion-item>
+            <ion-item>
+              <ion-input [(ngModel)]="titolo" placeholder="Titolo"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-textarea [(ngModel)]="descrizione" placeholder="Descrizione"></ion-textarea>
+            </ion-item>
+            <ion-item>
+              <ion-input type="date" [(ngModel)]="data" placeholder="Data"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input [(ngModel)]="localita" placeholder="Località"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="number" step="0.01" [(ngModel)]="importo" placeholder="Importo richiesto"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input [(ngModel)]="email" placeholder="email"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input [(ngModel)]="telefono" placeholder="telefono"></ion-input>
+            </ion-item>
+            <button ion-button block outline (click)="inviaAnnuncio()">INVIA</button>
+          </ul>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>
