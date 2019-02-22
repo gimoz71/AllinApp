@@ -61,10 +61,9 @@
 <ion-nav #mycontent [root]="rootPage"></ion-nav>
 
 <ion-content>
-		
-	<ion-grid>
+
 			
-		<ion-row class="cards-container">
+		<ion-row  class="cards-container">
 				
 			<ion-col *ngIf="this.presenze['Circolari']=='true'&&this.colonne['Circolari']==2&&this.segment=='work'" col-12>
 				<circolari-card [modules]=modules></circolari-card>
@@ -116,6 +115,6 @@
 			</ion-col>
 		</ion-row>
 
-	</ion-grid>
+
 
 </ion-content>
