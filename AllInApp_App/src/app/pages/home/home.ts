@@ -16,12 +16,12 @@ import { ChatPage } from './../chat/chat';
 import { MyChatPage } from './../mychat/mychat';
 import { LoginPage } from '../../pages/login/login';
 import { Storage } from '@ionic/storage';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { ComunicazioniPage } from '../comunicazioni/comunicazioni';
 import { Login } from '../../models/login/login.namespace';
 import { HttpService } from '../../services/shared/http.service';
-
+import { Slides } from 'ionic-angular';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -50,7 +50,7 @@ export class HomePage implements OnInit{
 
   public modules : Module.ModuleElem[];
 
-  
+  @ViewChild(Slides) slides: Slides;
   constructor(public navCtrl: NavController,
     private storage :Storage, private http : HttpService, private alertCtrl: AlertController,
     private store : StoreService, private login : LoginService
@@ -241,8 +241,8 @@ export class HomePage implements OnInit{
   }
 
   public slideChanged(){
-
-    if (this.segment == "work")this.segment = "social"
-    else this.segment = "work";
+    let ind = this.slides.getActiveIndex();
+    if (ind == 0)this.segment = "work"
+    else if (ind == 1)this.segment = "social";
   }
 }
