@@ -3,11 +3,38 @@
 		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title>ALL IN APP</ion-title>
-
+		<!--<ion-title>ALL IN APP</ion-title>-->
+		<ion-slides pager="true" (ionSlideDidChange)="slideChanged()" options='slideOpts' #firstSlider >
+				<ion-slide >
+					<ion-label [ngStyle]="{'color' : '#8EA7BD' }"> WORK</ion-label>
+					<ion-label></ion-label>
+				</ion-slide>
+				<ion-slide>
+					<ion-label [ngStyle]="{'color' : '#3FA397' }"> SOCIAL</ion-label>
+					<ion-label></ion-label>
+				</ion-slide>
+			</ion-slides>
 		<ion-buttons end><img style="width: 30px; margin-right: 10px;" src="assets/imgs/logo.png"></ion-buttons>
 
 	</ion-navbar>
+	<!--<ion-segment mode="ios" [(ngModel)]="segment" scrollable>
+		<ion-segment-button class="seg" [ngStyle]="{'color' : '#8EA7BD' }" value="work">
+				
+		</ion-segment-button>
+		<ion-segment-button [ngStyle]="{'color' : '#3FA397' }" value="social">
+				
+		</ion-segment-button>
+	</ion-segment>-->
+	<!--<ion-grid class="messaggi-action">
+		<ion-row>
+			<ion-col>
+			<div (click)="slideChanged()"> WORK </div>
+			</ion-col>
+			<ion-col>
+			<div (click)="slideChanged()"> SOCIAL </div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>-->
 </ion-header>
 
 <ion-menu id="home" [content]="mycontent">
@@ -27,60 +54,64 @@
 			<ion-item (click)="changePassword()">Cambia password</ion-item>
 			<ion-item menuClose detail-none>Close Menu</ion-item>
 		</ion-list>
+		
 	</ion-content>
 </ion-menu>
 
 <ion-nav #mycontent [root]="rootPage"></ion-nav>
 
 <ion-content>
+		
 	<ion-grid>
+			
 		<ion-row class="cards-container">
-			<ion-col *ngIf="this.presenze['Circolari']=='true'&&this.colonne['Circolari']==2" col-12>
+				
+			<ion-col *ngIf="this.presenze['Circolari']=='true'&&this.colonne['Circolari']==2&&this.segment=='work'" col-12>
 				<circolari-card [modules]=modules></circolari-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['Comunicazioni']=='true'&&this.colonne['Comunicazioni']==2" col-12>
+			<ion-col *ngIf="this.presenze['Comunicazioni']=='true'&&this.colonne['Comunicazioni']==2&&this.segment=='work'" col-12>
 				<comunicazioni-card [modules]=modules></comunicazioni-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['Chat']=='true'&&this.colonne['Chat']==2" col-12>
+			<ion-col *ngIf="this.presenze['Chat']=='true'&&this.colonne['Chat']==2&&this.segment=='social'" col-12>
 				<chat-card [modules]=modules></chat-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['News']=='true'&&this.colonne['News']==2" col-12>
+			<ion-col *ngIf="this.presenze['News']=='true'&&this.colonne['News']==2&&this.segment=='social'" col-12>
 				<news-card [modules]=modules></news-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['Messaggi']=='true'&&this.colonne['Messaggi']==2" col-12>
+			<ion-col *ngIf="this.presenze['Messaggi']=='true'&&this.colonne['Messaggi']==2&&this.segment=='work'" col-12>
 				<messaggi-card [modules]=modules></messaggi-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['Bacheca']=='true'&&this.colonne['Bacheca']==2" col-12>
+			<ion-col *ngIf="this.presenze['Bacheca']=='true'&&this.colonne['Bacheca']==2&&this.segment=='social'" col-12>
 				<bacheca-card [modules]=modules></bacheca-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['Documentale']=='true'&&this.colonne['Documentale']==2" col-12>
+			<ion-col *ngIf="this.presenze['Documentale']=='true'&&this.colonne['Documentale']==2&&this.segment=='work'" col-12>
 				<documentale-card [modules]=modules></documentale-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['Rubrica']=='true'&&this.colonne['Rubrica']==2" col-12>
+			<ion-col *ngIf="this.presenze['Rubrica']=='true'&&this.colonne['Rubrica']==2&&this.segment=='work'" col-12>
 				<contact-card [modules]=modules></contact-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['Circolari']=='true'&&this.colonne['Circolari']==1" col-6>
+			<ion-col *ngIf="this.presenze['Circolari']=='true'&&this.colonne['Circolari']==1&&this.segment=='work'" col-6>
 				<circolari-card [modules]=modules></circolari-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['Comunicazioni']=='true'&&this.colonne['Comunicazioni']==1" col-6>
+			<ion-col *ngIf="this.presenze['Comunicazioni']=='true'&&this.colonne['Comunicazioni']==1&&this.segment=='work'" col-6>
 				<comunicazioni-card [modules]=modules></comunicazioni-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['Messaggi']=='true'&&this.colonne['Messaggi']==1" col-6>
+			<ion-col *ngIf="this.presenze['Messaggi']=='true'&&this.colonne['Messaggi']==1&&this.segment=='work'" col-6>
 				<messaggi-card [modules]=modules></messaggi-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['News']=='true'&&this.colonne['News']==1" col-6>
+			<ion-col *ngIf="this.presenze['News']=='true'&&this.colonne['News']==1&&this.segment=='social'" col-6>
 				<news-card [modules]=modules></news-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['Chat']=='true'&&this.colonne['Chat']==1" col-6>
+			<ion-col *ngIf="this.presenze['Chat']=='true'&&this.colonne['Chat']==1&&this.segment=='social'" col-6>
 				<chat-card [modules]=modules></chat-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['Bacheca']=='true'&&this.colonne['Bacheca']==1" col-6>
+			<ion-col *ngIf="this.presenze['Bacheca']=='true'&&this.colonne['Bacheca']==1&&this.segment=='social'" col-6>
 				<bacheca-card [modules]=modules></bacheca-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['Documentale']=='true'&&this.colonne['Documentale']==1" col-6>
+			<ion-col *ngIf="this.presenze['Documentale']=='true'&&this.colonne['Documentale']==1&&this.segment=='work'" col-6>
 				<documentale-card [modules]=modules></documentale-card>
 			</ion-col>
-			<ion-col *ngIf="this.presenze['Rubrica']=='true'&&this.colonne['Rubrica']==1" col-6>
+			<ion-col *ngIf="this.presenze['Rubrica']=='true'&&this.colonne['Rubrica']==1&&this.segment=='work'" col-6>
 				<contact-card [modules]=modules></contact-card>
 			</ion-col>
 		</ion-row>

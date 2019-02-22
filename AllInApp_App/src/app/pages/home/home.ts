@@ -26,6 +26,7 @@ import { HttpService } from '../../services/shared/http.service';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage implements OnInit{
 
   public contentCom : string;
@@ -35,7 +36,13 @@ export class HomePage implements OnInit{
   public posizione : string[] = [];
   public icone : string[] = [];
   public colori : string [] = [];
-
+  public segment : string = "work";
+  public slideOpts = {
+    pagination: {
+      el: '.swiper-pagination',
+      type:'progressbar',
+    }   
+  };
   public logoImg : string;
 
   public name : string;
@@ -43,7 +50,7 @@ export class HomePage implements OnInit{
 
   public modules : Module.ModuleElem[];
 
-
+  
   constructor(public navCtrl: NavController,
     private storage :Storage, private http : HttpService, private alertCtrl: AlertController,
     private store : StoreService, private login : LoginService
@@ -231,5 +238,11 @@ export class HomePage implements OnInit{
 
   public goToBacheca(){
     this.navCtrl.push(BachecaPage);
+  }
+
+  public slideChanged(){
+
+    if (this.segment == "work")this.segment = "social"
+    else this.segment = "work";
   }
 }

@@ -368,3 +368,18 @@ ion-title {
     padding: 0em;
 }
 
+.swiper-pagination-bullet {
+    border-radius: 10%;
+    width: 110px;
+    height: 8px;
+    background: #3FA397;
+}
+
+.swiper-pagination-bullet-active {
+    background: #8EA7BD;
+    opacity: 1;
+}
+
+.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 0px;
+}
