@@ -2,6 +2,9 @@
 import { Error } from './../../models/shared/error.namespace';
 import { StoreService } from './../../services/store/store.service';
 import { Storage } from '@ionic/storage';
+import { AlertService } from '../../services/shared/alert.service';
+
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
@@ -27,33 +30,44 @@ export class LoginPage {
   private userData: Login.Token;
 
   private username: string = "";
-  private password: string = ""; 
-  
+  private password: string = "";
+
+  private firebase_token: string = "";
+
   constructor(private loginService: LoginService,
     public navCtrl: NavController,
     private alertCtrl: AlertController,
     private store: StoreService,
-    private error: ErrorService){
+    private error: ErrorService,
+    private alertService: AlertService,
+    public firebaseNative: FirebaseX,){
     this.userData = new Login.Token;
   }
 
   public login(): void {
-    let s = this.loginService.login(this.username, this.password).subscribe(r => {
-      console.log(r);
-      if(r.ErrorMessage.msg_code == 0){
-        this.userData = r;
-        this.store.setUserData(this.userData);
-      
-        this.navCtrl.setRoot(HomePage, {val: 'pippo'});
-      } else {
-        //throw new Error("test Error");
-        //let ed = new Error.ErrorData();
-        //ed.message = "errore nel login" ; 
-        //this.error.sendError(ed);
-        this.presentAlert();
-      }
-      s.unsubscribe();
-    });
+
+    var self = this;
+    this.firebaseNative.getToken().then(function(fbToken){
+      self.firebase_token = fbToken;
+
+      let s = self.loginService.login(self.username, self.password).subscribe(r => {
+        console.log(r);
+        if(r.ErrorMessage.msg_code == 0){
+          self.userData = r;
+          self.store.setUserData(self.userData);
+
+          self.navCtrl.setRoot(HomePage, {val: 'pippo'});
+        } else {
+          //throw new Error("test Error");
+          //let ed = new Error.ErrorData();
+          //ed.message = "errore nel login" ;
+          //this.error.sendError(ed);
+          self.alertService.presentAlert(r.ErrorMessage.msg_testo);
+        }
+        s.unsubscribe();
+      });
+    }
+
   }
 
   presentAlert() {

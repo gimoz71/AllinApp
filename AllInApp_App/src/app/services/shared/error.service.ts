@@ -10,7 +10,7 @@ import { Login } from "../../models/login/login.namespace";
 export class ErrorService{
 
     constructor(private http: HttpClient){}
-    
+
     /**public sendError(url: string) : Observable<Error.ErrorResponse>{
         return this.http.get<Error.ErrorResponse>(url);
     }*/
@@ -21,6 +21,5 @@ export class ErrorService{
                 resolve(val);
             });
         });
-        
     }
 }
